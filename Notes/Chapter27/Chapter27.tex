@@ -10,9 +10,123 @@
 
 
 \chapter{Kinetic Theory of Gases}
-\section{???}
+\section{Background and Ideal Gas Distributions}
 \begin{itemize}
-    \item \marginnote{3/28:}
+    \item \marginnote{3/28:}Learning objectives for CHEM 263.
+    \begin{itemize}
+        \item The time-dependent phenomena.
+        \item Reaction rate and rate laws.
+        \item Reaction mechanisms and reaction dynamics.
+        \item Surface chemistry and catalysis.
+        \item Experimental design and instruments.
+    \end{itemize}
+    \item Before we move into the content of CHEM 263, a few important notes from CHEM 262.
+    \item \textbf{Partition function} (for a system with $N$ states): The following function of temperature. \emph{Denoted by} $\bm{Q(T)}$. \emph{Given by}
+    \begin{equation*}
+        Q(T) = \sum_{n=1}^N\e[-E_n/\kB T]
+    \end{equation*}
+    \item \textbf{Observable}: A quantum mechanical operator.
+    \item Consider a system described by the partition function $Q$. Let $\ket{i}$ denote the state with energy $E_i$, and let $A$ be an observable. Then the expected value of the observable $A$ is given by
+    \begin{equation*}
+        \prb{A} = \frac{1}{Q}\sum_{\ket{i}}\ev{A}{i}\e[-E_i/\kB T]
+    \end{equation*}
+    \begin{itemize}
+        \item "This fundamental law is the summit of statistical mechanics, and the entire subject is either the slide-down from this summit, as the principle is applied to various cases, or the climb-up to where the fundamental law is derived and the concepts of thermal equilibrium and temperature $T$ clarified" Richard Feynman, Statistical Mechanics.
+    \end{itemize}
+    \item Now onto the CHEM 263 content.
+    \item Tian duplicates the derivation of the ideal gas law given on \textcite[18-19]{bib:PHYS13300Notes}.
+    \begin{itemize}
+        \item Note that if $M$ is the molar mass, $m$ is the mass of a single molecule, $\NA$ is Avogadro's number, $N$ is the number of particles present, and $n$ is the number of moles present, then since $N/\NA=n$ and $M/\NA=m$, we have that
+        \begin{equation*}
+            M = \frac{Nm}{n}
+        \end{equation*}
+    \end{itemize}
+    \item Important values of molecular speed $u$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[xscale=1.3,yscale=1.2]
+            \small
+            \draw [stealth-stealth] (0,3) -- node[left]{$f(u)$} (0,0) -- node[below]{$u$} (5,0);
+    
+            \draw [blx,thick] plot[domain=0:4.9,smooth] (\x,{2*\x*\x*e^(-\x*\x/3)});
+            \begin{scope}[on background layer]
+                \fill [blt] plot[domain=0:4.9,smooth] (\x,{2*\x*\x*e^(-\x*\x/3)}) -- ++(0,-0.016) -- cycle;
+            \end{scope}
+    
+            \footnotesize
+            \draw [semithick]
+                (1.732,2.107) -- ++(0,0.2) node[above]{$u_p$}
+                (1.954,2.039) -- ++(0,0.2) node[above]{$\bar{u}$}
+                (2.121,1.908) -- ++(0,0.2) node[above,xshift=8pt]{$u_{rms}$}
+            ;
+        \end{tikzpicture}
+        \caption{Important values of molecular speed.}
+        \label{fig:molecularSpeed}
+    \end{figure}
+    \item \textbf{Maxwell Speed Distribution Function}: The following normalized function, which gives the probability that a particle in an ideal gas will have a given speed. \emph{Denoted by} $\bm{f(u)}$. \emph{Given by}
+    \begin{equation*}
+        f(u) = 4\pi\left( \frac{M}{2\pi RT} \right)^{3/2}u^2\exp\left( -\frac{Mu^2}{2RT} \right)
+    \end{equation*}
+    \item \textbf{Most probable speed}: The speed that a particle in an ideal gas is most likely to have. \emph{Denoted by} $\bm{u_p}$. \emph{Given by}
+    \begin{equation*}
+        u_p = \sqrt{\frac{2RT}{M}}
+    \end{equation*}
+    \item \textbf{Mean speed}: The average speed of all of the particles in an ideal gas. \emph{Denoted by} $\bm{\bar{u}}$. \emph{Given by}
+    \begin{equation*}
+        \bar{u} = \sqrt{\frac{8RT}{\pi M}}
+    \end{equation*}
+    \item \textbf{Root mean squared speed}: The square root of the average of the speeds squared. \emph{Denoted by} $\bm{u_{rms}}$. \emph{Given by}
+    \begin{equation*}
+        u_{rms} = \prb{u^2}^{1/2}
+        = \sqrt{\frac{3RT}{M}}
+    \end{equation*}
+    \item The distributions of the molecular speed and velocity components are different.
+    \begin{itemize}
+        \item While speed follows the Maxwell-Boltzmann distribution, velocity follows (on each Cartesian axis) a Gaussian distribution centered at zero.
+        \item At higher temperatures, both distributions "flatten out," but maintain their shape.
+    \end{itemize}
+    \item Deriving the distribution of the velocity component.
+    \begin{itemize}
+        \item The velocity components are independent.
+        \item Let
+        \begin{equation*}
+            h(u) = h(u_x,u_y,u_z) = f(u_x)f(u_y)f(u_z)
+        \end{equation*}
+        be the distribution of speed with velocity components between $u_x,u_x+\dd{u_x}$, $u_y,u_y+\dd{u_y}$, and $u_z,u_z+\dd{u_z}$, where $f(u_i)$ is the probability distribution of components $i$.
+        \begin{itemize}
+            \item Note that $h(u)$ is \emph{not} the speed distribution with velocity components between $u,u+\dd{u}$.
+        \end{itemize}
+        \item Clever step: Note that the logarithmic form of the above equation leads to
+        \begin{align*}
+            \ln h(u) &= \ln f(u_x)+\ln f(u_y)+\ln f(u_z)\\
+            \left( \pdv{\ln h}{u_x} \right)_{u_y,u_z} &= \dv{\ln h}{u}\left( \pdv{u}{u_x} \right)_{u_y,u_z}\\
+            &= \frac{u_x}{u}\dv{\ln h}{u}
+        \end{align*}
+        where we evaluate $\pdv*{u}{u_x}$ by using the generalized Pythagorean theorem definition of $u$.
+        \item Additionally, we have that
+        \begin{equation*}
+            \left( \pdv{\ln h}{u_x} \right)_{u_y,u_z} = \dv{\ln f(u_x)}{u_x}
+        \end{equation*}
+        since the $\ln f(u_i)$ ($i\neq x$) terms are constant with respect to changes in $u_x$.
+        \item Thus, combining the last two results, we have that
+        \begin{equation*}
+            \frac{\dd{\ln h(u)}}{u\dd{u}} = \frac{\dd{\ln f(u_x)}}{u_x\dd{u_x}}
+        \end{equation*}
+        \item It follows since the gas is isotropic that
+        \begin{equation*}
+            \frac{\dd{\ln h(u)}}{u\dd{u}} = \frac{\dd{\ln f(u_x)}}{u_x\dd{u_x}}
+            = \frac{\dd{\ln f(u_y)}}{u_y\dd{u_y}}
+            = \frac{\dd{\ln f(u_z)}}{u_z\dd{u_z}}
+        \end{equation*}
+        \item But since the three speed components are independent of each other, the above term is constant.
+        \item It follows if we call the constant $-2\gamma$ that
+        \begin{align*}
+            \frac{\dd{\ln f(u_i)}}{u_i\dd{u_i}} &= -2\gamma\\
+            f(u_i) &= A\e[-\gamma u_i^2]
+        \end{align*}
+        for $i=x,y,z$.
+        \item We will pick up with solving for $A$ and $\gamma$ in the next lecture.
+    \end{itemize}
 \end{itemize}
 
 

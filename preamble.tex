@@ -1,7 +1,15 @@
 \usepackage[margin=1in]{geometry}
+\usepackage{csquotes}
 \usepackage{fancyhdr}
 \usepackage{marginnote}
+\usepackage{enumitem}
+\usepackage[style=apa]{biblatex}
+\usepackage{tikz}
+\usepackage{amsmath,amssymb}
+\usepackage{bm,physics}
 \usepackage[hidelinks]{hyperref}
+
+\MakeOuterQuote{"}
 
 \fancypagestyle{main}{
     \fancyhf{}
@@ -15,5 +23,20 @@
 }
 
 \reversemarginpar
+
+\setitemize[3]{label={\scriptsize$\blacksquare$}}
+
+\addbibresource{../main.bib}
+\DefineBibliographyStrings{english}{bibliography={References}}
+
+\usetikzlibrary{backgrounds}
+\colorlet{blx}{blue!90!green!80}
+\colorlet{blt}{blue!90!green!30}
+
+\newcommand{\kB}{k_\text{B}}
+\newcommand{\NA}{N_\text{A}}
+
+\newcommand{\e}[1][]{\text{e}^{#1}}
+\newcommand{\prb}[1]{\left\langle{#1}\right\rangle}
 
 \usepackage{subfiles}
