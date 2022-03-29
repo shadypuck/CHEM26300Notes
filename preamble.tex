@@ -3,6 +3,8 @@
 \usepackage{fancyhdr}
 \usepackage{marginnote}
 \usepackage{enumitem}
+\usepackage{scrextend}
+\usepackage[bottom]{footmisc}
 \usepackage[style=apa]{biblatex}
 \usepackage{tikz}
 \usepackage{amsmath,amssymb}
@@ -25,6 +27,9 @@
 \reversemarginpar
 
 \setitemize[3]{label={\scriptsize$\blacksquare$}}
+
+\deffootnotemark{\textsuperscript{\textup{[}\thefootnotemark\textup{]}}}
+\deffootnote[2.1em]{0em}{0em}{\textsuperscript{\thefootnote}}
 
 \addbibresource{../main.bib}
 \DefineBibliographyStrings{english}{bibliography={References}}

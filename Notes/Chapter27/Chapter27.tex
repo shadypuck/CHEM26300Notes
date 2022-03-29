@@ -131,5 +131,178 @@
 
 
 
+\section{Chapter 27: The Kinetic Theory of Gases}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{1/30:}\textbf{Kinetic theory of gases}: A simple model of gases in which the molecules (pictured as hard spheres) are assumed to be in constant, incessant motion, colliding with each other and with the walls of the container.
+    \item \textcite{bib:McQuarrieSimon} does the KMT derivation of the ideal gas law from \textcite{bib:APChemNotes}. Some important notes follow.
+    \begin{itemize}
+        \item \textcite{bib:McQuarrieSimon} emphasizes the importance of
+        \begin{equation*}
+            PV = \frac{1}{3}Nm\prb{u^2}
+        \end{equation*}
+        as a fundamental equation of KMT, as it relates a macroscopic property $PV$ to a microscopic property $m\prb{u^2}$.
+        \item In Chapter 17-18, we derived quantum mechanically, and then from the partition function, that the average translational energy $\prb{E_\text{trans}}$ for a single particle of an ideal gas is $\frac{3}{2}k_BT$. From classical mechanics, we also have that $\prb{E_\text{trans}}=\frac{1}{2}m\prb{u^2}$. \emph{This} is why we may let
+        \begin{equation*}
+            \frac{1}{2}m\prb{u^2} = \frac{3}{2}k_BT
+        \end{equation*}
+        recovering that the average translational kinetic energy of the molecules in a gas is directly proportional to the Kelvin temperature.
+    \end{itemize}
+    \item \textbf{Isotropic} (entity): An object or substance that has the same properties in any direction.
+    \begin{itemize}
+        \item For example, a homogeneous gas is isotropic, and this is what allows us to state that $\prb{u_x^2}=\prb{u_y^2}=\prb{u_z^2}$.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} derives
+    \begin{equation*}
+        u_\text{rms} = \sqrt{\frac{3RT}{M}}
+    \end{equation*}
+    \begin{itemize}
+        \item $u_\text{rms}$ is an estimate of the average speed since $\prb{u^2}\neq\prb{u}^2$ in general.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} states without proof that the speed of sound $u_\text{sound}$ in a monatomic ideal gas is given by
+    \begin{equation*}
+        u_\text{sound} = \sqrt{\frac{5RT}{3M}}
+    \end{equation*}
+    \item Assumptions of the kinetic theory of gases.
+    \begin{itemize}
+        \item Particles collide elastically with the wall.
+        \begin{itemize}
+            \item Justified because although each collision will not be elastic (the particles in the wall are moving too), the average collision will be elastic.
+        \end{itemize}
+        \item Particles do not collide with each other.
+        \begin{itemize}
+            \item Justified because "if the gas is in equilibrium, on the average, any collision that deflects the path of a molecule\dots will be balanced by a collision that replaces the molecule" \parencite[1015]{bib:McQuarrieSimon}.
+        \end{itemize}
+    \end{itemize}
+    \item Note that we can do the kinetic derivation at many levels of rigor, but more rigorous derivations offer results that differ only by constant factors on the order of unity.
+    \item Deriving a theoretical equation for the distribution of the \emph{components} of molecular velocities.
+    \begin{itemize}
+        \item Let $h(u_x,u_y,u_z)\dd{u_x}\dd{u_y}\dd{u_z}$ be the fraction of molecules with velocity components between $u_j$ and $u_j+\dd{u_j}$ for $j=x,y,z$.
+        \item Assume that the each component of the velocity of a molecule is independent of the values of the other two components\footnote{This can be proven.}. It follows statistically that
+        \begin{equation*}
+            h(u_x,u_y,u_z) = f(u_x)f(u_y)f(u_z)
+        \end{equation*}
+        \begin{itemize}
+            \item Note that we use just one function $f$ for the probability distribution in each direction because the gas is isotropic.
+        \end{itemize}
+        \item We can use the isotropic condition to an even greater degree. Indeed, it implies that any information conveyed by $u_x$ is necessarily and sufficiently conveyed by $u_y$, $u_z$, and $u$. Thus, we may take
+        \begin{equation*}
+            h(u) = h(u_x,u_y,u_z) = f(u_x)f(u_y)f(u_z)
+        \end{equation*}
+        \item It follows that
+        \begin{equation*}
+            \pdv{\ln h(u)}{u_x} = \pdv{u_x}(\ln f(u_x)+\text{terms not involving }u_x)
+            = \dv{\ln f(u_x)}{u_x}
+        \end{equation*}
+        \item Since
+        \begin{align*}
+            u^2 &= u_x^2+u_y^2+u_z^2\\
+            \pdv{u_x}(u^2) &= \pdv{u_x}(u_x^2+u_y^2+u_z^2)\\
+            2u\pdv{u}{u_x} &= 2u_x\\
+            \pdv{u}{u_x} &= \frac{u_x}{u}
+        \end{align*}
+        we have that
+        \begin{align*}
+            \pdv{\ln h}{u_x} &= \dv{\ln h}{u}\pdv{u}{u_x} = \frac{u_x}{u}\dv{\ln h}{u}\\
+            \frac{\dd{\ln h(u)}}{u\dd{u}} &= \frac{\dd{\ln f(u_x)}}{u_x\dd{u_x}}
+        \end{align*}
+        which generalizes to
+        \begin{equation*}
+            \frac{\dd{\ln h(u)}}{u\dd{u}} = \frac{\dd{\ln f(u_x)}}{u_x\dd{u_x}}
+            = \frac{\dd{\ln f(u_y)}}{u_y\dd{u_y}}
+            = \frac{\dd{\ln f(u_z)}}{u_z\dd{u_z}}
+        \end{equation*}
+        \item Since $u_x,u_y,u_z$ are independent, we know that the above equation is equal to a constant, which we may call $-\gamma$. It follows that for any $j=x,y,z$, we have that
+        \begin{align*}
+            \frac{\dd{\ln f(u_j)}}{u_j\dd{u_j}} &= -\gamma\\
+            \frac{1}{f}\dv{f}{u_j} &= -\gamma u_j\\
+            \int\frac{\dd{f}}{f} &= \int-\gamma u_j\dd{u_j}\\
+            \ln f &= -\frac{\gamma}{2}u_j^2+C\\
+            f(u_j) &= A\e[-\gamma u_j^2]
+        \end{align*}
+        where we have incorporated the $1/2$ into $\gamma$.
+        \item To determine $A$ and $\gamma$, we let arbitrarily let $j=x$. Since $f$ is a continuous probability distribution, we may apply the normalization requirement.
+        \begin{align*}
+            1 &= \int_{-\infty}^\infty f(u_x)\dd{u_x}\\
+            &= 2A\int_0^\infty\e[-\gamma u_x^2]\dd{u_x}\\
+            &= 2A\sqrt{\frac{\pi}{4\gamma}}\\
+            A &= \sqrt{\frac{\gamma}{\pi}}
+        \end{align*}
+        \item Additionally, since we have that $\prb{u_x^2}=\frac{1}{3}\prb{u^2}$ and $\prb{u^2}=3RT/M$, we know that $\prb{u_x^2}=RT/M$. This combined with the definition of $\prb{u_x^2}$ as a continuous probability distribution yields
+        \begin{align*}
+            \frac{RT}{M} &= \prb{u_x^2}\\
+            &= \int_{-\infty}^\infty u_x^2f(u_x)\dd{u_x}\\
+            &= 2\sqrt{\frac{\gamma}{\pi}}\int_0^\infty u_x^2\e[-\gamma u_x^2]\dd{u_x}\\
+            &= 2\sqrt{\frac{\gamma}{\pi}}\cdot\frac{1}{4\gamma}\sqrt{\frac{\pi}{\gamma}}\\
+            &= \frac{1}{2\gamma}\\
+            \gamma &= \frac{M}{2RT}
+        \end{align*}
+        \item Therefore,
+        \begin{equation*}
+            f(u_x) = \sqrt{\frac{M}{2\pi RT}}\e[-Mu_x^2/2RT]
+        \end{equation*}
+        \item It is common to rewrite the above in terms of molecular quantities $m$ and $k_B$.
+    \end{itemize}
+    \item It follows that as temperature increases, more molecules are likely to be found with higher component velocity values.
+    \item We can use the above result to show that
+    \begin{equation*}
+        \prb{u_x} = \int_{-\infty}^\infty u_xf(u_x)\dd{u_x} = 0
+    \end{equation*}
+    \item We can also calculate that $\prb{u_x^2}=RT/M$ and $m\prb{u_x}^2/2=k_BT/2$ from the above result\footnote{See the equipartition of energy theorem from \textcite{bib:PHYS13300Notes}.}.
+    \begin{itemize}
+        \item An important consequence is that the total kinetic energy is divided equally into the $x$-, $y$-, and $z$-components. This fact was also demonstrated in Week 1, Lecture 3.
+    \end{itemize}
+    \item \textbf{Doppler broadening}: The broadening of spectral lines due to the distribution of molecular velocities.
+    \begin{itemize}
+        \item Ideally, spectral lines will be very narrow.
+        \item However, due to the Doppler effect, if an atom or molecule emits radiation of frequency $\nu_0$ while moving away or toward the observer with speed $u_x$, then the observed frequency will be
+        \begin{equation*}
+            \nu \approx \nu_0\left( 1+\frac{u_x}{c} \right)
+        \end{equation*}
+        \item Indeed, "if one observes the radiation emitted from a gas at temperature $T$, then it is found that the spectral line at $\nu_0$ will be spread out by the Maxwell distribution of $u_x$ of the molecule emitting the radiation" \parencite[1021]{bib:McQuarrieSimon}.
+        \item It follows by the definition of $f(u_x)$ and the above that
+        \begin{equation*}
+            I(\nu) \propto \e[-mc^2(\nu-\nu_0)^2/2\nu_0^2k_BT]
+        \end{equation*}
+        i.e., that $I(\nu)$ is of the form of a Gaussian centered at $\nu_0$ with variance $\sigma^2=\nu_0^2k_BT/mc^2$.
+    \end{itemize}
+    \item Deriving \textbf{Maxwell-Boltzmann distribution}.
+    \begin{itemize}
+        \item Let the probability that a molecule has speed between $u$ and $u+\dd{u}$ be defined by a continuous probability distribution $F(u)\dd{u}$. In particular, we have from the above isotropic condition that
+        \begin{align*}
+            F(u)\dd{u} &= f(u_x)\dd{u_x}f(u_y)\dd{u_y}f(u_z)\dd{u_z}\\
+            &= \left( \frac{m}{2\pi k_BT} \right)^{3/2}\e[-m(u_x^2+u_y^2+u_z^2)/2k_BT]\dd{u_x}\dd{u_y}\dd{u_z}
+        \end{align*}
+        \item Considering $F$ over a \textbf{velocity space}, we realize that we may express the probability distribution $F$ as a function of $u$ via $u^2=u_x^2+u_y^2+u_z^2$ and the differential volume element in every direction over the sphere of equal velocities (a sphere by the isotropic condition) by $4\pi u^2\dd{u}=\dd{u_x}\dd{u_y}\dd{u_z}$.
+        \item Thus, the Maxwell-Boltzmann distribution in terms of speed is
+        \begin{equation*}
+            F(u)\dd{u} = 4\pi\left( \frac{m}{2\pi k_BT} \right)^{3/2}u^2\e[-mu^2/2k_BT]\dd{u}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Maxwell-Boltzmann distribution}: The distribution of molecular speeds.
+    \item \textbf{Velocity space}: A rectangular coordinate system in which the distances along the axes are $u_x,u_y,u_z$.
+    \item We may use the above result to calculate that
+    \begin{equation*}
+        \prb{u} = \sqrt{\frac{8RT}{\pi m}}
+    \end{equation*}
+    which only differs from $u_\text{rms}$ by a factor of 0.92.
+    \item \textbf{Most probable speed}: The most probable speed of a gas molecule in a sample that obeys the Maxwell-Boltzmann distribution. \emph{Denoted by} $\bm{u_\text{mp}}$. \emph{Given by}
+    \begin{equation*}
+        u_\text{mp} = \sqrt{\frac{2RT}{M}}
+    \end{equation*}
+    \begin{itemize}
+        \item Derived by setting $\dv*{F}{u}=0$.
+    \end{itemize}
+    \item We may also express the Maxwell-Boltzmann distribution in terms of energy via $u=\sqrt{2\varepsilon/m}$ and $\dd{u}=\dd{\varepsilon}/\sqrt{2m\varepsilon}$ to give
+    \begin{equation*}
+        F(\varepsilon)\dd{\varepsilon} = \frac{2\pi}{(\pi k_BT)^{3/2}}\sqrt{\varepsilon}\e[-\varepsilon/k_BT]\dd{\varepsilon}
+    \end{equation*}
+    \item We can also confirm our previously calculated values for $\prb{u^2}$ and $\prb{\varepsilon}$.
+    \item \textcite{bib:McQuarrieSimon} does a higher-level derivation of the ideal gas law that is rather analogous to the one done in class (i.e., via its flux perspective).
+    \item \textcite{bib:McQuarrieSimon} discusses a simple and Nobel-prize winning experiment that verified the Maxwell-Boltzmann distribution.
+\end{itemize}
+
+
+
 
 \end{document}
