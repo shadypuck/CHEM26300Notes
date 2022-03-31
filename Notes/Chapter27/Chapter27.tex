@@ -119,7 +119,7 @@
             = \frac{\dd{\ln f(u_z)}}{u_z\dd{u_z}}
         \end{equation*}
         \item But since the three speed components are independent of each other, the above term is constant.
-        \item It follows if we call the constant $-2\gamma$ that
+        \item It follows if we call the constant $-2\gamma$, then
         \begin{align*}
             \frac{\dd{\ln f(u_i)}}{u_i\dd{u_i}} &= -2\gamma\\
             f(u_i) &= A\e[-\gamma u_i^2]
@@ -131,10 +131,153 @@
 
 
 
+\section{Velocity vs. Speed}
+\begin{itemize}
+    \item \marginnote{3/30:}Exam preferences.
+    \begin{itemize}
+        \item Asks for midterm preferences. People prefer a take-home exam.
+        \item Asks for final preferences. Probably a 2-hour test?
+    \end{itemize}
+    \item Continuing with the derivation for the distribution of the velocity component.
+    \begin{itemize}
+        \item Note that we choose $-2\gamma$ because we know we're gonna have to integrate and we want the final form to be as simple as possible. For instance,
+        \begin{equation*}
+            \frac{\dd{\ln f(u_i)}}{u_i\dd{u_i}} = \frac{\dd{\ln f(u_i)}}{\frac{1}{2}\dd{u_i^2}}
+        \end{equation*}
+        should help rationalize the $2$.
+        \item Solving for $A$.
+        \begin{itemize}
+            \item We apply the normalization requirement.
+            \begin{align*}
+                1 &= \int_{-\infty}^\infty f(u_i)\dd{u_i}\\
+                &= A\int_{-\infty}^\infty\e[-\gamma u_i^2]\dd{u_i}\\
+                &= 2A\int_0^\infty\e[-\gamma u_i^2]\dd{u_i}\\
+                &= 2A\sqrt{\frac{\pi}{4\gamma}}\\
+                A &= \sqrt{\frac{\gamma}{\pi}}
+            \end{align*}
+            \item Thus, for $i=x,y,z$, we have
+            \begin{equation*}
+                f(u_i) = \sqrt{\frac{\gamma}{\pi}}\e[-\gamma u_i^2]
+            \end{equation*}
+        \end{itemize}
+        \item Solving for $\gamma$.
+        \begin{itemize}
+            \item We know from the previous lecture that
+            \begin{align*}
+                \frac{1}{3}m\prb{u^2} &= RT\\
+                \prb{u^2} &= \frac{3RT}{M} = \frac{3\kB T}{m}\\
+                \prb{u_x^2} &= \frac{RT}{M}
+            \end{align*}
+            \item But we also have by definition that (taking $u_x$ in particular because $\gamma$ is the same in the equations for $u_x,u_y,u_z$)
+            \begin{equation*}
+                \prb{u_x^2} = \int_{-\infty}^\infty u_x^2f(u_x)\dd{u_x}
+            \end{equation*}
+            \item Thus, we have that
+            \begin{align*}
+                \frac{RT}{M} &= \int_{-\infty}^\infty u_x^2f(u_x)\dd{u_x}\\
+                &= \sqrt{\frac{\gamma}{\pi}}\int_{-\infty}^\infty u_x^2\e[-\gamma u_x^2]\dd{u_x}\\
+                &= 2\sqrt{\frac{\gamma}{\pi}}\int_0^\infty u_x^2\e[-\gamma u_x^2]\dd{u_x}\\
+                &= 2\sqrt{\frac{\gamma}{\pi}}\cdot\frac{1}{4\gamma}\sqrt{\frac{\pi}{\gamma}}\\
+                &= \frac{1}{2\gamma}\\
+                \gamma &= \frac{M}{2RT}
+            \end{align*}
+        \end{itemize}
+        \item It follows that
+        \begin{equation*}
+            f(u_i) = \sqrt{\frac{M}{2\pi RT}}\e[-Mu_i^2/2RT]
+            = \sqrt{\frac{m}{2\pi\kB T}}\e[-mu_i^2/2\kB T]
+        \end{equation*}
+    \end{itemize}
+    \item Now we can compute other speeds, such as the average velocity $\prb{u_x}$.
+    \begin{itemize}
+        \item Evaluating the odd integrand gives us $\prb{u_x}=0$, as expected.
+    \end{itemize}
+    \item As per the Gaussian distribution, if the temperature increases or mass decreases, the distribution of speeds broadens and flattens.
+    \item \textbf{Doppler effect}: The change in frequency of a wave in relation to an observer who is moving relative to the wave source. \emph{Also known as} \textbf{Doppler shift}.
+    \begin{itemize}
+        \item Example: The change of pitch heard when a vehicle sounding a horn approaches and recedes from an observer. Compared to the emitted frequency, the received frequency is higher during the approach, identical at the instant of passing by, and lower during the recession.
+    \end{itemize}
+    \item An application of the velocity distribution: The Doppler effect and spectral line broadening.
+    \begin{itemize}
+        \item Radiation emitted from a gas will be spread out due to the motion of the molecules.
+        \item The frequency $\nu$ detected by the observer and the frequency $\nu_0$ emitted by the emitter are related by
+        \begin{equation*}
+            \nu \approx \nu_0\left( 1+\frac{u_x}{c} \right)
+        \end{equation*}
+        \item Algebraic rearrangement gives us
+        \begin{equation*}
+            u_x = \frac{c(\nu-\nu_0)}{\nu_0}
+        \end{equation*}
+        \item Doppler-broadened spectral lineshape.
+        \begin{equation*}
+            I(\nu) \propto \e[-mc^2(\nu-\nu_0)^2/2\nu_0\kB T]
+        \end{equation*}
+        \item Thus, the variance of the spectral line is
+        \begin{equation*}
+            \sigma^2 = \frac{\nu_0^2\kB T}{mc^2}
+            = \frac{\nu_0^2RT}{Mc^2}
+        \end{equation*}
+        \item The result is that if gas particles are at rest, the emission line spectrum will have very narrow lines. If the gas particles are moving, the lines are broadened.
+        \begin{itemize}
+            \item This is why so much spectroscopy is done at super-low temperatures and with heavier molecules! In particular, because Doppler broadening blurs results.
+        \end{itemize}
+    \end{itemize}
+    \item We know that the average velocity is zero. But we can also consider the average velocity in the positive direction.
+    \begin{itemize}
+        \item We calculate
+        \begin{align*}
+            \prb{u_x+} &= \int_0^\infty u_xf(u_x)\dd{u_x}\\
+            &= \sqrt{\frac{m}{2\pi\kB T}}\int_0^\infty u_x\e[-mu_x^2/2\kB T]\\
+            &= \sqrt{\frac{m}{2\pi\kB T}}\cdot\frac{2\kB T}{2m}\\
+            &= \sqrt{\frac{m}{2\pi\kB T}}
+        \end{align*}
+        \item This will be one-fourth the average speed from Figure \ref{fig:molecularSpeed}, though.
+    \end{itemize}
+    \item Moving from velocity to speed: Deriving the Maxwell-Boltzmann Speed Distribution.
+    \begin{itemize}
+        \item Define
+        \begin{equation*}
+            F(u)\dd{u} \approx f(u_x)\dd{u_x}f(u_y)\dd{u_y}f(u_z)\dd{u_z}
+        \end{equation*}
+        \begin{itemize}
+            \item This function gives us the velocity of each particle in the velocity space. But the speed of each particle is just it's distance from the origin.
+        \end{itemize}
+        \item We have that
+        \begin{align*}
+            F(u)\dd{u} &\approx \left( \frac{m}{2\pi\kB T} \right)^{3/2}\e[-m(u_x^2+u_y^2+u_z^2)/2\kB T]\dd{u_x}\dd{u_y}\dd{u_z}
+            \intertext{from where we can convert to spherical coordinates using $u^2=u_x^2+u_y^2+u_z^2$ and $4\pi u^2\dd{u}=\dd{u_x}\dd{u_y}\dd{u_z}$ to get our final result.}
+            F(u)\dd{u} &= 4\pi\left( \frac{m}{2\pi\kB T} \right)^{3/2}u^2\e[-mu^2/2\kB T]\dd{u}
+        \end{align*}
+        \item Note that we invoke the equals sign only at the end because speed is inherently spherical in the velocity space; any use of Cartesian infinitesimals must by definition be an approximation at best.
+    \end{itemize}
+    \item Some important differences.
+    \begin{itemize}
+        \item $h(u)=h(u_x,u_y,u_z)=f(u_x)f(u_y)f(u_z)$ is the distribution of molecular speeds with velocity components (in Cartesian coordinates) between $u_x,u_x+\dd{u_x}$, $u_y,u_y+\dd{u_y}$, and $u_z,u_z+\dd{u_z}$.
+        \item $f(u_x)=\sqrt{M/2\pi RT}\e[-Mu_x^2/2RT]$ is the distribution of molecular speed componentwise in Cartesian coordinates, and has a Gaussian distribution.
+        \item $F(u)=4\pi\left( \frac{m}{2\pi\kB T} \right)^{3/2}u^2\e[-mu^2/2\kB T]$ is the distribution of molecular speed, and has a Maxwell-Boltzmann distribution as per spherical coordinates.
+    \end{itemize}
+    \item Maxwell-Boltzmann speed distribution of noble gases.
+    \begin{itemize}
+        \item Heavier Noble gases have more "flattened" M-B distributions.
+    \end{itemize}
+    \item Different metrics of M-B speed distribution.
+    \begin{itemize}
+        \item We can, from the above formula, calculate the average speed $\prb{u}$, the root mean square speed $\prb{u^2}$, and the most probable speed by taking a derivative and setting it equal to zero.
+        \item We get
+        \begin{align*}
+            \prb{u} &= \sqrt{\frac{8RT}{\pi M}}&
+            \prb{u^2} &= \sqrt{\frac{3RT}{M}}&
+            u_\text{mp} &= \sqrt{\frac{2\kB T}{m}}
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Chapter 27: The Kinetic Theory of Gases}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
-    \item \marginnote{1/30:}\textbf{Kinetic theory of gases}: A simple model of gases in which the molecules (pictured as hard spheres) are assumed to be in constant, incessant motion, colliding with each other and with the walls of the container.
+    \item \marginnote{3/28:}\textbf{Kinetic theory of gases}: A simple model of gases in which the molecules (pictured as hard spheres) are assumed to be in constant, incessant motion, colliding with each other and with the walls of the container.
     \item \textcite{bib:McQuarrieSimon} does the KMT derivation of the ideal gas law from \textcite{bib:APChemNotes}. Some important notes follow.
     \begin{itemize}
         \item \textcite{bib:McQuarrieSimon} emphasizes the importance of
