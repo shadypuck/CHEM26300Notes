@@ -46,7 +46,7 @@
         \centering
         \begin{tikzpicture}[xscale=1.3,yscale=1.2]
             \small
-            \draw [stealth-stealth] (0,3) -- node[left]{$f(u)$} (0,0) -- node[below]{$u$} (5,0);
+            \draw [stealth-stealth] (0,3) -- node[left]{$F(u)$} (0,0) -- node[below]{$u$} (5,0);
     
             \draw [blx,thick] plot[domain=0:4.9,smooth] (\x,{2*\x*\x*e^(-\x*\x/3)});
             \begin{scope}[on background layer]
@@ -57,7 +57,7 @@
             \draw [semithick]
                 (1.732,2.107) -- ++(0,0.2) node[above]{$u_p$}
                 (1.954,2.039) -- ++(0,0.2) node[above]{$\bar{u}$}
-                (2.121,1.908) -- ++(0,0.2) node[above,xshift=8pt]{$u_{rms}$}
+                (2.121,1.908) -- ++(0,0.2) node[above,xshift=8pt]{$u_\text{rms}$}
             ;
         \end{tikzpicture}
         \caption{Important values of molecular speed.}
@@ -75,9 +75,9 @@
     \begin{equation*}
         \bar{u} = \sqrt{\frac{8RT}{\pi M}}
     \end{equation*}
-    \item \textbf{Root mean squared speed}: The square root of the average of the speeds squared. \emph{Denoted by} $\bm{u_{rms}}$. \emph{Given by}
+    \item \textbf{Root mean squared speed}: The square root of the average of the speeds squared. \emph{Denoted by} $\bm{u_\text{rms}}$. \emph{Given by}
     \begin{equation*}
-        u_{rms} = \prb{u^2}^{1/2}
+        u_\text{rms} = \prb{u^2}^{1/2}
         = \sqrt{\frac{3RT}{M}}
     \end{equation*}
     \item The distributions of the molecular speed and velocity components are different.
@@ -266,11 +266,260 @@
         \item We get
         \begin{align*}
             \prb{u} &= \sqrt{\frac{8RT}{\pi M}}&
-            \prb{u^2} &= \sqrt{\frac{3RT}{M}}&
+            u_\text{rms} &= \sqrt{\frac{3RT}{M}}&
             u_\text{mp} &= \sqrt{\frac{2\kB T}{m}}
         \end{align*}
     \end{itemize}
 \end{itemize}
+
+
+
+\section{Energy Distribution and Collision Frequency}
+\begin{itemize}
+    \item \marginnote{4/1:}The final exam is 50 minutes on the last day of class.
+    \item We can also express the M-B distribution in terms of kinetic energy.
+    \begin{itemize}
+        \item We know that energy $\varepsilon=\frac{1}{2}mu^2$, so $u=\sqrt{2\varepsilon/m}$ and thus $\dd{u}=\dd{\varepsilon}/\sqrt{2m\varepsilon}$.
+        \item This allows us to write
+        \begin{align*}
+            F(\varepsilon)\dd{\varepsilon} &= 4\pi\left( \frac{m}{2\pi\kB T} \right)^{3/2}\cdot\frac{2\varepsilon}{m}\cdot\e[-\varepsilon/\kB T]\frac{\dd{\varepsilon}}{\sqrt{2m\varepsilon}}\\
+            &= \frac{2\pi}{(\pi\kB T)^{3/2}}\varepsilon^{1/2}\e[-\varepsilon/\kB T]\dd{\varepsilon}
+        \end{align*}
+        \item Thus, we can calculate that
+        \begin{align*}
+            \prb{\varepsilon} &= \int_0^\infty\varepsilon f(\varepsilon)\dd{\varepsilon}\\
+            &= \frac{3}{2}\kB T
+        \end{align*}
+        as expected.
+    \end{itemize}
+    \item Aside: Understanding the probability distribution $F(u)\dd{u}$ and the relation between $F(u)\dd{u}$ and $F(\varepsilon)\dd{\varepsilon}$.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \small
+                \draw [stealth-stealth] (0,3) -- node[left]{$F(u)$} (0,0) -- node[below]{$u$} (5,0);
+        
+                \draw [blx,thick] plot[domain=0:4.9,smooth] (\x,{2*\x*\x*e^(-\x*\x/3)});
+                \begin{scope}[on background layer]
+                    \fill [blt] plot[domain=0:4.9,smooth] (\x,{2*\x*\x*e^(-\x*\x/3)}) -- ++(0,-0.016) -- cycle;
+                    \fill [blz]
+                        (3.88,0) -- (3.88,0.20) -- (4.08,0.13) -- (4.08,0)
+                        (1.63,0) -- (1.63,2.19) -- (1.84,2.19) -- (1.84,0)
+                    ;
+                    \draw [bly,semithick] plot[ycomb,domain=0:4.9] (\x,{2*\x*\x*e^(-\x*\x/3)});
+                \end{scope}
+            \end{tikzpicture}
+            \caption{Molecular speed distribution.}
+            \label{fig:speedStretcha}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \begin{tikzpicture}[xscale=0.2]
+                \small
+                \draw [stealth-stealth] (0,3) -- node[left]{$F(\varepsilon)$} (0,0) -- node[below]{$\varepsilon$} (25,0);
+        
+                \draw [blx,thick] plot[domain=0:4.9,smooth] ({\x*\x},{2*\x*\x*e^(-\x*\x/3)});
+                \begin{scope}[on background layer]
+                    \shade [left color=blt,right color=blt!80] plot[domain=0:1,smooth] ({\x*\x},{2*\x*\x*e^(-\x*\x/3)}) -- ++(0,-1.43) -- cycle;
+                    \shade [left color=blt!80,right color=blt!60] (1,0) -- plot[domain=1:2,smooth] ({\x*\x},{2*\x*\x*e^(-\x*\x/3)}) -- ++(0,-2.11) -- cycle;
+                    \shade [left color=blt!60,right color=blt!40] (4,0) -- plot[domain=2:3,smooth] ({\x*\x},{2*\x*\x*e^(-\x*\x/3)}) -- ++(0,-0.9) -- cycle;
+                    \shade [left color=blt!40,right color=blt!20] (9,0) -- plot[domain=3:4,smooth] ({\x*\x},{2*\x*\x*e^(-\x*\x/3)}) -- ++(0,-0.15) -- cycle;
+                    \shade [left color=blt!20,right color=white] (16,0) -- plot[domain=4:4.9,smooth] ({\x*\x},{2*\x*\x*e^(-\x*\x/3)}) -- ++(0,-0.02) -- cycle;
+                    \fill [blz] (2.67,0) -- (2.67,2.19) -- (3.38,2.19) -- (3.38,0);
+                    \fill [blz!60] (15.05,0) -- (15.05,0.20) -- (16.67,0.13) -- (16.67,0);
+                    \draw [bly,semithick] plot[ycomb,domain=0:4.9] ({\x*\x},{2*\x*\x*e^(-\x*\x/3)});
+                \end{scope}
+            \end{tikzpicture}
+            \caption{Stretching the molecular speed distribution.}
+            \label{fig:speedStretchb}
+        \end{subfigure}\\[2em]
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \begin{tikzpicture}[xscale=0.2]
+                \small
+                \draw [stealth-stealth] (0,3) -- node[left]{$F(\varepsilon)$} (0,0) -- node[below]{$\varepsilon$} (25,0);
+        
+                \draw [blx,thick] plot[domain=0:4.9,smooth] ({\x*\x},{2*\x*\x*e^(-\x*\x/3)});
+                \draw [rex,thick] plot[domain=0:24,smooth,samples=500] (\x,{2.8*(\x)^(0.5)*e^(-\x/3)});
+        
+                \footnotesize
+                \draw [semithick]
+                    (3,2.11) -- ++(0,0.2) node[above]{$\varepsilon_1$}
+                    (1.5,1.98) -- ++(0,0.2) node[above]{$\varepsilon_2$}
+                    (4.5,1.91) -- ++(0,0.2) node[above,xshift=8pt]{$u_\text{rms}$}
+                    (4.5,1.13) node[below]{$\prb{\varepsilon}$} -- ++(0,0.3)
+                ;
+            \end{tikzpicture}
+            \caption{Comparing the energy and speed distributions.}
+            \label{fig:speedStretchc}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \begin{tikzpicture}[xscale=0.2]
+                \small
+                \draw [stealth-stealth] (0,3) -- node[left]{$F(\varepsilon)$} (0,0) -- node[below]{$\varepsilon$} (25,0);
+        
+                \draw [rex,thick] plot[domain=0:24,smooth,samples=500] (\x,{2.8*(\x)^(0.5)*e^(-\x/3)});\begin{scope}[on background layer]
+                    \fill [ret] plot[domain=0:24,smooth,samples=500] (\x,{2.8*(\x)^(0.5)*e^(-\x/3)}) -- cycle;
+                    \draw [rex,semithick] plot[ycomb,domain=0:24] (\x,{2.8*(\x)^(0.5)*e^(-\x/3)});
+                \end{scope}
+            \end{tikzpicture}
+            \caption{Molecular energy distribution.}
+            \label{fig:speedStretchd}
+        \end{subfigure}
+        \caption{Relating molecular speed and molecular energy.}
+        \label{fig:speedStretch}
+    \end{figure}
+    \begin{itemize}
+        \item $F(u)$ is a probability distribution. Thus, its graph (see Figure \ref{fig:speedStretcha}) indicates the number density of particles we'd expect to find at a given velocity $u$ by the vertical height of the curve. Importantly, if we imagine filling in the area under the curve with each particle at its $u$-position and evenly spaced in the $F$ direction, eventually we'd get a continuous color under the curve (as in Figure \ref{fig:speedStretcha}; the darkened regions are illustrated as such for the sole purpose of contrast with Figure \ref{fig:speedStretchb}, as discussed below).
+        \item We note that $\varepsilon=\frac{1}{2}mu^2$ is a stretching operation. This means that as $u$ increases, $\varepsilon$ increases faster. For example, as $u$ increases $1,2,3,4$, $\varepsilon$ increases proportionally by $1,4,9,16$. Thus, we can approximate $F(\varepsilon)$ by stretching the graph of $F(u)$ horizontally by greater and greater amounts (see Figure \ref{fig:speedStretchb}).
+        \item An important consequence of this is that the particles moving within a certain range of velocities have a larger range of energies (compare the darkly shaded blocks of Figures \ref{fig:speedStretcha} and \ref{fig:speedStretchb}, as well as the general increase in spacing of the vertical lines).
+        \item However, when we approximate by stretching, we ignore some of the other changes in the equation. For instance, when we sketch the actual energy distribution, its most probable energy $\varepsilon_\text{mp}=\varepsilon_2$ has a lower value than that predicted by just stretching the graph of the speed distribution (which we denote in Figure \ref{fig:speedStretchc} by $\varepsilon_1=\frac{1}{2}mu_\text{mp}^2$). All in one equation,
+        \begin{equation*}
+            \varepsilon_\text{mp} \neq \frac{1}{2}mu_\text{mp}^2
+        \end{equation*}
+        \item Additionally, note that the actual curve (Figure \ref{fig:speedStretchd}) has even density beneath it.
+    \end{itemize}
+    \item Calculating the most probable kinetic energy.
+    \begin{align*}
+        \dv{F}{\varepsilon} &= \frac{2\pi}{(\pi\kB T)^{3/2}}\left[ \frac{\varepsilon^{-1/2}\e[-\varepsilon/\kB T]}{2}-\frac{\e[-\varepsilon/\kB T]\cdot\varepsilon^{1/2}}{\kB T} \right]\\
+        0 &= \frac{2\pi\e[-\varepsilon/\kB T]}{(\pi\kB T)^{3/2}}\left[ \frac{1}{2\sqrt{\varepsilon}}-\frac{\sqrt{\varepsilon}}{\kB T} \right]\\
+        \varepsilon_\text{mp} &= \frac{\kB T}{2}
+    \end{align*}
+    \begin{itemize}
+        \item The most probable energy calculated from the most probable speed via $\frac{1}{2}mu_\text{mp}^2$ is $\kB T$, so the actual value is one-half the predicted value (notice how $\varepsilon_2=\frac{1}{2}\varepsilon_1$).
+    \end{itemize}
+    \item Since $\prb{\varepsilon}=\prb{\frac{1}{2}mu^2}$, $\prb{\varepsilon}$ is related to the root mean square speed.
+    \begin{itemize}
+        \item This relates $u_\text{rms}^2=3\kB T/m$ to $\prb{\varepsilon}=3\kB T/2$ by a factor of $m/2$.
+        \item This linear relation appears in Figure \ref{fig:speedStretchc}, where $u_\text{rms}$ and $\prb{\varepsilon}$ occur in the same place and differ only by a vertical stretch factor ($m/2$).
+    \end{itemize}
+    \item Calculating the frequency of collisions.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \draw [-stealth] (0,-1,0) -- (0,3,0) node[above]{$z$};
+            \draw [-stealth] (-1,0,0) -- (3,0,0) node[right]{$y$};
+            \draw [-stealth] (0,0,0) -- (0,0,3) node[below left=-2pt]{$x$};
+    
+            \begin{scope}[on background layer]
+                \filldraw [thick,draw=grx,fill=gry] plot[domain=0:360] ({0.5*cos(\x)},0,{0.5*sin(\x)});
+            \end{scope}
+            \draw [grx,thick,xshift=1.845cm,yshift=2.23cm] plot[domain=0:360] ({0.5*cos(\x)},0,{0.5*sin(\x)});
+            \draw [grx,thick]
+                (-0.5,0,0) -- (1.345,2.23,0)
+                (0.5,0,0) -- (2.345,2.23,0)
+            ;
+    
+            \draw [very thin] (0,0,0) -- (4,0,4);
+            \draw [<->,very thin,shorten <=2pt,shorten >=2pt] (3.5,0,3.5) -- node[fill=white,inner sep=2pt]{$u_x\dd{t}$} (3.5,3.5,3.5);
+            \node at (-0.5,0,0.5) {$A$};
+            \draw [<->,very thin] (0,0,0) -- node[pos=0.6,fill=white,inner sep=2pt]{$u\dd{t}$} (1.845,2.23,0);
+            \draw [very thin,decoration={markings,mark=at position 0.35 with {\node[fill=white,inner sep=2pt]{$\phi$};}},postaction={decorate}] plot[domain=45:90] ({2*cos(\x)},0,{2*sin(\x)});
+            \draw [very thin,decoration={markings,mark=at position 0.5 with {\node[fill=white,inner sep=2pt]{$\theta$};}},postaction={decorate}] plot[domain=0:52] ({2/2^(0.5)*sin(\x)},{2*cos(\x)},{2/2^(0.5)*sin(\x)});
+        \end{tikzpicture}
+        \caption{Collision frequency cylinder.}
+        \label{fig:collisionFrequency}
+    \end{figure}
+    \begin{itemize}
+        \item Construct a cylinder to enclose all those molecules that will strike the area $A$ at an angle $\theta$ with speed $u$ in the time interval $\dd{t}$.
+        \item Its volume is $V=Au\cos\theta\dd{t}$.
+        \item The number of molecules in the cylinder is $\rho V$, where $\rho$ is the number density.
+        \item The fraction of molecules that have a speed between $u,u+\dd{u}$ is $F(u)\dd{u}$.
+        \item The fraction travelling within a solid angle bounded by $\theta,\theta+\dd{\theta}$ and $\phi,\phi+\dd{\phi}$ is $\sin\theta\dd{\theta}\cdot\dd{\phi}/4\pi$, where $4\pi$ represents a complete solid angle.
+        \item The number $\dd{N_\text{coll}}$ of molecules colliding with the area $A$ from the specified direction in the time interval $\dd{t}$ is
+        \begin{equation*}
+            \dd{N_\text{coll}} = \rho(Au\dd{t})\cos\theta\cdot F(u)\dd{u}\cdot\frac{\sin\theta\dd{\theta\dd{\phi}}}{4\pi}
+        \end{equation*}
+        \item The number of collisions per unit time per unit area with the wall by molecules whose speeds are in the range $u,u+\dd{u}$ and whose direction lies within the solid angle $\sin\theta\dd{\theta}\dd{\phi}$ is
+        \begin{equation*}
+            \dd{z_\text{coll}} = \frac{1}{A}\dv{N_\text{coll}}{t}
+            = \frac{\rho}{4\pi}uF(u)\dd{u}\cdot\cos\theta\sin\theta\dd{\theta}\dd{\phi}
+        \end{equation*}
+        \item If we integrate over all possible speeds and directions, then we obtain
+        \begin{align*}
+            z_\text{coll} &= \frac{\rho}{4\pi}\int_0^\infty uF(u)\dd{u}\int_0^{\pi/2}\cos\theta\sin\theta\dd{\theta}\int_0^{2\pi}\dd{\phi}\\
+            &= \frac{\rho\prb{u}}{4}
+        \end{align*}
+    \end{itemize}
+    \item Deriving the pressure through the collision frequency.
+    \begin{itemize}
+        \item We have
+        \begin{align*}
+            \dd{P} &= (2mu\cos\theta)\dd{z_\text{coll}}\\
+            &= (2mu\cos\theta)\frac{\rho}{4\pi}uF(u)\dd{u}\cos\theta\sin\theta\dd{\theta}\dd{\phi}\\
+            &= \rho\left( \frac{m}{2\pi\kB T} \right)^{3/2}(2mu\cos\theta)u^3\e[-mu^2/2\kB T]\dd{u}\cos\theta\sin\theta\dd{\phi}
+        \end{align*}
+        \item Thus, since
+        \begin{align*}
+            \int_0^{\pi/2}\cos^2\theta\sin\theta\dd{\theta}\int_0^{2\pi}\dd{\phi} &= \frac{2\pi}{3}&
+            4\pi\left( \frac{m}{2\pi\kB T} \right)^{3/2}\int_0^\infty u^4\e[-mu^2/2\kB T]\dd{u} &= \prb{u^2}
+        \end{align*}
+        we have that
+        \begin{equation*}
+            P = \frac{1}{3}\rho m\prb{u^2}
+            = \frac{1}{3V}Nm\prb{u^2}
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
+% \section{Office Hours (Tian)}
+% \begin{itemize}
+%     \item Can you explain the whole $F(u)\dd{u}$ differential notation for probability?
+%     \begin{itemize}
+%         \item $F(u)$ is the probability function. $F(u)$ is the $y$ axis of the individual points. Probability density.
+%         \item $F(u)\dd{u}$ is the infinitesimal probability at $u$, but only within an infinitely small range. It's an abbreviation/approximation for the tiny infinitesimal rectangle under the curve that we picture as we integrate.
+%         \item $\int_0^\infty F(u)\dd{u}=1$ (summing all of the tiny probabilities) gets you to 1 for a normalized probability distribution.
+%     \end{itemize}
+%     \item What is up with the relation between $u_\text{rms}$ and $\prb{\varepsilon}$?
+%     \begin{itemize}
+%         \item We have
+%         \begin{align*}
+%             \prb{\varepsilon} &= \prb{\frac{1}{2}mu^2}\\
+%             &= \frac{1}{2}m\prb{u^2}\\
+%             &= \frac{1}{2}mu_\text{rms}^2\\
+%             &= \frac{m}{2}\cdot\frac{3\kB T}{m}\\
+%             &= \frac{3\kB T}{2}
+%         \end{align*}
+%     \end{itemize}
+%     \item Post lecture notes before class? Write down what's on the lecture slides or listen?
+%     \begin{itemize}
+%         \item He has been and will continue to post the slides the night before the lecture.
+%     \end{itemize}
+%     \item When will HW 1 be posted?
+%     \begin{itemize}
+%         \item No homework this week.
+%         \item The first homework will be posted next Monday.
+%         \item He will post a homework every Monday that will be due the next Monday.
+%     \end{itemize}
+%     \item When are gases isotropic?
+%     \begin{itemize}
+%         \item A gas is isotropic unless there is a driving force.
+%         \item For example, gas in a closed box is isotropic, but gas in a cylinder with a fan at one end is not isotropic (particles are more likely to move in one direction).
+%     \end{itemize}
+%     \item What is the total solid angle geometrically?
+%     \begin{itemize}
+%         \item Hard to visualize three dimensionally. You get $4\pi$ by doing the integrals for the components:
+%         \begin{equation*}
+%             4\pi = \int_{-\pi/2}^{\pi/2}\sin\theta\dd{\theta}\int_0^{2\pi}\dd{\phi}
+%         \end{equation*}
+%     \end{itemize}
+%     \item We don't need to memorize most of the derivations, but we do need to know the conclusions and the assumptions we need to get them.
+%     \begin{itemize}
+%         \item We won't be asked to give a derivation unless we're given the full starting point.
+%         \item The final can't have much heavy calculation on it because there's not that much time.
+%         \item The midterm will be a online take-home exam with limited time (probably 2 hours).
+%     \end{itemize}
+%     \item Not every topic in the remainder of \textcite{bib:McQuarrieSimon} will be covered; some sections will be skipped.
+%     \begin{itemize}
+%         \item He will focus a lot on the practical applications. Once the student understands the basic principle, he wants us to be able to apply it to research and life.
+%     \end{itemize}
+% \end{itemize}
 
 
 
@@ -393,7 +642,7 @@
     \end{equation*}
     \item We can also calculate that $\prb{u_x^2}=RT/M$ and $m\prb{u_x}^2/2=k_BT/2$ from the above result\footnote{See the equipartition of energy theorem from \textcite{bib:PHYS13300Notes}.}.
     \begin{itemize}
-        \item An important consequence is that the total kinetic energy is divided equally into the $x$-, $y$-, and $z$-components. This fact was also demonstrated in Week 1, Lecture 3.
+        \item An important consequence is that the total kinetic energy is divided equally into the $x$-, $y$-, and $z$-components.
     \end{itemize}
     \item \textbf{Doppler broadening}: The broadening of spectral lines due to the distribution of molecular velocities.
     \begin{itemize}

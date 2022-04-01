@@ -6,6 +6,7 @@
 \usepackage{scrextend}
 \usepackage[bottom]{footmisc}
 \usepackage[style=apa]{biblatex}
+\usepackage{subcaption,float}
 \usepackage{tikz}
 \usepackage{amsmath,amssymb}
 \usepackage{bm,physics}
@@ -34,9 +35,15 @@
 \addbibresource{../main.bib}
 \DefineBibliographyStrings{english}{bibliography={References}}
 
-\usetikzlibrary{backgrounds}
+\usetikzlibrary{backgrounds,decorations.markings}
 \colorlet{blx}{blue!90!green!80}
+\colorlet{bly}{blue!90!green!60}
+\colorlet{blz}{blue!90!green!40}
 \colorlet{blt}{blue!90!green!30}
+\colorlet{rex}{red!80!black!90!orange!80}
+\colorlet{ret}{red!80!black!90!orange!30}
+\colorlet{grx}{green!50!black!90!yellow!80}
+\colorlet{gry}{green!50!black!90!yellow!40}
 
 \newcommand{\kB}{k_\text{B}}
 \newcommand{\NA}{N_\text{A}}
