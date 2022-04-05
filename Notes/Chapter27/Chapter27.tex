@@ -523,6 +523,107 @@
 
 
 
+\section{Mean Free Path}
+\begin{itemize}
+    \item \marginnote{4/4:}The midterm will have some computational problems; the final will be nearly entirely conceptual.
+    \item Reviews the conclusions of the derivation associated with Figure \ref{fig:collisionFrequency}.
+    \item The Maxwell-Boltzmann Distribution has been verified experimentally.
+    \begin{itemize}
+        \item A furnace with a very small hole that allowed a beam of atoms (such as potassium) to emerge into an evacuated chamber. The beam bassed through a pair of collimating slits and then through a velocity-selector.
+        \item In the second method, clocks the time it takes for molecules to travel a fixed distance. A very short pulse of molecules leaves the chopper and then spread out in space as they travel toward the detector.
+        \item Either way, we observe very good agreement with the M-B distribution.
+    \end{itemize}
+    \item \textbf{Mean free path}: The average distance a molecule travels between collisions.
+    \item \textbf{Collision cylinder}: The cylinder of radius $d$ that encapsulates the trajectory of a particle of diameter $d$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[scale=1.3]
+            \footnotesize
+            \draw (0,1) -- ++(5,0) arc[start angle=90,end angle=-90,x radius=4mm,y radius=1cm] -- ++(-5,0) arc[start angle=270,end angle=90,x radius=4mm,y radius=1cm];
+    
+            \fill [ball color=orx] circle (5mm);
+            \fill [ball color=orx] (1.6,1.6) circle (5mm);
+            \fill [ball color=orx] (1.8,-0.9) circle (5mm);
+            \fill [ball color=orx] (2.6,0.8) circle (5mm);
+            \fill [ball color=orx] (3,-1.1) circle (5mm);
+            \fill [ball color=orx] (4,-0.3) circle (5mm);
+    
+            \draw [-latex] (1.6,0) -- node[pos=0.4,left]{$>d$} ++(0,1.6) node[above left=4mm]{Miss};
+            \draw [-latex] (1.8,0) -- node[pos=0.25,right]{$<d$} ++(0,-0.9) node[below=6mm]{Just hit};
+            \draw [-latex] (2.6,0) -- node[pos=0.25,right]{$<d$} ++(0,0.8);
+            \draw [-latex] (3,0) -- node[pos=0.3,left]{$>d$} ++(0,-1.1) node[below=6mm]{Just miss};
+            \draw [-latex] (4,0) -- node[pos=0.7,left]{$<d$} ++(0,-0.3) node[above right=4mm]{Hit};
+    
+            \node at (-1,-1.2) {Area $\sigma$}
+                edge [out=90,in=180,-latex,out looseness=0.8] (0,-0.7)
+            ;
+            \draw [dash pattern=on 2mm off 2pt on 2pt off 2pt] (-1,0) -- (6,0);
+            \draw [latex-latex,semithick] (0,1) -- node[pos=0.35,right=-1pt]{$d$} (0,0) -- (1,0);
+            \draw (0,1) arc[start angle=90,end angle=-90,x radius=4mm,y radius=1cm];
+        \end{tikzpicture}
+        \caption{Collision cylinder.}
+        \label{fig:collisionCylinder}
+    \end{figure}
+    \begin{itemize}
+        \item Particles whose center of mass lie within the collision cylinder collide with the original particle, and vice versa for particles whose center of mass lie outside the collision cylinder.
+        \item Hard-sphere collision cross section $\pi d^2$ denoted by $\sigma$.
+    \end{itemize}
+    \item Collision frequency in terms of cylinder parameters.
+    \begin{itemize}
+        \item The number of collision in the time interval $\dd{t}$ is
+        \begin{equation*}
+            \dd{N_\text{coll}} = \rho\sigma\prb{u}\dd{t}
+        \end{equation*}
+        where $\rho=N/V$.
+        \item The collision frequency $z_A$ is
+        \begin{equation*}
+            z_A = \dv{N_\text{coll}}{t}
+            = \rho\sigma\prb{u}
+            = \rho\sigma\sqrt{\frac{8\kB T}{\pi m}}
+        \end{equation*}
+        \item Treat the motion of two bodies of masses $m_1,m_2$ moving with respect to each other by the motion of one body with a reduced mass $\mu=m_1m_2/(m_1+m_2)$ moving with respect to the other one being fixed.
+        \item If the masses of the two colliding molecules are the same, then $\mu=m/2$.
+        \item Remember that $\prb{u_r}=\sqrt{2}\prb{u}$.
+        \item Thus, the correct expression for $z_A$ is
+        \begin{equation*}
+            z_A = \rho\sigma\prb{u_r}
+            = \sqrt{2}\rho\sigma\prb{u}
+        \end{equation*}
+    \end{itemize}
+    \item The mean free path is temperature- and pressure-dependent.
+    \begin{itemize}
+        \item The average distance traveled between collisions is given by
+        \begin{equation*}
+            l = \frac{\prb{u}}{z_A}
+            = \frac{\prb{u}}{\sqrt{2}\rho\sigma\prb{u}}
+            = \frac{1}{\sqrt{2}\rho\sigma}
+        \end{equation*}
+        \item If we replace $\rho=P\NA/RT$ by its ideal gas value, then we have
+        \begin{equation*}
+            l = \frac{RT}{\sqrt{2}\NA\sigma P}
+            = \frac{\kB T}{\sqrt{2}\sigma\rho}
+        \end{equation*}
+        \item Now $\kB T$ has units of thermal energy, and we know from physics that $E=F\cdot l$ (energy is force times distance). Thus, $F\propto\sigma\rho$ by the above since $E=\kB T$ and $l=l$.
+    \end{itemize}
+    \item The probability of a molecular collision.
+    \begin{itemize}
+        \item The probability that one molecule will suffer a collision is $\sigma\rho dx$.
+        \begin{itemize}
+            \item This should make intuitive sense as $\sigma$ is the area inside which a molecule must be to collide with some particle, $\rho$ is the density (related to the number of particles likely to be within that area), and $\dd{x}$ tells us over how much space we're moving.
+            \item $\sigma\dd{x}$ is a volume.
+        \end{itemize}
+        \item Let $n(x)$ be the number of molecules that travel a distance $x$ without a collision.
+        \item Then the number of molecules that undergo a collision between $x,x+\dd{x}$ is
+        \begin{align*}
+            n(x)-n(x+\dd{x}) &= \sigma\rho n(x)\dd{x}\\
+            \frac{n(x+\dd{x})-n(x)}{\dd{x}} &= -\sigma\rho n(x)\\
+            \dv{n}{x} &= -\sigma\rho n
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Chapter 27: The Kinetic Theory of Gases}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
