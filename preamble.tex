@@ -5,11 +5,13 @@
 \usepackage{enumitem}
 \usepackage{scrextend}
 \usepackage[bottom]{footmisc}
+\usepackage{siunitx}
 \usepackage[style=apa]{biblatex}
 \usepackage{subcaption,float}
 \usepackage{tikz}
 \usepackage{amsmath,amssymb}
 \usepackage{bm,physics}
+\usepackage{mhchem}
 \usepackage[hidelinks]{hyperref}
 
 \MakeOuterQuote{"}
@@ -35,7 +37,7 @@
 \addbibresource{../main.bib}
 \DefineBibliographyStrings{english}{bibliography={References}}
 
-\usetikzlibrary{backgrounds,decorations.markings}
+\usetikzlibrary{backgrounds,decorations.markings,decorations.text}
 \colorlet{blx}{blue!90!green!80}
 \colorlet{bly}{blue!90!green!60}
 \colorlet{blz}{blue!90!green!40}
@@ -45,6 +47,8 @@
 \colorlet{grx}{green!50!black!90!yellow!80}
 \colorlet{gry}{green!50!black!90!yellow!40}
 \colorlet{orx}{orange!80!black!90!yellow!80}
+
+\DeclareMathOperator{\Prob}{Prob}
 
 \newcommand{\kB}{k_\text{B}}
 \newcommand{\NA}{N_\text{A}}
