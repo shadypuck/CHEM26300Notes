@@ -624,6 +624,105 @@
 
 
 
+\section{Collision Frequency and Gas-Phase Reaction Rate}
+\begin{itemize}
+    \item \marginnote{4/6:}Submit homework in paper next Monday.
+    \item Picking up with the probability of a molecular collision from last time.
+    \begin{itemize}
+        \item Solving the differential equation gives
+        \begin{equation*}
+            n(x) = n_0\e[-\sigma\rho x]
+            = n_0\e[-x/l]
+        \end{equation*}
+        where $l$ is the mean free path.
+        \begin{itemize}
+            \item Note that the $\sqrt{2}$ arises from treating every other molecule as static, so we don't need it in this case?
+        \end{itemize}
+        \item The number of molecules that collide in the interval $x,x+\dd{x}$ is $n(x)-n(x+\dd{x})$.
+        \item The probability that one of the initial $n_0$ molecules will collide in this interval is
+        \begin{equation*}
+            p(x)\dd{x} = \frac{n(x)-n(x+\dd{x})}{n_0}
+            = -\frac{1}{n_0}\dv{n}{x}\dd{x}
+            = \frac{1}{l}\e[-x/l]\dd{x}
+        \end{equation*}
+        \item Discussion of Figure 27.12.
+        \begin{itemize}
+            \item Figure 27.12 does not graph the above equation.
+            \item Rather, it graphs the accumulated (integrated) probability from 0 to $x$. We call this function $P(x)$.
+            \begin{equation*}
+                P(x) = \int_0^xp(x')\dd{x'}
+            \end{equation*}
+        \end{itemize}
+    \end{itemize}
+    \item Collision frequency of one particular molecule per unit volume.
+    \begin{itemize}
+        \item $z_A$ is the collision frequency of one particular molecule.
+        \item $Z_{AA}$ is the total collision frequency per unit volume.
+        \item We have
+        \begin{equation*}
+            Z_{AA} = \frac{1}{2}\rho z_a
+        \end{equation*}
+        \begin{itemize}
+            \item Multiplying by the number density should make intuitive sense.
+            \item We divide by two to avoid counting a collision between a pair of similar molecules as two distinct collisions.
+        \end{itemize}
+        \item It follows that
+        \begin{equation*}
+            Z_{AA} = \frac{1}{2}\sigma\prb{u_r}\rho^2
+            = \frac{\sigma\prb{u}\rho^2}{\sqrt{2}}
+        \end{equation*}
+        \item In a gas consisting of two types of molecules, say $A$ and $B$, then the collision frequency per unit volume is
+        \begin{equation*}
+            Z_{AB} = \sigma_{AB}\prb{u_r}\rho_A\rho_B
+        \end{equation*}
+        where
+        \begin{align*}
+            \sigma_{AB} &= \pi\left( \frac{d_A+d_B}{2} \right)^2&
+            \prb{u_r} &= \sqrt{\frac{8\kB T}{\pi\mu}}&
+            \mu &= \frac{m_Am_B}{m_A+m_B}
+        \end{align*}
+        \begin{itemize}
+            \item There is no $1/2$ coefficient here because there are also $AA$ and $BB$ collisions.
+            \item Indeed, $Z_{AB}$ is not the \emph{total} collision frequency but just the collision frequency of $A$-$B$ collisions.
+        \end{itemize}
+    \end{itemize}
+    \item The rate of a gas-phase chemical reaction depends on the rate of collisions.
+    \begin{itemize}
+        \item The rate of collisions is not just the total frequency of collisions.
+        \item The relative energy of the two colliding molecules exceeds a certain critical value. This does not show up directly in the equation for $Z_{AB}$.
+        \item The number of collisions per unit time per unit are with the wall by molecules whose speeds are in the range $u,u+\dd{u}$ and whose direction lies within the solid angle $\sin\theta\dd{\theta}\dd{\phi}$ is approximately $u^3\e[-mu^2/2\kB T]$.
+        \item We can account for the fact that the molecules collide with each other rather than with a stationary wall by replacing $m$ with the reduced mass $\mu=m_Am_B/(m_A+m_B)$.
+        \item The collision frequency per unit volume between molecules $A$ and $B$ in which they collide with a relative speed between $u,u+\dd{u}$.
+        \begin{itemize}
+            \item We have that $\dd{Z_{AB}}\propto u_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}$. Thus, if $A$ is a proportionality constant, then
+            \begin{equation*}
+                \dd{Z_{AB}} = Au_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}
+            \end{equation*}
+            \item It follows since $Z_{AB}=\sigma_{AB}\prb{u_r}\rho_A\rho_B$ and $\prb{u_r}=\sqrt{8\kB T/\pi\mu}$ that
+            \begin{align*}
+                \sigma_{AB}\rho_A\rho_B\sqrt{\frac{8\kB T}{\pi\mu}} &= A\int_0^\infty u_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}\\
+                &= 2A\left( \frac{\kB T}{\mu} \right)^2\\
+                A &= \sigma_{AB}\rho_A\rho_B\sqrt{\left( \frac{\mu}{\kB T} \right)^3\cdot\frac{2}{\pi}}
+            \end{align*}
+            \item Thus, we know that
+            \begin{equation*}
+                \dd{Z_{AB}} = \sigma_{AB}\rho_A\rho_B\sqrt{\left( \frac{\mu}{\kB T} \right)^3\cdot\frac{2}{\pi}}\e[-\mu u_r^2/2\kB T]u_r^3\dd{u_r}
+            \end{equation*}
+        \end{itemize}
+        \item Integrating the above from the certain critical value to infinity yields the desired rate.
+    \end{itemize}
+    \item Key information from this chapter.
+    \begin{itemize}
+        \item Pressure from a molecular approach.
+        \item The distribution for speed components and the speed are different.
+        \item The speeds $u_\text{mp}$, $\prb{u}$, and $u_\text{rms}$.
+        \item The frequency of collisions per molecule and the total frequency of collisions per volume.
+        \item Rate of gas phase reactions.
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Chapter 27: The Kinetic Theory of Gases}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
