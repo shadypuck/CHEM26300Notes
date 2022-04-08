@@ -1,0 +1,104 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{27}
+
+\begin{document}
+
+
+
+
+\chapter{Rate Laws}
+\section{Definitions and Methods of Determination}
+\begin{itemize}
+    \item \marginnote{4/8:}Consider a general chemical equation
+    \begin{equation*}
+        \ce{\nu_AA + \nu_BB -> \nu_YY + \nu_ZZ}
+    \end{equation*}
+    \item The extent of the reaction via the progress variable $\xi$ is
+    \begin{align*}
+        n_A(t) &= n_A(0)-\nu_A\xi(t)&
+        n_Y(t) &= n_Y(0)+\nu_Y\xi(t)
+    \end{align*}
+    \item The rate of change (moles/second) is
+    \begin{align*}
+        \dv{n_A}{t} &= -\nu_A\dv{\xi}{t}&
+        \dv{n_Y}{t} &= \nu_Y\dv{\xi}{t}
+    \end{align*}
+    \item Deriving the rate of reaction for a gas-based chemical reaction.
+    \begin{itemize}
+        \item Time-dependent concentration changes
+        \begin{align*}
+            \frac{1}{V}\dv{n_A}{t} &= \dv{[A]}{t} = -\frac{\nu_A}{V}\dv{\xi}{t}&
+            \frac{1}{V}\dv{n_Y}{t} &= \dv{[Y]}{t} = -\frac{\nu_Y}{V}\dv{\xi}{t}
+        \end{align*}
+        \item The rate (or speed) of reaction, also known as the differential rate law, is
+        \begin{equation*}
+            v(t) = -\frac{1}{\nu_A}\dv{[A]}{t}
+            = -\frac{1}{\nu_B}\dv{[B]}{t}
+            = \frac{1}{\nu_Y}\dv{[Y]}{t}
+            = \frac{1}{\nu_Z}\dv{[Z]}{t}
+            = \frac{1}{V}\dv{\xi}{t}
+        \end{equation*}
+        \item All terms are positive.
+        \item Rate laws with a constant $k$ are of the form
+        \begin{equation*}
+            v(t) = k[A]^{m_A}[B]^{m_B}
+        \end{equation*}
+        \item The exponents are known as \textbf{orders}.
+        \item The overall order reaction is $\sum m_i$.
+        \item The orders and overall order of the reaction depends on the fundamental reaction steps and the reaction mechanism.
+    \end{itemize}
+    \item For example, for the reaction \ce{2NO_{(g)} + O2_{(g)} -> 2NO2_{(g)}}, we have
+    \begin{equation*}
+        v(t) = -\frac{1}{2}\dv{[\ce{NO}]}{t}
+        = -\dv{[\ce{O2}]}{t}
+        = -\frac{1}{2}\dv{[\ce{NO2}]}{t}
+    \end{equation*}
+    \begin{itemize}
+        \item It follows that $v(t)=k[\ce{NO}]^2[\ce{O2}]$.
+        \item This is a rare elementary reaction that proceeds with the kinetics illustrated by the equation.
+    \end{itemize}
+    \item Rate laws must be determined by experiment.
+    \begin{itemize}
+        \item Multi-step reactions may have more complex rate law expressions.
+        \item Oftentimes, $1/2$ exponents indicate more complicated mechanisms.
+        \item For example, even an equation as simple looking as \ce{H2 + Br2 -> 2HBr} has rate law
+        \begin{equation*}
+            v(t) = \frac{k'[\ce{H2}][\ce{Br2}]^{1/2}}{1+k''[\ce{HBr}][\ce{Br2}]^{-1}}
+        \end{equation*}
+    \end{itemize}
+    \item Determining rate laws.
+    \begin{itemize}
+        \item Method of isolation.
+        \begin{itemize}
+            \item Put in a large initial excess of $A$ so that it's concentration doesn't change that much; essentially incorporates $[A]^{m_A}$ into $k$ for determination of the order of $B$.
+            \item We can then do the same thing the other way around.
+        \end{itemize}
+        \item Method of initial rates.
+        \begin{itemize}
+            \item We approximate
+            \begin{equation*}
+                v = -\frac{\dd{[A]}}{\nu_A\dd{t}}
+                \approx -\frac{\Delta[A]}{\nu_A\Delta t}
+                = k[A]^{m_A}[B]^{m_B}
+            \end{equation*}
+            \item Consider two different initial values of $[B]$, which we'll call $[B_1],[B_2]$. Then
+            \begin{align*}
+                v_1 &= -\frac{1}{\nu_A}\left( \frac{\Delta[A]}{\Delta t} \right)_1 = k[A]_0^{m_A}[B]_1^{m_B}&
+                v_2 &= -\frac{1}{\nu_A}\left( \frac{\Delta[A]}{\Delta t} \right)_2 = k[A]_0^{m_A}[B]_2^{m_B}
+            \end{align*}
+            \item Take the logarithm and solve for $m_B$.
+            \begin{equation*}
+                m_B = \frac{\ln(v_1/v_2)}{\ln([B]_1/[B]_2)}
+            \end{equation*}
+        \end{itemize}
+    \end{itemize}
+    \item Does an example problem.
+\end{itemize}
+
+
+
+
+\end{document}
