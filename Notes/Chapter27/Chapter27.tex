@@ -791,8 +791,47 @@
         F(\varepsilon)\dd{\varepsilon} = \frac{2\pi}{(\pi k_BT)^{3/2}}\sqrt{\varepsilon}\e[-\varepsilon/k_BT]\dd{\varepsilon}
     \end{equation*}
     \item We can also confirm our previously calculated values for $\prb{u^2}$ and $\prb{\varepsilon}$.
-    \item \textcite{bib:McQuarrieSimon} does a higher-level derivation of the ideal gas law that is rather analogous to the one done in class (i.e., via its flux perspective).
-    \item \textcite{bib:McQuarrieSimon} discusses a simple and Nobel-prize winning experiment that verified the Maxwell-Boltzmann distribution.
+    \item \marginnote{4/6:}Deriving an expression for the frequency of collisions that the molecules of a gas make with the walls of its container (refer to Figure \ref{fig:collisionFrequency} throughout the following).
+    \begin{itemize}
+        \item Note that this quantity is central to the theory of rates of surface reactions.
+        \item \textcite{bib:McQuarrieSimon} gets to the following equation as in class.
+        \begin{equation*}
+            \dd{z_\text{coll}} = \frac{1}{A}\dv{N_\text{coll}}{t}
+            = \frac{\rho}{4\pi}uF(u)\dd{u}\cdot\cos\theta\sin\theta\dd{\theta}\dd{\phi}
+        \end{equation*}
+        \item Note that the above equation is of the form $u^3\e[-mu^2/2\kB T]$ whereas M-B distribution is of the form $u^2\e[-mu^2/2\kB T]$.
+        \begin{itemize}
+            \item Thus, the above equation peaks at higher values of $u$.
+            \item This reflects the fact that molecules traveling at a higher speed (than average) are more likely to strike the wall in a given window of time.
+        \end{itemize}
+        \item \textcite{bib:McQuarrieSimon} finishes the derivation to obtain the equation for $z_\text{coll}$ and notes that Problems 27-49 through 27-52 develop its applications to effusion rate theory.
+    \end{itemize}
+    \item Note that we can calculate the number density $\rho$ from pressure and temperature data via the ideal gas law as follows.
+    \begin{equation*}
+        \rho = \frac{N}{V}
+        = \frac{\NA n}{V}
+        = \frac{\NA P}{RT}
+    \end{equation*}
+    \item (Re)deriving $P=\rho m\prb{u^2}/3$ from a collision frequency perspective.
+    \begin{itemize}
+        \item If $\theta$ is the angular deviation in the particle's path from the normal to the wall, then the component of momentum of a particle of mass $m$ moving with speed $u$ that lies perpendicular to the wall is $mu\cos\theta$.
+        \item This particles change in momentum upon colliding elastically with the wall is thus $2mu\cos\theta$.
+        \item Since pressure is force per unit area and force is change in momentum per unit time, the pressure is equal to the product of the change in momentum per collision and the frequency (number per unit time) of collisions per unit area. Mathematically, the infinitesimal pressure applied by just the molecules with speeds between $u,u+\dd{u}$ and lying within the solid angle $\sin\theta\dd{\theta}\dd{\phi}$ is
+        \begin{align*}
+            \dd{P} &= (2mu\cos\theta)\dd{z_\text{coll}}\\
+            &= \rho\left( \frac{m}{2\pi\kB T} \right)^{3/2}(2mu\cos\theta)u^3\e[-mu^2/2\kB T]\dd{u}\cos\theta\sin\theta\dd{\theta}\dd{\phi}
+        \end{align*}
+        \item It follows since
+        \begin{align*}
+            \int_0^{\pi/2}\cos^2\theta\sin\theta\dd{\theta}\int_0^{2\pi}\dd{\phi} &= \frac{2\pi}{3}&
+            4\pi\left( \frac{m}{2\pi\kB T} \right)^{3/2}\int_0^\infty u^4\e[-mu^2/2\kB T]\dd{u} &= \prb{u^2}
+        \end{align*}
+        that
+        \begin{equation*}
+            P = \rho m\cdot\frac{\prb{u^2}}{2\pi}\cdot\frac{2\pi}{3}
+            = \frac{1}{3}\rho m\prb{u^2}
+        \end{equation*}
+    \end{itemize}
 \end{itemize}
 
 
