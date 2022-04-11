@@ -100,5 +100,117 @@
 
 
 
+\section{Integrated Rate Laws}
+\begin{itemize}
+    \item \marginnote{4/11:}First order reactions have exponential integrated rate laws.
+    \begin{itemize}
+        \item Suppose \ce{A + B -> products}.
+        \item Suppose the reaction is first order in \ce{A}.
+        \item If the concentration of \ce{A} is $[\ce{A}]_0$ at $t=0$ and $[\ce{A}]$ at time $t$, then
+        \begin{align*}
+            v(t) = -\dv{[\ce{A}]}{t} &= k[\ce{A}]\\
+            \int_{[\ce{A}]_0}^{[\ce{A}]}\frac{\dd{[\ce{A}]}}{[\ce{A}]} &= -\int_0^tk\dd{t}\\
+            \ln\frac{[\ce{A}]}{[\ce{A}]_0} &= -kt\\
+            [\ce{A}] &= [\ce{A}]_0\e[-kt]
+        \end{align*}
+        is the integrated rate law.
+        \item Goes over both the concentration plot and the linear logarithmic plot.
+    \end{itemize}
+    \item The half-life of a first-order reaction is independent of the initial amount of reactant.
+    \begin{itemize}
+        \item The half-life is found from the point
+        \begin{equation*}
+            [\ce{A}(t_{1/2})] = \frac{[\ce{A}(0)]}{2}
+            = \frac{[\ce{A}]_0}{2}
+        \end{equation*}
+        \item We have
+        \begin{align*}
+            \ln\frac{1}{2} &= -kt_{1/2}\\
+            t_{1/2} &= \frac{\ln 2}{k} \approx \frac{0.693}{k}
+        \end{align*}
+        \item Notice that the above equation does not depend on $[\ce{A}]$ or $[\ce{B}]$!
+    \end{itemize}
+    \item Second order reactions have inverse concentration integrated rate laws.
+    \begin{itemize}
+        \item Suppose \ce{A + B -> products}, as before, and that the reaction is second order in \ce{A}.
+        \item Then
+        \begin{align*}
+            -\dv{[\ce{A}]}{t} &= k[\ce{A}]^2\\
+            \int_{[\ce{A}]_0}^{[\ce{A}]}-\frac{\dd{[\ce{A}]}}{[\ce{A}]^2} &= \int_0^tk\dd{t}\\
+            \frac{1}{[\ce{A}]} &= \frac{1}{[\ce{A}]_0}+kt
+        \end{align*}
+        is the integrated rate law.
+    \end{itemize}
+    \item The half-life of a second-order reaction is dependent on the initial amount of reaction.
+    \begin{itemize}
+        \item We have that
+        \begin{align*}
+            \frac{1}{[\ce{A}]_0/2} &= \frac{1}{[\ce{A}]_0}+kt_{1/2}\\
+            \frac{1}{[\ce{A}]_0} &= kt_{1/2}\\
+            t_{1/2} &= \frac{1}{k[\ce{A}]_0}
+        \end{align*}
+    \end{itemize}
+    \item If a reaction is $n^\text{th}$-order in a reactant for $n\geq 2$, then the integrated rate law is given by
+    \begin{align*}
+        -\dv{[\ce{A}]}{t} &= k[\ce{A}]^n\\
+        \int_{[\ce{A}]_0}^{[\ce{A}]}-\frac{\dd{[\ce{A}]}}{[\ce{A}]^n} &= \int_0^tk\dd{t}\\
+        \frac{1}{n-1}\left( \frac{1}{[\ce{A}]^{n-1}}-\frac{1}{[\ce{A}]_0^{n-1}} \right) &= kt
+    \end{align*}
+    \begin{itemize}
+        \item The associated half life is
+        \begin{align*}
+            \frac{1}{n-1}\left( \frac{1}{([\ce{A}]_0/2)^{n-1}}-\frac{1}{[\ce{A}]_0^{n-1}} \right) &= kt_{1/2}\\
+            \frac{1}{n-1}\cdot\frac{2^{n-1}-1}{[\ce{A}]_0^{n-1}} &= kt_{1/2}\\
+            t_{1/2} &= \frac{2^{n-1}-1}{k(n-1)[\ce{A}]_0^{n-1}}
+        \end{align*}
+    \end{itemize}
+    \item Second order reactions that are first order in each reactant.
+    \begin{itemize}
+        \item We have that
+        \begin{align*}
+            -\dv{[\ce{A}]}{t} = -\dv{[\ce{B}]}{t} &= k[\ce{A}][\ce{B}]\\
+            kt &= \frac{1}{[\ce{A}]_0-[\ce{B}]_0}\ln\frac{[\ce{A}][\ce{B}]_0}{[\ce{B}][\ce{A}]_0}
+        \end{align*}
+        \item The actual determination is more complicated (there is a textbook problem that walks us through the derivation, though).
+        \item When $[\ce{A}]_0=[\ce{B}]_0$, the integrated rate law simplifies to the second-order integrated rate laws in $[\ce{A}]$ and $[\ce{B}]$.
+        \begin{itemize}
+            \item In this limited case, the half-life is that of the second-order integrated rate law, too, i.e., $t_{1/2}=1/k[\ce{A}]_0$.
+        \end{itemize}
+    \end{itemize}
+    \item The reaction paths and mechanism for parallel reactions.
+    \begin{itemize}
+        \item Suppose \ce{A} can become both \ce{B} and \ce{C} with respective rate constants $k_B$ and $k_C$.
+        \item Then
+        \begin{align*}
+            \dv{[\ce{A}]}{t} &= -k_B[\ce{A}]-k_C[\ce{A}] = -(k_B+k_C)[\ce{A}]&
+            \dv{[\ce{B}]}{t} &= k_B[\ce{A}]&
+            \dv{[\ce{C}]}{t} &= k_C[\ce{A}]
+        \end{align*}
+        \item The integrated rate laws here are
+        \begin{align*}
+            [\ce{A}] &= [\ce{A}]_0\e[-(k_B+k_C)t]&
+            [\ce{B}] &= \frac{k_B}{k_B+k_C}[\ce{A}]_0\left( 1-\e[-(k_B+k_C)t] \right)&
+            [\ce{C}] &= \frac{k_C}{k_B+k_C}[\ce{A}]_0\left( 1-\e[-(k_B+k_C)t] \right)
+        \end{align*}
+        \item The ratio of product concentrations is
+        \begin{equation*}
+            \frac{[\ce{B}]}{[\ce{C}]} = \frac{k_B}{k_C}
+        \end{equation*}
+        \item The yield $\Phi_i$ is the probability that a given product $i$ will be formed from the decay of the reactant
+        \begin{align*}
+            \Phi_i &= \frac{k_i}{\sum_nk_n}&
+            \sum_i\Phi_i &= 1
+        \end{align*}
+    \end{itemize}
+    \item Example: If we have parallel reactions satisfying $k_B=2k_C$, then
+    \begin{equation*}
+        \Phi_C = \frac{k_C}{k_B+k_C}
+        = \frac{k_C}{2k_C+k_C}
+        = \frac{1}{3}
+    \end{equation*}
+\end{itemize}
+
+
+
 
 \end{document}
