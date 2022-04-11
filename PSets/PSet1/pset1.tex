@@ -13,7 +13,7 @@
 \subsection*{Chapter 27}
 \begin{enumerate}[label={\textbf{27-\arabic*.}},leftmargin=3.5em]
     \setcounter{enumi}{4}
-    \item Arrange the following gases in order of increasing root-mean-square speed at the same temperature: \ce{O2}, \ce{N2}, \ce{H2O}, \ce{CO2}, \ce{NO2}, \ce{{}^235UF6}, \ce{{}^238UF6}.
+    \item \marginnote{4/11:}Arrange the following gases in order of increasing root-mean-square speed at the same temperature: \ce{O2}, \ce{N2}, \ce{H2O}, \ce{CO2}, \ce{NO2}, \ce{{}^235UF6}, \ce{{}^238UF6}.
     \begin{proof}[Answer]
         The root mean square speed is given by
         \begin{equation*}
@@ -216,10 +216,10 @@
             \prb{\varepsilon^2} &= \int_0^\infty\varepsilon^2F(\varepsilon)\dd{\varepsilon}\\
             &= \frac{2\pi}{(\pi\kB T)^{3/2}}\int_0^\infty\varepsilon^2\cdot\varepsilon^{1/2}\e[-\varepsilon/\kB T]\dd{\varepsilon}\\
             &= \frac{2\pi}{(\pi\kB T)^{3/2}}\int_0^\infty\varepsilon^{5/2}\e[-\varepsilon/\kB T]\dd{\varepsilon}\\
-            &= \frac{2\pi}{(\pi\kB T)^{3/2}}\cdot\frac{15}{8}\left[ \pi(\kB T)^7 \right]^{1/2}\\
+            &= \frac{2\pi}{(\pi\kB T)^{3/2}}\cdot\frac{(5)(3)(1)}{(2/\kB T)^{(5+1)/2}}\left( \frac{\pi}{1/\kB T} \right)^{1/2}\\
             &= \frac{15}{4}(\kB T)^2
         \end{align*}
-        Thus, we have that
+        where we have evaluated the integral using Table 27.1 in my notes. Thus, we have that
         \begin{align*}
             \sigma_\varepsilon^2 &= \prb{\varepsilon^2}-\prb{\varepsilon}^2\\
             &= \frac{15}{4}(\kB T)^2-\frac{9}{4}(\kB T)^2\\
@@ -320,7 +320,7 @@
         \end{equation*}
         where we have incorporated all external constants into the proportionality constant $A$.\par
         The following are the desired plots
-        \begin{figure}[h!]
+        \begin{figure}[H]
             \centering
             \begin{subfigure}[b]{0.3\linewidth}
                 \centering
@@ -333,7 +333,7 @@
                     \draw (2,0.1) -- ++(0,-0.2) node[below]{2};
                     \draw (0.1,1) -- ++(-0.2,0) node[left]{\num{100000}};
             
-                    \draw [rex,thick] plot[domain=0.01:1.9,smooth,samples=100,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{1/(\x)^5/100000*e^(-0.01/(\x)^2)});
+                    \draw [rex,thick] plot[domain=0.01:2.4,smooth,samples=500,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{1/(\x)^5/100000*e^(-0.01/(\x)^2)});
                 \end{tikzpicture}
                 \caption{0.1}
             \end{subfigure}
@@ -348,22 +348,23 @@
                     \draw (2,0.1) -- ++(0,-0.2) node[below]{2};
                     \draw (0.1,1) -- ++(-0.2,0) node[left]{1};
             
-                    \draw [rex,thick] plot[domain=0.01:1.9,smooth,samples=100,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{1/(\x)^5*e^(-1/(\x)^2)});
+                    \draw [rex,thick] plot[domain=0.01:2.4,smooth,samples=100,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{1/(\x)^5*e^(-1/(\x)^2)});
                 \end{tikzpicture}
                 \caption{1}
             \end{subfigure}
             \begin{subfigure}[b]{0.3\linewidth}
                 \centering
-                \begin{tikzpicture}
+                \begin{tikzpicture}[xscale=0.75]
                     \small
-                    \draw [stealth-stealth] (0,1.5) -- node[left=10mm]{$I$} (0,0) -- node[below=5mm]{$s$} (2.5,0);
+                    \draw [stealth-stealth] (0,1.5) -- node[left=9mm]{$I$} (0,0) -- node[below=5mm]{$s$} (3.5,0);
             
                     \footnotesize
                     \draw (1,0.1) -- ++(0,-0.2) node[below]{1};
                     \draw (2,0.1) -- ++(0,-0.2) node[below]{2};
+                    \draw (3,0.1) -- ++(0,-0.2) node[below]{3};
                     \draw (0.1,1) -- ++(-0.2,0) node[left]{\num{0.01}};
             
-                    \draw [rex,thick] plot[domain=0.01:1.9,smooth,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{1/(\x)^5*100*e^(-9/(\x)^2)});
+                    \draw [rex,thick] plot[domain=0.01:3.4,smooth,/pgf/fpu,/pgf/fpu/output format=fixed] (\x,{1/(\x)^5*100*e^(-9/(\x)^2)});
                 \end{tikzpicture}
                 \caption{3}
             \end{subfigure}
@@ -373,7 +374,29 @@
     \item On the average, what is the time between collisions of a xenon atom at \SI{300}{\kelvin} and\dots
     \begin{enumerate}
         \item One torr;
+        \begin{proof}[Answer]
+            The collision frequency is
+            \begin{equation*}
+                z_A = \sqrt{2}\rho\sigma\prb{u}
+                = \sqrt{2}\cdot\frac{P\NA}{RT}\cdot\sigma_{\ce{Xe}}\cdot\sqrt{\frac{8RT}{\pi M}}
+            \end{equation*}
+            It follows that the time $t$ between collisions is
+            \begin{align*}
+                t &= \frac{1}{z_A}\\
+                &= \frac{\sqrt{\pi RTM}}{4\NA P\sigma_{\ce{Xe}}}\\
+                &= \frac{\sqrt{\pi(\SI[per-mode=fraction]{8.31}{\joule\per\mole\per\kelvin})(\SI{300}{\kelvin})(\SI[per-mode=fraction]{0.03995}{\kilo\gram\per\mole})}}{4\NA(\SI{133}{\pascal})(\SI{7.50e-19}{\square\meter})}\\
+                \Aboxed{t &= \SI{7.36e-8}{\second}}
+            \end{align*}
+        \end{proof}
         \item One bar.
+        \begin{proof}[Answer]
+            As in part (a), we have that
+            \begin{align*}
+                t &= \frac{\sqrt{\pi RTM}}{4\NA P\sigma_{\ce{Xe}}}\\
+                &= \frac{\sqrt{\pi(\SI[per-mode=fraction]{8.31}{\joule\per\mole\per\kelvin})(\SI{300}{\kelvin})(\SI[per-mode=fraction]{0.03995}{\kilo\gram\per\mole})}}{4\NA(\SI{e5}{\pascal})(\SI{7.50e-19}{\square\meter})}\\
+                \Aboxed{t &= \SI{9.79e-11}{\second}}
+            \end{align*}
+        \end{proof}
     \end{enumerate}
     \setcounter{enumi}{39}
     \item The following table gives the pressure and temperature of the Earth's upper atmosphere as a function of altitude.
@@ -390,6 +413,25 @@
         \end{tabular}
     \end{center}
     Assuming for simplicity that air consists entirely of nitrogen, calculate the mean free path at each of these conditions.
+    \begin{proof}[Answer]
+        The mean free path is given by
+        \begin{equation*}
+            l = \frac{1}{\sqrt{2}\rho\sigma_{\ce{N2}}}
+            = \frac{RT}{\sqrt{2}P\NA\sigma_{\ce{N2}}}
+        \end{equation*}
+        Thus, plugging in
+        \begin{align*}
+            R &= \SI[per-mode=fraction,fraction-command=\tfrac]{8.31}{\joule\per\mole\per\kelvin}&
+            \sigma_{\ce{N2}} &= \SI{4.50e-19}{\square\meter}
+        \end{align*}
+        and the pressure and temperature from the above table in bars and kelvins, respectively, we have that
+        \begin{empheq}[box=\fbox]{align*}
+            l(\SI{20.0}{\kilo\meter}) &= \SI{0.085}{\meter}\\
+            l(\SI{40.0}{\kilo\meter}) &= \SI{1.8}{\meter}\\
+            l(\SI{60.0}{\kilo\meter}) &= \SI{20}{\meter}\\
+            l(\SI{80.0}{\kilo\meter}) &= \SI{300}{\meter}
+        \end{empheq}
+    \end{proof}
 \end{enumerate}
 
 

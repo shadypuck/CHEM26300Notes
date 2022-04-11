@@ -873,6 +873,22 @@
     \end{itemize}
     \item \textbf{Maxwell-Boltzmann distribution}: The distribution of molecular speeds.
     \item \textbf{Velocity space}: A rectangular coordinate system in which the distances along the axes are $u_x,u_y,u_z$.
+    \item The above integral as well as some other variations occur commonly in the study of kinetics.
+    \begin{table}[H]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{2.2}
+        \begin{tabular}{cc}
+            \toprule
+            $\displaystyle\int_0^\infty x^{2n}\e[-\alpha x^2]\dd{x}=\frac{1\cdot 3\cdot 5\cdots(2n-1)}{2^{n+1}\alpha^n}\left( \frac{\pi}{\alpha} \right)^{1/2}$ & $n\geq 1$\\
+            $\displaystyle\int_0^\infty x^{2n+1}\e[-\alpha x^2]\dd{x}=\frac{n!}{2\alpha^{n+1}}$\rule{3.2cm}{0pt} & $n\geq 0$\\
+            \rule{5mm}{0pt}$\displaystyle\int_0^\infty x^{n/2}\e[-\alpha x]\dd{x}=\frac{n(n-2)(n-4)\cdots(1)}{(2\alpha)^{(n+1)/2}}\left( \frac{\pi}{\alpha} \right)^{1/2}$ & $n$ odd\\
+            $\displaystyle=\frac{(n/2)!}{\alpha^{(n+2)/2}}$\rule{1mm}{0pt} & $n$ even\\
+            \bottomrule
+        \end{tabular}
+        \caption{Common integrals in the kinetic theory of gases.}
+        \label{tab:commonIntegrals}
+    \end{table}
     \item We may use the above result to calculate that
     \begin{equation*}
         \prb{u} = \sqrt{\frac{8RT}{\pi m}}
@@ -915,7 +931,7 @@
     \begin{itemize}
         \item If $\theta$ is the angular deviation in the particle's path from the normal to the wall, then the component of momentum of a particle of mass $m$ moving with speed $u$ that lies perpendicular to the wall is $mu\cos\theta$.
         \item This particles change in momentum upon colliding elastically with the wall is thus $2mu\cos\theta$.
-        \item Since pressure is force per unit area and force is change in momentum per unit time, the pressure is equal to the product of the change in momentum per collision and the frequency (number per unit time) of collisions per unit area. Mathematically, the infinitesimal pressure applied by just the molecules with speeds between $u,u+\dd{u}$ and lying within the solid angle $\sin\theta\dd{\theta}\dd{\phi}$ is
+        \item Since pressure is the force per unit area and force is the change in momentum per unit time, the pressure is equal to the product of the change in momentum per collision and the frequency (number per unit time) of collisions per unit area. Mathematically, the infinitesimal pressure applied by just the molecules with speeds between $u$ and $u+\dd{u}$ that lie within the solid angle $\sin\theta\dd{\theta}\dd{\phi}$ is
         \begin{align*}
             \dd{P} &= (2mu\cos\theta)\dd{z_\text{coll}}\\
             &= \rho\left( \frac{m}{2\pi\kB T} \right)^{3/2}(2mu\cos\theta)u^3\e[-mu^2/2\kB T]\dd{u}\cos\theta\sin\theta\dd{\theta}\dd{\phi}
@@ -951,6 +967,31 @@
     \begin{equation*}
         \sigma = \pi d^2
     \end{equation*}
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{ccc}
+            \toprule
+            Gas & $d$ (\si{\pico\meter}) & $\sigma$ (\si{\square\nano\meter})\\
+            \midrule
+            \ce{He}   & 210 & 0.140\\
+            \ce{Ar}   & 370 & 0.430\\
+            \ce{Xe}   & 490 & 0.750\\
+            \ce{H2}   & 270 & 0.230\\
+            \ce{N2}   & 380 & 0.450\\
+            \ce{O2}   & 360 & 0.410\\
+            \ce{Cl2}  & 540 & 0.920\\
+            \ce{CH4}  & 410 & 0.530\\
+            \ce{C2H4} & 430 & 0.580\\
+            \bottomrule
+        \end{tabular}
+        \caption{Collision diameters and collision cross sections.}
+        \label{tab:collisionCrossSection}
+    \end{table}
+    \begin{itemize}
+        \item See Table \ref{tab:collisionCrossSection} for some example values.
+    \end{itemize}
     \item Calculating the number of collisions $\dd{N_\text{coll}}$ the moving molecule makes in the time $\dd{t}$.
     \begin{itemize}
         \item The volume of the collision cylinder is the product of its cross section $\sigma$ and its length $\prb{u}\dd{t}$.
