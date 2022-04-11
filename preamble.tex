@@ -9,8 +9,8 @@
 \usepackage[style=apa]{biblatex}
 \usepackage{subcaption,float}
 \usepackage{tikz}
-\usepackage{amsmath,amssymb}
-\usepackage{bm,physics}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm,physics,mathtools}
 \usepackage{mhchem}
 \usepackage[hidelinks]{hyperref}
 
@@ -34,10 +34,12 @@
 \deffootnotemark{\textsuperscript{\textup{[}\thefootnotemark\textup{]}}}
 \deffootnote[2.1em]{0em}{0em}{\textsuperscript{\thefootnote}}
 
+\DeclareSIUnit{\angstrom}{\textup{\AA}}
+
 \addbibresource{../main.bib}
 \DefineBibliographyStrings{english}{bibliography={References}}
 
-\usetikzlibrary{backgrounds,decorations.markings,decorations.text}
+\usetikzlibrary{backgrounds,decorations.markings,decorations.text,fpu}
 \colorlet{blx}{blue!90!green!80}
 \colorlet{bly}{blue!90!green!60}
 \colorlet{blz}{blue!90!green!40}
