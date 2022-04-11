@@ -931,6 +931,108 @@
             = \frac{1}{3}\rho m\prb{u^2}
         \end{equation*}
     \end{itemize}
+    \item \marginnote{4/10:}\textcite{bib:McQuarrieSimon} discusses Kusch and coworker's experimental verification of the M-B distribution, which used a beam of potassium atoms and a rotating velocity selector.
+    \begin{itemize}
+        \item Kusch was awarded the Nobel prize in physics in 1955.
+    \end{itemize}
+    \item We now discuss the frequency of collisions between the molecules in a gas.
+    \item We first consider the frequency of collisions of a single gas-phase molecule.
+    \item Assumptions.
+    \begin{itemize}
+        \item The molecules are hard spheres of diameter $d$.
+        \item All molecules other than the one in question are stationary; we will account for their motion at the end of the derivation.
+    \end{itemize}
+    \item \textbf{Collision cylinder}: A cylinder of diameter $2d$ that the molecule in question sweeps out as it travels along.
+    \begin{itemize}
+        \item The molecule in question will collide with any molecule whose center lies within this cylinder.
+        \item See Figure \ref{fig:collisionCylinder}.
+    \end{itemize}
+    \item \textbf{Collision cross section}: The target of effective radius $d$ presented by each hard sphere molecule. \emph{Denoted by} $\bm{\sigma}$. \emph{Given by}
+    \begin{equation*}
+        \sigma = \pi d^2
+    \end{equation*}
+    \item Calculating the number of collisions $\dd{N_\text{coll}}$ the moving molecule makes in the time $\dd{t}$.
+    \begin{itemize}
+        \item The volume of the collision cylinder is the product of its cross section $\sigma$ and its length $\prb{u}\dd{t}$.
+        \item Whenever the center of another molecule lies within this cylinder, a collision will occur.
+        \item Thus, since $\sigma\prb{u}\dd{t}$ represents a small volume within the overall volume the gas occupies, the expected number of collisions $\dd{N_\text{coll}}$ would be equal to the number of molecules expected to lie in the volume $\sigma\prb{u}\dd{t}$.
+        \item If the $N$ molecules can be expected to be evenly distributed throughout the volume $V$ with number density $\rho=N/V$, then we have that
+        \begin{equation*}
+            \dd{N_\text{coll}} = \rho\sigma\prb{u}\dd{t}
+        \end{equation*}
+        \item We must now undue the one assumption that cannot stay: That all other molecules are stationary.
+        \item To do this, we treat the motion of the two bodies by the reduced mass.
+    \end{itemize}
+    \item \textbf{Collision frequency}: The expected number of collisions per unit time. \emph{Denoted by} $\bm{Z_A}$. \emph{Given by}
+    \begin{align*}
+        z_A = \dv{N_\text{coll}}{t}
+        &= \rho\sigma\prb{u_r}
+            = \rho\sigma\sqrt{\frac{8\kB T}{\pi\mu}}\\
+        &= \sqrt{2}\rho\sigma\prb{u}
+        = \sqrt{2}\rho\sigma\sqrt{\frac{8\kB T}{\pi m}}
+    \end{align*}
+    \item \textbf{Mean free path}: The average distance that a molecule travels between collisions. \emph{Denoted by} $\bm{l}$. \emph{Given by}
+    \begin{equation*}
+        l = \frac{1}{\sqrt{2}\rho\sigma}
+    \end{equation*}
+    \begin{itemize}
+        \item Naturally, the average distance that a molecule travels between collisions is equal to how far it travels per unit time (the average speed) divided by the number of collisions per unit time (the collision frequency). Thus, $l=\prb{u}/z_A$, which is how the above is derived.
+    \end{itemize}
+    \item Substituting $\rho=N/V=n\NA/V=P\NA/RT$ yields
+    \begin{equation*}
+        l = \frac{RT}{\sqrt{2}\NA\sigma P}
+    \end{equation*}
+    \item Example: At room temperature and one bar, the mean free path of nitrogen is about 200 times the effective diameter of a nitrogen molecule.
+    \item An alternate physical interpretation of the probability of a collision.
+    \begin{itemize}
+        \item Consider a "collision cylinder" with collision cross section of unit area. Let the thickness of this "cylinder" be $\dd{x}$. It follows that the volume of the "collision cylinder" is $1\cdot\dd{x}=\dd{x}$.
+        \item Consequently, the number of molecules having center within the collision cylinder is equal to the number density times the volume, or $\rho\dd{x}$.
+        \item Thus, if each molecule has target area $\sigma$, then the total target area presented by these molecules (neglecting overlap) is $\sigma\rho\dd{x}$.
+        \item Therefore, since the probability of a collision can be thought of as the ration of the total target area to the total area (which we have defined to be unity), the probability of a collision is $\sigma\rho\dd{x}$.
+        \begin{itemize}
+            \item Note that this squares with the definition of the probability of a collision as $\rho\sigma\prb{u}\dd{t}$ with $\dd{x}=\prb{u}\dd{t}$, as we'd expect.
+        \end{itemize}
+    \end{itemize}
+    \item As we can see, the probability of a collision increases with increasing distance traveled $\dd{x}$.
+    \item If $n_0$ molecules are emitted from the origin traveling in the $x$-direction with equal velocity in a volume of unmoving molecules, let $n(x)$ be the number of molecules that travel a distance $x$ without collision.
+    \begin{itemize}
+        \item It follows that the number of molecules that undergo a collision between $x,x+\dd{x}$ is $n(x)\sigma\rho\dd{x}$.
+        \item Furthermore, said number is naturally equal to $n(x)-n(x+\dd{x})$.
+        \item Thus, we have that
+        \begin{align*}
+            n(x)-n(x+\dd{x}) &= \sigma\rho n(x)\dd{x}\\
+            \frac{n(x+\dd{x})-n(x)}{\dd{x}} &= -\sigma\rho n(x)\\
+            \dv{n}{x} &= -\sigma\rho n\\
+            \int_{n_0}^n\frac{\dd{n}}{n} &= -\sigma\rho\int_0^x\dd{x}\\
+            \ln(n/n_0) &= -\sigma\rho x\\
+            n(x) &= n_0\e[-\sigma\rho x]
+        \end{align*}
+        where no factor of $\sqrt{2}$ appears because of the assumption that the other molecules do not move.
+    \end{itemize}
+    \item Therefore, the probability $p(x)\dd{x}$ that one of the initial $n_0$ molecules will collide in the interval $x,x+\dd{x}$ is
+    \begin{align*}
+        p(x)\dd{x} &= \frac{n(x)-n(x+\dd{x})}{n_0}\\
+        &= -\frac{1}{n_0}\dv{n}{x}\dd{x}\\
+        &= \frac{1}{l}\e[-x/l]\dd{x}
+    \end{align*}
+    \begin{itemize}
+        \item The above equation is normalized and has $\prb{x}=l$, as expected.
+    \end{itemize}
+    \item The distance after which half of the molecules will have been scattered from a beam of initially $n_0$ molecules is $l\cdot\ln 2$, i.e., about 70\% of the mean free path.
+    \item \textbf{Total collision frequency per unit volume} (for like molecules): The following quantity. \emph{Denoted by} $Z_{AA}$. \emph{Given by}
+    \begin{equation*}
+        Z_{AA} = \frac{1}{2}\rho z_A
+        = \frac{1}{2}\sigma\prb{u_r}\rho^2
+        = \frac{\sigma\prb{u}\rho^2}{\sqrt{2}}
+    \end{equation*}
+    \begin{itemize}
+        \item Derived by multiplying the collision frequency for \emph{one} molecule $z_A$ by the number of molecules per unit volume $\rho$, and dividing by 2 in order to avoid counting a collision between a pair of similar molecules as two distinct collisions.
+    \end{itemize}
+    \item \textbf{Total collision frequency per unit volume} (for dislike molecules): The following quantity. \emph{Denoted by} $Z_{AB}$. \emph{Given by}
+    \begin{equation*}
+        Z_{AB} = \sigma_{AB}\prb{u_r}\rho_A\rho_B
+    \end{equation*}
+    \item The discussion of the rate of gas-phase chemical reactions is nearly identical to that given in class.
 \end{itemize}
 
 
