@@ -223,5 +223,154 @@
 
 
 
+\section{Reversible Reactions}
+\begin{itemize}
+    \item \marginnote{4/13:}Let
+    \begin{equation*}
+        \ce{A <=>[$k_1$][$k_{-1}$] B}
+    \end{equation*}
+    be a reversible reaction, where $k_1$ is the rate constant for the forward reaction and $k_{-1}$ is the rate constant for the reverse reaction.
+    \begin{itemize}
+        \item In this case, we have an equilibrium constant expression
+        \begin{equation*}
+            K_c = \frac{[\ce{B}]_\text{eq}}{[\ce{A}]_\text{eq}}
+        \end{equation*}
+        \item Additionally, the kinetic conditions for equilibrium are
+        \begin{equation*}
+            -\dv{[\ce{A}]}{t} = \dv{[\ce{B}]}{t} = 0
+        \end{equation*}
+        \item If the reaction is first order in both $[\ce{A}]$ and $[\ce{B}]$, then
+        \begin{equation*}
+            -\dv{[\ce{A}]}{t} = k_1[\ce{A}]-k_{-1}[\ce{B}]
+        \end{equation*}
+        \item If $[\ce{A}]=[\ce{A}]_0$ at $t=0$, then $[\ce{B}]=[\ce{A}]_0-[\ce{A}]$ and
+        \begin{equation*}
+            -\dv{[\ce{A}]}{t} = (k_1+k_{-1})[\ce{A}]-k_{-1}[\ce{A}]_0
+        \end{equation*}
+        \begin{itemize}
+            \item Note that $[\ce{B}]=[\ce{A}]_0-[\ce{A}]$ iff there is no initial concentration of \ce{B}, the initial equation was balanced (i.e., each unit of \ce{A} forms one unit of \ce{B}), and there is not another component \ce{C} into which \ce{A} decomposes.
+        \end{itemize}
+        \item Integrating yields
+        \begin{equation*}
+            [\ce{A}] = ([\ce{A}]_0-[\ce{A}]_\text{eq})\e[-(k_1+k_{-1})t]+[\ce{A}]_\text{eq}
+        \end{equation*}
+        \begin{itemize}
+            \item Note that this equation reduces to the irreversible first order equation as $k_{-1}\to 0$ and hence $[\ce{A}]_\text{eq}\to 0$ as well.
+            \item Similarly, if only the reverse reaction takes place (and we have no initial concentration of \ce{B}), then $[\ce{A}]=[\ce{A}]_\text{eq}$ and the above equation reduces to exactly that statement, as desired.
+        \end{itemize}
+        \item Since
+        \begin{equation*}
+            \ln([\ce{A}]-[\ce{A}]_\text{eq}) = \ln([\ce{A}]_0-[\ce{A}]_\text{eq})-(k_1+k_{-1})t
+        \end{equation*}
+        we have a straight line that allows us to determine the sum $k_1+k_{-1}$. However, we cannot determine each term individually from the above.
+        \item One way that we can is by noting that at equilibrium, $\dv*{[\ce{A}]}{t}=0$, so the differential rate law reduces to
+        \begin{equation*}
+            k_1[\ce{A}]_\text{eq} = k_{-1}[\ce{B}]_\text{eq}
+        \end{equation*}
+        \item Another way we can resolve each term individually is by noting that
+        \begin{equation*}
+            \frac{k_1}{k_{-1}} = \frac{[\ce{B}]_\text{eq}}{[\ce{A}]_\text{eq}}
+            = K_c
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Stopped flow method}: Fast mixing of reactants.
+    \begin{itemize}
+        \item The limit is about 1 microsecond time resolution (mixing rate).
+        \item Lots of issues?
+    \end{itemize}
+    \item \textbf{Pump-probe method}: An optical/IR method that ranges from femtoseconds to nanoseconds.
+    \begin{itemize}
+        \item Nobel Prize (1999) to Zewail "for his studies of the transition states of chemical reactions using femtosecond spectroscopy."
+    \end{itemize}
+    \item \textbf{Perturbation-Relaxation method}: You perturb a thermodynamic variable (e.g., $T$, $P$, $\pH$, etc.) and then follow the kinetics of relaxation of the system to equilibrium.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1.1]
+            \small
+            \draw (0,3.5) -- (0,0) -- node[below=4mm]{$t$} (5,0);
+    
+            \footnotesize
+            \draw [very thin,dashed]
+                (1.5,0) -- ++(0,2.5)
+                (0,1) -- ++(5,0)
+                (2.2,2.5) -- ++(0,-1.15)
+            ;
+            \node [below] at (1.5,0) {0};
+            \node [left]  at (0,1)   {$[\ce{B}]_{2,\text{eq}}$};
+            \node [left]  at (0,2.5) {$[\ce{B}]_{1,\text{eq}}$};
+    
+            \draw [blx,thick] (0,2.5)
+                -- node[black,above,align=center,text width=1.5cm]{Initial equilibrium state} ++(1.5,0)
+                % plot[domain=1.5:3.5,smooth] (\x,{2.5+1.53*(e^(-1*(2*(\x-1.5)))-1)})
+                to[out=-71.9,in=180,looseness=1.2] (3.5,1)
+                -- node[black,below,align=center,text width=1.5cm]{Final equilibrium state} ++(1.5,0)
+            ;
+    
+            \scriptsize
+            \begin{scope}[line width=0.3pt,<->,shorten <=1pt,shorten >=1pt]
+                \draw (1,1) -- node[fill=white,inner sep=1.5pt]{$\Delta[\ce{B}]_0$} ++(0,1.5);
+                \draw [shorten >=2pt] (1.85,1) -- ++(0,0.7);
+                \node at (1.85,0.5) {$\Delta[\ce{B}]$}
+                    edge[out=90,in=180,very thin,->,in looseness=2] (1.85,1.35)
+                ;
+                \draw (1.5,2.5) -- ++(0.7,0);
+                \node [align=center] at (3.8,2.5) {\scriptsize Relaxation time\\$\tau=1/(k_1+k_{-1})$}
+                    edge[out=180,in=90,very thin,->,in looseness=2] (1.85,2.5)
+                ;
+                \node at (3.5,3) {\scriptsize Temperature jump}
+                    edge[out=180,in=90,very thin,->,in looseness=1.2] (1.5,2.5)
+                ;
+            \end{scope}
+        \end{tikzpicture}
+        \caption{Relaxation methods to determine rate constants.}
+        \label{fig:relaxation}
+    \end{figure}
+    \begin{itemize}
+        \item Nobel Prize (1967) to Porter, Norrish, and Eigen "for their studies of extremely fast chemical reactions, effected by disturbing the equilibrium by means of very short pulses of energy."
+        \item Example: Consider water autoionization. Here, we'd perturb $\pH$ and $T$.
+        \item Our initial point is the first equilibrium condition; out final point is the second equilibrium condition (i.e., that with the perturbed variables).
+        \item We should have
+        \begin{align*}
+            [\ce{A}] &= [\ce{A}]_{2,\text{eq}}+\Delta[\ce{A}]&
+            [\ce{B}] &= [\ce{B}]_{2,\text{eq}}+\Delta[\ce{B}]
+        \end{align*}
+        so that
+        \begin{equation*}
+            \dv{\Delta[\ce{B}]}{t} = k_1[\ce{A}]_{2,\text{eq}}+k_1\Delta[\ce{A}]-k_{-1}[\ce{B}]_{2,\text{eq}}-k_{-1}\Delta[\ce{B}]
+        \end{equation*}
+        \item The sum of the concentrations is constant, so $\Delta([\ce{A}]+[\ce{B}])=\Delta[\ce{A}]+\Delta[\ce{B}]=0$.
+        \item Additionally, detailed balance is satisfied.
+        \begin{equation*}
+            k_1[\ce{A}]_{2,\text{eq}} = k_{-1}[\ce{B}]_{2,\text{eq}}
+        \end{equation*}
+        \item As a result,
+        \begin{equation*}
+            \dv{\Delta[\ce{B}]}{t} = -(k_1+k_{-1})\Delta[\ce{B}]
+        \end{equation*}
+        \item Integrating yields
+        \begin{equation*}
+            \Delta[\ce{B}]_0 = [\ce{B}]_{1,\text{eq}}-[\ce{B}]_{2,\text{eq}}
+            = \Delta[\ce{B}]_0\e[-t/\tau]
+        \end{equation*}
+        where $\tau$ is the \textbf{relaxation time}.
+        \item It follows that
+        \begin{equation*}
+            \Delta[\ce{B}] = \Delta[\ce{B}]_0\e[-(k_1+k_{-1})t]
+        \end{equation*}
+        \item Some textbooks use different notation; we should know this, too.
+        \begin{itemize}
+            \item They denote by $\xi$ or $\xi_0$ the difference between $[\ce{A}]$ (the initial equilibrium's concentration) and $[\ce{A}]_{eq}$ (the final equilibrium's concentration).
+            \item They also use $k_A,k_B$ for the initial equilibrium \ce{A <=>[$k_A$][$k_B$] B} and $k_A^+,k_B^+$ for the final equilibrium \ce{A <=>[$k_A^+$][$k_B^+$] B}.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Relaxation time}: The following quantity. \emph{Denoted by} $\bm{\tau}$. \emph{Given by}
+    \begin{equation*}
+        \tau = \frac{1}{k_1+k_{-1}}
+    \end{equation*}
+    \item We'll start with water dissociation next lecture.
+\end{itemize}
+
+
+
 
 \end{document}
