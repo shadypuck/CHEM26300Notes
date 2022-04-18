@@ -22,7 +22,7 @@
         Thus, since the temperature is constant by hypothesis, the root mean square speed ordering will be entirely a function of the molar mass (and inversely proportional to it at that). It follows since
         \begin{align*}
             M(\ce{O2})        &= \SI[per-mode=symbol]{32.00}{\gram\per\mole}\\
-            M(\ce{N2})        &= \SI[per-mode=symbol]{38.02}{\gram\per\mole}\\
+            M(\ce{N2})        &= \SI[per-mode=symbol]{28.02}{\gram\per\mole}\\
             M(\ce{H2O})       &= \SI[per-mode=symbol]{18.02}{\gram\per\mole}\\
             M(\ce{CO2})       &= \SI[per-mode=symbol]{44.01}{\gram\per\mole}\\
             M(\ce{NO2})       &= \SI[per-mode=symbol]{46.01}{\gram\per\mole}\\
@@ -35,8 +35,8 @@
                 u_\text{rms}(\ce{{}^238UF6}) < u_\text{rms}(\ce{{}^235UF6})
                 < u_\text{rms}(\ce{NO2})
                 < u_\text{rms}(\ce{CO2})
-                < u_\text{rms}(\ce{N2})
                 < u_\text{rms}(\ce{O2})
+                < u_\text{rms}(\ce{N2})
                 < u_\text{rms}(\ce{H2O})
             }
         \end{equation*}
@@ -199,9 +199,9 @@
         \end{equation*}
         using Simpson's rule with four subdivisions, each having height $h=0.25$, as follows.
         \begin{align*}
-            \Prob\{u\leq\sqrt{2\kB T/m}\} &\approx \frac{0.25}{3}[g(0)+4g(0.25)+2g(0.5)+4g(0.75)+g(1)]\\
-            &= \frac{1}{12}(0+4\cdot 0.059+2\cdot 0.195+4\cdot 0.321+0.367)\\
-            \Aboxed{\Prob\{u\leq\sqrt{2\kB T/m}\} &\approx 0.190}
+            \Prob\{u\leq\sqrt{2\kB T/m}\} &\approx \frac{4}{\sqrt{\pi}}\cdot\frac{0.25}{3}[g(0)+4g(0.25)+2g(0.5)+4g(0.75)+g(1)]\\
+            &= \frac{1}{3\sqrt{\pi}}(0+4\cdot 0.059+2\cdot 0.195+4\cdot 0.321+0.367)\\
+            \Aboxed{\Prob\{u\leq\sqrt{2\kB T/m}\} &\approx 0.429}
         \end{align*}
     \end{proof}
     \setcounter{enumi}{26}
@@ -223,12 +223,12 @@
         \begin{align*}
             \sigma_\varepsilon^2 &= \prb{\varepsilon^2}-\prb{\varepsilon}^2\\
             &= \frac{15}{4}(\kB T)^2-\frac{9}{4}(\kB T)^2\\
-            \Aboxed{\sigma_\varepsilon^2 &= \frac{2}{3}(\kB T)^2}
+            \Aboxed{\sigma_\varepsilon^2 &= \frac{3}{2}(\kB T)^2}
         \end{align*}
         Taking
         \begin{equation*}
-            \frac{\sigma_\varepsilon}{\prb{\varepsilon}} = \frac{\sqrt{2/3}\kB T}{3\kB T/2}
-            = \left( \frac{2}{3} \right)^{3/2}
+            \frac{\sigma_\varepsilon}{\prb{\varepsilon}} = \frac{\sqrt{3/2}\kB T}{3\kB T/2}
+            = \left( \frac{2}{3} \right)^{1/2}
         \end{equation*}
         reveals that the fluctuation in $\varepsilon$ is sizeable with respect to the average energy.
     \end{proof}
@@ -326,7 +326,7 @@
                 \centering
                 \begin{tikzpicture}
                     \small
-                    \draw [stealth-stealth] (0,1.5) -- node[left=13mm]{$I$} (0,0) -- node[below=5mm]{$s$} (2.5,0);
+                    \draw [stealth-stealth] (0,1.5) -- node[left=16mm]{$I/A$} (0,0) -- node[below=5mm]{$s$} (2.5,0);
             
                     \footnotesize
                     \draw (1,0.1) -- ++(0,-0.2) node[below]{1};
@@ -341,7 +341,7 @@
                 \centering
                 \begin{tikzpicture}
                     \small
-                    \draw [stealth-stealth] (0,1.5) -- node[left=5mm]{$I$} (0,0) -- node[below=5mm]{$s$} (2.5,0);
+                    \draw [stealth-stealth] (0,1.5) -- node[left=8mm]{$I/A$} (0,0) -- node[below=5mm]{$s$} (2.5,0);
             
                     \footnotesize
                     \draw (1,0.1) -- ++(0,-0.2) node[below]{1};
@@ -356,7 +356,7 @@
                 \centering
                 \begin{tikzpicture}[xscale=0.75]
                     \small
-                    \draw [stealth-stealth] (0,1.5) -- node[left=9mm]{$I$} (0,0) -- node[below=5mm]{$s$} (3.5,0);
+                    \draw [stealth-stealth] (0,1.5) -- node[left=12mm]{$I/A$} (0,0) -- node[below=5mm]{$s$} (3.5,0);
             
                     \footnotesize
                     \draw (1,0.1) -- ++(0,-0.2) node[below]{1};
@@ -426,10 +426,10 @@
         \end{align*}
         and the pressure and temperature from the above table in bars and kelvins, respectively, we have that
         \begin{empheq}[box=\fbox]{align*}
-            l(\SI{20.0}{\kilo\meter}) &= \SI{0.085}{\meter}\\
-            l(\SI{40.0}{\kilo\meter}) &= \SI{1.8}{\meter}\\
-            l(\SI{60.0}{\kilo\meter}) &= \SI{20}{\meter}\\
-            l(\SI{80.0}{\kilo\meter}) &= \SI{300}{\meter}
+            l(\SI{20.0}{\kilo\meter}) &= \SI{8.5e-7}{\meter}\\
+            l(\SI{40.0}{\kilo\meter}) &= \SI{1.8e-5}{\meter}\\
+            l(\SI{60.0}{\kilo\meter}) &= \SI{2.0e-4}{\meter}\\
+            l(\SI{80.0}{\kilo\meter}) &= \SI{3.0e-3}{\meter}
         \end{empheq}
     \end{proof}
 \end{enumerate}
