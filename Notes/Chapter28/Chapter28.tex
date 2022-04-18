@@ -601,6 +601,160 @@
         \item However, for some very quick reactions, the time required to mix the reactants is long compared with the reaction itself.
         \item For these cases, we need \textbf{relaxation methods}.
     \end{itemize}
+    \item \marginnote{4/17:}\textcite{bib:McQuarrieSimon} derives the first-order integrated rate law.
+    \item To determine the rate constant of a first-order reaction from concentration vs. time data, plot the log of the concentration vs. time and perform a linear regression.
+    \item \textbf{Half-life}: The length of time required for half of the reactant to disappear. \emph{Denoted by} $\bm{t_{1/2}}$.
+    \item \textcite{bib:McQuarrieSimon} derives the half-life of a first-order reaction.
+    \item "A particular rate law does not provide any information on the magnitude of the rate constant" \parencite[1057]{bib:McQuarrieSimon}.
+    \item \textcite{bib:McQuarrieSimon} derives the second-order integrated rate law.
+    \item Similarly to first-order reactions, a plot of $1/[\ce{A}]$ vs. time will yield a straight line with slope $k$ and intercept $1/[\ce{A}]_0$.
+    \item To determine if a reaction is first- or second-order, we can make plots of $\ln[\ce{A}]$ and $1/[\ce{A}]$ vs. $t$ and see which one is a straight line.
+    \item \textcite{bib:McQuarrieSimon} derives the half-life of a second-order reaction.
+    \item \textcite{bib:McQuarrieSimon} gives the integrated rate law for a reaction that is first-order in each reactant, and second-order overall.
+    \item \textbf{Reversible} (reaction): A reaction that occurs in both directions.
+    \item Consider the reversible reaction
+    \begin{equation*}
+        \ce{A <=>[$k_1$][$k_{-1}$] B}
+    \end{equation*}
+    \item The kinetic condition for the above reversible reaction to be at equilibrium is
+    \begin{equation*}
+        -\dv{[\ce{A}]}{t} = \dv{[\ce{B}]}{t} = 0
+    \end{equation*}
+    \item \textbf{Dynamic equilibrium}: An equilibrium in which individual molecules of reactants and products continue interconverting but in such a way that there is no \emph{net} change in either concentration.
+    \item The rate law for the above reversible reaction is
+    \begin{equation*}
+        -\dv{[\ce{A}]}{t} = k_1[\ce{A}]-k_{-1}[\ce{B}]
+    \end{equation*}
+    \begin{itemize}
+        \item The first term accounts for the rate at which \ce{A} reacts to form \ce{B}.
+        \item The second term accounts for the rate at which \ce{B} reacts to form \ce{A}.
+        \item "The difference in sign of these two terms reflects that the forward reaction depletes the concentration of \ce{A} and the back reaction increases the concentration of \ce{A} with time" \parencite[1063]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} derives the integrated rate law corresponding to the above differential rate law and the case that $[\ce{B}]=0$.
+    \item \textbf{Relaxation method}: A method of determining the rate law for a chemical reaction with half-life shorter than the mixing time, involving perturbing a chemical system at one equilibrium to a state that will require a new equilibrium by suddenly changing a condition.
+    \begin{itemize}
+        \item Examples of conditions that can be changed are temperature, pressure, $\pH$, and $\pOH$.
+    \end{itemize}
+    \item \textbf{Temperature-jump relaxation technique}: A relaxation method in which the temperature of the equilibrium reaction mixture is suddenly changed at constant pressure.
+    \begin{itemize}
+        \item The change in temperature causes the chemical system to relax to a new equilibrium state that corresponds to the new temperature.
+        \item The rate constants for the forward and reverse reactions are related to the time required for the system to relax to its new equilibrium state.
+    \end{itemize}
+    \item "Experimentally, the temperature of a solution can be increased by about \SI{5}{\kelvin} in one microsecond by discharging a high-voltage capacitor through the reaction solution" \parencite[1067]{bib:McQuarrieSimon}.
+    \begin{itemize}
+        \item Since equilibrium constants depend exponentially on the inverse of the temperature ($\ln K_P=-\Delta_rG^\circ/RT$), such a perturbation can cause a large change in equilibrium conditions.
+    \end{itemize}
+    \item As per the Van't Hoff equation, the equilibrium concentration of \ce{B} increases following the temperature jump if $\Delta_rH^\circ$ is positive and decreases if $\Delta_rH^\circ$ is negative.
+    \begin{itemize}
+        \item If $\Delta_rH^\circ=0$, then a temperature-jump relaxation experiment will not yield any useful data.
+    \end{itemize}
+    \item Temperature-jump relaxation technique rate law derivation.
+    \begin{itemize}
+        \item Suppose the initial temperature is $T_1$ and we increase the temperature to $T_2$. Suppose furthermore that $\Delta_rH^\circ<0$ so that the concentration of \ce{B} decreases following the perturbation.
+        \item Let $[\ce{A}]_{1,\text{eq}},[\ce{B}]_{1,\text{eq}}$ be the equilibrium concentrations of \ce{A} and \ce{B}, respectively, at $T_1$. Let $[\ce{A}]_{2,\text{eq}},[\ce{B}]_{2,\text{eq}}$ be the equilibrium concentrations of \ce{A} and \ce{B}, respectively, at $T_2$. Let $k_1,k_{-1}$ be the rate constants of the forward and reverse reactions, respectively, at $T_2$. Let $[\ce{A}],[\ce{B}]$ be the concentrations of \ce{A} and \ce{B}, respectively, at some time $T$ after the temperature jump. Let $\Delta[\ce{A}],\Delta[\ce{B}]$ be the differences in the concentrations of \ce{A} and \ce{B}, respectively, from equilibrium at time $t$.
+        \item As before, we begin from the fact that
+        \begin{equation*}
+            \dv{[\ce{B}]}{t} = k_1[\ce{A}]-k_{-1}[\ce{B}]
+        \end{equation*}
+        \begin{itemize}
+            \item Notice how the sign convention follows from our hypothesis that $\Delta_rH^\circ<0$.
+        \end{itemize}
+        \item It follows by substituting
+        \begin{align*}
+            \Delta[\ce{A}] &= [\ce{A}]-[\ce{A}]_{2,\text{eq}}&
+            \Delta[\ce{B}] &= [\ce{B}]-[\ce{B}]_{2,\text{eq}}
+        \end{align*}
+        into the above that
+        \begin{align*}
+            \dv{t}([\ce{B}]_{2,\text{eq}}+\Delta[\ce{B}]) &= k_1([\ce{A}]_{2,\text{eq}}+\Delta[\ce{A}])-k_{-1}([\ce{B}]_{2,\text{eq}}+\Delta[\ce{B}])\\
+            \dv{\Delta[\ce{B}]}{t} &= k_1[\ce{A}]_{2,\text{eq}}+k_1\Delta[\ce{A}]-k_{-1}[\ce{B}]_{2,\text{eq}}-k_{-1}\Delta[\ce{B}]
+        \end{align*}
+        \item The fact that $k_1[\ce{A}]_{2,\text{eq}}=k_{-1}[\ce{B}]_{2,\text{eq}}$ gives us
+        \begin{equation*}
+            \dv{\Delta[\ce{B}]}{t} = k_1\Delta[\ce{A}]-k_{-1}\Delta[\ce{B}]
+        \end{equation*}
+        \item The fact that $\Delta[\ce{A}]+\Delta[\ce{B}]=0$ gives us
+        \begin{equation*}
+            \dv{\Delta[\ce{B}]}{t} = -(k_1+k_{-1})\Delta[\ce{B}]
+        \end{equation*}
+        \item If $\Delta[\ce{B}]_0=[\ce{B}]_{1,\text{eq}}-[\ce{B}]_{2,\text{eq}}$, then it follows by integration that
+        \begin{align*}
+            \int_{\Delta[\ce{B}]_0}^{\Delta[\ce{B}]}\frac{\dd{\Delta[\ce{B}]}}{\Delta[\ce{B}]} &= \int_0^t-(k_1+k_{-1})\dd{t}\\
+            \Delta[\ce{B}] &= \Delta[\ce{B}]_0\e[-(k_1+k_{-1})t]
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Relaxation time}: The reciprocal of the sum of the forward and reverse rate constants. \emph{Denoted by} $\bm{\tau}$. \emph{Units} \textbf{s}. \emph{Given by}
+    \begin{equation*}
+        \tau = \frac{1}{k_1+k_{-1}}
+    \end{equation*}
+    \begin{itemize}
+        \item A measure of how long it takes for $\Delta[\ce{B}]$ to decay to $1/\e$ of its initial value.
+    \end{itemize}
+    \item Temperature-jump relaxation technique rate law derivation for
+    \begin{equation*}
+        \ce{A + B <=>[$k_1$][$k_{-1}$] P}
+    \end{equation*}
+    \begin{itemize}
+        \item We have that
+        \begin{equation*}
+            \dv{[\ce{P}]}{t} = k_1[\ce{A}][\ce{B}]-k_{-1}[\ce{P}]
+        \end{equation*}
+        \item If we define $\Delta[\ce{P}]$ and the related relevant terms as in the above derivation, then we get
+        \begin{align*}
+            \dv{t}([\ce{P}]_{2,\text{eq}}+\Delta[\ce{P}]) &= k_1([\ce{A}]_{2,\text{eq}}+\Delta[\ce{A}])([\ce{B}]_{2,\text{eq}}+\Delta[\ce{B}])-k_{-1}([\ce{P}]_{2,\text{eq}}+\Delta[\ce{P}])\\
+            \dv{\Delta[\ce{P}]}{t} &= k_1([\ce{A}]_{2,\text{eq}}[\ce{B}]_{2,\text{eq}}+[\ce{A}]_{2,\text{eq}}\Delta[\ce{B}]+\Delta[\ce{A}][\ce{B}]_{2,\text{eq}}+\Delta[\ce{A}]\Delta[\ce{B}])-k_{-1}([\ce{P}]_{2,\text{eq}}+\Delta[\ce{P}])\\
+            &= k_1([\ce{A}]_{2,\text{eq}}\Delta[\ce{B}]+\Delta[\ce{A}][\ce{B}]_{2,\text{eq}}+\Delta[\ce{A}]\Delta[\ce{B}])-k_{-1}\Delta[\ce{P}]\\
+            &= k_1(-[\ce{A}]_{2,\text{eq}}\Delta[\ce{P}]-\Delta[\ce{P}][\ce{B}]_{2,\text{eq}}+\Delta[\ce{P}]^2)-k_{-1}\Delta[\ce{P}]\\
+            &= -[k_1([\ce{A}]_{2,\text{eq}}+[\ce{B}]_{2,\text{eq}})+k_{-1}]\Delta[\ce{P}]+\text{O}(\Delta[\ce{P}]^2)\\
+            \Delta[\ce{P}] &\approx \Delta[\ce{P}]_0\e[-t/\tau]
+        \end{align*}
+        where
+        \begin{equation*}
+            \tau = \frac{1}{k_1([\ce{A}]_{2,\text{eq}}+[\ce{B}]_{2,\text{eq}})+k_{-1}}
+        \end{equation*}
+    \end{itemize}
+    \item Water dissociation, as per
+    \begin{equation*}
+        \ce{H+(aq) + OH-(aq) <=>[$k_1$][$k_{-1}$] H2O(l)}
+    \end{equation*}
+    \begin{itemize}
+        \item Time-dependent conductivity measurements following a temperature jump in water paired with the known equilibrium constant and the above derivation revealed a relaxation time that corresponds to one of the fastest second-order rate constants ever measured.
+    \end{itemize}
+    \item Common temperature dependencies of chemical reactions.
+    \begin{itemize}
+        \item As the temperature increases, the rate of reaction increases exponentially.
+        \item The temperature dependence is exponential until a threshold temperature, and then increases extremely rapidly (i.e., the substance becomes explosive).
+        \item The temperature dependence increases up until a threshold temperature, and then falls off rapidly (i.e., an enzyme-controlled reaction where the enzyme denatures at a certain temperature).
+    \end{itemize}
+    \item In the first case (the most common), the temperature dependence of the rate constant is described approximately by the empirical equation
+    \begin{equation*}
+        \dv{\ln k}{T} = \frac{E_a}{RT^2}
+    \end{equation*}
+    \item Integrating yields the \textbf{Arrhenius equation}.
+    \item \textbf{Arrhenius equation}: The following equation. \emph{Given by}
+    \begin{equation*}
+        k = A\e[-E_a/RT]
+    \end{equation*}
+    \item \textbf{Pre-exponential factor}: The constant $A$ in the Arrhenius equation. \emph{Denoted by} $\bm{A}$.
+    \item \textbf{Activation energy}: The constant $E_a$ in the Arrhenius equation. \emph{Denoted by} $\bm{E_a}$.
+    \item The magnitude of the temperature effect on reaction rates is much too large to be explained in terms of only a change in the translational energy of the reactions. Thus, a chemical reaction require more than just a collision between reactants.
+    \item \textbf{Reaction coordinate}: The unit along which a chemical reaction proceeds from reactant to product.
+    \begin{itemize}
+        \item "Generally multidimensional, representing the bond lengths and bond angles associated with the chemical process" in question \parencite[1073]{bib:McQuarrieSimon}.
+        \item A simple example, though, is that the \ce{I-I} bond length serves as the reaction coordinate for the thermal dissociation of \ce{I2}.
+    \end{itemize}
+    \item The Arrhenius equation is imperfect, and many reactions obey equations of the form
+    \begin{equation*}
+        k = aT^m\e[-E'/RT]
+    \end{equation*}
+    where $a$, $E'$, and $m$ are temperature-independent constants.
+    \begin{itemize}
+        \item Note that
+        \begin{align*}
+            E_a &= E'+mRT&
+            A &= aT^m\e[m]
+        \end{align*}
+    \end{itemize}
 \end{itemize}
 
 
