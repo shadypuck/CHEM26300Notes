@@ -15,8 +15,39 @@
 \begin{enumerate}[label={\textbf{27-\arabic*.}},leftmargin=3.5em]
     \setcounter{enumi}{41}
     \item \marginnote{4/18:}Calculate the pressures at which the mean free path of a hydrogen molecule will be \SI{100}{\micro\meter}, \SI{1.00}{\milli\meter}, and \SI{1.00}{\meter} at \SI{20}{\celsius}.
+    \begin{proof}[Answer]
+        For a hydrogen molecule, we have $\sigma=\SI{2.30e-19}{\meter\squared}$. This combined with $T=\SI{293}{\kelvin}$, $R=\SI{8.31}{\joule\per\mole\per\kelvin}$, and the various values of $l$ yields
+        \begin{empheq}[box=\fbox]{align*}
+            P(\SI{100}{\micro\meter}) &= \SI{124}{\pascal}\\
+            P(\SI{1.00}{\milli\meter}) &= \SI{12.4}{\pascal}\\
+            P(\SI{1.00}{\meter}) &= \SI{0.0124}{\pascal}
+        \end{empheq}
+    \end{proof}
     \stepcounter{enumi}
     \item Calculate the frequency of nitrogen-oxygen collisions per \si{\cubic\deci\meter} in air at the conditions given in Problem 27-40. Assume in this case that 80\% of the molecules are nitrogen molecules.
+    \begin{proof}[Answer]
+        We have that
+        \begin{align*}
+            Z_{\ce{N2}\ce{O2}} &= \sigma_{\ce{N2}\ce{O2}}\prb{u_r}\rho_{\ce{N2}}\rho_{\ce{O2}}\\
+            &= \pi\left( \frac{d_{\ce{N2}}+d_{\ce{O2}}}{2} \right)^2\cdot\left( \frac{8\kB T}{\pi\mu} \right)^{1/2}\cdot\frac{P_{\ce{N2}}\NA}{RT}\cdot\frac{P_{\ce{O2}}\NA}{RT}\\
+            &= \pi(0.8P)(0.2P)\left[ \frac{\NA(d_{\ce{N2}}+d_{\ce{O2}})}{RT} \right]^2\cdot\left[ \frac{\kB T(m_{\ce{N2}}+m_{\ce{O2}})}{2\pi m_{\ce{N2}}m_{\ce{O2}}} \right]^{1/2}\\
+            &= \left[ 0.4P\NA(d_{\ce{N2}}+d_{\ce{O2}}) \right]^2\left[ \frac{\pi(M_{\ce{N2}}+M_{\ce{O2}})}{2M_{\ce{N2}}M_{\ce{O2}}(RT)^3} \right]^{1/2}
+        \end{align*}
+        Thus, plugging in
+        \begin{align*}
+            d_{\ce{N2}} &= \SI{3.80e-10}{\meter}&
+                d_{\ce{O2}} &= \SI{3.60e-10}{\meter}\\
+            M_{\ce{N2}} &= \SI{0.02802}{\kilo\gram\per\mole}&
+                M_{\ce{O2}} &= \SI{0.03200}{\kilo\gram\per\mole}
+        \end{align*}
+        as well as $R=\SI{8.31}{\joule\per\mole\per\kelvin}$ and the various values of $P$ and $T$ from Problem 27-40 in Pascals and Kelvins, respectively, we have that
+        \begin{empheq}[box=\fbox]{align*}
+            Z_{\ce{N2}\ce{O2}}(\SI{20.0}{\kilo\meter}) &= \SI{1.31e32}{\per\second\per\cubic\meter}\\
+            Z_{\ce{N2}\ce{O2}}(\SI{40.0}{\kilo\meter}) &= \SI{3.32e29}{\per\second\per\cubic\meter}\\
+            Z_{\ce{N2}\ce{O2}}(\SI{60.0}{\kilo\meter}) &= \SI{2.54e27}{\per\second\per\cubic\meter}\\
+            Z_{\ce{N2}\ce{O2}}(\SI{80.0}{\kilo\meter}) &= \SI{9.51e24}{\per\second\per\cubic\meter}
+        \end{empheq}
+    \end{proof}
     \setcounter{enumi}{48}
     \item The following equation gives us the frequency of collisions that the molecules of a gas make with a surface area of the walls of the container.
     \begin{equation*}
@@ -26,9 +57,34 @@
     Suppose now that we make a very small hole in the wall. If the mean free path of the gas is much larger than the width of the hole, any molecule that strikes the hole will leave the container without undergoing any collisions along the way. In this case, the molecules leave the container individually, independent of the others. The rate of flow through the hole will be small enough that the remaining gas is unaffected, and remains essentially in equilibrium. This process is called \textbf{molecular effusion}. The above equation can be applied to calculate the rate of molecular effusion. Show that the above equation can be expressed as
     \begin{equation}
         \text{effusion flux} = \frac{P}{\sqrt{2\pi m\kB T}}
-        = \frac{P\sqrt{\NA}}{\sqrt{2\pi MRT}}
+        = \frac{P\NA}{\sqrt{2\pi MRT}}
     \end{equation}
     where $P$ is the pressure of the gas. Calculate the number of nitrogen molecules that effuse per second through a round hole of \SI{0.010}{\milli\meter} diameter if the gas is at \SI{25}{\celsius} and one bar.
+    \begin{proof}[Answer]
+        There are
+        \begin{equation*}
+            \frac{\rho\prb{u}}{4} = \frac{P\NA}{4RT}\cdot\left( \frac{8RT}{\pi M} \right)^{1/2}
+            = \frac{P\NA}{\sqrt{2\pi MRT}}
+        \end{equation*}
+        collisions per second per unit area. But since flux is current (i.e., number of would-be collisions) per unit area, the above gives the effusion flux, as desired.\par
+        As to the second part of the question, we have from the original equation that
+        \begin{align*}
+            \dv{N_\text{coll}}{t} &= \frac{P\NA A}{\sqrt{2\pi MRT}}\\
+            \dv{N}{t} &= \frac{P\NA A}{\sqrt{2\pi MRT}}
+        \end{align*}
+        where $\dv*{N}{t}$ denotes the number of molecules that effuse through a hole of size $A=\pi(d/2)^2$ per second. Thus, plugging in
+        \begin{align*}
+            P &= \SI{e5}{\pascal}&
+            d &= \SI{e-5}{\meter}&
+            M &= \SI{0.02802}{\kilo\gram\per\mole}&
+            R &= \SI{8.31}{\joule\per\mole\per\kelvin}&
+            T &= \SI{298}{\celsius}
+        \end{align*}
+        we have that
+        \begin{equation*}
+            \boxed{N = \SI{2.26e17}{\per\second}}
+        \end{equation*}
+    \end{proof}
     \setcounter{enumi}{51}
     \item We can use Equation 1 of Problem 25-49 to derive an expression for the pressure as a function of time for an ideal gas that is effusing from its container. First, show that
     \begin{equation*}
@@ -45,6 +101,25 @@
         P(t) = P(0)\e[-\alpha t]
     \end{equation*}
     where $\alpha=A\sqrt{\kB T/2\pi m}/V$. Note that the pressure of the gas decreases exponentially with time.
+    \begin{proof}[Answer]
+        As per the second part of Problem 27-49, we have
+        \begin{equation*}
+            \dv{N}{t} = \frac{P\NA A}{\sqrt{2\pi MRT}}
+            = \frac{PA}{\sqrt{2\pi m\kB T}}
+        \end{equation*}
+        as desired.\par
+        If we redefine $N$ as the number of molecules in the container (i.e., so that $\dd{N}\to -\dd{N}$), then it follows that
+        \begin{align*}
+            \dv{P}{t} &= -\frac{\kB T}{V}\dv{N}{t}\\
+            &= -\frac{\kB T}{V}\frac{P\NA A}{\sqrt{2\pi MRT}}\\
+            &= -\frac{A}{V}\sqrt{\frac{\kB T}{2\pi m}}P\\
+            &= -\alpha P\\
+            \int_{P(0)}^{P(t)}\frac{\dd{P}}{P} &= \int_0^t-\alpha\dd{t}\\
+            \ln\frac{P(t)}{P(0)} &= \e[-\alpha t]\\
+            P(t) &= P(0)\e[-\alpha t]
+        \end{align*}
+        as desired.
+    \end{proof}
 \end{enumerate}
 
 
@@ -53,6 +128,18 @@
 \begin{enumerate}[label={\textbf{28-\arabic*.}},leftmargin=3.5em]
     \setcounter{enumi}{6}
     \item Derive the integrated rate law for a reaction that is zero order in reactant concentration.
+    \begin{proof}[Answer]
+        If the reaction is zero order in reactant concentration, then the (differential) rate law is of the form
+        \begin{align*}
+            v(t) &= k[\ce{A}]^0[\ce{B}]^0\cdots\\
+            -\dv{[\ce{A}]}{t} &= k
+        \end{align*}
+        We may integrate the above from the initial concentration $[\ce{A}]_0$ at time $t=0$ to the current concentration $[\ce{A}]$ at time $t$ as follows.
+        \begin{align*}
+            \int_{[\ce{A}]_0}^{[\ce{A}]}\dd{[\ce{A}]} &= \int_0^t-k\dd{t}\\
+            \Aboxed{[\ce{A}] &= -kt+[\ce{A}]_0}
+        \end{align*}
+    \end{proof}
     \setcounter{enumi}{9}
     \item Consider the reaction described by
     \begin{equation*}
@@ -72,6 +159,30 @@
         \end{tabular}
     \end{center}
     Determine the rate law for the reaction and the rate constant at \SI{298.15}{\kelvin}. Assume the orders are integers.
+    \begin{proof}[Answer]
+        Let the four trials in the above table be labeled 1 through 4 going down. No two trials have the same measured initial concentration in either reactant, but trials 1 and 3 have fairly close values of $[\ce{SCN-}]_0$, so we will approximate these as having the same value of $[\ce{SCN-}]_0$. Under this assumption, the method of initial rates gives us
+        \begin{equation*}
+            m_{\ce{Cr(H2O)6^3+}} = \frac{\ln(v_1/v_3)}{\ln([\ce{Cr(H2O)6^3+}]_1/[\ce{Cr(H2O)6^3+}]_3)}
+            = 0.917
+            \approx 1
+        \end{equation*}
+        Having established this, we can use trials 1 and 4 to determine $m_{\ce{SCN-}}$ as follows.
+        \begin{align*}
+            \frac{v_1}{v_4} &= \frac{k[\ce{Cr(H2O)6^3+}]_1^1[\ce{SCN-}]_1^{m_{\ce{SCN-}}}}{k[\ce{Cr(H2O)6^3+}]_4^1[\ce{SCN-}]_4^{m_{\ce{SCN-}}}}\\
+            \frac{v_1[\ce{Cr(H2O)6^3+}]_4}{v_4[\ce{Cr(H2O)6^3+}]_1} &= \left( \frac{[\ce{SCN-}]_1}{[\ce{SCN-}]_4} \right)^{m_{\ce{SCN-}}}\\
+            m_{\ce{SCN-}} &= \frac{\ln\left( \frac{v_1[\ce{Cr(H2O)6^3+}]_4}{v_4[\ce{Cr(H2O)6^3+}]_1} \right)}{\ln\left( \frac{[\ce{SCN-}]_1}{[\ce{SCN-}]_4} \right)}
+                = 0.999
+                \approx 1
+        \end{align*}
+        It follows that the differential rate law for the reaction is of the form
+        \begin{equation*}
+            -\dv{[\ce{Cr(H2O)6^3+}]}{t} = -\dv{[\ce{SCN-}]}{t} = k[\ce{Cr(H2O)6^3+}][\ce{SCN-}]
+        \end{equation*}
+        Thus, we can determine $k$ by performing a linear regression on a plot of $-v_0$ vs. $[\ce{Cr(H2O)6^3+}][\ce{SCN-}]$. Indeed, running such a regression gives us the final rate law
+        \begin{equation*}
+            \boxed{v = \num{1.66e-2}[\ce{Cr(H2O)6^3+}][\ce{SCN-}]}
+        \end{equation*}
+    \end{proof}
     \item Consider the base-catalyzed reaction
     \begin{equation*}
         \ce{OCl-(aq) + I-(aq) -> OI-(aq) + Cl-(aq)}
@@ -89,6 +200,24 @@
             \num{1.62e-3} & \num{2.88e-3} & \num{0.91} & \num{3.11e-4}\\
         \end{tabular}
     \end{center}
+    \begin{proof}[Answer]
+        Let the four trials in the above table be labeled 1 through 4 going down. By a direct application of the method of initial rates,
+        \begin{align*}
+            m_{\ce{I-}} &= \frac{\ln(v_1/v_2)}{\ln([\ce{I-}]_1/[\ce{I-}]_2)}
+                = 1\\
+            m_{\ce{OH-}} &= \frac{\ln(v_2/v_4)}{\ln([\ce{OH-}]_2/[\ce{OH-}]_4)}
+                = -0.999 \approx -1
+        \end{align*}
+        Adapting the technique from Problem 28-10 developed for $m_{\ce{SCN-}}$, we have that
+        \begin{equation*}
+            m_{\ce{OCl-}} = \frac{\ln\left( \frac{v_1[\ce{OH-}]_1}{v_3[\ce{OH-}]_3} \right)}{\ln\left( \frac{[\ce{OCl-}]_1}{[\ce{OCl-}]_3} \right)}
+                = 0.995 \approx 1
+        \end{equation*}
+        Thus, taking another linear regression inspired by the technique of Problem 28-10, we have that the final rate law is
+        \begin{equation*}
+            \boxed{v = 60.7\frac{[\ce{OCl-}][\ce{I-}]}{[\ce{OH-}]}}
+        \end{equation*}
+    \end{proof}
     \setcounter{enumi}{16}
     \item Show that if \ce{A} reacts to form either \ce{B} or \ce{C} according to
     \begin{align*}
@@ -104,6 +233,64 @@
         t_{1/2} = \frac{0.693}{k_1+k_2}
     \end{equation*}
     Show that $[\ce{B}]/[\ce{C}]=k_1/k_2$ for all times $t$. For the set of initial conditions $[\ce{A}]=[\ce{A}]_0$, $[\ce{B}]_0=[\ce{C}]_0=0$, and $k_2=4k_1$, plot $[\ce{A}]$, $[\ce{B}]$, and $[\ce{C}]$ as a function of time on the same graph.
+    \begin{proof}[Answer]
+        For this setup, the differential rate law is
+        \begin{equation*}
+            -\dv{[\ce{A}]}{t} = k_1[\ce{A}]+k_2[\ce{A}]
+        \end{equation*}
+        It follows by integrating as in Problem 28-7 that
+        \begin{equation*}
+            [\ce{A}] = [\ce{A}]_0\e[-(k_1+k_2)t]
+        \end{equation*}\par
+        Moving on, the half-life is defined by the following equation, which we can algebraically manipulate into the desired expression.
+        \begin{align*}
+            [\ce{A}]_0/2 &= [\ce{A}]_0\e[-(k_1+k_2)t_{1/2}]\\
+            1/2 &= \e[-(k_1+k_2)t_{1/2}]\\
+            t_{1/2} &= -\frac{\ln(1/2)}{k_1+k_2}\\
+            &\approx \frac{0.693}{k_1+k_2}
+        \end{align*}\par
+        Moving on again, we know that
+        \begin{align*}
+            \dv{[\ce{B}]}{t} &= k_1[\ce{A}]&
+                \dv{[\ce{C}]}{t} &= k_2[\ce{A}]\\
+            \dv{[\ce{B}]}{t} &= k_1[\ce{A}]_0\e[-(k_1+k_2)t]&
+                \dv{[\ce{C}]}{t} &= k_2[\ce{A}]_0\e[-(k_1+k_2)t]\\
+            \int_0^{[\ce{B}]}\dd{[\ce{B}]} &= \int_0^tk_1[\ce{A}]_0\e[-(k_1+k_2)t]\dd{t}&
+                \int_0^{[\ce{C}]}\dd{[\ce{C}]} &= \int_0^tk_2[\ce{A}]_0\e[-(k_1+k_2)t]\dd{t}\\
+            [\ce{B}] &= \frac{k_1}{k_1+k_2}[\ce{A}]_0\left( 1-\e[-(k_1+k_2)t] \right)&
+                [\ce{C}] &= \frac{k_2}{k_1+k_2}[\ce{A}]_0\left( 1-\e[-(k_1+k_2)t] \right)
+        \end{align*}
+        Thus,
+        \begin{equation*}
+            \frac{[\ce{B}]}{[\ce{C}]} = \frac{\frac{k_1}{k_1+k_2}[\ce{A}]_0\left( 1-\e[-(k_1+k_2)t] \right)}{\frac{k_2}{k_1+k_2}[\ce{A}]_0\left( 1-\e[-(k_1+k_2)t] \right)}
+            = \frac{k_1}{k_2}
+        \end{equation*}
+        for all $t$, as desired.\par
+        For the last request, we have the following.
+        \begin{center}
+            \begin{tikzpicture}[
+                scale=2,
+                every node/.style={black}
+            ]
+                \small
+                \draw [stealth-stealth] (0,1.5) -- node[rotate=90,above=7mm]{$\text{Conc.}/[\ce{A}]_0$} (0,0) -- node[below=2mm]{$t$} (3.25,0);
+        
+                \footnotesize
+                \node [left] at (-0.05,0) {$0.0$};
+                \foreach \y in {0.2,0.4,0.6,0.8,1.0} {
+                    \draw (0.05,\y) -- ++(-0.1,0) node[left]{$\y$};
+                }
+        
+                \draw [rex,thick] plot[domain=0:3.2,smooth] (\x,{e^(-2*\x)});
+                \draw [blx,thick] plot[domain=0:3.2,smooth] (\x,{0.2*(1-e^(-2*\x))});
+                \draw [grx,thick] plot[domain=0:3.2,smooth] (\x,{0.8*(1-e^(-2*\x))});
+        
+                \node at (2.9,1.4) {${\color{grx}\blacksquare}=[\ce{C}]$};
+                \node at (2.9,1.2) {${\color{blx}\blacksquare}=[\ce{B}]$};
+                \node at (2.9,1.0) {${\color{rex}\blacksquare}=[\ce{A}]$};
+            \end{tikzpicture}
+        \end{center}
+    \end{proof}
     \setcounter{enumi}{23}
     \item In this problem, we will derive the left equation below from the right equation below.
     \begin{align*}
@@ -115,6 +302,28 @@
         -\dv{[\ce{A}]}{t} = k[\ce{A}]([\ce{B}]_0-[\ce{A}]_0+[\ce{A}])
     \end{equation*}
     Now separate the variables and then integrate the resulting equation subject to its initial conditions to obtain the desired result, the integrated equation on the left above.
+    \begin{proof}[Answer]
+        As per the given chemical equation, every unit of \ce{A} consumed necessitates that a corresponding unit of \ce{B} is consumed and vice versa. Mathematically,
+        \begin{align*}
+            \Delta[\ce{B}] &= \Delta[\ce{A}]\\
+            [\ce{B}]-[\ce{B}]_0 &= [\ce{A}]-[\ce{A}]_0\\
+            [\ce{B}] &= [\ce{B}]_0-[\ce{A}]_0+[\ce{A}]
+        \end{align*}
+        It follows by direct substitution that
+        \begin{equation*}
+            -\dv{[\ce{A}]}{t} = k[\ce{A}]([\ce{B}]_0-[\ce{A}]_0+[\ce{A}])
+        \end{equation*}
+        Integrating yields
+        \begin{align*}
+            -\dv{[\ce{A}]}{t} &= k[\ce{A}]([\ce{B}]_0-[\ce{A}]_0+[\ce{A}])\\
+            \int_0^tk\dd{t} &= -\int_{[\ce{A}]_0}^{[\ce{A}]}\frac{\dd{[\ce{A}]}}{[\ce{A}]([\ce{B}]_0-[\ce{A}]_0+[\ce{A}])}\\
+            &= -\frac{1}{[\ce{B}]_0-[\ce{A}]_0}\int_{[\ce{A}]_0}^{[\ce{A}]}\left( \frac{\dd{[\ce{A}]}}{[\ce{A}]}-\frac{\dd{[\ce{A}]}}{[\ce{B}]_0-[\ce{A}]_0+[\ce{A}]} \right)\\
+            kt &= \frac{1}{[\ce{A}]_0-[\ce{B}]_0}\left( \ln\frac{[\ce{A}]}{[\ce{A}]_0}-\ln\frac{[\ce{B}]_0-[\ce{A}]_0+[\ce{A}]}{[\ce{B}]_0-[\ce{A}]_0+[\ce{A}]_0} \right)\\
+            &= \frac{1}{[\ce{A}]_0-[\ce{B}]_0}\left( \ln\frac{[\ce{A}]}{[\ce{A}]_0}-\ln\frac{[\ce{B}]}{[\ce{B}]_0} \right)\\
+            &= \frac{1}{[\ce{A}]_0-[\ce{B}]_0}\ln\frac{[\ce{A}][\ce{B}]_0}{[\ce{B}][\ce{A}]_0}
+        \end{align*}
+        as desired, where we have used the method of partial fractions to enable integration.
+    \end{proof}
     \item The equation
     \begin{equation*}
         kt = \frac{1}{[\ce{A}]_0-[\ce{B}]_0}\ln\frac{[\ce{A}][\ce{B}]_0}{[\ce{B}][\ce{A}]_0}
@@ -124,7 +333,23 @@
         \frac{1}{[\ce{A}]} &= \frac{1}{[\ce{A}]_0}+kt&
         \frac{1}{[\ce{B}]} &= \frac{1}{[\ce{B}]_0}+kt
     \end{align*}
-    (Hint: Let $[\ce{A}]=[\ce{B}]+x$ and $[A]_0=[B]_0+x$.)
+    (Hint: Let $[\ce{A}]=[\ce{B}]+x$ and $[\ce{A}]_0=[\ce{B}]_0+x$.)
+    \begin{proof}[Answer]
+        The hint is justified since $[\ce{A}]_0$ and $[\ce{B}]_0$ will be offset by some real number we may call $x$, and the difference between $[\ce{A}]$ and $[\ce{B}]$ at any time $t$ will naturally be the same in a reaction where both reactant coefficients are one. Taking the hint, we have
+        \begin{align*}
+            kt &= \frac{1}{[\ce{B}]_0+x-[\ce{B}]_0}\ln\frac{([\ce{B}]+x)[\ce{B}]_0}{[\ce{B}]([\ce{B}]_0+x)}\\
+            &= \frac{1}{x}\ln\frac{([\ce{B}]+x)[\ce{B}]_0}{[\ce{B}]([\ce{B}]_0+x)}\\
+            &= \frac{\ln([\ce{B}]+x)+\ln[\ce{B}]_0-\ln[\ce{B}]-\ln([\ce{B}]_0+x)}{x}
+        \end{align*}
+        Applying L'H\^{o}pital's rule, we have
+        \begin{align*}
+            kt &= \lim_{x\to 0}\frac{\ln([\ce{B}]+x)+\ln[\ce{B}]_0-\ln[\ce{B}]-\ln([\ce{B}]_0+x)}{x}\\
+            &= \lim_{x\to 0}\frac{\dv{x}(\ln([\ce{B}]+x)+\ln[\ce{B}]_0-\ln[\ce{B}]-\ln([\ce{B}]_0+x))}{\dv{x}(x)}\\
+            &= \lim_{x\to 0}\frac{\frac{1}{[\ce{B}]+x}-\frac{1}{[\ce{B}]_0+x}}{1}\\
+            &= \frac{1}{[\ce{B}]}-\frac{1}{[\ce{B}]_0}
+        \end{align*}
+        as desired.
+    \end{proof}
 \end{enumerate}
 
 
@@ -135,6 +360,9 @@
     \item You do not need to derive any equations in this short discussion. Use your intuition and focus on the big picture.
     \item Please cite the literature if you link the HW problem to anyone (author names, titles, journal name, volume numbers, and page numbers).
 \end{enumerate}
+\begin{proof}[Answer]
+    I would like to discuss and build upon Problem 28-25, which begins the process of intuitively rationalizing the rate law for a reaction that is first-order in each reactant and second-order overall. Another way that we can think about it is by noting that by their coefficients, the concentrations of \ce{A} and \ce{B} decrease by the same amount $x$ with each passing instant. We note that because of the structure of the fraction on the right-hand side of the equation, as $x\to[\ce{B}]$, the change in the denominator will begin to play an outsized role in determining the value of the fraction. This tempers the rate at which $[\ce{A}],[\ce{B}]$ can change, reflecting the fact that the change in concentration/reaction rate will slow down as one component or the other gets close to being exhausted. Another pattern we can observe is what happens to the rate if we double both initial concentrations. In this case, the fraction out front would change (assuming $[\ce{A}]_0\neq[\ce{B}]_0$), but the fraction within the logarithm would not. This reflects the fact that the initial rate would double, but the curve will be essentially the same, just stretched. Continuing on in such a manner, I believe I gain a better and better understanding for why this equation has such an at-first strange form.
+\end{proof}
 
 
 
