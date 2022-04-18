@@ -1,0 +1,142 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\stepcounter{section}
+
+\begin{document}
+
+
+
+
+\section{Kinetic Theory II / Rate Laws}
+\subsection*{Chapter 27}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{enumerate}[label={\textbf{27-\arabic*.}},leftmargin=3.5em]
+    \setcounter{enumi}{41}
+    \item \marginnote{4/18:}Calculate the pressures at which the mean free path of a hydrogen molecule will be \SI{100}{\micro\meter}, \SI{1.00}{\milli\meter}, and \SI{1.00}{\meter} at \SI{20}{\celsius}.
+    \stepcounter{enumi}
+    \item Calculate the frequency of nitrogen-oxygen collisions per \si{\cubic\deci\meter} in air at the conditions given in Problem 27-40. Assume in this case that 80\% of the molecules are nitrogen molecules.
+    \setcounter{enumi}{48}
+    \item The following equation gives us the frequency of collisions that the molecules of a gas make with a surface area of the walls of the container.
+    \begin{equation*}
+        z_\text{coll} = \frac{1}{A}\dv{N_\text{coll}}{t}
+        = \frac{\rho\prb{u}}{4}
+    \end{equation*}
+    Suppose now that we make a very small hole in the wall. If the mean free path of the gas is much larger than the width of the hole, any molecule that strikes the hole will leave the container without undergoing any collisions along the way. In this case, the molecules leave the container individually, independent of the others. The rate of flow through the hole will be small enough that the remaining gas is unaffected, and remains essentially in equilibrium. This process is called \textbf{molecular effusion}. The above equation can be applied to calculate the rate of molecular effusion. Show that the above equation can be expressed as
+    \begin{equation}
+        \text{effusion flux} = \frac{P}{\sqrt{2\pi m\kB T}}
+        = \frac{P\sqrt{\NA}}{\sqrt{2\pi MRT}}
+    \end{equation}
+    where $P$ is the pressure of the gas. Calculate the number of nitrogen molecules that effuse per second through a round hole of \SI{0.010}{\milli\meter} diameter if the gas is at \SI{25}{\celsius} and one bar.
+    \setcounter{enumi}{51}
+    \item We can use Equation 1 of Problem 25-49 to derive an expression for the pressure as a function of time for an ideal gas that is effusing from its container. First, show that
+    \begin{equation*}
+        \text{rate of effusion} = \dv{N}{t}
+        = \frac{PA}{\sqrt{2\pi m\kB T}}
+    \end{equation*}
+    where $N$ is the number of molecules effusing and $A$ is the area of the hole. At constant $T$ and $V$,
+    \begin{equation*}
+        \dv{N}{t} = \dv{t}\left( \frac{PV}{\kB T} \right)
+        = \frac{V}{\kB T}\dv{P}{t}
+    \end{equation*}
+    Now show that
+    \begin{equation*}
+        P(t) = P(0)\e[-\alpha t]
+    \end{equation*}
+    where $\alpha=A\sqrt{\kB T/2\pi m}/V$. Note that the pressure of the gas decreases exponentially with time.
+\end{enumerate}
+
+
+\subsection*{Chapter 28}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{enumerate}[label={\textbf{28-\arabic*.}},leftmargin=3.5em]
+    \setcounter{enumi}{6}
+    \item Derive the integrated rate law for a reaction that is zero order in reactant concentration.
+    \setcounter{enumi}{9}
+    \item Consider the reaction described by
+    \begin{equation*}
+        \ce{Cr(H2O)6^3+(aq) + SCN-(aq) -> Cr(H2O)5(SCN)^2+(aq) + H2O(l)}
+    \end{equation*}
+    for which the following initial rate data were obtained at \SI{298.15}{\kelvin}.
+    \begin{center}
+        \small
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{ccc}
+            $[\ce{Cr(H2O)6^3+}]_0$ (\si{\mole\per\cubic\deci\meter}) & $[\ce{SCN-}]_0$ (\si{\mole\per\cubic\deci\meter}) & $v_0$ (\si{\mole\per\cubic\deci\meter\per\second})\\
+            \hline
+            \num{1.21e-4} & \num{1.05e-5} & \num{2.11e-11}\\
+            \num{1.46e-4} & \num{2.28e-5} & \num{5.53e-11}\\
+            \num{1.66e-4} & \num{1.02e-5} & \num{2.82e-11}\\
+            \num{1.83e-4} & \num{3.11e-5} & \num{9.44e-11}\\
+        \end{tabular}
+    \end{center}
+    Determine the rate law for the reaction and the rate constant at \SI{298.15}{\kelvin}. Assume the orders are integers.
+    \item Consider the base-catalyzed reaction
+    \begin{equation*}
+        \ce{OCl-(aq) + I-(aq) -> OI-(aq) + Cl-(aq)}
+    \end{equation*}
+    Use the following initial-rate data to determine the rate law and the corresponding rate constant for the reaction.
+    \begin{center}
+        \small
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{cccc}
+            $[\ce{OCl-}]$ (\si{\mole\per\cubic\deci\meter}) & $[\ce{I-}]$ (\si{\mole\per\cubic\deci\meter}) & $[\ce{OH-}]$ (\si{\mole\per\cubic\deci\meter}) & $v_0$ (\si{\mole\per\cubic\deci\meter\per\second})\\
+            \hline
+            \num{1.62e-3} & \num{1.62e-3} & \num{0.52} & \num{3.06e-4}\\
+            \num{1.62e-3} & \num{2.88e-3} & \num{0.52} & \num{5.44e-4}\\
+            \num{2.71e-3} & \num{1.62e-3} & \num{0.84} & \num{3.16e-4}\\
+            \num{1.62e-3} & \num{2.88e-3} & \num{0.91} & \num{3.11e-4}\\
+        \end{tabular}
+    \end{center}
+    \setcounter{enumi}{16}
+    \item Show that if \ce{A} reacts to form either \ce{B} or \ce{C} according to
+    \begin{align*}
+        \ce{A ->[$k_1$] B}&&
+        \ce{A ->[$k_2$] C}
+    \end{align*}
+    then
+    \begin{equation*}
+        [\ce{A}] = [\ce{A}]_0\e[-(k_1+k_2)t]
+    \end{equation*}
+    Now show that $t_{1/2}$, the half-life of \ce{A}, is given by
+    \begin{equation*}
+        t_{1/2} = \frac{0.693}{k_1+k_2}
+    \end{equation*}
+    Show that $[\ce{B}]/[\ce{C}]=k_1/k_2$ for all times $t$. For the set of initial conditions $[\ce{A}]=[\ce{A}]_0$, $[\ce{B}]_0=[\ce{C}]_0=0$, and $k_2=4k_1$, plot $[\ce{A}]$, $[\ce{B}]$, and $[\ce{C}]$ as a function of time on the same graph.
+    \setcounter{enumi}{23}
+    \item In this problem, we will derive the left equation below from the right equation below.
+    \begin{align*}
+        kt &= \frac{1}{[\ce{A}]_0-[\ce{B}]_0}\ln\frac{[\ce{A}][\ce{B}]_0}{[\ce{B}][\ce{A}]_0}&
+        -\dv{[\ce{A}]}{t} &= k[\ce{A}][\ce{B}]
+    \end{align*}
+    Use the reaction stoichiometry of the chemical equation \ce{A + B -> products} to show that $[\ce{B}]=[\ce{B}]_0-[\ce{A}]_0+[\ce{A}]$. Use this result to show that the differential equation on the right above can be written as
+    \begin{equation*}
+        -\dv{[\ce{A}]}{t} = k[\ce{A}]([\ce{B}]_0-[\ce{A}]_0+[\ce{A}])
+    \end{equation*}
+    Now separate the variables and then integrate the resulting equation subject to its initial conditions to obtain the desired result, the integrated equation on the left above.
+    \item The equation
+    \begin{equation*}
+        kt = \frac{1}{[\ce{A}]_0-[\ce{B}]_0}\ln\frac{[\ce{A}][\ce{B}]_0}{[\ce{B}][\ce{A}]_0}
+    \end{equation*}
+    is indeterminate if $[\ce{A}]_0=[\ce{B}]_0$. Use L'H\^{o}pital's rule to show that the above equation reduces to one of the following equations when $[\ce{A}]_0=[\ce{B}]_0$.
+    \begin{align*}
+        \frac{1}{[\ce{A}]} &= \frac{1}{[\ce{A}]_0}+kt&
+        \frac{1}{[\ce{B}]} &= \frac{1}{[\ce{B}]_0}+kt
+    \end{align*}
+    (Hint: Let $[\ce{A}]=[\ce{B}]+x$ and $[A]_0=[B]_0+x$.)
+\end{enumerate}
+
+
+\subsection*{Application}
+\begin{enumerate}[label={\arabic*)}]
+    \item Name one HW problem you would like to develop into a thought experiment or relate to a literature article.
+    \item Describe how the idea or conclusion from the HW problem applies to the research idea in 1-2 paragraphs (word limit: 300). Once again, this can either be a thought experiment or an experiment found in the literature.
+    \item You do not need to derive any equations in this short discussion. Use your intuition and focus on the big picture.
+    \item Please cite the literature if you link the HW problem to anyone (author names, titles, journal name, volume numbers, and page numbers).
+\end{enumerate}
+
+
+
+
+\end{document}
