@@ -1,0 +1,89 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{28}
+
+\begin{document}
+
+
+
+
+\chapter{Reaction Mechanisms}
+\section{TST and Overview of Mechanisms}
+\begin{itemize}
+    \item \marginnote{4/18:}Overview of key concepts.
+    \begin{itemize}
+        \item Reaction mechanisms can involve more than one elementary step.
+        \item Reactions can be sequential (single- or multi-step).
+        \item To establish a mechanism, we use several techniques, approaches, assumptions, and approximations.
+        \item Establish rate determining steps: The rate law and rate constants associated with these steps tend to dominate the kinetics of the overall reaction.
+        \item Invoke the steady-state approximation to help solve the complicated mathematics of reaction kinetics.
+        \item Enzyme kinetics, Michaelis-Menten mechanism involves an SS approximation.
+    \end{itemize}
+    \item Oftentimes, reactions are of the form
+    \begin{align*}
+        \ce{E + S <=>[$k_1$][$k_{-1}$] ->[$k_r$] P + E}
+    \end{align*}
+    \begin{itemize}
+        \item Note that this form is very much analogous to the form analyzed in TST.
+    \end{itemize}
+    \item \textbf{Elementary reaction}: A reaction that does not involve the formation of a reaction intermediate; the products must be formed directly from the reactants.
+    \begin{itemize}
+        \item Denoted by the double arrow.
+        \item An elementary reaction can still be reversible.
+    \end{itemize}
+    \item \textbf{Molecularity} (of an elementary reaction): The number of reactant molecules involved in the chemical reaction.
+    \item \textbf{Unimolecular} (reaction): An elementary reaction with molecularity one. \emph{General form}
+    \begin{equation*}
+        \ce{A} \Longrightarrow \text{products}
+    \end{equation*}
+    \emph{Rate law}
+    \begin{equation*}
+        v = k[\ce{A}]
+    \end{equation*}
+    \item \textbf{Bimolecular} (reaction): An elementary reaction with molecularity two. \emph{General form}
+    \begin{equation*}
+        \ce{A}+\ce{B} \Longrightarrow \text{products}
+    \end{equation*}
+    \emph{Rate law}
+    \begin{equation*}
+        v = k[\ce{A}][\ce{B}]
+    \end{equation*}
+    \item \textbf{Termolecular} (reaction): An elementary reaction with molecularity three. \emph{General form}
+    \begin{equation*}
+        \ce{A}+\ce{B}+\ce{C} \Longrightarrow \text{products}
+    \end{equation*}
+    \emph{Rate law}
+    \begin{equation*}
+        v = k[\ce{A}][\ce{B}][\ce{C}]
+    \end{equation*}
+    \item No elementary reaction with molecularity greater than three is known, and the overwhelming majority of elementary reactions are bimolecular.
+    \item When a complex reaction is at equilibrium, the rate of the forward process is equal to the rate of the reverse process for each and every step of the reaction mechanism.
+    \begin{itemize}
+        \item We denote a reversible elementary reaction as follows.
+        \begin{equation*}
+            \ce{A + B} \Longleftrightarrows[k_1][k_{-1}] \ce{C + D}
+        \end{equation*}
+        \item A reversible elementary reaction signifies that the reaction occurs in both the forward and reverse directions to a significant extent and that the reaction in each direction is an elementary reaction.
+        \item The rate laws are
+        \begin{align*}
+            v_1 &= k_1[\ce{A}][\ce{B}]&
+            v_{-1} &= k_{-1}[\ce{C}][\ce{D}]
+        \end{align*}
+        \item At equilibrium,
+        \begin{align*}
+            k_1[\ce{A}]_\text{eq}[\ce{B}]_\text{eq} &= k_{-1}[\ce{C}]_\text{eq}[\ce{D}]_\text{eq}\\
+            \frac{k_1}{k_{-1}} &= \frac{[\ce{C}]_\text{eq}[\ce{D}]_\text{eq}}{[\ce{A}]_\text{eq}[\ce{B}]_\text{eq}} = K_c
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Principle of detailed balance}: The following relationship, which holds for all reversible elementary reactions. \emph{Given by}
+    \begin{equation*}
+        K_c = \frac{k_1}{k_{-1}}
+    \end{equation*}
+\end{itemize}
+
+
+
+
+\end{document}

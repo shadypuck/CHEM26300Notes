@@ -8,6 +8,7 @@
 \usepackage{siunitx}
 \usepackage[style=apa]{biblatex}
 \usepackage{booktabs}
+\usepackage{xparse}
 \usepackage{subcaption,float}
 \usepackage{tikz}
 \usepackage{amsmath,amssymb,amsthm}
@@ -60,5 +61,11 @@
 
 \newcommand{\e}[1][]{\text{e}^{#1}}
 \newcommand{\prb}[1]{\left\langle{#1}\right\rangle}
+\NewDocumentCommand{\Longleftrightarrows}{O{}O{}}{\tikz[baseline=-1mm]{
+    \node at (0,0.4) {\small${#1}$};
+    \node at (0,0.1) {$\Longrightarrow$};
+    \node at (0,-0.1) {$\Longleftarrow$};
+    \node at (0,-0.4) {\small${#2}$};
+}}
 
 \usepackage{subfiles}
