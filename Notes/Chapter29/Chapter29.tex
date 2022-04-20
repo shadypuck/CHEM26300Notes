@@ -85,5 +85,99 @@
 
 
 
+\section{The Two-Step Consecutive Reaction Mechanism}
+\begin{itemize}
+    \item \marginnote{4/20:}Consider the general complex reaction
+    \begin{equation*}
+        \ce{A ->[$k_\text{obs}$] P}
+    \end{equation*}
+    \begin{itemize}
+        \item Suppose that the reaction occurs by the two step mechanism
+        \begin{align*}
+            \ce{A} &\stackrel{k_1}{\Longrightarrow} \ce{I}&
+            \ce{I} &\stackrel{k_2}{\Longrightarrow} \ce{P}
+        \end{align*}
+        \item Because each step of this mechanism is an elementary reaction, the rate laws for each species are
+        \begin{align*}
+            \dv{[\ce{A}]}{t} &= -k_1[\ce{A}]&
+            \dv{[\ce{I}]}{t} &= k_1[\ce{A}]-k_2[\ce{I}]&
+            \dv{[\ce{P}]}{t} &= k_2[\ce{I}]
+        \end{align*}
+        \item Thus, assuming that the initial concentrations at time $t=0$ are $[\ce{A}]=[\ce{A}]_0$ and $[\ce{I}]_0=[\ce{P}]_0=0$, we have that
+        \begin{gather*}
+            [\ce{A}] = [\ce{A}]_0\e[-k_1t]\\
+            [\ce{I}] = \frac{k_1[\ce{A}]_0}{k_2-k_1}(\e[-k_1t]-\e[-k_2t])\\
+            [\ce{P}] = [\ce{A}]_0-[\ce{A}]-[\ce{I}]
+                = [\ce{A}]_0\left\{ 1+\frac{1}{k_1-k_2}(k_2\e[-k_1t]-k_1\e[-k_2t]) \right\}
+        \end{gather*}
+    \end{itemize}
+    \item Distinguishing the two-step consecutive reaction mechanism unambiguously from the one-step reaction.
+    \begin{itemize}
+        \item For a single step reaction,
+        \begin{equation*}
+            [\ce{P}] = [\ce{A}]_0(1-\e[-k_1t])
+        \end{equation*}
+        \item The two-step consecutive reaction mechanism has the following alternate form.
+        \begin{equation*}
+            [\ce{P}] = [\ce{A}]_0\left\{ 1+\frac{1}{k_1-k_2}(k_2\e[-k_1t]-k_1\e[-k_2t]) \right\}
+        \end{equation*}
+        \item However, if $k_2\gg k_1$, then
+        \begin{align*}
+            [\ce{P}] &= [\ce{A}]_0\left\{ 1+\frac{1}{k_1-k_2}(k_2\e[-k_1t]-k_1\e[-k_2t]) \right\}\\
+            &\approx [\ce{A}]_0\left\{ 1+\frac{1}{-k_2}k_2\e[-k_1t] \right\}\\
+            &= [\ce{A}]_0(1-\e[-k_1t])
+        \end{align*}
+        \item If $k_1\gg k_2$, he reaction reduces to
+        \begin{equation*}
+            [\ce{P}] \approx [\ce{A}]_0(1-\e[-k_2t])
+        \end{equation*}
+        \item Thus, the only ambiguous situation is $k_2\gg k_1$.
+    \end{itemize}
+    \item The steady-state approximation simplifies rate expressions.
+    \begin{itemize}
+        \item We assume that $\dv*{[\ce{I}]}{t}=0$, where \ce{I} is a reaction intermediate.
+        \item Given the above differential equation for $\dv*{[\ce{I}]}{t}$, making the above assumption yields
+        \begin{equation*}
+            [\ce{I}]_\text{SS} = \frac{k_1[\ce{A}]}{k_2}
+        \end{equation*}
+        \item It follows that
+        \begin{equation*}
+            [\ce{I}]_\text{SS} = \frac{k_1}{k_2}[\ce{A}]_0\e[-k_1t]
+        \end{equation*}
+        \item Thus,
+        \begin{equation*}
+            \dv{[\ce{I}]_\text{SS}}{t} = \frac{-k_1^2}{k_2}[\ce{A}]_0\e[-k_1t]
+        \end{equation*}
+        \item We get $k_2\gg k_1^2[\ce{A}]_0$ and $[\ce{P}]=[\ce{A}]_0(1-\e[-k_1t])$.
+    \end{itemize}
+    \item Example: Decomposition of ozone.
+    \begin{equation*}
+        \ce{2O3(g) -> 3O2(g)}
+    \end{equation*}
+    \begin{itemize}
+        \item The reaction mechanism is
+        \begin{align*}
+            \ce{M(g) + O3(g)} &\Longleftrightarrows[k_1][k_{-1}] \ce{O2(g) + O(g) + M(g)}\\
+            \ce{O(g) + O3(g)} &\xRightarrow{k_2} \ce{2O2(g)}
+        \end{align*}
+        where \ce{M} is a molecule that can exchange energy with the reacting ozone molecule through a collision, but \ce{M} itself does not react.
+        \item The rate equations for \ce{O3(g)} and \ce{O(g)} are
+        \begin{gather*}
+            \dv{[\ce{O3}]}{t} = -k_1[\ce{O3}][\ce{M}]+k_{-1}[\ce{O2}][\ce{O}][\ce{M}]-k_2[\ce{O}][\ce{O3}]\\
+            \dv{[\ce{O}]}{t} = k_1[\ce{O3}][\ce{M}]-k_{-1}[\ce{O2}][\ce{O}][\ce{M}]-k_2[\ce{O}][\ce{O3}]
+        \end{gather*}
+        \item Invoking the steady-state approximation for the intermediate \ce{O} yields
+        \begin{equation*}
+            [\ce{O}] = \frac{k_1[\ce{O3}][\ce{M}]}{k_{-1}[\ce{O2}][\ce{M}]+k_2[\ce{O3}]}
+        \end{equation*}
+        \item Substituting this result into the rate equation for \ce{O3} gives
+        \begin{equation*}
+            \dv{[\ce{O3}]}{t} = -\frac{2k_1k_2[\ce{O3}]^2[\ce{M}]}{k_{-1}[\ce{O2}][\ce{M}]+k_2[\ce{O3}]}
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
