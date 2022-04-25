@@ -1,0 +1,174 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{2}
+
+\begin{document}
+
+
+
+
+\section{Rate Laws II / Mechanisms}
+\subsection*{Chapter 28}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{enumerate}[label={\textbf{28-\arabic*.}},leftmargin=3.5em]
+    \setcounter{enumi}{30}
+    \item \marginnote{4/25:}The following data were obtained for the reaction
+    \begin{equation*}
+        \ce{N2O(g) -> N2(g) + \tfrac{1}{2} O2(g)}
+    \end{equation*}
+    \begin{center}
+        \small
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{c|cccc}
+            $\cnc[0]{N2O}/\si{\mole\per\cubic\deci\meter}$ & \num{1.674e-3} & \num{4.458e-3} & \num{9.300e-3} & \num{1.155e-2}\\
+            \hline
+            $t_{1/2}/\si{\second}$ & 1200 & 470 & 230 & 190\\
+        \end{tabular}
+    \end{center}
+    Assume the rate law for this reaction is
+    \begin{equation*}
+        -\dv{\cnc{N2O}}{t} = k\cnc{N2O}^n
+    \end{equation*}
+    and use the equation for the half-life of an $n^\text{th}$-order reaction to determine the reaction order of \ce{N2O} by plotting $\ln t_{1/2}$ against $\ln\cnc[0]{A}$. Calculate the rate constant for this decomposition reaction.
+    \stepcounter{enumi}
+    \item Consider the general chemical reaction
+    \begin{equation*}
+        \ce{A + B <=>[$k_1$][$k_{-1}$] P}
+    \end{equation*}
+    If we assume that both the forward and reverse reactions are first order in their respective reactants, the rate law is given by
+    \begin{equation*}
+        \dv{\cnc{P}}{t} = k_1\cnc{A}\cnc{B}-k_{-1}\cnc{P}
+    \end{equation*}
+    Now consider the response of this chemical reaction to a temperature jump. Let $\cnc{A}=\cnc[2,eq]{A}+\Delta\cnc{A}$, $\cnc{B}=\cnc[2,eq]{B}+\Delta\cnc{B}$, and $\cnc{P}=\cnc[2,eq]{P}+\Delta\cnc{P}$, where the subscript "2,eq" refers to the new equilibrium state. Now use the fact that $\Delta\cnc{A}=\Delta\cnc{B}=-\Delta\cnc{P}$ to show that the above rate law becomes
+    \begin{equation*}
+        \dv{\Delta\cnc{P}}{t} = k_1\cnc[2,eq]{A}\cnc[2,eq]{B}-k_{-1}\cnc[2,eq]{P}-\{k_1(\cnc[2,eq]{A}+\cnc[2,eq]{B})+k_{-1}\}\Delta\cnc{P}+O(\Delta\cnc{P}^2)
+    \end{equation*}
+    Show that the first terms on the right side of this equation cancel and that the following two equations result.
+    \begin{align*}
+        \Delta\cnc{P} &= \Delta\cnc[0]{P}\e[-t/\tau]&
+        \tau &= \frac{1}{k_1(\cnc[2,eq]{A}+\cnc[2,eq]{B})+k_{-1}}
+    \end{align*}
+    \setcounter{enumi}{35}
+    \item Consider the chemical reaction described by
+    \begin{equation*}
+        \ce{2A(aq) <=>[$k_1$][$k_{-1}$] D(aq)}
+    \end{equation*}
+    If we assume the forward reaction is second order and the reverse reaction is first order, the rate law is given by
+    \begin{equation*}
+        \dv{\cnc{D}}{t} = k_1\cnc{A}^2-k_{-1}\cnc{D}
+    \end{equation*}
+    Now consider the response of this chemical reaction to a temperature jump. Let $\cnc{A}=\cnc[2,eq]{A}+\Delta\cnc{A}$ and $\cnc{D}=\cnc[2,eq]{D}+\Delta\cnc{D}$, where the subscript "2,eq" refers to the new equilibrium state. Now use the fact that $\Delta\cnc{A}=-2\Delta\cnc{D}$ to show that the rate law becomes
+    \begin{equation*}
+        \dv{\Delta\cnc{D}}{t} = -(4k_1\cnc[2,eq]{A}+k_{-1})\Delta\cnc{D}+O(\Delta\cnc{D}^2)
+    \end{equation*}
+    Show that if we ignore the $O(\Delta\cnc{D}^2)$ term, then
+    \begin{equation*}
+        \Delta\cnc{D} = \Delta\cnc[0]{D}\e[-t/\tau]
+    \end{equation*}
+    where $\tau=1/(4k_1\cnc[2,eq]{A}+k_{-1})$
+    \setcounter{enumi}{45}
+    \item Show that if \ce{A} reacts to form either \ce{B} or \ce{C} according to
+    \begin{align*}
+        \ce{A ->[$k_1$] B}&&
+        \ce{A ->[$k_2$] C}
+    \end{align*}
+    then $E_a$, the observed activation energy for the disappearance of \ce{A}, is given by
+    \begin{equation*}
+        E_a = \frac{k_1E_1+k_2E_2}{k_1+k_2}
+    \end{equation*}
+    where $E_1$ is the activation energy for the first reaction and $E_2$ is the activation energy for the second reaction.
+    \stepcounter{enumi}
+    \item The gas-phase rearrangement reaction
+    \begin{center}
+        \footnotesize
+        \setchemfig{atom sep=1.4em}
+        \chemnameinit{\chemfig{=_[:-30]-[:30]-[:-30]-[:30](=[2]O)-[:-30]}}
+        \schemestart
+            \chemname[1em]{\chemfig{=^[:-30]-[:30]O-[:-30]-[:30]=_[:-30]}}{Allyl vinyl ether}
+            \arrow(.mid east--.mid west)
+            \chemname{\chemfig{=_[:-30]-[:30]-[:-30]-[:30](=[2]O)-[:-30]}}{Allylacetone}
+        \schemestop
+    \end{center}
+    has a rate constant of \SI{6.015e-5}{\per\second} at \SI{420}{\kelvin} and a rate constant of \SI{2.971e-3}{\per\second} at \SI{470}{\kelvin}. Calculate the values of the Arrhenius parameters $A$ and $E_a$. Calculate the values of $\Delta^\ddagger H^\circ$ and $\Delta^\ddagger S^\circ$ at \SI{420}{\kelvin}. Assume ideal-gas behavior.
+    \item The kinetics of a chemical reaction can be followed by a variety of experimental techniques, including optical spectrometry, NMR spectroscopy, conductivity, resistivity, pressure changes, and volume changes. When using these techniques, we do not measure the concentration itself but we know that the observed signal is proportional to the concentration; the exact proportionality constant depends on the experimental technique and the species present in the chemical system. Consider the general reaction given by
+    \begin{equation*}
+        \ce{\nu_{\ce{A}} A + \nu_{\ce{B}} B -> \nu_{\ce{Y}} Y + \nu_{\ce{Z}} Z}
+    \end{equation*}
+    where we assume that \ce{A} is the limiting reagent so that $\cnc{A}\to 0$ as $t\to\infty$. Let $p_i$ be the proportionality constant for the contribution of species $i$ to $S$, the measured signal from the instrument. Explain why at any time $t$ during the reaction, $S$ is given by
+    \begin{equation}
+        S(t) = p_{\ce{A}}\cnc{A}+p_{\ce{B}}\cnc{B}+p_{\ce{Y}}\cnc{Y}+p_{\ce{Z}}\cnc{Z}
+    \end{equation}
+    Show that the initial and final readings from the instrument are given by
+    \begin{equation}
+        S(0) = p_{\ce{A}}\cnc[0]{A}+p_{\ce{B}}\cnc[0]{B}+p_{\ce{Y}}\cnc[0]{Y}+p_{\ce{Z}}\cnc[0]{Z}
+    \end{equation}
+    and
+    \begin{equation}
+        S(\infty) = p_{\ce{B}}\left( \cnc[0]{B}-\frac{\nu_{\ce{B}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)+p_{\ce{Y}}\left( \cnc[0]{Y}-\frac{\nu_{\ce{Y}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)+p_{\ce{Z}}\left( \cnc[0]{Z}-\frac{\nu_{\ce{Z}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)
+    \end{equation}
+    Combine Equations 1-3 to show that
+    \begin{equation*}
+        \cnc{A} = \cnc[0]{A}\frac{S(t)-S(\infty)}{S(0)-S(\infty)}
+    \end{equation*}
+    (Hint: Be sure to express $\cnc{B}$, $\cnc{Y}$, and $\cnc{Z}$ in terms of their initial values, $\cnc{A}$ and $\cnc[0]{A}$.)
+\end{enumerate}
+
+
+\subsection*{Chapter 29}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{enumerate}[label={\textbf{29-\arabic*.}},leftmargin=3.5em]
+    \setcounter{enumi}{4}
+    \item Solve the differential equation
+    \begin{equation*}
+        \dv{\cnc{A}}{t} = -k_1\cnc{A}
+    \end{equation*}
+    to obtain $\cnc{A}=\cnc[0]{A}\e[-k_1t]$, and substitute this result into the differential equation
+    \begin{equation*}
+        \dv{\cnc{I}}{t} = k_1\cnc{A}-k_2\cnc{I}
+    \end{equation*}
+    to obtain
+    \begin{equation*}
+        \dv{\cnc{I}}{t}+k_2\cnc{I} = k_1\cnc[0]{A}\e[-k_1t]
+    \end{equation*}
+    This equation is of the form (see the \textcite{bib:CRCTables}, for example)
+    \begin{equation*}
+        \dv{y(x)}{x}+p(x)y(x) = q(x)
+    \end{equation*}
+    a linear, first-order differential equation whose general solution is
+    \begin{equation*}
+        y(x)\e[h(x)] = \int q(x)\e[h(x)]\dd{x}+c
+    \end{equation*}
+    where $h(x)=\int p(x)\dd{x}$ and $c$ is a constant. Show that this solution leads to
+    \begin{equation*}
+        [\ce{I}] = \frac{k_1}{k_2-k_1}\cnc[0]{A}(\e[-k_1t]-\e[-k_2t])
+    \end{equation*}
+    \stepcounter{enumi}
+    \item Consider the reaction mechanism
+    \begin{equation*}
+        \ce{A ->[$k_1$] I ->[$k_2$] P}
+    \end{equation*}
+    where $\cnc{A}=\cnc[0]{A}$ and $\cnc[0]{I}=\cnc[0]{P}=0$ at time $t=0$. Use the exact solution to this kinetic scheme (below) to plot the time dependence of $\cnc{A}/\cnc[0]{A}$, $\cnc{I}/\cnc[0]{A}$, and $\cnc{P}/\cnc[0]{P}$ versus $\log k_1t$ for the case $k_2=2k_1$.
+    \begin{gather*}
+        \cnc{A} = \cnc[0]{A}\e[-k_1t]\\
+        [\ce{I}] = \frac{k_1}{k_2-k_1}\cnc[0]{A}(\e[-k_1t]-\e[-k_2t])\\
+        \cnc{P} = \cnc[0]{A}-\cnc{A}-\cnc{I} = \cnc[0]{A}\left\{ 1+\frac{1}{k_1-k_2}(k_2\e[-k_1t]-k_1\e[-k_2t]) \right\}
+    \end{gather*}
+    On the same graph, plot the time dependence of $\cnc{A}/\cnc[0]{A}$, $\cnc{I}/\cnc[0]{I}$, and $\cnc{P}/\cnc[0]{P}$ using the expressions for $\cnc{A}$, $\cnc{I}$, and $\cnc{P}$ obtained using the steady-state approximation for $\cnc{I}$. Based on your results, can you use the steady-state approximation to model the kinetics of this reaction mechanism when $k_2=2k_1$?
+\end{enumerate}
+
+
+\subsection*{Application}
+\begin{enumerate}[label={\arabic*)}]
+    \item Name one HW problem you would like to develop into a thought experiment or relate to a literature article.
+    \item Describe how the idea or conclusion from the HW problem applies to the research idea in 1-2 paragraphs (word limit: 300). Once again, this can either be a thought experiment or an experiment found in the literature.
+    \item You do not need to derive any equations in this short discussion. Use your intuition and focus on the big picture.
+    \item Please cite the literature if you link the HW problem to anyone (author names, titles, journal name, volume numbers, and page numbers).
+\end{enumerate}
+\setcounter{equation}{0}
+
+
+
+
+\end{document}

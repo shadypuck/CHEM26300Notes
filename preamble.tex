@@ -14,6 +14,7 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{bm,physics,mathtools,empheq}
 \usepackage{mhchem}
+\usepackage{chemfig}
 \usepackage[hidelinks]{hyperref}
 
 \MakeOuterQuote{"}
@@ -54,6 +55,8 @@
 
 \DeclareMathOperator{\Prob}{Prob}
 
+\setchemfig{atom sep=2em,fixed length=true,bond offset=3pt}
+
 \newcommand{\kB}{k_\text{B}}
 \newcommand{\NA}{N_\text{A}}
 \newcommand{\pH}{\text{pH}}
@@ -67,5 +70,6 @@
     \node at (0,-0.1) {$\Longleftarrow$};
     \node at (0,-0.4) {\scriptsize${#2}$};
 }}
+\newcommand{\cnc}[2][]{[\ce{#2}]_\text{#1}}
 
 \usepackage{subfiles}
