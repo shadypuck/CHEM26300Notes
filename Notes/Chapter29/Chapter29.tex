@@ -179,5 +179,202 @@
 
 
 
+\section{Complex Reactions}
+\begin{itemize}
+    \item \marginnote{4/22:}Expect the midterm to be 2 hours in length, available all next week, and to incorporate largely HW-like questions but also some open-ended, design-an-experiment questions. Completely open note.
+    \item The rate law for a complex reaction does not imply a unique mechanism.
+    \begin{itemize}
+        \item Consider the reaction
+        \begin{equation*}
+            \ce{2NO(g) + O2(g) ->[$k_\text{obs}$] 2NO2(g)}
+        \end{equation*}
+        \item The rate law is
+        \begin{equation*}
+            \frac{1}{2}\dv{[\ce{NO2}]}{t} = k_\text{obs}[\ce{NO}]^2[\ce{O2}]
+        \end{equation*}
+        \item Experimental studies confirm that the reaction is not an elementary reaction, but we can propose multiple mechanisms that would both yield the same rate law. Here are two examples.
+        \begin{itemize}
+            \item Mechanism 1.
+            \begin{align*}
+                \ce{NO(g) + O2(g)} &\Longleftrightarrows[k_1][k_{-1}] \ce{NO3(g)}\\
+                \ce{NO3(g) + NO(g)} &\ce{->[$k_2$]} \ce{2 NO2(g)}
+            \end{align*}
+            \item Mechanism 2.
+            \begin{align*}
+                \ce{2NO(g)} &\Longleftrightarrows[k_1][k_{-1}] \ce{N2O2(g)}\\
+                \ce{N2O2(g) + O2(g)} &\ce{->[$k_2$]} \ce{2 NO2(g)}
+            \end{align*}
+        \end{itemize}
+        \item One experiment to design is to capture or otherwise detect the intermediate species.
+        \item Through such an experiment, we can verify Mechanism 2.
+    \end{itemize}
+    \item The Lindemann Mechanism explains how unimolecular reactions occur.
+    \begin{itemize}
+        \item Consider the reaction
+        \begin{equation*}
+            \ce{CH3NC(g) ->[$k_\text{obs}$] CH3CN(g)}
+        \end{equation*}
+        \item The following rate law is only correct at $[\ce{CH3NC}]$.
+        \begin{equation*}
+            \dv{[\ce{CH3NC}]}{t} = -k_\text{obs}[\ce{CH3NC}]
+        \end{equation*}
+        \item At low $[\ce{CH3NC}]$, we have
+        \begin{equation*}
+            \dv{[\ce{CH3NC}]}{t} = -k_\text{obs}[\ce{CH3NC}]^2
+        \end{equation*}
+        which is not the rate law for a unimolecular reaction.
+        \item The Lindemann mechanism for unimolecular reactions of the form \ce{A(g) -> B(g)} is
+        \begin{align*}
+            \ce{A(g) + M(g)} &\Longleftrightarrows[k_1][k_{-1}] \ce{A(g)^* + M(g)}\\
+            \ce{A(g)^*} &\ce{->[$k_2$]} \ce{B(g)}
+        \end{align*}
+        \item The symbol \ce{A(g)^*} represents an energized reactant molecule. \ce{M(g)} is the collision partner.
+        \item By the steady-state approximation, we have that
+        \begin{align*}
+            \dv{[\ce{A^*}]}{t} = 0 &= k_1[\ce{A}][\ce{M}]-k_{-1}[\ce{A^*}][\ce{M}]-k_2[\ce{A^*}]\\
+            [\ce{A^*}] &= \frac{k_1[\ce{M}][\ce{A}]}{k_2+k_{-1}[\ce{M}]}
+        \end{align*}
+        so that
+        \begin{align*}
+            \dv{[\ce{B}]}{t} &= k_2[\ce{A^*}]\\
+            -\dv{[\ce{A}]}{t} = \dv{[\ce{B}]}{t} &= \underbrace{\frac{k_2k_1[\ce{M}]}{k_2+k_{-1}[\ce{M}]}}_{k_\text{obs}}[\ce{A}]
+        \end{align*}
+        \item At high $[\ce{M}]$, we have that $k_{-1}[\ce{M}][\ce{A^*}]\gg k_2[\ce{A^*}]$, or $k_{-1}[\ce{M}]\gg k_2$. Thus,
+        \begin{equation*}
+            k_\text{obs} = \frac{k_1k_2}{k_{-1}}
+        \end{equation*}
+        \item At low $[\ce{M}]$, we have that $k_2\gg k_{-1}[\ce{M}]$ so that
+        \begin{align*}
+            \dv{[\ce{B}]}{t} &= k_1[\ce{M}][\ce{A}]\\
+            &= k_1[\ce{A}]^2
+        \end{align*}
+        \item This mechanism was proposed by the British chemists J. A. Christiansen in 1921 and F. A. Lindemann in 1922. Their work underlies the current theory of unimolecular reaction rates.
+    \end{itemize}
+    \item Some reaction mechanisms involve chain reactions.
+    \begin{itemize}
+        \item Chain reactions involve amplification.
+        \item For example, \ce{H2(g) + Br2(g) <=> 2HBr(g)} follows the ensuing mechanism.
+        \begin{itemize}
+            \item Initiation.
+            \begin{equation*}
+                \ce{Br2 + M(g) ->[k_1] 2Br(g) + M(g)}
+            \end{equation*}
+            \item Propagation.
+            \begin{align*}
+                \ce{Br(g) + H2(g)} &\ce{->[k_2]} \ce{HBr(g) + H(g)}\\
+                \ce{H(g) + Br2(g)} &\ce{->[k_3]} \ce{HBr(g) + Br(g)}
+            \end{align*}
+            \item Inhibition.
+            \begin{align*}
+                \ce{HBr(g) + H(g)} &\ce{->[k_{-2}]} \ce{Br(g) + H2(g)}\\
+                \ce{HBr(g) + Br(g)} &\ce{->[k_{-3}]} \ce{H(g) + Br2(g)}
+            \end{align*}
+            \item Termination.
+            \begin{equation*}
+                \ce{2Br + M(g) ->[k_{-1}] Br2(g) + M(g)}
+            \end{equation*}
+        \end{itemize}
+        \item The fifth step can be ignored.
+        \item Notice that the inhibition and termination reactions are the reverse reactions of the propagation and initiation reaction(s), respectively.
+        \begin{itemize}
+            \item Termination does not need to be the reverse of initiation, though. Termination just kills any reactive species.
+            \item Inhibition is the reverse of propagation, though.
+        \end{itemize}
+        \item When you want to design a chain reaction species, make sure you have a reactive species (like bromine) for the initiation step. Notice, for instance, that hydrogen does not initiate.
+        \item This leads to the experimentally determined rate law
+        \begin{equation*}
+            \frac{1}{2}\dv{[\ce{HBr}]}{t} = \frac{k[\ce{H2}][\ce{Br2}]^{1/2}}{1+k'[\ce{HBr}][\ce{Br2}]^{-1}}
+        \end{equation*}
+        \item Deriving said rate law.
+        \begin{itemize}
+            \item We have that
+            \begin{align*}
+                \dv{[\ce{HBr}]}{t} &= k_2[\ce{Br}][\ce{H2}]-k_{-2}[\ce{HBr}][\ce{H}]+k_3[\ce{H}][\ce{Br2}]\\
+                \dv{[\ce{H}]}{t} &= k_2[\ce{Br}][\ce{H2}]-k_{-2}[\ce{HBr}][\ce{H}]-k_3[\ce{H}][\ce{Br2}]\\
+                \dv{[\ce{Br}]}{t} &= 2k_1[\ce{Br2}][\ce{M}]-k_{-1}[\ce{Br}]^2[\ce{M}]-k_2[\ce{Br}][\ce{H2}]+k_{-2}[\ce{HBr}][\ce{H}]+k_3[\ce{H}][\ce{Br2}]
+            \end{align*}
+            \item We can apply the SS approximation to the second and third equations above, which both describe intermediate species.
+            \begin{align*}
+                0 &= k_2[\ce{Br}][\ce{H2}]-k_{-2}[\ce{HBr}][\ce{H}]-k_3[\ce{H}][\ce{Br2}]\\
+                0 &= 2k_1[\ce{Br2}][\ce{M}]-k_{-1}[\ce{Br}]^2[\ce{M}]-k_2[\ce{Br}][\ce{H2}]+k_{-2}[\ce{HBr}][\ce{H}]+k_3[\ce{H}][\ce{Br2}]
+            \end{align*}
+            \item Solving the two equations above for $[\ce{H}]$ and $[\ce{Br}]$, respectively, is made substantially easier by noting that the negative of the first expression appears in its entirety in the second expression. Thus, we may simply substitute the former into the latter and solve to find an expression for $[\ce{Br}]$.
+            \begin{align*}
+                0 &= 2k_1[\ce{Br2}][\ce{M}]-k_{-1}[\ce{Br}]^2[\ce{M}]-0\\
+                [\ce{Br}] &= \left( \frac{k_1}{k_{-1}} \right)^{1/2}[\ce{Br2}]^{1/2}\\
+                [\ce{Br}] &= (K_{c,1})^{1/2}[\ce{Br2}]^{1/2}
+            \end{align*}
+            \item Resubstituting yields an expression for $[\ce{H}]$.
+            \begin{align*}
+                0 &= k_2[\ce{Br}][\ce{H2}]-k_{-2}[\ce{HBr}][\ce{H}]-k_3[\ce{H}][\ce{Br2}]\\
+                0 &= k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]-(k_{-2}[\ce{HBr}]+k_3[\ce{Br2}])[\ce{H}]\\
+                [\ce{H}] &= \frac{k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]}
+            \end{align*}
+            \item Substituting these two expressions back into the original differential equation for $[\ce{HBr}]$ yields
+            \begin{align*}
+                \dv{[\ce{HBr}]}{t} ={}& k_2[\ce{Br}][\ce{H2}]-k_{-2}[\ce{HBr}][\ce{H}]+k_3[\ce{H}][\ce{Br2}]\\
+                \begin{split}
+                    ={}& k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]-k_{-2}[\ce{HBr}]\cdot\frac{k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]}\\
+                    &+k_3\cdot\frac{k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]}\cdot[\ce{Br2}]
+                \end{split}\\
+                \begin{split}
+                    ={}& k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]-\frac{k_2k_{-2}(K_{c,1})^{1/2}[\ce{HBr}][\ce{Br2}]^{1/2}[\ce{H2}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]}\\
+                    &+\frac{k_2k_3(K_{c,1})^{1/2}[\ce{Br2}]^{3/2}[\ce{H2}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]}
+                \end{split}\\
+                ={}& k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]\left( 1-\frac{k_{-2}[\ce{HBr}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]}+\frac{k_3[\ce{Br2}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]} \right)\\
+                ={}& k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]\left( \frac{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]}-\frac{k_{-2}[\ce{HBr}]-k_3[\ce{Br2}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]} \right)\\
+                ={}& k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]\cdot\frac{2k_3[\ce{Br2}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]}\\
+                \frac{1}{2}\dv{[\ce{HBr}]}{t} &= k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]\cdot\frac{1}{(k_{-2}/k_3)[\ce{HBr}][\ce{Br2}]^{-1}+1}\\
+                ={}& \frac{k_2(K_{c,1})^{1/2}[\ce{H2}][\ce{Br2}]^{1/2}}{1+(k_{-2}/k_3)[\ce{HBr}][\ce{Br2}]^{-1}}\\
+                ={}& \frac{k[\ce{H2}][\ce{Br2}]^{1/2}}{1+k'[\ce{HBr}][\ce{Br2}]^{-1}}
+            \end{align*}
+            where we have substituted $k=k_2(K_{c,1})^{1/2}$ and $k'=k_{-2}/k_3$ in the last expression.
+        \end{itemize}
+    \end{itemize}
+    \item Problem 29-24.
+    \begin{itemize}
+        \item The reaction
+        \begin{equation*}
+            \ce{CH3CHO(g) ->[$k_\text{obs}$] CH4(g) + CO(g)}
+        \end{equation*}
+        proceeds by the mechanism
+        \begin{align*}
+            \ce{CH3CHO(g)} &\ce{->[$k_1$]} \ce{CH3(g) + CHO(g)}\\
+            \ce{CH3(g) + CH3CHO(g)} &\ce{->[$k_2$]} \ce{CH4(g) + CH3CO(g)}\\
+            \ce{CH3CO(g)} &\ce{->[$k_3$]} \ce{CH3(g) + CO(g)}\\
+            \ce{2CH3(g)} &\ce{->[$k_4$]} \ce{C2H6(g)}
+        \end{align*}
+        \item The initiation step is the first equation, the propagation steps are the second and third equations, and the termination step is the fourth equation.
+        \item We can write the rate laws
+        \begin{align*}
+            \dv{[\ce{CH4}]}{t} &= k_2[\ce{CH3}][\ce{CH3CHO}]\\
+            \dv{[\ce{CH3}]}{t} &= k_1[\ce{CH3CHO}]-k_2[\ce{CH3}][\ce{CH3CHO}]+k_3[\ce{CH3CO}]-2k_4[\ce{CH3}]\\
+            \dv{[\ce{CH3CO}]}{t} &= k_2[\ce{CH3}][\ce{CH3CHO}]-k_3[\ce{CH3CO}]
+        \end{align*}
+        \item Applying the SS approximation to the last second and third equations yields (respectively)
+        \begin{align*}
+            [\ce{CH3}] &= \frac{k_1[\ce{CH3CHO}]+k_3[\ce{CH3CO}]}{k_2[\ce{CH3CHO}]+2k_4}&
+            [\ce{CH3CO}] &= \frac{k_2}{k_3}[\ce{CH3}][\ce{CH3CHO}]
+        \end{align*}
+        \item Substituting the right equation above into the left equation above and solving for $[\ce{CH3}]$ yields an expression for $[\ce{CH3}]$ purely in terms of $[\ce{CH3CHO}]$.
+        \begin{align*}
+            [\ce{CH3}] &= \frac{k_1[\ce{CH3CHO}]+k_2[\ce{CH3}][\ce{CH3CHO}]}{k_2[\ce{CH3CHO}]+2k_4}\\
+            k_2[\ce{CH3}][\ce{CH3CHO}]+2k_4[\ce{CH3}] &= k_1[\ce{CH3CHO}]+k_2[\ce{CH3}][\ce{CH3CHO}]\\
+            2k_4[\ce{CH3}] &= k_1[\ce{CH3CHO}]\\
+            [\ce{CH3}] &= \frac{k_1}{2k_4}[\ce{CH3CHO}]
+        \end{align*}
+        \item The final result is
+        \begin{align*}
+            \dv{[\ce{CH4}]}{t} &= k_2\left( \frac{k_1}{2k_4}[\ce{CH3CHO}] \right)[\ce{CH3CHO}]\\
+            &= k_2\left( \frac{k_1}{2k_4} \right)^{1/2}[\ce{CH3CHO}]^{3/2}
+        \end{align*}
+        \begin{itemize}
+            \item What's the issue here?
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
