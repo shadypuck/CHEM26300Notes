@@ -32,6 +32,30 @@
         -\dv{\cnc{N2O}}{t} = k\cnc{N2O}^n
     \end{equation*}
     and use the equation for the half-life of an $n^\text{th}$-order reaction to determine the reaction order of \ce{N2O} by plotting $\ln t_{1/2}$ against $\ln\cnc[0]{A}$. Calculate the rate constant for this decomposition reaction.
+    \begin{proof}[Answer]
+        We have that
+        \begin{align*}
+            \ln(kt_{1/2}) &= \ln(\frac{1}{n-1}\frac{2^{n-1}-1}{\cnc[0]{A}^{n-1}})\\
+            \ln k+\ln t_{1/2} &= -\ln(n-1)+\ln(2^{n-1}-1)-(n-1)\ln\cnc[0]{A}\\
+            \ln t_{1/2} &= -(n-1)\ln\cnc[0]{A}+C
+        \end{align*}
+        where $C=\ln(2^{n-1}-1)-\ln(n-1)-\ln k$ is a constant. Thus, we can determine $n$ by performing a linear regression on a plot of $\ln t_{1/2}$ vs. $\ln\cnc[0]{N2O}$. The resultant line of best fit has slope $m=-0.96$, which means that
+        \begin{align*}
+            -(n-1) &\approx -0.96\\
+            n-1 &\approx 0.96\\
+            n &\approx 1.96\\
+            \Aboxed{n &= 2}
+        \end{align*}
+        It follows by plugging our four data points back into the equation
+        \begin{equation*}
+            k = \frac{1}{(2-1)t_{1/2}}\frac{2^{2-1}-1}{\cnc[0]{N2O}^{2-1}}
+            = \frac{1}{t_{1/2}\cdot\cnc[0]{N2O}}
+        \end{equation*}
+        and averaging the results that
+        \begin{equation*}
+            \boxed{k = \SI[per-mode=fraction,fraction-function=\tfrac]{0.47}{\liter\per\mole\per\second}}
+        \end{equation*}
+    \end{proof}
     \stepcounter{enumi}
     \item Consider the general chemical reaction
     \begin{equation*}
@@ -50,6 +74,38 @@
         \Delta\cnc{P} &= \Delta\cnc[0]{P}\e[-t/\tau]&
         \tau &= \frac{1}{k_1(\cnc[2,eq]{A}+\cnc[2,eq]{B})+k_{-1}}
     \end{align*}
+    \begin{proof}[Answer]
+        We have that
+        \begin{align*}
+            \dv{t}(\cnc[2,eq]{P}+\Delta\cnc{P}) &= k_1(\cnc[2,eq]{A}+\Delta\cnc{A})(\cnc[2,eq]{B}+\Delta\cnc{B})-k_{-1}(\cnc[2,eq]{P}+\Delta\cnc{P})\\
+            \dv{\Delta\cnc{P}}{t} &= k_1(\cnc[2,eq]{A}\cnc[2,eq]{B}+\cnc[2,eq]{A}\Delta\cnc{B}+\Delta\cnc{A}\cnc[2,eq]{B}+\Delta\cnc{A}\Delta\cnc{B})-k_{-1}(\cnc[2,eq]{P}+\Delta\cnc{P})\\
+            &= k_1(\cnc[2,eq]{A}\cnc[2,eq]{B}-\cnc[2,eq]{A}\Delta\cnc{P}-\Delta\cnc{P}\cnc[2,eq]{B}+\Delta\cnc{P}\Delta\cnc{P})-k_{-1}(\cnc[2,eq]{P}+\Delta\cnc{P})\\
+            &= k_1\cnc[2,eq]{A}\cnc[2,eq]{B}-k_{-1}\cnc[2,eq]{P}-\{k_1(\cnc[2,eq]{A}+\cnc[2,eq]{B})+k_{-1}\}\Delta\cnc{P}+O(\Delta\cnc{P}^2)
+            % &= k_1(\cnc[2,eq]{A}\Delta\cnc{B}+\Delta\cnc{A}\cnc[2,eq]{B}+\Delta\cnc{A}\Delta\cnc{B})-k_{-1}\Delta\cnc{P}\\
+            % &= k_1(-\cnc[2,eq]{A}\Delta\cnc{P}-\Delta\cnc{P}\cnc[2,eq]{B}+\Delta\cnc{P}^2)-k_{-1}\Delta\cnc{P}\\
+            % &= -[k_1(\cnc[2,eq]{A}+\cnc[2,eq]{B})+k_{-1}]\Delta\cnc{P}+\text{O}(\Delta\cnc{P}^2)\\
+            % \Delta\cnc{P} &\approx \Delta\cnc[0]{P}\e[-t/\tau]
+        \end{align*}
+        as desired, where $\dv*{\cnc[2,eq]{P}}{t}=0$ because $\cnc[2,eq]{P}$ is a constant, and we have bundled $k_1\Delta\cnc{P}^2$ into the $O(\Delta\cnc{P}^2)$ term.\par
+        Moreover, the first two terms on the right side of the bottom equation above equal zero since at equilibrium under the new conditions,
+        \begin{equation*}
+            \dv{\cnc{P}}{t} = 0
+            = k_1\cnc[2,eq]{A}\cnc[2,eq]{B}-k_{-1}\cnc[2,eq]{P}
+        \end{equation*}
+        Thus, ignoring the $O(\Delta\cnc{P}^2)$ term, we have that
+        \begin{align*}
+            \dv{\Delta\cnc{P}}{t} &= -\{k_1(\cnc[2,eq]{A}+\cnc[2,eq]{B})+k_{-1}\}\Delta\cnc{P}\\
+            \frac{\dd{\Delta\cnc{P}}}{\Delta\cnc{P}} &= -\frac{\dd{t}}{1/\{k_1(\cnc[2,eq]{A}+\cnc[2,eq]{B})+k_{-1}\}}\\
+            \int_{\Delta\cnc[0]{P}}^{\Delta\cnc{P}}\frac{\dd{\Delta\cnc{P}}}{\Delta\cnc{P}} &= \int_0^t-\frac{\dd{t}}{\tau}\\
+            \ln\frac{\Delta\cnc{P}}{\Delta\cnc[0]{P}} &= -\frac{t}{\tau}\\
+            \Delta\cnc{P} &= \Delta\cnc[0]{P}\e[-t/\tau]
+        \end{align*}
+        where
+        \begin{equation*}
+            \tau = \frac{1}{k_1(\cnc[2,eq]{A}+\cnc[2,eq]{B})+k_{-1}}
+        \end{equation*}
+        as desired.
+    \end{proof}
     \setcounter{enumi}{35}
     \item Consider the chemical reaction described by
     \begin{equation*}
@@ -67,7 +123,21 @@
     \begin{equation*}
         \Delta\cnc{D} = \Delta\cnc[0]{D}\e[-t/\tau]
     \end{equation*}
-    where $\tau=1/(4k_1\cnc[2,eq]{A}+k_{-1})$
+    where $\tau=1/(4k_1\cnc[2,eq]{A}+k_{-1})$.
+    \begin{proof}[Answer]
+        Proceeding as in Problem 28-33, we have that
+        \begin{align*}
+            \dv{t}(\cnc[2,eq]{D}+\Delta\cnc{D}) &= k_1(\cnc[2,eq]{A}+\Delta\cnc{A})^2-k_{-1}(\cnc[2,eq]{D}+\Delta\cnc{D})\\
+            \dv{\Delta\cnc{D}}{t} &= k_1(\cnc[2,eq]{A}^2+2\cnc[2,eq]{A}\Delta\cnc{A}+\Delta\cnc{A}^2)-k_{-1}(\cnc[2,eq]{D}+\Delta\cnc{D})\\
+            &= k_1(-4\cnc[2,eq]{A}\Delta\cnc{D}+4\Delta\cnc{D}^2)-k_{-1}\Delta\cnc{D}\\
+            &= -(4k_1\cnc[2,eq]{A}+k_{-1})\Delta\cnc{D}+O(\Delta\cnc{D}^2)
+        \end{align*}
+        so that integrating yields
+        \begin{equation*}
+            \Delta\cnc{D} = \Delta\cnc[0]{D}\e[-t/\tau]
+        \end{equation*}
+        where $\tau=1/(4k_1\cnc[2,eq]{A}+k_{-1})$.
+    \end{proof}
     \setcounter{enumi}{45}
     \item Show that if \ce{A} reacts to form either \ce{B} or \ce{C} according to
     \begin{align*}
@@ -79,6 +149,22 @@
         E_a = \frac{k_1E_1+k_2E_2}{k_1+k_2}
     \end{equation*}
     where $E_1$ is the activation energy for the first reaction and $E_2$ is the activation energy for the second reaction.
+    \begin{proof}[Answer]
+        We have that
+        \begin{align*}
+            k_1 &= A_1\e[-E_1/RT]&
+            k_2 &= A_2\e[-E_2/RT]
+        \end{align*}
+        Thus, since $k=k_1+k_2$, we can plug into the original form of the Arrhenius equation to determine that
+        \begin{align*}
+            \frac{E_a}{RT^2} &= \dv{\ln(k_1+k_2)}{T}\\
+            &= \frac{1}{k_1+k_2}\dv{T}(A_1\e[-E_1/RT]+A_2\e[-E_2/RT])\\
+            &= \frac{1}{k_1+k_2}\left( A_1\e[-E_1/RT]\cdot\frac{E_1}{RT^2}+A_2\e[-E_2/RT]\cdot\frac{E_2}{RT^2} \right)\\
+            E_a &= \frac{1}{k_1+k_2}(k_1\cdot E_1+k_2\cdot E_2)\\
+            &= \frac{k_1E_1+k_2E_2}{k_1+k_2}
+        \end{align*}
+        as desired.
+    \end{proof}
     \stepcounter{enumi}
     \item The gas-phase rearrangement reaction
     \begin{center}
@@ -86,12 +172,52 @@
         \setchemfig{atom sep=1.4em}
         \chemnameinit{\chemfig{=_[:-30]-[:30]-[:-30]-[:30](=[2]O)-[:-30]}}
         \schemestart
-            \chemname[1em]{\chemfig{=^[:-30]-[:30]O-[:-30]-[:30]=_[:-30]}}{Allyl vinyl ether}
+            \chemname[1em]{\chemfig{=_[:30]-[:-30]-[:30]O-[:-30]=^[:30]}}{Allyl vinyl ether}
             \arrow(.mid east--.mid west)
-            \chemname{\chemfig{=_[:-30]-[:30]-[:-30]-[:30](=[2]O)-[:-30]}}{Allylacetone}
+            \chemname{\chemfig{=^[:-30]-[:30]-[:-30]-[:30](=[2]O)-[:-30]}}{Allylacetone}
         \schemestop
     \end{center}
     has a rate constant of \SI{6.015e-5}{\per\second} at \SI{420}{\kelvin} and a rate constant of \SI{2.971e-3}{\per\second} at \SI{470}{\kelvin}. Calculate the values of the Arrhenius parameters $A$ and $E_a$. Calculate the values of $\Delta^\ddagger H^\circ$ and $\Delta^\ddagger S^\circ$ at \SI{420}{\kelvin}. Assume ideal-gas behavior.
+    \begin{proof}[Answer]
+        Let
+        \begin{align*}
+            k_1 &= \SI{6.015e-5}{\per\second}&
+                k_2 &= \SI{2.971e-3}{\per\second}\\
+            T_1 &= \SI{420}{\kelvin}&
+                T_2 &= \SI{470}{\kelvin}
+        \end{align*}
+        Then
+        \begin{align*}
+            k_1 &= A\e[-E_a/RT_1]&
+            k_2 &= A\e[-E_a/RT_2]
+        \end{align*}
+        so that
+        \begin{align*}
+            \frac{k_1}{k_2} &= \frac{A\e[-E_a/RT_1]}{A\e[-E_a/RT_2]}\\
+            &= \e[E_a/RT_2-E_a/RT_1]\\
+            \ln\frac{k_1}{k_2} &= \frac{(T_1-T_2)E_a}{RT_1T_2}\\
+            E_a &= \frac{RT_1T_2}{T_1-T_2}\ln\frac{k_1}{k_2}\\
+            \Aboxed{E_a &= \SI[per-mode=fraction,fraction-function=\tfrac]{128.0}{\kilo\joule\per\mole}}
+        \end{align*}
+        and
+        \begin{align*}
+            A &= \frac{k_1}{\e[-E_a/RT_1]}\\
+            \Aboxed{A &= \SI{5.0e11}{\per\second}}
+        \end{align*}
+        Additionally, since this is a unimolecular reaction, we have that
+        \begin{align*}
+            E_a &= \Delta^\ddagger H^\circ+RT\\
+            \Delta^\ddagger H^\circ &= E_a-RT\\
+            \Aboxed{\Delta^\ddagger H^\circ &= \SI[per-mode=fraction,fraction-function=\tfrac]{124.5}{\kilo\joule\per\mole}}
+        \end{align*}
+        and
+        \begin{align*}
+            A &= \frac{\e\kB T}{h}\e[\Delta^\ddagger S^\circ/R]\\
+            \Delta^\ddagger S^\circ &= R\ln\frac{Ah}{\e\kB T}\\
+            \Aboxed{\Delta^\ddagger S^\circ &= \SI[per-mode=fraction,fraction-function=\tfrac]{-32.1}{\joule\per\mole\per\kelvin}}
+        \end{align*}
+        at \SI{420}{\kelvin}.
+    \end{proof}
     \item The kinetics of a chemical reaction can be followed by a variety of experimental techniques, including optical spectrometry, NMR spectroscopy, conductivity, resistivity, pressure changes, and volume changes. When using these techniques, we do not measure the concentration itself but we know that the observed signal is proportional to the concentration; the exact proportionality constant depends on the experimental technique and the species present in the chemical system. Consider the general reaction given by
     \begin{equation*}
         \ce{\nu_{\ce{A}} A + \nu_{\ce{B}} B -> \nu_{\ce{Y}} Y + \nu_{\ce{Z}} Z}
@@ -106,13 +232,66 @@
     \end{equation}
     and
     \begin{equation}
-        S(\infty) = p_{\ce{B}}\left( \cnc[0]{B}-\frac{\nu_{\ce{B}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)+p_{\ce{Y}}\left( \cnc[0]{Y}-\frac{\nu_{\ce{Y}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)+p_{\ce{Z}}\left( \cnc[0]{Z}-\frac{\nu_{\ce{Z}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)
+        S(\infty) = p_{\ce{B}}\left( \cnc[0]{B}-\frac{\nu_{\ce{B}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)+p_{\ce{Y}}\left( \cnc[0]{Y}+\frac{\nu_{\ce{Y}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)+p_{\ce{Z}}\left( \cnc[0]{Z}+\frac{\nu_{\ce{Z}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)
     \end{equation}
     Combine Equations 1-3 to show that
     \begin{equation*}
         \cnc{A} = \cnc[0]{A}\frac{S(t)-S(\infty)}{S(0)-S(\infty)}
     \end{equation*}
     (Hint: Be sure to express $\cnc{B}$, $\cnc{Y}$, and $\cnc{Z}$ in terms of their initial values, $\cnc{A}$ and $\cnc[0]{A}$.)
+    \begin{proof}[Answer]
+        If only species \ce{X} exists \emph{in situ} at time $t$, then $S(t)\propto\cnc{X}$ with proportionality constant $p_{\ce{X}}$, where $\cnc{X}$ denotes the concentration of species \ce{X} at time $t$. Therefore, since the total signal is the sum of all of the partial signals,
+        \begin{equation*}
+            S(t) = \sum_{\ce{X}}p_{\ce{X}}\cnc{X}
+            = p_{\ce{A}}\cnc{A}+p_{\ce{B}}\cnc{B}+p_{\ce{Y}}\cnc{Y}+p_{\ce{Z}}\cnc{Z}
+        \end{equation*}
+        It follows by direct substitution that
+        \begin{equation}
+            S(0) = p_{\ce{A}}\cnc[0]{A}+p_{\ce{B}}\cnc[0]{B}+p_{\ce{Y}}\cnc[0]{Y}+p_{\ce{Z}}\cnc[0]{Z}
+        \end{equation}
+        where $\cnc[0]{X}$ denotes the concentration of species \ce{X} at time $t=0$. Additionally, at time $t=\infty$, all of \ce{A} (the limiting reagent) will have been consumed, and a proportional amount of all other species will have been created or consumed. For instance, if $V$ is the volume of the reaction domain, then dimensional analysis tells us that $\cnc[0]{A}\cdot V$ moles of \ce{A} will react with
+        \begin{equation*}
+            \frac{\cnc[0]{A}\cdot V\text{ moles \ce{A}}}{1}\times\frac{\nu_{\ce{B}}\text{ moles \ce{B}}}{\nu_{\ce{A}}\text{ moles \ce{A}}} = \frac{\nu_{\ce{B}}}{\nu_{\ce{A}}}\cnc[0]{A}\cdot V\text{ moles \ce{B}}
+        \end{equation*}
+        Another way of looking at this is that the concentration of \ce{B} will decrease by $\frac{\nu_{\ce{B}}}{\nu_{\ce{A}}}\cnc[0]{A}$ over the course of the reaction, i.e., that the final concentration $\cnc[$\infty$]{B}$ of \ce{B} will be given by
+        \begin{equation*}
+            \cnc[$\infty$]{B} = \cnc[0]{B}-\frac{\nu_{\ce{B}}}{\nu_{\ce{A}}}\cnc[0]{A}
+        \end{equation*}
+        Similarly, the concentration of the products will increase by a proportional amount. Thus, we have that
+        \begin{align*}
+            S(\infty) &= p_{\ce{A}}\cnc[$\infty$]{A}+p_{\ce{B}}\cnc[$\infty$]{B}+p_{\ce{Y}}\cnc[$\infty$]{Y}+p_{\ce{Z}}\cnc[$\infty$]{Z}\\
+            &= p_{\ce{A}}\cdot 0+p_{\ce{B}}\left( \cnc[0]{B}-\frac{\nu_{\ce{B}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)+p_{\ce{Y}}\left( \cnc[0]{Y}+\frac{\nu_{\ce{Y}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)+p_{\ce{Z}}\left( \cnc[0]{Z}+\frac{\nu_{\ce{Z}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)\\
+            &= p_{\ce{B}}\left( \cnc[0]{B}-\frac{\nu_{\ce{B}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)+p_{\ce{Y}}\left( \cnc[0]{Y}+\frac{\nu_{\ce{Y}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)+p_{\ce{Z}}\left( \cnc[0]{Z}+\frac{\nu_{\ce{Z}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)
+        \end{align*}
+        as desired.\par
+        To derive an expression for $\cnc{A}$ as a function of $S(t)$, we can first note that there are a number of similar terms between Equations 1, 2, and 3 that would cancel when adding or subtracting. As such, we can determine that
+        \begin{align*}
+            \begin{split}
+                S(\infty)-S(0) ={}& p_{\ce{B}}\left( \cnc[0]{B}-\frac{\nu_{\ce{B}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)+p_{\ce{Y}}\left( \cnc[0]{Y}+\frac{\nu_{\ce{Y}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)+p_{\ce{Z}}\left( \cnc[0]{Z}+\frac{\nu_{\ce{Z}}}{\nu_{\ce{A}}}\cnc[0]{A} \right)\\
+                &-p_{\ce{A}}\cnc[0]{A}-p_{\ce{B}}\cnc[0]{B}-p_{\ce{Y}}\cnc[0]{Y}-p_{\ce{Z}}\cnc[0]{Z}
+            \end{split}\\
+            ={}& -p_{\ce{B}}\frac{\nu_{\ce{B}}}{\nu_{\ce{A}}}\cnc[0]{A}+p_{\ce{Y}}\frac{\nu_{\ce{Y}}}{\nu_{\ce{A}}}\cnc[0]{A}+p_{\ce{Z}}\frac{\nu_{\ce{Z}}}{\nu_{\ce{A}}}\cnc[0]{A}-p_{\ce{A}}\cnc[0]{A}\\
+            S(0)-S(\infty) ={}& (p_{\ce{A}}\nu_{\ce{A}}+p_{\ce{B}}\nu_{\ce{B}}-p_{\ce{Y}}\nu_{\ce{Y}}-p_{\ce{Z}}\nu_{\ce{Z}})\frac{\cnc[0]{A}}{\nu_{\ce{A}}}
+        \end{align*}
+        and
+        \begin{align*}
+            S(t)-S(0) &= p_{\ce{A}}(\cnc{A}-\cnc[0]{A})+p_{\ce{B}}(\cnc{B}-\cnc[0]{B})+p_{\ce{Y}}(\cnc{Y}-\cnc[0]{Y})+p_{\ce{Z}}(\cnc{Z}-\cnc[0]{Z})\\
+            &= p_{\ce{A}}\cdot\frac{\nu_{\ce{A}}}{\nu_{\ce{A}}}(\cnc{A}-\cnc[0]{A})+p_{\ce{B}}\cdot\frac{\nu_{\ce{B}}}{\nu_{\ce{A}}}(\cnc{A}-\cnc[0]{A})-p_{\ce{Y}}\cdot\frac{\nu_{\ce{Y}}}{\nu_{\ce{A}}}(\cnc{A}-\cnc[0]{A})-p_{\ce{Z}}\cdot\frac{\nu_{\ce{Z}}}{\nu_{\ce{A}}}(\cnc{A}-\cnc[0]{A})\\
+            &= (p_{\ce{A}}\nu_{\ce{A}}+p_{\ce{B}}\nu_{\ce{B}}-p_{\ce{Y}}\nu_{\ce{Y}}-p_{\ce{Z}}\nu_{\ce{Z}})\frac{\cnc{A}-\cnc[0]{A}}{\nu_{\ce{A}}}
+        \end{align*}
+        It follows that
+        \begin{align*}
+            S(t)-S(\infty) &= [S(t)-S(0)]+[S(0)-S(\infty)]\\
+            &= (p_{\ce{A}}\nu_{\ce{A}}+p_{\ce{B}}\nu_{\ce{B}}-p_{\ce{Y}}\nu_{\ce{Y}}-p_{\ce{Z}}\nu_{\ce{Z}})\frac{\cnc{A}}{\nu_{\ce{A}}}
+        \end{align*}
+        so that
+        \begin{align*}
+            \frac{S(t)-S(\infty)}{S(0)-S(\infty)} &= \frac{(p_{\ce{A}}\nu_{\ce{A}}+p_{\ce{B}}\nu_{\ce{B}}-p_{\ce{Y}}\nu_{\ce{Y}}-p_{\ce{Z}}\nu_{\ce{Z}})\cnc{A}/\nu_{\ce{A}}}{(p_{\ce{A}}\nu_{\ce{A}}+p_{\ce{B}}\nu_{\ce{B}}-p_{\ce{Y}}\nu_{\ce{Y}}-p_{\ce{Z}}\nu_{\ce{Z}})\cnc[0]{A}/\nu_{\ce{A}}}\\
+            &= \frac{\cnc{A}}{\cnc[0]{A}}\\
+            \cnc{A} &= \cnc[0]{A}\frac{S(t)-S(\infty)}{S(0)-S(\infty)}
+        \end{align*}
+        as desired.
+    \end{proof}
 \end{enumerate}
 
 
@@ -142,20 +321,76 @@
     \end{equation*}
     where $h(x)=\int p(x)\dd{x}$ and $c$ is a constant. Show that this solution leads to
     \begin{equation*}
-        [\ce{I}] = \frac{k_1}{k_2-k_1}\cnc[0]{A}(\e[-k_1t]-\e[-k_2t])
+        [\ce{I}] = \frac{k_1}{k_2-k_1}\cnc[0]{A}\left( \e[-k_1t]-\e[-k_2t] \right)
     \end{equation*}
+    \begin{proof}[Answer]
+        As in Problem 28-33, we can integrate
+        \begin{equation*}
+            \dv{\cnc{A}}{t} = -k_1\cnc{A}
+        \end{equation*}
+        to obtain $\cnc{A}=\cnc[0]{A}\e[-k_1t]$. Substituting this into the rate law for the intermediate \ce{I} yields
+        \begin{align*}
+            \dv{\cnc{I}}{t} &= k_1\cnc[0]{A}\e[-k_1t]-k_2\cnc{I}\\
+            \dv{\cnc{I}}{t}+k_2\cnc{I} &= k_1\cnc[0]{A}\e[-k_1t]
+        \end{align*}
+        Noting that this equation is of the described form with $y(x)=\cnc{I}(t)$, $p(x)=k_2$, and $q(x)=k_1\cnc[0]{A}\e[-k_1t]$, we can determine that
+        \begin{align*}
+            h(x) &= \int_0^xk_2\dd{x}\\
+            &= k_2x
+        \end{align*}
+        and thus that the general solution is
+        \begin{align*}
+            \cnc{I}\cdot\e[k_2t] &= \int_0^tk_1\cnc[0]{A}\e[-k_1t]\cdot\e[k_2t]\dd{t}\\
+            \cnc{I}\e[k_2t] &= k_1\cnc[0]{A}\int_0^t\e[(k_2-k_1)t]\dd{t}\\
+            \cnc{I}\e[k_2t] &= \frac{k_1\cnc[0]{A}}{k_2-k_1}\left( \e[(k_2-k_1)t]-1 \right)\\
+            [\ce{I}] &= \frac{k_1}{k_2-k_1}\cnc[0]{A}\left( \e[-k_1t]-\e[-k_2t] \right)
+        \end{align*}
+        as desired.
+    \end{proof}
     \stepcounter{enumi}
     \item Consider the reaction mechanism
     \begin{equation*}
         \ce{A ->[$k_1$] I ->[$k_2$] P}
     \end{equation*}
-    where $\cnc{A}=\cnc[0]{A}$ and $\cnc[0]{I}=\cnc[0]{P}=0$ at time $t=0$. Use the exact solution to this kinetic scheme (below) to plot the time dependence of $\cnc{A}/\cnc[0]{A}$, $\cnc{I}/\cnc[0]{A}$, and $\cnc{P}/\cnc[0]{P}$ versus $\log k_1t$ for the case $k_2=2k_1$.
+    where $\cnc{A}=\cnc[0]{A}$ and $\cnc[0]{I}=\cnc[0]{P}=0$ at time $t=0$. Use the exact solution to this kinetic scheme (below) to plot the time dependence of $\cnc{A}/\cnc[0]{A}$, $\cnc{I}/\cnc[0]{A}$, and $\cnc{P}/\cnc[0]{A}$ versus $\log k_1t$ for the case $k_2=2k_1$.
     \begin{gather*}
         \cnc{A} = \cnc[0]{A}\e[-k_1t]\\
         [\ce{I}] = \frac{k_1}{k_2-k_1}\cnc[0]{A}(\e[-k_1t]-\e[-k_2t])\\
         \cnc{P} = \cnc[0]{A}-\cnc{A}-\cnc{I} = \cnc[0]{A}\left\{ 1+\frac{1}{k_1-k_2}(k_2\e[-k_1t]-k_1\e[-k_2t]) \right\}
     \end{gather*}
-    On the same graph, plot the time dependence of $\cnc{A}/\cnc[0]{A}$, $\cnc{I}/\cnc[0]{I}$, and $\cnc{P}/\cnc[0]{P}$ using the expressions for $\cnc{A}$, $\cnc{I}$, and $\cnc{P}$ obtained using the steady-state approximation for $\cnc{I}$. Based on your results, can you use the steady-state approximation to model the kinetics of this reaction mechanism when $k_2=2k_1$?
+    On the same graph, plot the time dependence of $\cnc{A}/\cnc[0]{A}$, $\cnc{I}/\cnc[0]{A}$, and $\cnc{P}/\cnc[0]{A}$ using the expressions for $\cnc{A}$, $\cnc{I}$, and $\cnc{P}$ obtained using the steady-state approximation for $\cnc{I}$. Based on your results, can you use the steady-state approximation to model the kinetics of this reaction mechanism when $k_2=2k_1$?
+    \begin{proof}[Answer]
+        ${\color{white}hi}$
+        \begin{center}
+            \begin{tikzpicture}[xscale=1.5,yscale=3]
+                \path (-4,0) -- (4,0);
+                \small
+                \draw (-2,0) -- node[below=5mm]{$\ln k_1t$} (2,0);
+                \draw (-2,0) -- node[left=7mm]{$\dfrac{\cnc{X}}{\cnc[0]{A}}$} ++(0,1.1);
+                \draw (2,0) -- ++(0,1.1);
+                \footnotesize
+                \foreach \x in {-2,...,2} {
+                    \draw (\x,{0.1/3}) -- ++(0,{-0.2/3}) node[below]{$\x$};
+                }
+                \foreach \y in {0.0,0.2,0.4,0.6,0.8,1.0} {
+                    \draw ({-2+0.1/1.5},\y) -- ++({-0.2/1.5},0) node[left]{$\y$};
+                }
+        
+                \draw [pux,thick] plot[domain=-2:2,smooth] (\x,{e^(-e^\x)});
+                \draw [blx,thick] plot[domain=-2:2,smooth] (\x,{e^(-e^\x)-e^(-2*e^\x)});
+                \draw [bly,thick] plot[domain=-2:2,smooth] (\x,{1-(2*e^(-e^\x)-e^(-2*e^\x))});
+                \draw [rex,thick] plot[domain=-2:2,smooth] (\x,{e^(-e^\x)/2});
+                \draw [rey,thick] plot[domain=-2:2,smooth] (\x,{1-e^(-e^\x)});
+        
+                \node [right] at (2.1,0.7)  {${\color{pux}\blacksquare}=\cnc{A}\ \&\ \cnc[SS]{A}$};
+                \node [right] at (2.1,0.55) {${\color{blx}\blacksquare}=\cnc{I}$};
+                \node [right] at (2.1,0.4)  {${\color{bly}\blacksquare}=\cnc{P}$};
+                \node [right] at (2.1,0.25) {${\color{rex}\blacksquare}=\cnc[SS]{I}$};
+                \node [right] at (2.1,0.1)  {${\color{rey}\blacksquare}=\cnc[SS]{P}$};
+            \end{tikzpicture}
+        \end{center}
+        Based on the above graph, the steady-state approximation is not a good model in this case. As we can see, there are substantial differences in the values for $\cnc{P}$, and the two curves describing $\cnc{I}$ do not even have similar shapes.
+    \end{proof}
 \end{enumerate}
 
 
@@ -166,6 +401,9 @@
     \item You do not need to derive any equations in this short discussion. Use your intuition and focus on the big picture.
     \item Please cite the literature if you link the HW problem to anyone (author names, titles, journal name, volume numbers, and page numbers).
 \end{enumerate}
+\begin{proof}[Answer]
+    I would like to deepen my understanding of Problem 28-46, which considers the observed activation energy as a function of the component activation energies for parallel reactions. One of the first things I noticed when looking at this problem was that the expression I'm deriving is a weighted average of the two component activation energies by the speeds at which said reactions occur. This should make intuitive sense. Consider how often $E_1$ being supplied to the system results in the formation of a molecule of \ce{B}. This relative rate should be summed up somewhat by $k_1$. A similar statement holds for $E_2$, \ce{C}, and $k_2$. Moreover, if we take $k_2=2k_1$ and $E_2>E_1$ for the sake of having something tangible to work with, we should be able to imagine that supplying $E_2$ to the system means we are twice as likely to generate a molecule of \ce{C} as we would be likely to generate a molecule of \ce{B} upon supplying $E_1$ to the system. Thus, assuming all quantities of energy are supplied equally, we would observe that supplying slightly more than $(E_1+E_2)/2$ results in the reaction happening at the optimum production-to-energy input ratio, as predicted by the expression given in Problem 28-46.
+\end{proof}
 \setcounter{equation}{0}
 
 
