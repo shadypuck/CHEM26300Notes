@@ -376,5 +376,126 @@
 
 
 
+\section{Midterm Review and Intro to Catalysts}
+\begin{itemize}
+    \item \marginnote{4/27:}Example problem 1: Steady-state approximation.
+    \begin{itemize}
+        \item Let
+        \begin{equation*}
+            \ce{A <=>[$k_a$][$k_a'$] B <=>[$k_b$][$k_b'$] C <=>[$k_c$][$k_c'$] D}
+        \end{equation*}
+        Suppose $\cnc{A}$ is maintained at a fixed value and the produce \ce{D} is removed from the reaction as it is formed. Find the rate at which the product is formed in terms of $\cnc{A}$.
+        \item By hypothesis, we have that at all times $t$, $\cnc{A}=\cnc[0]{A}$ and $\cnc{D}=0$.
+        \item The hypotheses also imply that we can apply the steady-state approximation to both \ce{B} and \ce{C}.
+        \item Thus, we have that
+        \begin{align*}
+            \dv{\cnc{C}}{t} = 0 &= k_b\cnc{B}-k_c\cnc{C}-k_b'\cnc{C}\\
+            \cnc{B} &= \frac{k_b'+k_c}{k_b}\cnc{C}
+        \end{align*}
+        so that
+        \begin{align*}
+            \dv{\cnc{B}}{t} &= k_a\cnc{A}-k_b\cnc{B}-k_a'\cnc{B}+k_b'\cnc{C}\\
+            0 &= k_a\cnc{A}-k_b\cdot\frac{k_b'+k_c}{k_b}\cnc{C}-k_a'\cdot\frac{k_b'+k_c}{k_b}\cnc{C}+k_b'\cnc{C}\\
+            % &= k_a\cnc{A}-(k_b'+k_c+\frac{k_a'k_b'}{k_b}+\frac{k_a'k_c}{k_b}-k_b')\cnc{C}\\
+            % &= k_a\cnc{A}-(\frac{k_bk_c+k_a'k_b'+k_a'k_c}{k_b})\cnc{C}\\
+            \cnc{C} &= \frac{k_ak_b}{k_bk_c+k_a'k_b'+k_a'k_c}\cnc{A}
+        \end{align*}
+        and therefore
+        \begin{align*}
+            \dv{\cnc{D}}{t} &= k_c\cnc{C}-k_c'\cdot 0\\
+            &= \frac{k_ak_bk_c}{k_bk_c+k_a'k_b'+k_a'k_c}\cnc{A}
+        \end{align*}
+    \end{itemize}
+    \item Example problem 2.
+    \begin{itemize}
+        \item Consider the reaction
+        \begin{equation*}
+            \ce{HCl + CH3CH=CH2 <=> CH3CHClCH3}
+        \end{equation*}
+        which proceeds by the mechanism
+        \begin{enumerate}
+            \item \ce{HCl + HCl <=> (HCl)2} (equilibrium constant $K_1$).
+            \item \ce{HCl + CH3CH=CH2 <=> complex} (equilibrium constant $K_2$).
+            \item \ce{(HCl)2 + complex <=> CH3CHClCH3 + HCl + HCl} (equilibrium constant $K_3$).
+        \end{enumerate}
+        \item The equilibrium constants for the two pre-equilibria are
+        \begin{align*}
+            K_1 &= \frac{\cnc[eq]{(HCl)2}c^\circ}{\cnc[eq]{HCl}^2}&
+            K_2 &= \frac{\cnc[eq]{complex}c^\circ}{\cnc[eq]{HCl}\cnc[eq]{CH3CH=CH2}}
+        \end{align*}
+        \item We can divide the mass-action expression for $K_1$ by $(c^\circ)^2$ to get each concentration over $c^\circ$ within its exponent.
+        \item The rate of product formation is
+        \begin{align*}
+            v &= \dv{\cnc{CH3CHClCH3}}{t}\\
+            &= k_r\cnc{(HCl)2}\cnc{complex}\\
+            &\approx k_r\cnc[eq]{(HCl)2}\cnc[eq]{complex}\\
+            &= k_r\cdot\frac{K_1\cnc[eq]{HCl}^2}{c^\circ}\cdot\frac{K_2\cnc[eq]{HCl}\cnc[eq]{CH3CH=CH2}}{c^\circ}\\
+            &= \frac{k_rK_1K_2}{(c^\circ)^2}\cnc[eq]{HCl}^3\cnc[eq]{CH3CH=CH2}
+        \end{align*}
+        \begin{itemize}
+            \item There's a key assumption with the steady state and something about being able to apply the equilibrium concentration of the intermediate as the steady-state quantity.
+            \item This question wants to let you know that an equilibrium constant like $K_1$ might indicate a steady-state approximation.
+        \end{itemize}
+    \end{itemize}
+    \item Note: Mind the positive and negative signs when constructing differential rate laws!
+    \item The midterm will be posted this Friday (April 29) and will be available until the following Friday (May 6). There will be a timed 2 hour period to take it.
+    \item \textbf{Catalyst}: A substance that participates in the chemical reaction but is not consumed in the process.
+    \begin{itemize}
+        \item A catalyst affects the mechanism and activation energy of a chemical reaction.
+        \item A catalyst can give rise to a reaction path with a negligible activation barrier.
+        \item The exothermicity or endothermicity of the chemical reaction is not altered by the presence of a catalyst.
+    \end{itemize}
+    \item \textbf{Homogeneous catalysis}: Catalysis in which the catalyst is in the same phase as the reactants and products.
+    \item \textbf{Heterogeneous catalysis}: Catalysis in which the catalyst is in a different phase from the reactants and products.
+    \item Imagine that initially, we have the reaction
+    \begin{equation*}
+        \ce{A ->[$k$] products}
+    \end{equation*}
+    where $k$ is the observed rate constant.
+    \begin{itemize}
+        \item When a catalyst is introduced into solution, this mechanism continues, but we now also have the new reaction pathway
+        \begin{equation*}
+            \ce{A + catalyst ->[$k_\text{cat}$] products + catalyst}
+        \end{equation*}
+        \item If each of these competing reactions is an elementary process, then
+        \begin{equation*}
+            -\dv{\cnc{A}}{t} = k\cnc{A}+k_\text{cat}\cnc{A}\cnc{catalyst}
+        \end{equation*}
+        \item In most cases, catalysts enhance reaction rates by many orders of magnitude, and therefore only the rate law for the catalyzed reaction need be considered in analyzing experimental data.
+    \end{itemize}
+    \item Reviews the Nobel Prizes in 2020 and 2021 (for CRISPR and asymmetric organocatalysis, respectively).
+    \item An example of homogeneous catalysis.
+    \begin{itemize}
+        \item Consider the reaction
+        \begin{equation*}
+            \ce{2Ce^4+(aq) + Tl+(aq) -> 2Ce^3+(aq) + Tl^3+(aq)}
+        \end{equation*}
+        \item In the absence of a catalyst,
+        \begin{equation*}
+            v = k\cnc{Tl+}\cnc{Ce^4+}^2
+        \end{equation*}
+        and the mechanism is a termolecular elementary reaction.
+        \item However, with \ce{Mn^2+} as the catalyst, we have the mechanism
+        \begin{align*}
+            \ce{Ce^4+(aq) + Mn^2+(aq)} &\xRightarrow{k_\text{cat}}                \ce{Mn^3+(aq) + Ce^3+(aq)}\\
+            \ce{Ce^4+(aq) + Mn^3+(aq)} &\xRightarrow{{\color{white}k_\text{cat}}} \ce{Mn^4+(aq) + Ce^3+(aq)}\\
+            \ce{Mn^4+(aq) + Tl+(aq)}   &\xRightarrow{{\color{white}k_\text{cat}}} \ce{Mn^2+(aq) + Tl^3+(aq)}
+        \end{align*}
+        where the step with $k_\text{cat}$ is the rate-determining step.
+        \begin{itemize}
+            \item Thus, for this mechanism, we have that
+            \begin{equation*}
+                v = k_\text{cat}\cnc{Ce^4+}\cnc{Mn^2+}
+            \end{equation*}
+        \end{itemize}
+        \item The overall rate law for this reaction is therefore
+        \begin{equation*}
+            v = k\cnc{Tl+}\cnc{Ce^4+}^2+k_\text{cat}\cnc{Ce^4+}\cnc{Mn^2+}
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
