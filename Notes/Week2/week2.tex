@@ -1,0 +1,473 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\stepcounter{chapter}
+
+\begin{document}
+
+
+
+
+\chapter{Intermolecular Dynamics and Intro to Rate Laws}
+\section{Mean Free Path}
+\begin{itemize}
+    \item \marginnote{4/4:}The midterm will have some computational problems; the final will be nearly entirely conceptual.
+    \item Reviews the conclusions of the derivation associated with Figure \ref{fig:collisionFrequency}.
+    \item The Maxwell-Boltzmann Distribution has been verified experimentally.
+    \begin{itemize}
+        \item A furnace with a very small hole that allowed a beam of atoms (such as potassium) to emerge into an evacuated chamber. The beam bassed through a pair of collimating slits and then through a velocity-selector.
+        \item In the second method, clocks the time it takes for molecules to travel a fixed distance. A very short pulse of molecules leaves the chopper and then spread out in space as they travel toward the detector.
+        \item Either way, we observe very good agreement with the M-B distribution.
+    \end{itemize}
+    \item \textbf{Mean free path}: The average distance a molecule travels between collisions.
+    \item \textbf{Collision cylinder}: The cylinder of radius $d$ that encapsulates the trajectory of a particle of diameter $d$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[scale=1.3]
+            \footnotesize
+            \draw (0,1) -- ++(5,0) arc[start angle=90,end angle=-90,x radius=4mm,y radius=1cm] -- ++(-5,0) arc[start angle=270,end angle=90,x radius=4mm,y radius=1cm];
+    
+            \fill [ball color=orx] circle (5mm);
+            \fill [ball color=orx] (1.6,1.6) circle (5mm);
+            \fill [ball color=orx] (1.8,-0.9) circle (5mm);
+            \fill [ball color=orx] (2.6,0.8) circle (5mm);
+            \fill [ball color=orx] (3,-1.1) circle (5mm);
+            \fill [ball color=orx] (4,-0.3) circle (5mm);
+    
+            \draw [-latex] (1.6,0) -- node[pos=0.4,left]{$>d$} ++(0,1.6) node[above left=4mm]{Miss};
+            \draw [-latex] (1.8,0) -- node[pos=0.25,right]{$<d$} ++(0,-0.9) node[below=6mm]{Just hit};
+            \draw [-latex] (2.6,0) -- node[pos=0.25,right]{$<d$} ++(0,0.8);
+            \draw [-latex] (3,0) -- node[pos=0.3,left]{$>d$} ++(0,-1.1) node[below=6mm]{Just miss};
+            \draw [-latex] (4,0) -- node[pos=0.7,left]{$<d$} ++(0,-0.3) node[above right=4mm]{Hit};
+    
+            \node at (-1,-1.2) {Area $\sigma$}
+                edge [out=90,in=180,-latex,out looseness=0.8] (0,-0.7)
+            ;
+            \draw [dash pattern=on 2mm off 2pt on 2pt off 2pt] (-1,0) -- (6,0);
+            \draw [latex-latex,semithick] (0,1) -- node[pos=0.35,right=-1pt]{$d$} (0,0) -- (1,0);
+            \draw (0,1) arc[start angle=90,end angle=-90,x radius=4mm,y radius=1cm];
+        \end{tikzpicture}
+        \caption{Collision cylinder.}
+        \label{fig:collisionCylinder}
+    \end{figure}
+    \begin{itemize}
+        \item Particles whose center of mass lie within the collision cylinder collide with the original particle, and vice versa for particles whose center of mass lie outside the collision cylinder.
+        \item Hard-sphere collision cross section $\pi d^2$ denoted by $\sigma$.
+    \end{itemize}
+    \item Collision frequency in terms of cylinder parameters.
+    \begin{itemize}
+        \item The number of collision in the time interval $\dd{t}$ is
+        \begin{equation*}
+            \dd{N_\text{coll}} = \rho\sigma\prb{u}\dd{t}
+        \end{equation*}
+        where $\rho=N/V$.
+        \item The collision frequency $z_A$ is
+        \begin{equation*}
+            z_A = \dv{N_\text{coll}}{t}
+            = \rho\sigma\prb{u}
+            = \rho\sigma\sqrt{\frac{8\kB T}{\pi m}}
+        \end{equation*}
+        \item Treat the motion of two bodies of masses $m_1,m_2$ moving with respect to each other by the motion of one body with a reduced mass $\mu=m_1m_2/(m_1+m_2)$ moving with respect to the other one being fixed.
+        \item If the masses of the two colliding molecules are the same, then $\mu=m/2$.
+        \item Remember that $\prb{u_r}=\sqrt{2}\prb{u}$.
+        \item Thus, the correct expression for $z_A$ is
+        \begin{equation*}
+            z_A = \rho\sigma\prb{u_r}
+            = \sqrt{2}\rho\sigma\prb{u}
+        \end{equation*}
+    \end{itemize}
+    \item The mean free path is temperature- and pressure-dependent.
+    \begin{itemize}
+        \item The average distance traveled between collisions is given by
+        \begin{equation*}
+            l = \frac{\prb{u}}{z_A}
+            = \frac{\prb{u}}{\sqrt{2}\rho\sigma\prb{u}}
+            = \frac{1}{\sqrt{2}\rho\sigma}
+        \end{equation*}
+        \item If we replace $\rho=P\NA/RT$ by its ideal gas value, then we have
+        \begin{equation*}
+            l = \frac{RT}{\sqrt{2}\NA\sigma P}
+            = \frac{\kB T}{\sqrt{2}\sigma\rho}
+        \end{equation*}
+        \item Now $\kB T$ has units of thermal energy, and we know from physics that $E=F\cdot l$ (energy is force times distance). Thus, $F\propto\sigma\rho$ by the above since $E=\kB T$ and $l=l$.
+    \end{itemize}
+    \item The probability of a molecular collision.
+    \begin{itemize}
+        \item The probability that one molecule will suffer a collision is $\sigma\rho dx$.
+        \begin{itemize}
+            \item This should make intuitive sense as $\sigma$ is the area inside which a molecule must be to collide with some particle, $\rho$ is the density (related to the number of particles likely to be within that area), and $\dd{x}$ tells us over how much space we're moving.
+            \item $\sigma\dd{x}$ is a volume.
+        \end{itemize}
+        \item Let $n(x)$ be the number of molecules that travel a distance $x$ without a collision.
+        \item Then the number of molecules that undergo a collision between $x,x+\dd{x}$ is
+        \begin{align*}
+            n(x)-n(x+\dd{x}) &= \sigma\rho n(x)\dd{x}\\
+            \frac{n(x+\dd{x})-n(x)}{\dd{x}} &= -\sigma\rho n(x)\\
+            \dv{n}{x} &= -\sigma\rho n
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Collision Frequency and Gas-Phase Reaction Rate}
+\begin{itemize}
+    \item \marginnote{4/6:}Submit homework in paper next Monday.
+    \item Picking up with the probability of a molecular collision from last time.
+    \begin{itemize}
+        \item Solving the differential equation gives
+        \begin{equation*}
+            n(x) = n_0\e[-\sigma\rho x]
+            = n_0\e[-x/l]
+        \end{equation*}
+        where $l$ is the mean free path.
+        \begin{itemize}
+            \item Note that the $\sqrt{2}$ arises from treating every other molecule as static, so we don't need it in this case?
+        \end{itemize}
+        \item The number of molecules that collide in the interval $x,x+\dd{x}$ is $n(x)-n(x+\dd{x})$.
+        \item The probability that one of the initial $n_0$ molecules will collide in this interval is
+        \begin{equation*}
+            p(x)\dd{x} = \frac{n(x)-n(x+\dd{x})}{n_0}
+            = -\frac{1}{n_0}\dv{n}{x}\dd{x}
+            = \frac{1}{l}\e[-x/l]\dd{x}
+        \end{equation*}
+        \item Discussion of Figure 27.12.
+        \begin{itemize}
+            \item Figure 27.12 does not graph the above equation.
+            \item Rather, it graphs the accumulated (integrated) probability from 0 to $x$. We call this function $P(x)$.
+            \begin{equation*}
+                P(x) = \int_0^xp(x')\dd{x'}
+            \end{equation*}
+        \end{itemize}
+    \end{itemize}
+    \item Collision frequency of one particular molecule per unit volume.
+    \begin{itemize}
+        \item $z_A$ is the collision frequency of one particular molecule.
+        \item $Z_{AA}$ is the total collision frequency per unit volume.
+        \item We have
+        \begin{equation*}
+            Z_{AA} = \frac{1}{2}\rho z_a
+        \end{equation*}
+        \begin{itemize}
+            \item Multiplying by the number density should make intuitive sense.
+            \item We divide by two to avoid counting a collision between a pair of similar molecules as two distinct collisions.
+        \end{itemize}
+        \item It follows that
+        \begin{equation*}
+            Z_{AA} = \frac{1}{2}\sigma\prb{u_r}\rho^2
+            = \frac{\sigma\prb{u}\rho^2}{\sqrt{2}}
+        \end{equation*}
+        \item In a gas consisting of two types of molecules, say $A$ and $B$, then the collision frequency per unit volume is
+        \begin{equation*}
+            Z_{AB} = \sigma_{AB}\prb{u_r}\rho_A\rho_B
+        \end{equation*}
+        where
+        \begin{align*}
+            \sigma_{AB} &= \pi\left( \frac{d_A+d_B}{2} \right)^2&
+            \prb{u_r} &= \sqrt{\frac{8\kB T}{\pi\mu}}&
+            \mu &= \frac{m_Am_B}{m_A+m_B}
+        \end{align*}
+        \begin{itemize}
+            \item There is no $1/2$ coefficient here because there are also $AA$ and $BB$ collisions.
+            \item Indeed, $Z_{AB}$ is not the \emph{total} collision frequency but just the collision frequency of $A$-$B$ collisions.
+        \end{itemize}
+    \end{itemize}
+    \item The rate of a gas-phase chemical reaction depends on the rate of collisions.
+    \begin{itemize}
+        \item The rate of collisions is not just the total frequency of collisions.
+        \item The relative energy of the two colliding molecules exceeds a certain critical value. This does not show up directly in the equation for $Z_{AB}$.
+        \item The number of collisions per unit time per unit are with the wall by molecules whose speeds are in the range $u,u+\dd{u}$ and whose direction lies within the solid angle $\sin\theta\dd{\theta}\dd{\phi}$ is approximately $u^3\e[-mu^2/2\kB T]$.
+        \item We can account for the fact that the molecules collide with each other rather than with a stationary wall by replacing $m$ with the reduced mass $\mu=m_Am_B/(m_A+m_B)$.
+        \item The collision frequency per unit volume between molecules $A$ and $B$ in which they collide with a relative speed between $u,u+\dd{u}$.
+        \begin{itemize}
+            \item We have that $\dd{Z_{AB}}\propto u_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}$. Thus, if $A$ is a proportionality constant, then
+            \begin{equation*}
+                \dd{Z_{AB}} = Au_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}
+            \end{equation*}
+            \item It follows since $Z_{AB}=\sigma_{AB}\prb{u_r}\rho_A\rho_B$ and $\prb{u_r}=\sqrt{8\kB T/\pi\mu}$ that
+            \begin{align*}
+                \sigma_{AB}\rho_A\rho_B\sqrt{\frac{8\kB T}{\pi\mu}} &= A\int_0^\infty u_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}\\
+                &= 2A\left( \frac{\kB T}{\mu} \right)^2\\
+                A &= \sigma_{AB}\rho_A\rho_B\sqrt{\left( \frac{\mu}{\kB T} \right)^3\cdot\frac{2}{\pi}}
+            \end{align*}
+            \item Thus, we know that
+            \begin{equation*}
+                \dd{Z_{AB}} = \sigma_{AB}\rho_A\rho_B\sqrt{\left( \frac{\mu}{\kB T} \right)^3\cdot\frac{2}{\pi}}\e[-\mu u_r^2/2\kB T]u_r^3\dd{u_r}
+            \end{equation*}
+        \end{itemize}
+        \item Integrating the above from the certain critical value to infinity yields the desired rate.
+    \end{itemize}
+    \item Key information from this chapter.
+    \begin{itemize}
+        \item Pressure from a molecular approach.
+        \item The distribution for speed components and the speed are different.
+        \item The speeds $u_\text{mp}$, $\prb{u}$, and $u_\text{rms}$.
+        \item The frequency of collisions per molecule and the total frequency of collisions per volume.
+        \item Rate of gas phase reactions.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Rate Law Definitions and Methods of Determination}
+\begin{itemize}
+    \item \marginnote{4/8:}Consider a general chemical equation
+    \begin{equation*}
+        \ce{\nu_AA + \nu_BB -> \nu_YY + \nu_ZZ}
+    \end{equation*}
+    \item The extent of the reaction via the progress variable $\xi$ is
+    \begin{align*}
+        n_A(t) &= n_A(0)-\nu_A\xi(t)&
+        n_Y(t) &= n_Y(0)+\nu_Y\xi(t)
+    \end{align*}
+    \item The rate of change (moles/second) is
+    \begin{align*}
+        \dv{n_A}{t} &= -\nu_A\dv{\xi}{t}&
+        \dv{n_Y}{t} &= \nu_Y\dv{\xi}{t}
+    \end{align*}
+    \item Deriving the rate of reaction for a gas-based chemical reaction.
+    \begin{itemize}
+        \item Time-dependent concentration changes
+        \begin{align*}
+            \frac{1}{V}\dv{n_A}{t} &= \dv{[A]}{t} = -\frac{\nu_A}{V}\dv{\xi}{t}&
+            \frac{1}{V}\dv{n_Y}{t} &= \dv{[Y]}{t} = -\frac{\nu_Y}{V}\dv{\xi}{t}
+        \end{align*}
+        \item The rate (or speed) of reaction, also known as the differential rate law, is
+        \begin{equation*}
+            v(t) = -\frac{1}{\nu_A}\dv{[A]}{t}
+            = -\frac{1}{\nu_B}\dv{[B]}{t}
+            = \frac{1}{\nu_Y}\dv{[Y]}{t}
+            = \frac{1}{\nu_Z}\dv{[Z]}{t}
+            = \frac{1}{V}\dv{\xi}{t}
+        \end{equation*}
+        \item All terms are positive.
+        \item Rate laws with a constant $k$ are of the form
+        \begin{equation*}
+            v(t) = k[A]^{m_A}[B]^{m_B}
+        \end{equation*}
+        \item The exponents are known as \textbf{orders}.
+        \item The overall order reaction is $\sum m_i$.
+        \item The orders and overall order of the reaction depends on the fundamental reaction steps and the reaction mechanism.
+    \end{itemize}
+    \item For example, for the reaction \ce{2NO_{(g)} + O2_{(g)} -> 2NO2_{(g)}}, we have
+    \begin{equation*}
+        v(t) = -\frac{1}{2}\dv{[\ce{NO}]}{t}
+        = -\dv{[\ce{O2}]}{t}
+        = -\frac{1}{2}\dv{[\ce{NO2}]}{t}
+    \end{equation*}
+    \begin{itemize}
+        \item It follows that $v(t)=k[\ce{NO}]^2[\ce{O2}]$.
+        \item This is a rare elementary reaction that proceeds with the kinetics illustrated by the equation.
+    \end{itemize}
+    \item Rate laws must be determined by experiment.
+    \begin{itemize}
+        \item Multi-step reactions may have more complex rate law expressions.
+        \item Oftentimes, $1/2$ exponents indicate more complicated mechanisms.
+        \item For example, even an equation as simple looking as \ce{H2 + Br2 -> 2HBr} has rate law
+        \begin{equation*}
+            v(t) = \frac{k'[\ce{H2}][\ce{Br2}]^{1/2}}{1+k''[\ce{HBr}][\ce{Br2}]^{-1}}
+        \end{equation*}
+    \end{itemize}
+    \item Determining rate laws.
+    \begin{itemize}
+        \item Method of isolation.
+        \begin{itemize}
+            \item Put in a large initial excess of $A$ so that it's concentration doesn't change that much; essentially incorporates $[A]^{m_A}$ into $k$ for determination of the order of $B$.
+            \item We can then do the same thing the other way around.
+        \end{itemize}
+        \item Method of initial rates.
+        \begin{itemize}
+            \item We approximate
+            \begin{equation*}
+                v = -\frac{\dd{[A]}}{\nu_A\dd{t}}
+                \approx -\frac{\Delta[A]}{\nu_A\Delta t}
+                = k[A]^{m_A}[B]^{m_B}
+            \end{equation*}
+            \item Consider two different initial values of $[B]$, which we'll call $[B_1],[B_2]$. Then
+            \begin{align*}
+                v_1 &= -\frac{1}{\nu_A}\left( \frac{\Delta[A]}{\Delta t} \right)_1 = k[A]_0^{m_A}[B]_1^{m_B}&
+                v_2 &= -\frac{1}{\nu_A}\left( \frac{\Delta[A]}{\Delta t} \right)_2 = k[A]_0^{m_A}[B]_2^{m_B}
+            \end{align*}
+            \item Take the logarithm and solve for $m_B$.
+            \begin{equation*}
+                m_B = \frac{\ln(v_1/v_2)}{\ln([B]_1/[B]_2)}
+            \end{equation*}
+        \end{itemize}
+    \end{itemize}
+    \item Does an example problem.
+\end{itemize}
+
+
+
+\section{Chapter 27: The Kinetic Theory of Gases}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{4/10:}\textbf{Mean free path}: The average distance that a molecule travels between collisions. \emph{Denoted by} $\bm{l}$. \emph{Given by}
+    \begin{equation*}
+        l = \frac{1}{\sqrt{2}\rho\sigma}
+    \end{equation*}
+    \begin{itemize}
+        \item Naturally, the average distance that a molecule travels between collisions is equal to how far it travels per unit time (the average speed) divided by the number of collisions per unit time (the collision frequency). Thus, $l=\prb{u}/z_A$, which is how the above is derived.
+    \end{itemize}
+    \item Substituting $\rho=N/V=n\NA/V=P\NA/RT$ yields
+    \begin{equation*}
+        l = \frac{RT}{\sqrt{2}\NA\sigma P}
+    \end{equation*}
+    \item Example: At room temperature and one bar, the mean free path of nitrogen is about 200 times the effective diameter of a nitrogen molecule.
+    \item An alternate physical interpretation of the probability of a collision.
+    \begin{itemize}
+        \item Consider a "collision cylinder" with collision cross section of unit area. Let the thickness of this "cylinder" be $\dd{x}$. It follows that the volume of the "collision cylinder" is $1\cdot\dd{x}=\dd{x}$.
+        \item Consequently, the number of molecules having center within the collision cylinder is equal to the number density times the volume, or $\rho\dd{x}$.
+        \item Thus, if each molecule has target area $\sigma$, then the total target area presented by these molecules (neglecting overlap) is $\sigma\rho\dd{x}$.
+        \item Therefore, since the probability of a collision can be thought of as the ration of the total target area to the total area (which we have defined to be unity), the probability of a collision is $\sigma\rho\dd{x}$.
+        \begin{itemize}
+            \item Note that this squares with the definition of the probability of a collision as $\rho\sigma\prb{u}\dd{t}$ with $\dd{x}=\prb{u}\dd{t}$, as we'd expect.
+        \end{itemize}
+    \end{itemize}
+    \item As we can see, the probability of a collision increases with increasing distance traveled $\dd{x}$.
+    \item If $n_0$ molecules are emitted from the origin traveling in the $x$-direction with equal velocity in a volume of unmoving molecules, let $n(x)$ be the number of molecules that travel a distance $x$ without collision.
+    \begin{itemize}
+        \item It follows that the number of molecules that undergo a collision between $x,x+\dd{x}$ is $n(x)\sigma\rho\dd{x}$.
+        \item Furthermore, said number is naturally equal to $n(x)-n(x+\dd{x})$.
+        \item Thus, we have that
+        \begin{align*}
+            n(x)-n(x+\dd{x}) &= \sigma\rho n(x)\dd{x}\\
+            \frac{n(x+\dd{x})-n(x)}{\dd{x}} &= -\sigma\rho n(x)\\
+            \dv{n}{x} &= -\sigma\rho n\\
+            \int_{n_0}^n\frac{\dd{n}}{n} &= -\sigma\rho\int_0^x\dd{x}\\
+            \ln(n/n_0) &= -\sigma\rho x\\
+            n(x) &= n_0\e[-\sigma\rho x]
+        \end{align*}
+        where no factor of $\sqrt{2}$ appears because of the assumption that the other molecules do not move.
+    \end{itemize}
+    \item Therefore, the probability $p(x)\dd{x}$ that one of the initial $n_0$ molecules will collide in the interval $x,x+\dd{x}$ is
+    \begin{align*}
+        p(x)\dd{x} &= \frac{n(x)-n(x+\dd{x})}{n_0}\\
+        &= -\frac{1}{n_0}\dv{n}{x}\dd{x}\\
+        &= \frac{1}{l}\e[-x/l]\dd{x}
+    \end{align*}
+    \begin{itemize}
+        \item The above equation is normalized and has $\prb{x}=l$, as expected.
+    \end{itemize}
+    \item The distance after which half of the molecules will have been scattered from a beam of initially $n_0$ molecules is $l\cdot\ln 2$, i.e., about 70\% of the mean free path.
+    \item \textbf{Total collision frequency per unit volume} (for like molecules): The following quantity. \emph{Denoted by} $Z_{AA}$. \emph{Given by}
+    \begin{equation*}
+        Z_{AA} = \frac{1}{2}\rho z_A
+        = \frac{1}{2}\sigma\prb{u_r}\rho^2
+        = \frac{\sigma\prb{u}\rho^2}{\sqrt{2}}
+    \end{equation*}
+    \begin{itemize}
+        \item Derived by multiplying the collision frequency for \emph{one} molecule $z_A$ by the number of molecules per unit volume $\rho$, and dividing by 2 in order to avoid counting a collision between a pair of similar molecules as two distinct collisions.
+    \end{itemize}
+    \item \textbf{Total collision frequency per unit volume} (for dislike molecules): The following quantity. \emph{Denoted by} $Z_{AB}$. \emph{Given by}
+    \begin{equation*}
+        Z_{AB} = \sigma_{AB}\prb{u_r}\rho_A\rho_B
+    \end{equation*}
+    \item The discussion of the rate of gas-phase chemical reactions is nearly identical to that given in class.
+\end{itemize}
+
+
+
+\section{Chapter 28: Chemical Kinetics I --- Rate Laws}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{4/15:}Whereas \textcite{bib:McQuarrieSimon} developed Quantum Mechanics from a set of simple postulates and Thermodynamics from the three laws, "the field of chemical kinetics has not yet matured to a point where a set of unifying principles has been identified" \parencite[1047]{bib:McQuarrieSimon}.
+    \begin{itemize}
+        \item There are many current theoretical models of kinetics, each of which has its merits and drawbacks.
+        \item Thus, right now, it is necessary to familiarize ourselves with numerous disparate ideas, as is common in developing fields of inquiry.
+    \end{itemize}
+    \item \textbf{Rate law}: A differential equation describing the time-dependence of the reactant and product concentrations during a chemical reaction.
+    \item Consider the general chemical reaction described by
+    \begin{equation*}
+        \ce{$\nu_{\text{A}}$A + $\nu_{\text{B}}$B -> $\nu_{\text{Y}}$Y + $\nu_{\text{Z}}$Z}
+    \end{equation*}
+    \item Since
+    \begin{align*}
+        n_{\ce{A}}(t) &= n_{\ce{A}}(0)-\nu_{\ce{A}}\xi(t)&
+        n_{\ce{B}}(t) &= n_{\ce{B}}(0)-\nu_{\ce{B}}\xi(t)&
+        n_{\ce{Y}}(t) &= n_{\ce{Y}}(0)+\nu_{\ce{Y}}\xi(t)&
+        n_{\ce{Z}}(t) &= n_{\ce{Z}}(0)+\nu_{\ce{Z}}\xi(t)
+    \end{align*}
+    we can describe the time-dependent change in the number of moles of each substance by taking a derivative with respect to $t$, as follows.
+    \begin{align*}
+        \dv{n_{\ce{A}}}{t} &= -\nu_{\ce{A}}\dv{\xi}{t}&
+        \dv{n_{\ce{B}}}{t} &= -\nu_{\ce{B}}\dv{\xi}{t}&
+        \dv{n_{\ce{Y}}}{t} &= \nu_{\ce{Y}}\dv{\xi}{t}&
+        \dv{n_{\ce{Z}}}{t} &= \nu_{\ce{Z}}\dv{\xi}{t}
+    \end{align*}
+    \item Since most experimental techniques measure concentration, it is convenient to divide the above equations by the total volume $V$ on both sides to yield the following.
+    \begin{align*}
+        \dv{[\ce{A}]}{t} &= -\frac{\nu_{\ce{A}}}{V}\dv{\xi}{t}&
+        \dv{[\ce{B}]}{t} &= -\frac{\nu_{\ce{B}}}{V}\dv{\xi}{t}&
+        \dv{[\ce{Y}]}{t} &= \frac{\nu_{\ce{Y}}}{V}\dv{\xi}{t}&
+        \dv{[\ce{Z}]}{t} &= \frac{\nu_{\ce{Z}}}{V}\dv{\xi}{t}
+    \end{align*}
+    \item While each individual quantity above has its purpose, it is useful to define an overall \textbf{rate of reaction}.
+    \item \textbf{Rate of reaction}: The following quantity. \emph{Denoted by} $\bm{v(t)}$. \emph{Given by}
+    \begin{align*}
+        v(t) &= \frac{1}{V}\dv{\xi}{t}\\
+        &= -\frac{1}{\nu_A}\dv{[A]}{t}
+            = -\frac{1}{\nu_B}\dv{[B]}{t}
+            = \frac{1}{\nu_Y}\dv{[Y]}{t}
+            = \frac{1}{\nu_Z}\dv{[Z]}{t}
+    \end{align*}
+    \begin{itemize}
+        \item Note that the rate of reaction is always positive (as long as the reaction proceeds only in the forward direction).
+    \end{itemize}
+    \item \textbf{Rate law}: The relationship between $v(t)$ and the concentrations of the various reactants. \emph{General form}
+    \begin{equation*}
+        v(t) = k[\ce{A}]^{m_{\ce{A}}}[\ce{B}]^{m_{\ce{B}}}\cdots
+    \end{equation*}
+    \begin{itemize}
+        \item Some reactions (such as the \ce{H2 + Br2 -> 2HBR} example from class) do not have conventional rate laws.
+    \end{itemize}
+    \item \textbf{Rate constant}: The proportionality constant between the rate of reaction and the function of the concentrations of the chemical species involved in a rate law. \emph{Denoted by} $\bm{k}$.
+    \begin{itemize}
+        \item The units of the rate constant depend on the form of the rate law.
+    \end{itemize}
+    \item \textbf{Order} (of a reactant \ce{A}): The power to which the concentration of a reactant is raised in a rate law. \emph{Denoted by} $\bm{m_{\ce{A}}}$.
+    \item \textbf{Overall order} (of a chemical reaction that obeys a general-form rate law): The sum of the orders of the reactants.
+    \item We now discuss common methods for the experimental determination of a rate law.
+    \item \textbf{Method of isolation}: The following procedure, which as described will determine $m_{\ce{B}}$ for a chemical reaction of the form introduced at the beginning of this section but can easily be adapted to determine $m_{\ce{A}}$ or be generalized to higher-order situations.
+    \begin{enumerate}
+        \item Introduce a large excess concentration of \ce{A} into the initial reaction mixture. This excess will guarantee that $[\ce{A}]$ remains essentially constant over the course of the reaction.
+        \item Combine $[\ce{A}]^{m_{\ce{A}}}$ and $k$ into a new "rate constant" $k'$, reducing the rate law to the form
+        \begin{equation*}
+            v = k'[\ce{B}]^{m_{\ce{B}}}
+        \end{equation*}
+        \item Determine $m_{\ce{B}}$ by measuring $v$ as a function of $[\ce{B}]$.
+    \end{enumerate}
+    \item Sometimes it is not possible to have one reactant or the other in excess.
+    \begin{itemize}
+        \item As such, we need an alternate way to measure the rate.
+        \item We cannot directly measure $\dv*{[\ce{A}]}{t}$, but we can measure $\Delta[\ce{A}]/\Delta t$ for small $\Delta t$ and approximate these measurements as $\dv*{[\ce{A}]}{t}$.
+        \item This forms the basis for the \textbf{method of initial rates}.
+    \end{itemize}
+    \item \textbf{Method of initial rates}: The following procedure, which as described will determine $m_{\ce{B}}$ for a chemical reaction of the form introduced at the beginning of this section but can easily be adapted to determine $m_{\ce{A}}$ or be generalized to higher-order situations.
+    \begin{enumerate}
+        \item Take two different measurements of the initial rate (from $t=0$ to $t=t$). Let the initial concentration of \ce{A}, $[\ce{A}]_0$, be the same for each. However, for one, use $[\ce{B}]_1$ for initial concentration of \ce{B}, and for the other, use $[\ce{B}]_2$.
+        \item Arranging everything into equations, we thus have
+        \begin{align*}
+            v_1 &= -\frac{1}{\nu_{\ce{A}}}\left( \frac{\Delta[\ce{A}]}{\Delta t} \right)_1
+            = k[\ce{A}]_0^{m_{\ce{A}}}[\ce{B}]_1^{m_{\ce{B}}}&
+            v_2 &= -\frac{1}{\nu_{\ce{A}}}\left( \frac{\Delta[\ce{A}]}{\Delta t} \right)_2
+            = k[\ce{A}]_0^{m_{\ce{A}}}[\ce{B}]_2^{m_{\ce{B}}}
+        \end{align*}
+        where we have used the subscripts 1 and 2 to denote the results of the different experiments and their corresponding initial concentrations of \ce{B}.
+        \item We may now solve for $m_{\ce{B}}$ by dividing the two equations, taking logarithms, and rearranging to the following.
+        \begin{equation*}
+            m_{\ce{B}} = \frac{\ln(v_1/v_2)}{\ln([\ce{B}]_1/[\ce{B}]_2)}
+        \end{equation*}
+    \end{enumerate}
+    \item Both the method of isolation and the method of initial rates rely on the assumption that the reactants can be mixed, and then we can measure the rates.
+    \begin{itemize}
+        \item However, for some very quick reactions, the time required to mix the reactants is long compared with the reaction itself.
+        \item For these cases, we need \textbf{relaxation methods}.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}

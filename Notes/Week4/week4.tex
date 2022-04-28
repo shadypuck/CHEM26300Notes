@@ -2,7 +2,7 @@
 
 \pagestyle{main}
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
-\setcounter{chapter}{28}
+\setcounter{chapter}{3}
 
 \begin{document}
 
@@ -12,7 +12,117 @@
 \chapter{Reaction Mechanisms}
 \section{TST and Overview of Mechanisms}
 \begin{itemize}
-    \item \marginnote{4/18:}Overview of key concepts.
+    \item \marginnote{4/18:}More TST theory.
+    \begin{itemize}
+        \item We can intuitively rationalize concentration as $q/V$ by thinking of the partition function in some way giving some information about the number of particles. When we divide this by $V$, we thus get \emph{some} information about concentration.
+        \item $\delta$ is the finite window in which the activated complex is loosely defined to exist.
+        \item $\nu_c$ is the frequency of crossing the $\delta$ region in the energy diagram.
+        \item We substitute $[\ce{AB}^\ddagger]=[\ce{A}][\ce{B}]K_c^\ddagger/c^\circ$ from the equilibrium constant expression.
+        \item The translational partition function plays a role. Note that $m^\ddagger$ is the mass of the activated complex.
+        \begin{equation*}
+            q_\text{trans} = \frac{\sqrt{2\pi m^\ddagger\kB T}}{h}\delta
+        \end{equation*}
+        \begin{itemize}
+            \item Dimensional analysis (as an analysis of units to help appreciate the term): $\kB T$ is energy ($E\propto mv^2/2$) and $m^\ddagger$ is mass, so their product is momentum squared ($p^2\propto mv^2$).
+            \item Thus, the top of the expression gives momentum, and $h/\delta$ also gives momentum.
+            \item Remember that the momentum is rather like that of the particle in a box.
+        \end{itemize}
+        \item We have that
+        \begin{equation*}
+            q^\ddagger = q_\text{trans}^\ddagger\cdot q_\text{rot}^\ddagger
+        \end{equation*}
+        where $q^\ddagger$ is the partition function for the whole species, which we can split.
+        \item This permits
+        \begin{align*}
+            K_c^\ddagger &= \frac{(q^\ddagger/V)c^\circ}{(q_{\ce{A}}/V)(q_{\ce{B}}/V)}\\
+            &= \frac{\sqrt{2\pi m^\ddagger\kB T}}{h}\delta\frac{(q_\text{int}^\ddagger/V)c^\circ}{(q_{\ce{A}}/V)(q_{\ce{B}}/V)}
+        \end{align*}
+        and the following
+        \begin{equation*}
+            k = \nu_c\frac{\sqrt{2\pi m^\ddagger\kB T}}{hc^\circ}\delta\frac{(q_\text{int}^\ddagger/V)c^\circ}{(q_{\ce{A}}/V)(q_{\ce{B}}/V)}
+        \end{equation*}
+        \item We now define the speed of the activated complex crossing the barrier top (gas collision). This is $\prb{u_\text{ac}}$, where $\prb{u_\text{ac}}=\nu_c\delta$ (the frequency $x$ distance).
+        \item We have that
+        \begin{equation*}
+            \prb{u_\text{ac}} = \int_0^\infty uf(u)\dd{u}
+            = \sqrt{\frac{m^\ddagger}{2\pi\kB T}}\int_0^\infty u\e[-m^\ddagger u^2/2\kB T]\dd{u}
+            = \sqrt{\frac{\kB T}{2\pi m^\ddagger}}
+        \end{equation*}
+        and the following
+        \begin{equation*}
+            k = \frac{\kB T}{hc^\circ}\frac{(q_\text{int}^\ddagger/V)c^\circ}{(q_{\ce{A}}/V)(q_{\ce{B}}/V)}
+            = \frac{\kB T}{hc^\circ}K^\ddagger
+        \end{equation*}
+        \begin{itemize}
+            \item We start at zero instead of $-\infty$ because we're only considering the forward direction of the reaction. If we did $-\infty$, we'd be accounting for the reverse reaction as well.
+        \end{itemize}
+        \item Introducing $\Delta^\ddagger G^\circ=-RT\ln K^\ddagger=\Delta^\ddagger H^\circ-T\Delta^\ddagger S^\circ$ yields the \textbf{Eyring equation}
+        \begin{equation*}
+            k(T) = \frac{\kB T}{hc^\circ}\e[-\Delta^\ddagger G^\circ/RT]
+            = \frac{\kB T}{hc^\circ}\e[\Delta^\ddagger S^\circ/R]\e[-\Delta^\ddagger H^\circ/RT]
+        \end{equation*}
+        \item We can relate the Eyring equation to the Arrhenius equation by differentiating the logarithm.
+        \begin{align*}
+            \dv{\ln k}{T} &= \frac{1}{T}+\dv{\ln K^\ddagger}{T}&
+            \dv{\ln K_c}{T} &= \frac{\Delta U^\circ}{RT^2}
+        \end{align*}
+        gives
+        \begin{equation*}
+            \dv{\ln k}{T} = \frac{1}{T}+\frac{\Delta^\ddagger U^\circ}{RT^2}
+        \end{equation*}
+        \item This all serves to relate thermodynamics and kinetics.
+        \item Additionally, since $\Delta^\ddagger H^\circ=\Delta^\ddagger U^\circ+\Delta^\ddagger PV=\Delta^\ddagger U^\circ+\Delta^\ddagger nRT$, we have that
+        \begin{equation*}
+            \dv{\ln k}{T} = \frac{\Delta^\ddagger H^\circ+2RT}{RT^2}
+        \end{equation*}
+        \begin{itemize}
+            \item Note that $\Delta n=-1$ for bimolecular gas phase reactions.
+            \item $\Delta(PV)^\ddagger$ is the difference in the number of moles of gaseous products and reactants.
+            \item $\Delta n^\ddagger=0$: Unimolecular.
+            \item $\Delta n^\ddagger=-1$: Bimolecular.
+            \item $\Delta n^\ddagger=-2$: Trimolecular.
+        \end{itemize}
+        \item Comparing with the Arrhenius $\dv*{\ln k}{T}=E_a/RT^2$ gives
+        \begin{equation*}
+            E_a = \Delta^\ddagger H^\circ+2RT
+        \end{equation*}
+        \item Substituting into the Eyring equation yields
+        \begin{equation*}
+            k(T) = \frac{\e[2]\kB T}{hc^\circ}\e[\Delta^\ddagger S^\circ/R]\e[-E_a/RT]
+        \end{equation*}
+        \item Gas, uni: $E_a=\Delta H^\ddagger+RT$, $A=\e\kB T/h\cdot\e[\Delta S^\ddagger/R]$.
+        \item Gas, bi: $E_a=\Delta H^\ddagger+2RT$, $A=\e[2]\kB T/hc^\circ\cdot\e[\Delta S^\ddagger/R]$.
+        \item Gas, tri: $E_a=\Delta H^\ddagger+3RT$, $A=\e[3]\kB T/h(c^\circ)^2\cdot\e[\Delta S^\ddagger/R]$.
+    \end{itemize}
+    \item Important things to memorize from TST.
+    \begin{itemize}
+        \item The Eyring equation.
+        \item Don't worry about the partition function mathematics, but understand the dimensional analysis.
+        \begin{itemize}
+            \item Know that we collapse two $\kB T$ terms together; one from $q_\text{trans}$ and one from $\prb{u_\text{ac}}$.
+        \end{itemize}
+    \end{itemize}
+    \item Consider cyclohexane conformations.
+    \begin{itemize}
+        \item We have that
+        \begin{align*}
+            \Delta^\ddagger H^\circ &= \SI{31.38}{\kilo\joule\per\mole}&
+            \Delta^\ddagger S^\circ &= \SI{16.74}{\joule\per\mole\per\kelvin}&
+            T &= \SI{325}{\kelvin}
+        \end{align*}
+        \item We want to know $\Delta^\ddagger G^\circ$.
+        \item But by the definition of the Gibbs energy,
+        \begin{equation*}
+            \Delta^\ddagger G^\circ = \Delta^\ddagger H^\circ-T\Delta^\ddagger S^\circ
+            = \SI{25.94}{\kilo\joule\per\mole}
+        \end{equation*}
+        \item It follows that
+        \begin{equation*}
+            k = \frac{\kB T}{h}\e[-\Delta^\ddagger G^\circ/RT]
+            = \SI{4.59e8}{\per\second}
+        \end{equation*}
+    \end{itemize}
+    \item Overview of key mechanism concepts.
     \begin{itemize}
         \item Reaction mechanisms can involve more than one elementary step.
         \item Reactions can be sequential (single- or multi-step).
@@ -371,236 +481,6 @@
         \begin{itemize}
             \item What's the issue here?
         \end{itemize}
-    \end{itemize}
-\end{itemize}
-
-
-
-\section{Midterm Review and Intro to Catalysts}
-\begin{itemize}
-    \item \marginnote{4/27:}Example problem 1: Steady-state approximation.
-    \begin{itemize}
-        \item Let
-        \begin{equation*}
-            \ce{A <=>[$k_a$][$k_a'$] B <=>[$k_b$][$k_b'$] C <=>[$k_c$][$k_c'$] D}
-        \end{equation*}
-        Suppose $\cnc{A}$ is maintained at a fixed value and the produce \ce{D} is removed from the reaction as it is formed. Find the rate at which the product is formed in terms of $\cnc{A}$.
-        \item By hypothesis, we have that at all times $t$, $\cnc{A}=\cnc[0]{A}$ and $\cnc{D}=0$.
-        \item The hypotheses also imply that we can apply the steady-state approximation to both \ce{B} and \ce{C}.
-        \item Thus, we have that
-        \begin{align*}
-            \dv{\cnc{C}}{t} = 0 &= k_b\cnc{B}-k_c\cnc{C}-k_b'\cnc{C}\\
-            \cnc{B} &= \frac{k_b'+k_c}{k_b}\cnc{C}
-        \end{align*}
-        so that
-        \begin{align*}
-            \dv{\cnc{B}}{t} &= k_a\cnc{A}-k_b\cnc{B}-k_a'\cnc{B}+k_b'\cnc{C}\\
-            0 &= k_a\cnc{A}-k_b\cdot\frac{k_b'+k_c}{k_b}\cnc{C}-k_a'\cdot\frac{k_b'+k_c}{k_b}\cnc{C}+k_b'\cnc{C}\\
-            % &= k_a\cnc{A}-(k_b'+k_c+\frac{k_a'k_b'}{k_b}+\frac{k_a'k_c}{k_b}-k_b')\cnc{C}\\
-            % &= k_a\cnc{A}-(\frac{k_bk_c+k_a'k_b'+k_a'k_c}{k_b})\cnc{C}\\
-            \cnc{C} &= \frac{k_ak_b}{k_bk_c+k_a'k_b'+k_a'k_c}\cnc{A}
-        \end{align*}
-        and therefore
-        \begin{align*}
-            \dv{\cnc{D}}{t} &= k_c\cnc{C}-k_c'\cdot 0\\
-            &= \frac{k_ak_bk_c}{k_bk_c+k_a'k_b'+k_a'k_c}\cnc{A}
-        \end{align*}
-    \end{itemize}
-    \item Example problem 2.
-    \begin{itemize}
-        \item Consider the reaction
-        \begin{equation*}
-            \ce{HCl + CH3CH=CH2 <=> CH3CHClCH3}
-        \end{equation*}
-        which proceeds by the mechanism
-        \begin{enumerate}
-            \item \ce{HCl + HCl <=> (HCl)2} (equilibrium constant $K_1$).
-            \item \ce{HCl + CH3CH=CH2 <=> complex} (equilibrium constant $K_2$).
-            \item \ce{(HCl)2 + complex <=> CH3CHClCH3 + HCl + HCl} (equilibrium constant $K_3$).
-        \end{enumerate}
-        \item The equilibrium constants for the two pre-equilibria are
-        \begin{align*}
-            K_1 &= \frac{\cnc[eq]{(HCl)2}c^\circ}{\cnc[eq]{HCl}^2}&
-            K_2 &= \frac{\cnc[eq]{complex}c^\circ}{\cnc[eq]{HCl}\cnc[eq]{CH3CH=CH2}}
-        \end{align*}
-        \item We can divide the mass-action expression for $K_1$ by $(c^\circ)^2$ to get each concentration over $c^\circ$ within its exponent.
-        \item The rate of product formation is
-        \begin{align*}
-            v &= \dv{\cnc{CH3CHClCH3}}{t}\\
-            &= k_r\cnc{(HCl)2}\cnc{complex}\\
-            &\approx k_r\cnc[eq]{(HCl)2}\cnc[eq]{complex}\\
-            &= k_r\cdot\frac{K_1\cnc[eq]{HCl}^2}{c^\circ}\cdot\frac{K_2\cnc[eq]{HCl}\cnc[eq]{CH3CH=CH2}}{c^\circ}\\
-            &= \frac{k_rK_1K_2}{(c^\circ)^2}\cnc[eq]{HCl}^3\cnc[eq]{CH3CH=CH2}
-        \end{align*}
-        \begin{itemize}
-            \item There's a key assumption with the steady state and something about being able to apply the equilibrium concentration of the intermediate as the steady-state quantity.
-            \item This question wants to let you know that an equilibrium constant like $K_1$ might indicate a steady-state approximation.
-        \end{itemize}
-    \end{itemize}
-    \item Note: Mind the positive and negative signs when constructing differential rate laws!
-    \item The midterm will be posted this Friday (April 29) and will be available until the following Friday (May 6). There will be a timed 2 hour period to take it.
-    \item \textbf{Catalyst}: A substance that participates in the chemical reaction but is not consumed in the process.
-    \begin{itemize}
-        \item A catalyst affects the mechanism and activation energy of a chemical reaction.
-        \item A catalyst can give rise to a reaction path with a negligible activation barrier.
-        \item The exothermicity or endothermicity of the chemical reaction is not altered by the presence of a catalyst.
-    \end{itemize}
-    \item \textbf{Homogeneous catalysis}: Catalysis in which the catalyst is in the same phase as the reactants and products.
-    \item \textbf{Heterogeneous catalysis}: Catalysis in which the catalyst is in a different phase from the reactants and products.
-    \item Imagine that initially, we have the reaction
-    \begin{equation*}
-        \ce{A ->[$k$] products}
-    \end{equation*}
-    where $k$ is the observed rate constant.
-    \begin{itemize}
-        \item When a catalyst is introduced into solution, this mechanism continues, but we now also have the new reaction pathway
-        \begin{equation*}
-            \ce{A + catalyst ->[$k_\text{cat}$] products + catalyst}
-        \end{equation*}
-        \item If each of these competing reactions is an elementary process, then
-        \begin{equation*}
-            -\dv{\cnc{A}}{t} = k\cnc{A}+k_\text{cat}\cnc{A}\cnc{catalyst}
-        \end{equation*}
-        \item In most cases, catalysts enhance reaction rates by many orders of magnitude, and therefore only the rate law for the catalyzed reaction need be considered in analyzing experimental data.
-    \end{itemize}
-    \item Reviews the Nobel Prizes in 2020 and 2021 (for CRISPR and asymmetric organocatalysis, respectively).
-    \item An example of homogeneous catalysis.
-    \begin{itemize}
-        \item Consider the reaction
-        \begin{equation*}
-            \ce{2Ce^4+(aq) + Tl+(aq) -> 2Ce^3+(aq) + Tl^3+(aq)}
-        \end{equation*}
-        \item In the absence of a catalyst,
-        \begin{equation*}
-            v = k\cnc{Tl+}\cnc{Ce^4+}^2
-        \end{equation*}
-        and the mechanism is a termolecular elementary reaction.
-        \item However, with \ce{Mn^2+} as the catalyst, we have the mechanism
-        \begin{align*}
-            \ce{Ce^4+(aq) + Mn^2+(aq)} &\xRightarrow{k_\text{cat}}                \ce{Mn^3+(aq) + Ce^3+(aq)}\\
-            \ce{Ce^4+(aq) + Mn^3+(aq)} &\xRightarrow{{\color{white}k_\text{cat}}} \ce{Mn^4+(aq) + Ce^3+(aq)}\\
-            \ce{Mn^4+(aq) + Tl+(aq)}   &\xRightarrow{{\color{white}k_\text{cat}}} \ce{Mn^2+(aq) + Tl^3+(aq)}
-        \end{align*}
-        where the step with $k_\text{cat}$ is the rate-determining step.
-        \begin{itemize}
-            \item Thus, for this mechanism, we have that
-            \begin{equation*}
-                v = k_\text{cat}\cnc{Ce^4+}\cnc{Mn^2+}
-            \end{equation*}
-        \end{itemize}
-        \item The overall rate law for this reaction is therefore
-        \begin{equation*}
-            v = k\cnc{Tl+}\cnc{Ce^4+}^2+k_\text{cat}\cnc{Ce^4+}\cnc{Mn^2+}
-        \end{equation*}
-    \end{itemize}
-\end{itemize}
-
-
-
-\section{Enzymatic Catalysis}
-\begin{itemize}
-    \item \marginnote{4/27:}Midterm questions:
-    \begin{itemize}
-        \item First 10 are T/F. He will test key concepts by making statements that are either true or false.
-        \begin{itemize}
-            \item We should expect to spend no more than 30 minutes out of our 2 hours on these.
-        \end{itemize}
-        \item 4 calculation problems.
-        \begin{itemize}
-            \item First- and second-order reactions.
-            \item Collisions.
-            \item A reaction mechanism problem.
-        \end{itemize}
-        \item Use calculators, do online searches, and use the textbook.
-        \item Do not talk to your classmates.
-        \item The midterm will become available Friday at noon.
-    \end{itemize}
-    \item Enzymes are protein molecules that catalyze specific biochemical reactions.
-    \begin{itemize}
-        \item For example, hexokinase converts glucose and ATP to glucose 6-phosphate, ADP, and \ce{H+}.
-    \end{itemize}
-    \item \textbf{Substrate}: The reactant molecule acted upon by an enzyme.
-    \item \textbf{Active site}: The region of the enzyme where the substrate reacts.
-    \item \textbf{Lock-and-key model}: The active site and substrate have complementary three-dimensional structures and dock without the need for major atomic rearrangements.
-    \item \textbf{Induced fit model}: Binding of the substrate induces a conformation change in the active site. The substrate fits well in the active site after the conformational change has taken place.
-    \item The Michaelis-Menten Mechanism is a reaction mechanism for enzyme catalysis.
-    \item Intuition.
-    \begin{itemize}
-        \item Imagine we have a solution of enzymes and substrate molecules.
-        \item Limiting factors of an enzymatically catalyzed reaction.
-        \begin{itemize}
-            \item The enzyme-substrate affinity.
-            \item The turnover number.
-        \end{itemize}
-        \item If the substrate concentration is low (i.e., $\cnc[0]{S}\ll\cnc[0]{E}$) and the enzyme-substrate affinity is strong (but not so strong that the enzyme-substrate complex is energetically favorable), then we expect $v_\text{initial}\propto\cnc[0]{S}$ because we'd think that all of the substrate will immediately be absorbed and transformed.
-        \item If the substrate concentration is large (i.e., $\cnc[0]{S}\gg\cnc[0]{E}$) and the enzyme-substrate affinity is strong, then we expect $v_\text{initial}\propto\cnc[0]{E}$ and, importantly, $v_\text{initial}\not\propto\cnc[0]{S}$.
-    \end{itemize}
-    \item Mathematical derivation.
-    \begin{itemize}
-        \item Experimental studies reveal that the rate law for many enzyme-catalyzed reactions has the form
-        \begin{equation*}
-            -\dv{\cnc{S}}{t} = \frac{k\cnc{S}}{K+\cnc{S}}
-        \end{equation*}
-        \begin{itemize}
-            \item This is the final goal of the derivation.
-        \end{itemize}
-        \item The mechanism is
-        \begin{equation*}
-            \ce{S + E} \Longleftrightarrows[k_1][k_{-1}] \ce{ES}
-            \Longleftrightarrows[k_2][k_{-2}] \ce{P + E}
-        \end{equation*}
-        \item Thus,
-        \begin{gather*}
-            -\dv{\cnc{S}}{t} = k_1\cnc{E}\cnc{S}-k_{-1}\cnc{ES}\\
-            -\dv{\cnc{ES}}{t} = (k_2+k_{-1})\cnc{ES}-k_1\cnc{E}\cnc{S}-k_{-2}\cnc{E}\cnc{P}\\
-            \dv{\cnc{P}}{t} = k_2\cnc{ES}-k_{-1}\cnc{E}\cnc{P}
-        \end{gather*}
-        \item Note that
-        \begin{equation*}
-            \cnc[0]{E} = \cnc{ES}+\cnc{E}
-        \end{equation*}
-        \item Plugging that equation into the rate law for the enzyme-substrate complex and applying the steady-state approximation yields
-        \begin{align*}
-            -\dv{\cnc{ES}}{t} = 0 &= \cnc{ES}(k_1\cnc{S}+k_{-1}+k_2+k_{-1}\cnc{P})-k_1\cnc{S}\cnc[0]{E}-k_2\cnc{P}\cnc[0]{P}\\
-            \cnc{ES} &= \frac{k_1\cnc{S}+k_{-1}\cnc{P}}{k_1\cnc{S}+k_{-2}\cnc{P}+k_{-1}+k_2}\cnc[0]{E}
-        \end{align*}
-        \item Substituting this and the original expression for $\cnc[0]{E}$ into the rate law for the substrate yields
-        \begin{equation*}
-            v = -\dv{\cnc{S}}{t}
-            = \frac{k_1k_2\cnc{S}+k_{-1}k_{-2}\cnc{P}}{k_1\cnc{S}+k_{-2}\cnc{P}+k_{-1}+k_2}\cnc[0]{E}
-        \end{equation*}
-        \item If the experimental measurements of the reaction rate are taken during the time period when only a small percentage (1-3\%) of the substrate is converted to product, then
-        \begin{equation*}
-            \cnc{S} \approx \cnc[0]{S}
-        \end{equation*}
-        and
-        \begin{equation*}
-            \cnc{P} \approx 0
-        \end{equation*}
-        \item Using this approximation simplifies the above rate law to
-        \begin{equation*}
-            v = -\dv{\cnc{S}}{t}
-            = \frac{k_1k_2\cnc[0]{S}\cnc[0]{E}}{k_1\cnc[0]{S}+k_{-1}+k_2}
-            = \frac{k_2\cnc[0]{S}\cnc[0]{E}}{K_m+\cnc[0]{S}}
-        \end{equation*}
-        where $K_m=(k_{-1}+k_2)/k_1$ is the \textbf{Michaelis constant}.
-        \begin{itemize}
-            \item The Michaelis constant tells you the ration of dissociation of the enzyme-substrate complex to the formation of the enzyme-substrate complex. In other words, it provides information on the enzyme-substrate affinity.
-            \item Note that $k_{-2}$ is not present in the denominator of the Michaelis constant because for a good enzyme, $k_{-2}$ should be very small.
-            \item The unit of $K_m$ should be concentration.
-            \item When $K_m=\cnc[0]{S}$, $v=v_\text{max}/2$
-        \end{itemize}
-        \item An enzyme-catalyzed reaction is first order in the substrate at low substrate concentrations ($K\gg\cnc[0]{S}$) and then becomes zero order in the substrate at high substrate concentrations ($K\ll\cnc[0]{S}$).
-        \item Thus, at low substrate concentrations, the above equation holds, but at high substrate concentrations,
-        \begin{align*}
-            -\dv{\cnc{S}}{t} &= k_2\cnc[0]{E}&
-            v_\text{max} &= k_2\cnc[0]{E}
-        \end{align*}
-        resulting in the \textbf{Lineweaver-Burk plot}, canonically represented by the second of the two equivalent forms below.
-        \begin{align*}
-            v &= \frac{v_\text{max}}{1+K_m/\cnc[0]{S}}&
-            \frac{1}{v} &= \frac{1}{v_\text{max}}+\frac{K_m}{v_\text{max}}\frac{1}{\cnc[0]{S}}
-        \end{align*}
     \end{itemize}
 \end{itemize}
 
