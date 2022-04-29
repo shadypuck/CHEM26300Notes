@@ -486,5 +486,216 @@
 
 
 
+\section{Chapter 26: Chemical Equilibrium}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{4/28:}"Thermodynamics enables us to predict with confidence the equilibrium pressures or concentrations of reaction mixtures" \parencite[963]{bib:McQuarrieSimon}.
+    \item Goal of this chapter: Derive a relationship between the standard Gibbs energy change and the equilibrium constant.
+    \item We begin by considering the following general gas-phase reaction.
+    \begin{equation*}
+        \ce{\nu_{\ce{A}} A(g) + \nu_{\ce{B}} B(g) <=> \nu_{\ce{Y}} Y(g) + \nu_{\ce{Z}} Z(g)}
+    \end{equation*}
+    \item \textbf{Extent of reaction}: A measure of how far along its reaction coordinate a chemical reaction is. \emph{Denoted by} $\bm{\xi}$. \emph{Units} \textbf{mol}. \emph{Given by}
+    \begin{align*}
+        n_{\ce{A}} &= n_{\ce{A}0}-\nu_{\ce{A}}\xi&
+            n_{\ce{Y}} &= n_{\ce{Y}0}+\nu_{\ce{Y}}\xi\\
+        n_{\ce{B}} &= n_{\ce{B}0}-\nu_{\ce{B}}\xi&
+            n_{\ce{Z}} &= n_{\ce{Z}0}+\nu_{\ce{Z}}\xi
+    \end{align*}
+    where $n_j$ is the number of moles for each species at the time during the reaction corresponding to extent of reaction $\xi$ and $n_{j0}$ is the initial number of moles for each species.
+    \begin{itemize}
+        \item As the reaction proceeds, $\xi$ varies from zero to some maximum value.
+        \item An example of the units of $\xi$: If $n_{\ce{A}0}$ equals $\nu_{\ce{A}}$ moles and $n_{\ce{B}0}$ equals $\nu_{\ce{B}}$ moles, then $\xi$ varies from zero moles to one mole over the course of the reaction.
+    \end{itemize}
+    \item Relating the change in Gibbs energy to the change in extent of reaction.
+    \begin{itemize}
+        \item The Gibbs energy for this multicomponent system depends on $T$, $P$, and $n_j$ for the two reactants and the two products. Thus,
+        \begin{align*}
+            \begin{split}
+                \dd{G} ={}& \left( \pdv{G}{T} \right)_{P,n_j}\dd{T}+\left( \pdv{G}{P} \right)_{T,n_j}\dd{P}+\left( \pdv{G}{n_{\ce{A}}} \right)_{T,P,n_{j\neq\ce{A}}}\dd{n_{\ce{A}}}\\
+                &+\left( \pdv{G}{n_{\ce{B}}} \right)_{T,P,n_{j\neq\ce{B}}}\dd{n_{\ce{B}}}+\left( \pdv{G}{n_{\ce{Y}}} \right)_{T,P,n_{j\neq\ce{Y}}}\dd{n_{\ce{Y}}}+\left( \pdv{G}{n_{\ce{Z}}} \right)_{T,P,n_{j\neq\ce{Z}}}\dd{n_{\ce{Z}}}
+            \end{split}\\
+            ={}& -S\dd{T}+V\dd{P}+\mu_{\ce{A}}\dd{n_{\ce{A}}}+\mu_{\ce{B}}\dd{n_{\ce{B}}}+\mu_{\ce{Y}}\dd{n_{\ce{Y}}}+\mu_{\ce{Z}}\dd{n_{\ce{Z}}}
+        \end{align*}
+        \item Taking $T,P$ to be constant simplifies the above to
+        \begin{equation*}
+            \dd{G} = \mu_{\ce{A}}\dd{n_{\ce{A}}}+\mu_{\ce{B}}\dd{n_{\ce{B}}}+\mu_{\ce{Y}}\dd{n_{\ce{Y}}}+\mu_{\ce{Z}}\dd{n_{\ce{Z}}}
+        \end{equation*}
+        \item Differentiating the equations used to define the extent of reaction yields
+        \begin{align*}
+            \dd{n_{\ce{A}}} &= -\nu_{\ce{A}}\dd{\xi}&
+                \dd{n_{\ce{Y}}} &= \nu_{\ce{Y}}\dd{\xi}\\
+            \dd{n_{\ce{B}}} &= -\nu_{\ce{B}}\dd{\xi}&
+                \dd{n_{\ce{Z}}} &= \nu_{\ce{Z}}\dd{\xi}
+        \end{align*}
+        so that
+        \begin{align*}
+            \dd{G} &= -\nu_{\ce{A}}\mu_{\ce{A}}\dd{\xi}-\nu_{\ce{B}}\mu_{\ce{B}}\dd{\xi}+\nu_{\ce{Y}}\mu_{\ce{Y}}\dd{\xi}+\nu_{\ce{Z}}\mu_{\ce{Z}}\dd{\xi}\\
+            &= (\nu_{\ce{Y}}\mu_{\ce{Y}}+\nu_{\ce{Z}}\mu_{\ce{Z}}-\nu_{\ce{A}}\mu_{\ce{A}}-\nu_{\ce{B}}\mu_{\ce{B}})\dd{\xi}\\
+            \left( \pdv{G}{\xi} \right)_{T,P} &= \nu_{\ce{Y}}\mu_{\ce{Y}}+\nu_{\ce{Z}}\mu_{\ce{Z}}-\nu_{\ce{A}}\mu_{\ce{A}}-\nu_{\ce{B}}\mu_{\ce{B}}
+        \end{align*}
+    \end{itemize}
+    \item $\bm{\Delta_rG}$: The change in Gibbs energy when the extent of reaction changes by one mole. \emph{Units} \textbf{J\,mol\textsuperscript{$\bm{-1}$}}. \emph{Given by}
+    \begin{equation*}
+        \Delta_rG = \left( \pdv{G}{\xi} \right)_{T,P}
+        = \nu_{\ce{Y}}\mu_{\ce{Y}}+\nu_{\ce{Z}}\mu_{\ce{Z}}-\nu_{\ce{A}}\mu_{\ce{A}}-\nu_{\ce{B}}\mu_{\ce{B}}
+    \end{equation*}
+    \item Relating standard and nonstandard states.
+    \begin{itemize}
+        \item Let all partial pressures be sufficiently low to assume ideality.
+        \item Then substituting the equation $\mu_j(T,P)=\mu_j^\circ(T)+RT\ln(P_j/P^\circ)$ yields
+        \begin{align*}
+            \Delta_rG &= \nu_{\ce{Y}}\mu_{\ce{Y}}^\circ(T)+\nu_{\ce{Z}}\mu_{\ce{Z}}^\circ(T)-\nu_{\ce{A}}\mu_{\ce{A}}^\circ(T)-\nu_{\ce{B}}\mu_{\ce{B}}^\circ(T)+RT\left( \nu_{\ce{Y}}\ln\frac{P_{\ce{Y}}}{P^\circ}+\nu_{\ce{Z}}\ln\frac{P_{\ce{Z}}}{P^\circ}-\nu_{\ce{A}}\ln\frac{P_{\ce{A}}}{P^\circ}-\nu_{\ce{B}}\ln\frac{P_{\ce{B}}}{P^\circ} \right)\\
+            &= \underbrace{\nu_{\ce{Y}}\mu_{\ce{Y}}^\circ(T)+\nu_{\ce{Z}}\mu_{\ce{Z}}^\circ(T)-\nu_{\ce{A}}\mu_{\ce{A}}^\circ(T)-\nu_{\ce{B}}\mu_{\ce{B}}^\circ(T)\vphantom{\frac{(P_{\ce{Y}}/P^\circ)^{\nu_{\ce{Y}}}(P_{\ce{Z}}/P^\circ)^{\nu_{\ce{Z}}}}{(P_{\ce{A}}/P^\circ)^{\nu_{\ce{A}}}(P_{\ce{B}}/P^\circ)^{\nu_{\ce{B}}}}}}_{\Delta_rG^\circ}+RT\ln\underbrace{\frac{(P_{\ce{Y}}/P^\circ)^{\nu_{\ce{Y}}}(P_{\ce{Z}}/P^\circ)^{\nu_{\ce{Z}}}}{(P_{\ce{A}}/P^\circ)^{\nu_{\ce{A}}}(P_{\ce{B}}/P^\circ)^{\nu_{\ce{B}}}}}_Q
+        \end{align*}
+    \end{itemize}
+    \item $\bm{\Delta_rG^\circ(T)}$: The change in standard Gibbs energy for the reaction between unmixed reactants in their standard states at temperature $T$ and a pressure of one bar to form unmixed products in their standard states at the same temperature $T$ and pressure of one par.
+    \begin{itemize}
+        \item Note that since $P^\circ$ is taken to be \SI{1}{\bar}, the $P^\circ$'s are usually dropped in the definition of $Q$. However, they must be remembered in the sense that they make $Q$ unitless whether shown or not.
+    \end{itemize}
+    \item \textbf{Equilibrium}: The position of the reaction system at which the Gibbs energy is a minimum with respect to any displacement.
+    \begin{itemize}
+        \item Mathematically, we have that at equilibrium, $\Delta_rG=0$.
+        \item It follows that at equilibrium,
+        \begin{align*}
+            0 &= \Delta_rG^\circ(T)+RT\ln\left( \frac{P_{\ce{Y}}^{\nu_{\ce{Y}}}P_{\ce{Z}}^{\nu_{\ce{Z}}}}{P_{\ce{A}}^{\nu_{\ce{A}}}P_{\ce{B}}^{\nu_{\ce{B}}}} \right)_\text{eq}\\
+            \Delta_rG^\circ(T) &= -RT\ln\left( \frac{P_{\ce{Y}}^{\nu_{\ce{Y}}}P_{\ce{Z}}^{\nu_{\ce{Z}}}}{P_{\ce{A}}^{\nu_{\ce{A}}}P_{\ce{B}}^{\nu_{\ce{B}}}} \right)_\text{eq}
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Equilibrium constant}: A constant describing the relative pressures of reactants to products that will result in the reaction system achieving equilibrium. \emph{Denoted by} $\bm{K_P(T)}$. \emph{Given by}
+    \begin{equation*}
+        K_P(T) = \left( \frac{P_{\ce{Y}}^{\nu_{\ce{Y}}}P_{\ce{Z}}^{\nu_{\ce{Z}}}}{P_{\ce{A}}^{\nu_{\ce{A}}}P_{\ce{B}}^{\nu_{\ce{B}}}} \right)_\text{eq}
+    \end{equation*}
+    \begin{itemize}
+        \item The value of the equilibrium constant depends on how we write the chemical equation for the reaction at hand. For instance, the equilibrium constant expression for \ce{3H2 + N2 <=> 2NH3} is the square of the equilibrium constant expression for \ce{\frac{3}{2}H2 + \frac{1}{2}N2 <=> NH3}.
+    \end{itemize}
+    \item An equilibrium constant is a function of temperature only.
+    \begin{itemize}
+        \item This is because in deriving the equilibrium constant expression, we set $\Delta_rG(T,P)=0$, and pressure appears nowhere else in the equation $\Delta_rG^\circ(T)+RT\ln Q$.
+        \item In particular, the ratio that defines $Q$ must remain constant at different initial pressures of reactants and products.
+    \end{itemize}
+    \item Thinking through some equilibrium concepts in an example.
+    \begin{itemize}
+        \item Consider the reaction
+        \begin{equation*}
+            \ce{PCl5(g) <=> PCl3(g) + Cl2(g)}
+        \end{equation*}
+        \item The equilibrium constant expression is
+        \begin{equation*}
+            K_P(T) = \frac{P_{\ce{PCl3}}P_{\ce{Cl2}}}{P_{\ce{PCl5}}}
+        \end{equation*}
+        \item If we initially have one mole of \ce{PCl5} and no \ce{PCl3} or \ce{Cl2}, then when the reaction occurs to an extent $\xi$, there will be $1-\xi$ moles \ce{PCl5} and $\xi$ moles \ce{PCl3} and \ce{Cl2}. This leads to an overall $1+\xi$ moles of gas.
+        \item It follows that if $\xi_\text{eq}$ is the extent of reaction at equilibrium, then the partial pressures of each gas at equilibrium are given by
+        \begin{align*}
+            P_{\ce{PCl3}} = P_{\ce{Cl2}} &= \frac{\xi_\text{eq}}{1+\xi_\text{eq}}P&
+            P_{\ce{PCl5}} &= \frac{1-\xi_\text{eq}}{1+\xi_\text{eq}}P
+        \end{align*}
+        where $P$ is the total pressure.
+        \item Thus, the equilibrium constant expression is
+        \begin{equation*}
+            K_P(T) = \frac{\xi_\text{eq}^2}{1-\xi_\text{eq}^2}P
+        \end{equation*}
+        \item While the above expression sure makes it seem like $K_P(T)$ depends on $P$, we know by the above that it can't. Thus, it must be the position of the equilibrium along the extent of reaction that changes as $P$ changes.
+        \item In particular, as per \textbf{Le Ch\^{a}telier's principle}, we can note that for $K_P>1$, increasing pressure favors lesser extents of reaction (i.e., favors the reactants). This should make intuitive sense harkening back to AP Chemistry since it stands to reason that pressure increases would favor shifting the equilibrium to have fewer moles of gas. Now, however, we have a quantitative rule for how changes in pressure will affect the equilibrium.
+    \end{itemize}
+    \item \textbf{Le Ch\^{a}telier's principle}: If a chemical reaction at equilibrium is subjected to a change in conditions that displaces it from equilibrium, then the reaction adjusts toward a new equilibrium state.
+    \item Note that we can also express the equilibrium constant in terms of concentration via the relationship $P=cRT$ where $c=n/V$ is the concentration.
+    \begin{equation*}
+        K_P = \frac{c_{\ce{Y}}^{\nu_{\ce{Y}}}c_{\ce{Z}}^{\nu_{\ce{Z}}}}{c_{\ce{A}}^{\nu_{\ce{A}}}c_{\ce{B}}^{\nu_{\ce{B}}}}\left( \frac{RT}{P^\circ} \right)^{\nu_{\ce{Y}}+\nu_{\ce{Z}}-\nu_{\ce{A}}-\nu_{\ce{B}}}
+    \end{equation*}
+    \item $\bm{c^\circ}$: The standard concentration. \emph{Given by}
+    \begin{equation*}
+        c^\circ = \SI[per-mode=fraction,fraction-function=\tfrac]{1}{\mole\per\liter}
+    \end{equation*}
+    \item The standard concentration enables the following definitions.
+    \begin{equation*}
+        K_P = \underbrace{\frac{(c_{\ce{Y}}/c^\circ)^{\nu_{\ce{Y}}}(c_{\ce{Z}}/c^\circ)^{\nu_{\ce{Z}}}}{(c_{\ce{A}}/c^\circ)^{\nu_{\ce{A}}}(c_{\ce{B}}/c^\circ)^{\nu_{\ce{B}}}}}_{K_c}\left( \frac{c^\circ RT}{P^\circ} \right)^{\nu_{\ce{Y}}+\nu_{\ce{Z}}-\nu_{\ce{A}}-\nu_{\ce{B}}}
+    \end{equation*}
+    \begin{itemize}
+        \item Note that both $K_c$ and the term by which it is multiplied above are unitless.
+        \item As such, we have to be careful what units we use for $R$. In the standard situation of $P^\circ=\SI{1}{\bar}$ and $c^\circ=\SI{1}{\mole\per\liter}$, we must use $R=\SI{0.083145}{\liter\bar\per\mole\per\kelvin}$.
+    \end{itemize}
+    \item By combining the two equations below (both given in derivations above), we can obtain a relation between the equilibrium constant $K_p$ and the standard molar Gibbs energies (i.e., chemical potentials) of the relevant substances.
+    \begin{align*}
+        \Delta_rG^\circ(T) &= -RT\ln K_P\\
+        \Delta_rG^\circ(T) &= \nu_{\ce{Y}}\mu_{\ce{Y}}^\circ(T)+\nu_{\ce{Z}}\mu_{\ce{Z}}^\circ(T)-\nu_{\ce{A}}\mu_{\ce{A}}^\circ(T)-\nu_{\ce{B}}\mu_{\ce{B}}^\circ(T)
+    \end{align*}
+    \begin{itemize}
+        \item Note that $\mu_j^\circ(T)=\Delta_fG^\circ[j]$ if we choose appropriate standard states.
+        \item Thus, we can use tables of standard molar Gibbs energies of formation to calculate equilibrium constants.
+    \end{itemize}
+    \item Example: Deriving a function for the Gibbs energy of a reaction in terms of the extent of reaction.
+    \begin{itemize}
+        \item Consider the following reaction, which occurs at \SI{298.15}{\kelvin}.
+        \begin{equation*}
+            \ce{N2O4(g) <=> 2NO2(g)}
+        \end{equation*}
+        \item Let the initial conditions be one mole of \ce{N2O4} and no \ce{NO2}. Then
+        \begin{align*}
+            G(\xi) &= n_{\ce{N2O4}}\overline{G}_{\ce{N2O4}}+n_{\ce{NO2}}\overline{G}_{\ce{NO2}}\\
+            &= (1-\xi)\overline{G}_{\ce{N2O4}}+2\xi\overline{G}_{\ce{NO2}}\\
+            &= (1-\xi)G_{\ce{N2O4}}^\circ+2\xi G_{\ce{NO2}}^\circ+(1-\xi)RT\ln P_{\ce{N2O4}}+2\xi RT\ln P_{\ce{NO2}}
+        \end{align*}
+        \item Let the reaction be carried out at a constant total pressure of one bar. This assumption combined with the fact that the total number of moles in the reaction mixture is $(1-\xi)+2\xi=1+\xi$ reveals that
+        \begin{align*}
+            P_{\ce{N2O4}} &= x_{\ce{N2O4}}P_\text{total}
+                = \frac{1-\xi}{1+\xi}\cdot 1
+                = \frac{1-\xi}{1+\xi}&
+            P_{\ce{NO2}} &= x_{\ce{NO2}}P_\text{total}
+                = \frac{2\xi}{1+\xi}\cdot 1
+                = \frac{2\xi}{1+\xi}
+        \end{align*}
+        so that
+        \begin{equation*}
+            G(\xi) = (1-\xi)G_{\ce{N2O4}}^\circ+2\xi G_{\ce{NO2}}^\circ+(1-\xi)RT\ln\frac{1-\xi}{1+\xi}+2\xi RT\ln\frac{2\xi}{1+\xi}
+        \end{equation*}
+        \item Choosing appropriate standard states, we can obtain the final form
+        \begin{equation*}
+            G(\xi) = (1-\xi)\Delta_fG_{\ce{N2O4}}^\circ+2\xi\Delta_fG_{\ce{NO2}}^\circ+(1-\xi)RT\ln\frac{1-\xi}{1+\xi}+2\xi RT\ln\frac{2\xi}{1+\xi}
+        \end{equation*}
+        \item Plugging in
+        \begin{align*}
+            \Delta_fG_{\ce{N2O4}}^\circ &= \SI{97.787}{\kilo\joule\per\mole}&
+            \Delta_fG_{\ce{NO2}}^\circ &= \SI{51.258}{\kilo\joule\per\mole}
+        \end{align*}
+        we can determine that the minimum of the curve occurs at $\xi_\text{eq}=\SI{0.1892}{\mole}$.
+        \item Thus,
+        \begin{equation*}
+            K_P = \frac{P_{\ce{NO2}}^2}{P_{\ce{N2O4}}}
+            = \frac{[2\xi_\text{eq}/(1+\xi_\text{eq})]^2}{(1-\xi_\text{eq})/(1+\xi_\text{eq})}
+            = \frac{4\xi_\text{eq}^2}{1-\xi_\text{eq}^2}
+            = 0.148
+        \end{equation*}
+        \begin{itemize}
+            \item Note that this value compares exactly with the one obtained via the $-RT\ln K_P=\sum\nu_j\mu_j^\circ(T)$ method.
+        \end{itemize}
+        \item Note that differentiating our final form for $G(\xi)$ wrt. $\xi$ yields $\Delta_rG=\Delta_rG^\circ+RT\ln K_P$, as expected.
+    \end{itemize}
+    \item \textbf{Reaction quotient}: A quantity describing the relative amounts of reactants and products present in the reaction system at a given instant in time. \emph{Denoted by} $\bm{Q_P}$. \emph{Given by}
+    \begin{equation*}
+        Q_P = \frac{P_{\ce{Y}}^{\nu_{\ce{Y}}}P_{\ce{Z}}^{\nu_{\ce{Z}}}}{P_{\ce{A}}^{\nu_{\ce{A}}}P_{\ce{B}}^{\nu_{\ce{B}}}}
+    \end{equation*}
+    \item We have that
+    \begin{align*}
+        \Delta_rG &= \Delta_rG^\circ+RT\ln Q_P\\
+        &= -RT\ln K_P+RT\ln Q_P\\
+        &= RT\ln\frac{Q_P}{K_P}
+    \end{align*}
+    \begin{itemize}
+        \item Thus, the ratio of the reaction quotient to the equilibrium constant determines the direction in which a reaction will proceed.
+    \end{itemize}
+    \item The sign of $\Delta_rG$ and not that of $\Delta_rG^\circ$ determines the direction of reaction spontaneity.
+    \begin{itemize}
+        \item Indeed, the sign of $\Delta_rG^\circ$ determines the direction of reaction spontaneity only when all substances are mixed at one bar partial pressures (i.e., when $\Delta_rG=\Delta_rG^\circ$).
+    \end{itemize}
+    \item "The fact that a process will occur spontaneously does not imply that it will necessarily occur at a detectable rate" \parencite[977]{bib:McQuarrieSimon}.
+    \begin{itemize}
+        \item For example, the negative $\Delta_rG^\circ$ of water at one bar and \SI{25}{\celsius} tells us that the reaction \ce{2H2 + O2 <=> 2H2O} will occur spontaneously. However, experimental evidence reveals that a spark or catalyst is needed to convert hydrogen and oxygen to water; once said activation energy is introduced, the reaction proceeds explosively.
+        \item Indeed, "the `no' of thermodynamics is emphatic. If thermodynamics says that a certain process will not occur spontaneously, it will not occur. The `yes' of thermodynamics, on the other hand, is actually a `maybe'" \parencite[977]{bib:McQuarrieSimon}.
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
