@@ -173,7 +173,7 @@
     \begin{itemize}
         \item Experimental studies reveal that the rate law for many enzyme-catalyzed reactions has the form
         \begin{equation*}
-            -\dv{\cnc{S}}{t} = \frac{k\cnc{S}}{K+\cnc{S}}
+            -\dv{\cnc{S}}{t} = \frac{k\cnc{S}}{K_m+\cnc{S}}
         \end{equation*}
         \begin{itemize}
             \item This is the final goal of the derivation.
@@ -219,7 +219,7 @@
         \end{equation*}
         where $K_m=(k_{-1}+k_2)/k_1$ is the \textbf{Michaelis constant}.
         \begin{itemize}
-            \item The Michaelis constant tells you the ration of dissociation of the enzyme-substrate complex to the formation of the enzyme-substrate complex. In other words, it provides information on the enzyme-substrate affinity.
+            \item The Michaelis constant tells you the ratio of dissociation of the enzyme-substrate complex to the formation of the enzyme-substrate complex. In other words, it provides information on the enzyme-substrate affinity.
             \item Note that $k_{-2}$ is not present in the denominator of the Michaelis constant because for a good enzyme, $k_{-2}$ should be very small.
             \item The unit of $K_m$ should be concentration.
             \item When $K_m=\cnc[0]{S}$, $v=v_\text{max}/2$
@@ -234,6 +234,145 @@
         \begin{align*}
             v &= \frac{v_\text{max}}{1+K_m/\cnc[0]{S}}&
             \frac{1}{v} &= \frac{1}{v_\text{max}}+\frac{K_m}{v_\text{max}}\frac{1}{\cnc[0]{S}}
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Measuring Catalytic Efficiency and Correcting Collision Theory}
+\begin{itemize}
+    \item \marginnote{4/29:}Everything on the midterm comes from Tian's lecture notes. Thus, he recommends we go through them before taking the midterm.
+    \begin{itemize}
+        \item The T/F will be 20-30\% of the grade.
+        \item There will be some integration on the calculation problems, but they'll be pretty easy. All formulas that will appear have been covered in class.
+        \item The midterm will cover up to Monday's class (this week).
+    \end{itemize}
+    \item Consider the substrate concentration $\cnc[0]{S}$ vs. the initial rate $v_0$.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.45\linewidth}
+            \centering
+            \begin{tikzpicture}[scale=2]
+                \small
+                \draw [stealth-stealth] (0,1.1) node[above]{$v_0$} -- (0,0) -- (2.1,0) node[right]{$\cnc[0]{S}$};
+                \footnotesize
+                \draw (0.05,1) -- ++(-0.1,0) node[left]{$v_\text{max}$};
+                \draw (0.05,0.5) -- ++(-0.1,0) node[left]{$\frac{v_\text{max}}{2}$};
+                \draw (0.2,0.05) -- ++(0,-0.1) node[below]{$K_m$};
+        
+                \draw [dashed,very thin]
+                    (0,1) -- ++(2,0)
+                    (0.2,0) -- ++(0,0.5) -- ++(-0.2,0)
+                ;
+        
+                \draw [rex,thick] plot[domain=0:2,smooth,samples=100] (\x,{\x/(0.2+\x)});
+            \end{tikzpicture}
+            \caption{Normal plot.}
+            \label{fig:v0S0a}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\linewidth}
+            \centering
+            \begin{tikzpicture}[scale=2]
+                \small
+                \draw [stealth-stealth] (0,1.1) node[above]{$\frac{1}{v_0}$} -- (0,0) -- (2.1,0) node[right]{$\frac{1}{\cnc[0]{S}}$};
+                \footnotesize
+                \path (0.2,0.05) -- ++(0,-0.1) node[white,below]{$K_m$};
+        
+                \draw [rex,thick] (0,0.25) node[circle,fill,inner sep=1.5pt]{} node[black,left]{$\left( 0,\frac{1}{v_\text{max}} \right)$} -- node[black,above=1mm]{$\text{slope}=\frac{K_m}{v_\text{max}}$} (2,0.35);
+            \end{tikzpicture}
+            \caption{Reciprocal plot.}
+            \label{fig:v0S0b}
+        \end{subfigure}
+        \caption{Plotting $v_0$ vs. $\cnc[0]{S}$.}
+        \label{fig:v0S0}
+    \end{figure}
+    \begin{itemize}
+        \item Normal plot (Figure \ref{fig:v0S0a}).
+        \begin{itemize}
+            \item As $\cnc{S}\to\infty$, $v_0$ approaches an asymptote line defined by $v_\text{max}=k_2\cnc[0]{E}$.
+            \item At the beginning (low $\cnc{S}$), the paradigm is almost linear (thus, the reaction is first order wrt. substrate concentration here).
+            \item Note that we make use of the assumptions that $\cnc{P}\approx 0$ and $\cnc{S}\approx\cnc[0]{S}$.
+            \item Where we have $v_\text{max}/2$ on the $v_0$-axis, we have $K_m$ (the Michaelis constant) on the $\cnc[0]{S}$ axis.
+        \end{itemize}
+        \item Reciprocal plot (Figure \ref{fig:v0S0b}).
+        \begin{itemize}
+            \item Note that a plot of $v_0$ vs. $\cnc[0]{S}$ is nonlinear but a plot of $1/v_0$ vs. $1/\cnc[0]{S}$ is linear.
+            \item This reciprocal plot (the Lineweaver-Burk plot) gives $v_\text{max}$ (via the $y$-intercept) and $K_m$ via this information and the slope.
+            \item Note that
+            \begin{align*}
+                \frac{1}{v_0} &\propto \frac{K_m}{v_\text{max}}\frac{1}{\cnc[0]{S}}\\
+                &= \frac{(k_{-1}+k_2)/k_1}{k_2\cnc[0]{E}}\frac{1}{\cnc[0]{S}}
+                &= \frac{k_{-1}+k_2}{k_1k_2}\frac{1}{\cnc[0]{E}\cnc[0]{S}}
+            \end{align*}
+        \end{itemize}
+    \end{itemize}
+    \item Evaluating the performance of a catalyst.
+    \begin{equation*}
+        \frac{k_{-1}+K_2}{k_1k_2} = \frac{K_m}{v_\text{max}}\cdot\cnc[0]{E}
+    \end{equation*}
+    \begin{itemize}
+        \item $K_m$ is relevant to the enzyme-substrate affinity.
+        \item $v_\text{max}$ tells us about conversion from the ES with a focus on the second elementary step.
+    \end{itemize}
+    \item An alternate form of the Lineweaver-Burk plot is
+    \begin{equation*}
+        \frac{1}{v_0} = \frac{1}{v_\text{max}}+\frac{k_2+k_{-1}}{k_1k_2}\frac{1}{\cnc[0]{E}\cnc[0]{S}}
+    \end{equation*}
+    \begin{itemize}
+        \item Regrouping the terms, we have
+        \begin{equation*}
+            \frac{1}{v_0} = \frac{1}{v_\text{max}}+\frac{k_2+k_{-1}}{k_2}\frac{1}{k_1\cnc[0]{S}\cnc[0]{E}}
+            = \frac{1}{v_\text{max}}+\frac{k_2+k_{-1}}{k_2}\frac{1}{v_{f1}}
+        \end{equation*}
+        where $v_{f1}$ is the forward reaction rate for the first elementary step.
+    \end{itemize}
+    \item \textbf{Turnover number}: The number of catalytic cycles that each active site undergoes per unit time. \emph{Given by}
+    \begin{equation*}
+        \text{TON} = \frac{v_\text{max}}{n\cnc[0]{E}}
+        = \frac{k_2\cnc[0]{E}}{n\cnc[0]{E}}
+        = \frac{k_2}{n}
+    \end{equation*}
+    \begin{itemize}
+        \item Indicates how fast the \ce{ES} complex proceeds to \ce{E + P}.
+        \item $k_2/n$ is the number of active sites per enzyme.
+    \end{itemize}
+    \item \textbf{Catalytic efficiency}: The following quantity. \emph{Given by}
+    \begin{equation*}
+        \frac{\text{TON}}{K_m}
+    \end{equation*}
+    \item Consider the reaction
+    \begin{equation*}
+        \ce{A(g) + B(g)} \xRightarrow{k} \ce{products}
+    \end{equation*}
+    \begin{itemize}
+        \item The rate of the general bimolecular elementary gas-phase reaction is
+        \begin{equation*}
+            v = -\dv{\cnc{A}}{t} = k\cnc{A}\cnc{B}
+        \end{equation*}
+        \item Using the na\"{i}ve assumption that every collision between the hard spheres \ce{A} and \ce{B} yields products,
+        \begin{equation*}
+            v = Z_{\ce{A}\ce{B}} = \sigma_{\ce{A}\ce{B}}\prb{u_r}\rho_{\ce{A}}\rho_{\ce{B}}
+        \end{equation*}
+        \item Moreover,
+        \begin{equation*}
+            k = \sigma_{\ce{A}\ce{B}}\prb{u_r}
+        \end{equation*}
+        \item Unfortunately, this is not accurate. We make our first improvement to collision theory by taking into account the dependence of the reaction rate on the relative speed, or energy, of the collision. Thus, we average over all possible collision speeds.
+        \begin{equation*}
+            k = \int_0^\infty\dd{u_r}f(u_r)k(u_r)
+            = \int_0^\infty\dd{u_r}u_rf(u_r)\sigma_r(u_r)
+        \end{equation*}
+        \item Since $f(u_r)$ is the distribution of relative speeds in the gas sample, we have that
+        \begin{equation*}
+            u_rf(u_r)\dd{u_r} = \left( \frac{\mu}{\kB T} \right)^{3/2}\left( \frac{2}{\pi} \right)^{1/2}u_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}
+        \end{equation*}
+        \item To compare this with the traditional Arrhenius form of $k$, we need to change the dependent variable from $u_r$ to $E$, which we can do via
+        \begin{align*}
+            E_r &= \frac{1}{2}\mu u_r^2&
+            u_r &= \sqrt{\frac{2E_r}{\mu}}&
+            \dd{u_r} &= \sqrt{\frac{1}{2\mu E_r}}\dd{E_r}&
+            E_a &= \kB T^2\dv{\ln k}{T}
         \end{align*}
     \end{itemize}
 \end{itemize}
