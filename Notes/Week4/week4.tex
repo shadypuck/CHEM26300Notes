@@ -29,7 +29,7 @@
         \end{itemize}
         \item We have that
         \begin{equation*}
-            q^\ddagger = q_\text{trans}^\ddagger\cdot q_\text{rot}^\ddagger
+            q^\ddagger = q_\text{trans}^\ddagger\cdot q_\text{int}^\ddagger
         \end{equation*}
         where $q^\ddagger$ is the partition function for the whole species, which we can split.
         \item This permits
@@ -693,6 +693,60 @@
         \item For example, the negative $\Delta_rG^\circ$ of water at one bar and \SI{25}{\celsius} tells us that the reaction \ce{2H2 + O2 <=> 2H2O} will occur spontaneously. However, experimental evidence reveals that a spark or catalyst is needed to convert hydrogen and oxygen to water; once said activation energy is introduced, the reaction proceeds explosively.
         \item Indeed, "the `no' of thermodynamics is emphatic. If thermodynamics says that a certain process will not occur spontaneously, it will not occur. The `yes' of thermodynamics, on the other hand, is actually a `maybe'" \parencite[977]{bib:McQuarrieSimon}.
     \end{itemize}
+    \item \marginnote{4/29:}Deriving a relationship between $K_P$ and $T$.
+    \begin{itemize}
+        \item Recall the Gibbs-Helmholtz equation
+        \begin{equation*}
+            \left( \pdv{\Delta G^\circ/T}{T} \right)_P = -\frac{\Delta H^\circ}{T^2}
+        \end{equation*}
+        \item Substituting $\Delta G^\circ(T)=-RT\ln K_P(T)$ yields the \textbf{Van't Hoff equation}.
+        \begin{equation*}
+            \left( \pdv{\ln K_P(T)}{T} \right)_P = \dv{\ln K_P}{T}
+            = \frac{\Delta_rH^\circ}{RT^2}
+        \end{equation*}
+        \item Qualitatively, the above equation tells us that if $\Delta_rH^\circ>0$ (i.e., the reaction is endothermic), then $K_P(T)$ increases with temperature, as expected, and vice versa if $\Delta_rH^\circ<0$.
+        \begin{itemize}
+            \item This is another example of Le Ch\^{a}telier's principle.
+        \end{itemize}
+        \item Quantitatively, the above equation can be integrated to give
+        \begin{equation*}
+            \ln\frac{K_P(T_2)}{K_P(T_1)} = \int_{T_1}^{T_2}\frac{\Delta_rH^\circ(T)}{RT^2}\dd{T}
+        \end{equation*}
+        \item If the temperature range is sufficiently small, we may take $\Delta_rH^\circ$ to be constant and write
+        \begin{equation*}
+            \ln\frac{K_P(T_2)}{K_P(T_1)} = -\frac{\Delta_rH^\circ(T)}{R}\left( \frac{1}{T_2}-\frac{1}{T_1} \right)
+        \end{equation*}
+        \begin{itemize}
+            \item One implication of this equation is that over a sufficiently small temperature range, a plot of $\ln K$ vs. $1/T$ is linear with slope $-\Delta_rH^\circ/R$.
+        \end{itemize}
+        \item If the temperature range is not sufficiently small, we still have options.
+        \item For example, recall that
+        \begin{equation*}
+            \Delta_rH^\circ(T_2) = \Delta_rH^\circ(T_1)+\int_{T_1}^{T_2}\Delta C_P^\circ(T)\dd{T}
+        \end{equation*}
+        where $\Delta C_P^\circ$ is the difference between the heat capacities of the products and reactants.
+        \item Alternatively, we may present experimental heat capacity data as a polynomial of the form
+        \begin{equation*}
+            \Delta_rH^\circ(T) = \alpha+\beta T+\gamma T^2+\delta T^3+\cdots
+        \end{equation*}
+        so that
+        \begin{equation*}
+            \ln K_P(T) = -\frac{\alpha}{RT}+\frac{\beta}{R}\ln T+\frac{\gamma}{R}T+\frac{\delta}{2R}T^2+A
+        \end{equation*}
+        \begin{itemize}
+            \item It follows from this equation that in reality, a plot of $\ln K_P$ vs. $1/T$ is not linear but has a slight curvature.
+        \end{itemize}
+        where $A$ is a constant of integration.
+        \item More generally, we may always take
+        \begin{equation*}
+            \ln K_P(T) = \ln K_P(T_1)+\int_{T_1}^T\frac{\Delta_rH^\circ(T')}{RT'^2}\dd{T}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Van't Hoff equation}: An ordinary differential equation describing the temperature dependence of the equilibrium constant. \emph{Given by}
+    \begin{equation*}
+        \dv{\ln K_P}{T} = \frac{\Delta_rH^\circ}{RT^2}
+    \end{equation*}
+    \item A note on the similarity in form between the integrated Van't Hoff equation at constant $\Delta_rH^\circ$ and the Clausius-Clapeyron equation: "These equations are essentially the same because the vaporization of a liquid can be represented by the `chemical equation' \ce{X(l) <=> X(g)}" \parencite[980]{bib:McQuarrieSimon}.
 \end{itemize}
 
 
