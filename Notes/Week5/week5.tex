@@ -379,5 +379,51 @@
 
 
 
+\section{Office Hours (Tian)}
+\begin{itemize}
+    \item Can Problem 28-46 be done purely with integrated forms of the Arrhenius equation?
+    \begin{itemize}
+        \item We can use either case depending on how the question was asked, and often it's an instance of which would be easier to use. We should always think both ways.
+    \end{itemize}
+    \item Ask about the Problem 29-24 derivation from class final steps as well as molecularity.
+    \begin{itemize}
+        \item You have a 2 and a squared. The exponent comes from the fact that it's bimolecular. The coefficient comes from the fact that we're talking about the rate of change of that substance. In particular, if \ce{2C ->[$k_1$] D}, then
+        \begin{equation*}
+            -\dv{\cnc{C}}{t} = 2\dv{\cnc{D}}{t} = 2k_1\cnc{C}^2
+        \end{equation*}
+    \end{itemize}
+    \item Eyring equation and thermodynamics questions: So what we need to know and be able to work with are the Eyring equation and you said "the dimensional analysis?" I'm still unclear on what $\prb{u_\text{ac}}$ and $\nu_c$ are.
+    \begin{itemize}
+        \item $\nu_c$ is frequency. It's units are reciprocal seconds. It's 1 over the time it takes to cross the barrier. Length divided by time gives the rate of crossing the barrier. And rate depends on reaction coordinate.
+        \item This is very hard to visualize along a typical, complicated reaction coordinate. However, if we think about an S\textsubscript{N}2 for instance, we can picture $\delta$ as some tolerance around the equatorial ligands being perfectly coplanar with the central atom, $1/\nu_c$ as the time from when the molecules begin reacting (nucleophilic attack) to when the leaving group has fully left, and thus $\prb{u_\text{ac}}$ as the average speed with which the activated complex crosses the barrier top, i.e., is formed, moved, and dissociates.
+        \item The conclusion is more important than the derivation. There's a lot of assumptions that are not as relevant to the eventual result. The conclusion being that we can express the pre-exponential factor can be expressed in terms of molecular quantities from statistical mechanics.
+        \item TST is imperfect; some textbooks use $P^\circ$ instead of $c^\circ$ since this is a gas-phase reaction.
+        \item $\Delta^\ddagger PV=\Delta^\ddagger nRT$ hails from the ideal gas law. $\Delta^\ddagger n$ is the change in the number of molecules from the reactants to the activated complex (which is always unimolecular!). $1-\Delta n=\text{molecularity}$. We need $\Delta^\ddagger U^\circ$. To get an expression for it, we invoke enthalpy ($H$) which brings in the change in $PV$ going to the transition state, which is related to the change in the number of moles of gas!
+    \end{itemize}
+    \item What does the double vs. single arrow signify?
+    \begin{itemize}
+        \item Elementary reactions vs. reactions that might not be.
+    \end{itemize}
+    \item The differences between $F(u)$, $f(u_x)$, and $h(u)$.
+    \begin{itemize}
+        \item $f(u_x)$ is the Gaussian distribution of velocity components.
+        \item $F(u)$ is the M-B distribution.
+        \item $h(u_x,u_y,u_z)$ is the product $f(u_x)f(u_y)f(u_z)$ and describes the fraction of molecules not just moving linearly in one dimension or the other, but in any direction. Graphically, we'd need four dimensions, but we can visualize it either as equipotential 2-spheres or, using the color model in 3D, as intensity getting brighter with a Gaussian distribution cubed as you approach the origin.
+    \end{itemize}
+    \item Midterm stuff.
+    \begin{itemize}
+        \item The midterm will have two problems on rate laws (one of which might concern the Eyring equation), one mechanism question (how the approximations provided lead into the final rate law), and one collision theory question (the original collision theory stuff, not the more recent stuff).
+        \item For each T/F problem, there will be two sentences. You need to identify all of the mistakes in the sentences. Answer if it's true or false, and explain. One point for T/F; two points for your explanation. If the sentence is true, a few words might be helpful, too.
+        \item We'll need to show some decent steps to recreate the work. Clear doubt from the TA's mind.
+        \item If there is a mistake in a problem, just do your best to solve it and flag it for him.
+    \end{itemize}
+    \item Fast equilibrium vs. steady state?
+    \begin{itemize}
+        \item Detailed balance only applies to elementary steps?
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
