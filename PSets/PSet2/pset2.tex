@@ -178,9 +178,51 @@
         \begin{equation*}
             -\dv{[\ce{Cr(H2O)6^3+}]}{t} = -\dv{[\ce{SCN-}]}{t} = k[\ce{Cr(H2O)6^3+}][\ce{SCN-}]
         \end{equation*}
-        Thus, we can determine $k$ by performing a linear regression on a plot of $-v_0$ vs. $[\ce{Cr(H2O)6^3+}][\ce{SCN-}]$. Indeed, running such a regression gives us the final rate law
+        Thus, we can determine $k$ by performing a linear regression on the following $v_0$ vs. $[\ce{Cr(H2O)6^3+}][\ce{SCN-}]$ data.
+        \begin{center}
+            \small
+            \renewcommand{\arraystretch}{1.2}
+            \begin{tabular}{c|c}
+                $[\ce{Cr(H2O)6^3+}][\ce{SCN-}]$ & $v_0$\\
+                \hline
+                \num{1.27e-9} & \num{2.11e-11}\\
+                \num{3.33e-9} & \num{5.53e-11}\\
+                \num{1.69e-9} & \num{2.82e-11}\\
+                \num{5.69e-9} & \num{9.44e-11}\\
+            \end{tabular}
+        \end{center}
+        Indeed, we can run such a regression as follows. First off, note that
+        \begin{align*}
+            \sum[\ce{Cr(H2O)6^3+}][\ce{SCN-}] &= (\num{1.27e-9})+(\num{3.33e-9})+(\num{1.69e-9})+(\num{5.69e-9})\\
+            &= \num{1.20e-8}
+        \end{align*}
+        \begin{align*}
+            \sum v_0 &= (\num{2.11e-11})+(\num{5.53e-11})+(\num{2.82e-11})+(\num{9.44e-11})\\
+            &= \num{1.99e-10}
+        \end{align*}
+        \begin{align*}
+            \begin{split}
+                \sum([\ce{Cr(H2O)6^3+}][\ce{SCN-}]\cdot v_0) ={}& (\num{1.27e-9})(\num{2.11e-11})+(\num{3.33e-9})(\num{5.53e-11})\\
+                &+(\num{1.69e-9})(\num{2.82e-11})+(\num{5.69e-9})(\num{9.44e-11})
+            \end{split}\\
+            ={}& (\num{2.68e-20})+(\num{1.84e-19})+(\num{4.77e-20})+(\num{5.37e-19})\\
+            ={}& \num{7.96e-19}
+        \end{align*}
+        \begin{align*}
+            \sum([\ce{Cr(H2O)6^3+}][\ce{SCN-}])^2 &= (\num{1.27e-9})^2+(\num{3.33e-9})^2+(\num{1.69e-9})^2+(\num{5.69e-9})^2\\
+            &= (\num{1.61e-18})+(\num{1.11e-17})+(\num{2.86e-18})+(\num{3.24e-17})\\
+            &= \num{4.80e-17}
+        \end{align*}
+        Then we have by plugging into the linear regression slope formula that
+        \begin{align*}
+            m &= \frac{\sum[\ce{Cr(H2O)6^3+}][\ce{SCN-}]\cdot\sum v_0-4\sum([\ce{Cr(H2O)6^3+}][\ce{SCN-}]\cdot v_0)}{\left( \sum[\ce{Cr(H2O)6^3+}][\ce{SCN-}] \right)^2-4\sum([\ce{Cr(H2O)6^3+}][\ce{SCN-}])^2}\\
+            &= \frac{\num{2.39e-18}-\num{3.18e-18}}{\num{1.44e-16}-\num{1.92e-16}}\\
+            &= \frac{\num{-7.90e-19}}{\num{-4.8e-17}}\\
+            &= \num{1.65e-2}
+        \end{align*}
+        The result gives us the final rate law
         \begin{equation*}
-            \boxed{v = \num{1.66e-2}[\ce{Cr(H2O)6^3+}][\ce{SCN-}]}
+            \boxed{v = \num{1.65e-2}[\ce{Cr(H2O)6^3+}][\ce{SCN-}]}
         \end{equation*}
     \end{proof}
     \item Consider the base-catalyzed reaction
