@@ -704,7 +704,7 @@
             \left( \pdv{\ln K_P(T)}{T} \right)_P = \dv{\ln K_P}{T}
             = \frac{\Delta_rH^\circ}{RT^2}
         \end{equation*}
-        \item Qualitatively, the above equation tells us that if $\Delta_rH^\circ>0$ (i.e., the reaction is endothermic), then $K_P(T)$ increases with temperature, as expected, and vice versa if $\Delta_rH^\circ<0$.
+        \item Qualitatively, the above equation tells us that if $\Delta_rH^\circ>0$ (i.e., if the reaction is endothermic), then $K_P(T)$ increases with temperature, as expected since more available energy should drive an endothermic reaction, and vice versa if $\Delta_rH^\circ<0$.
         \begin{itemize}
             \item This is another example of Le Ch\^{a}telier's principle.
         \end{itemize}
@@ -712,7 +712,7 @@
         \begin{equation*}
             \ln\frac{K_P(T_2)}{K_P(T_1)} = \int_{T_1}^{T_2}\frac{\Delta_rH^\circ(T)}{RT^2}\dd{T}
         \end{equation*}
-        \item If the temperature range is sufficiently small, we may take $\Delta_rH^\circ$ to be constant and write
+        \item If the temperature range or the magnitude change of $\Delta_rH^\circ(T)$ is sufficiently small, we may take $\Delta_rH^\circ$ to be constant and write
         \begin{equation*}
             \ln\frac{K_P(T_2)}{K_P(T_1)} = -\frac{\Delta_rH^\circ(T)}{R}\left( \frac{1}{T_2}-\frac{1}{T_1} \right)
         \end{equation*}
@@ -725,7 +725,7 @@
             \Delta_rH^\circ(T_2) = \Delta_rH^\circ(T_1)+\int_{T_1}^{T_2}\Delta C_P^\circ(T)\dd{T}
         \end{equation*}
         where $\Delta C_P^\circ$ is the difference between the heat capacities of the products and reactants.
-        \item Alternatively, we may present experimental heat capacity data as a polynomial of the form
+        \item Alternatively, we may present experimental heat capacity data as a polynomial in temperature of the form
         \begin{equation*}
             \Delta_rH^\circ(T) = \alpha+\beta T+\gamma T^2+\delta T^3+\cdots
         \end{equation*}
@@ -733,20 +733,71 @@
         \begin{equation*}
             \ln K_P(T) = -\frac{\alpha}{RT}+\frac{\beta}{R}\ln T+\frac{\gamma}{R}T+\frac{\delta}{2R}T^2+A
         \end{equation*}
+        where $A$ is a constant of integration.
         \begin{itemize}
             \item It follows from this equation that in reality, a plot of $\ln K_P$ vs. $1/T$ is not linear but has a slight curvature.
         \end{itemize}
-        where $A$ is a constant of integration.
         \item More generally, we may always take
         \begin{equation*}
             \ln K_P(T) = \ln K_P(T_1)+\int_{T_1}^T\frac{\Delta_rH^\circ(T')}{RT'^2}\dd{T}
         \end{equation*}
+        regardless of how $\Delta_rH^\circ$ varies with temperature.
     \end{itemize}
     \item \textbf{Van't Hoff equation}: An ordinary differential equation describing the temperature dependence of the equilibrium constant. \emph{Given by}
     \begin{equation*}
         \dv{\ln K_P}{T} = \frac{\Delta_rH^\circ}{RT^2}
     \end{equation*}
     \item A note on the similarity in form between the integrated Van't Hoff equation at constant $\Delta_rH^\circ$ and the Clausius-Clapeyron equation: "These equations are essentially the same because the vaporization of a liquid can be represented by the `chemical equation' \ce{X(l) <=> X(g)}" \parencite[980]{bib:McQuarrieSimon}.
+    \item \marginnote{4/30:}Calculating equilibrium constants in terms of partition functions.
+    \begin{itemize}
+        \item Consider the general homogeneous gas-phase reaction
+        \begin{equation*}
+            \ce{\nu_{\ce{A}} A(g) + \nu_{\ce{B}} B(g) <=> \nu_{\ce{Y}} Y(g) + \nu_{\ce{Z}} Z(g)}
+        \end{equation*}
+        in a reaction vessel at fixed volume and temperature.
+        \item It follows that
+        \begin{equation*}
+            \dd{A} = \mu_{\ce{A}}\dd{n_{\ce{A}}}+\mu_{\ce{B}}\dd{n_{\ce{B}}}+\mu_{\ce{Y}}\dd{n_{\ce{Y}}}+\mu_{\ce{Z}}\dd{n_{\ce{Z}}}
+        \end{equation*}
+        \item As before, this equation gives the condition for chemical equilibrium as
+        \begin{equation*}
+            \nu_{\ce{Y}}\mu_{\ce{Y}}+\nu_{\ce{Z}}\mu_{\ce{Z}}-\nu_{\ce{A}}\mu_{\ce{A}}-\nu_{\ce{B}}\mu_{\ce{B}} = 0
+        \end{equation*}
+        \item We now express the chemical potentials above in terms of partition functions.
+        \item Since the species are independent in an ideal gas, we have that
+        \begin{align*}
+            Q(N_{\ce{A}},N_{\ce{B}},N_{\ce{Y}},N_{\ce{Z}},V,T) &= Q(N_{\ce{A}},V,T)Q(N_{\ce{B}},V,T)Q(N_{\ce{Y}},V,T)Q(N_{\ce{Z}},V,T)\\
+            &= \frac{q_{\ce{A}}(V,T)^{N_{\ce{A}}}}{N_{\ce{A}}!}\frac{q_{\ce{B}}(V,T)^{N_{\ce{B}}}}{N_{\ce{B}}!}\frac{q_{\ce{Y}}(V,T)^{N_{\ce{Y}}}}{N_{\ce{Y}}!}\frac{q_{\ce{Z}}(V,T)^{N_{\ce{Z}}}}{N_{\ce{Z}}!}
+        \end{align*}
+        \item Thus, for example,
+        \begin{equation*}
+            \mu_{\ce{A}} = -RT\left( \pdv{\ln Q(N_{\ce{A}},N_{\ce{B}},N_{\ce{Y}},N_{\ce{Z}},V,T)}{N_{\ce{A}}} \right)_{N_j,V,T}
+            = -RT\ln\frac{q_{\ce{A}}(V,T)}{N_{\ce{A}}}
+        \end{equation*}
+        where we have used Stirling's approximation for $N_{\ce{A}}!$.
+        \item Substituting the above equation and its variations for \ce{B}, \ce{Y}, and \ce{Z} into the equilibrium conditions yields
+        \begin{align*}
+            0 &= \nu_{\ce{Y}}\left( -RT\ln\frac{q_{\ce{Y}}}{N_{\ce{Y}}} \right)+\nu_{\ce{Z}}\left( -RT\ln\frac{q_{\ce{Z}}}{N_{\ce{Z}}} \right)-\nu_{\ce{A}}\left( -RT\ln\frac{q_{\ce{A}}}{N_{\ce{A}}} \right)-\nu_{\ce{B}}\left( -RT\ln\frac{q_{\ce{B}}}{N_{\ce{B}}} \right)\\
+            % &= \nu_{\ce{Y}}\ln\frac{q_{\ce{Y}}}{N_{\ce{Y}}}+\nu_{\ce{Z}}\ln\frac{q_{\ce{Z}}}{N_{\ce{Z}}}-\nu_{\ce{A}}\ln\frac{q_{\ce{A}}}{N_{\ce{A}}}-\nu_{\ce{B}}\ln\frac{q_{\ce{B}}}{N_{\ce{B}}}\\
+            &= \ln\frac{q_{\ce{Y}}^{\nu_{\ce{Y}}}}{N_{\ce{Y}}^{\nu_{\ce{Y}}}}+\ln\frac{q_{\ce{Z}}^{\nu_{\ce{Z}}}}{N_{\ce{Z}}^{\nu_{\ce{Z}}}}-\ln\frac{q_{\ce{A}}^{\nu_{\ce{A}}}}{N_{\ce{A}}^{\nu_{\ce{A}}}}-\ln\frac{q_{\ce{B}}^{\nu_{\ce{B}}}}{N_{\ce{B}}^{\nu_{\ce{B}}}}\\
+            % &= \ln\frac{\frac{q_{\ce{Y}}^{\nu_{\ce{Y}}}q_{\ce{Z}}^{\nu_{\ce{Z}}}}{q_{\ce{A}}^{\nu_{\ce{A}}}q_{\ce{B}}^{\nu_{\ce{B}}}}}{\frac{N_{\ce{Y}}^{\nu_{\ce{Y}}}N_{\ce{Z}}^{\nu_{\ce{Z}}}}{N_{\ce{A}}^{\nu_{\ce{A}}}N_{\ce{B}}^{\nu_{\ce{B}}}}}\\
+            \e[0] &= \frac{\frac{q_{\ce{Y}}^{\nu_{\ce{Y}}}q_{\ce{Z}}^{\nu_{\ce{Z}}}}{q_{\ce{A}}^{\nu_{\ce{A}}}q_{\ce{B}}^{\nu_{\ce{B}}}}}{\frac{N_{\ce{Y}}^{\nu_{\ce{Y}}}N_{\ce{Z}}^{\nu_{\ce{Z}}}}{N_{\ce{A}}^{\nu_{\ce{A}}}N_{\ce{B}}^{\nu_{\ce{B}}}}}\\
+            \frac{N_{\ce{Y}}^{\nu_{\ce{Y}}}N_{\ce{Z}}^{\nu_{\ce{Z}}}}{N_{\ce{A}}^{\nu_{\ce{A}}}N_{\ce{B}}^{\nu_{\ce{B}}}} &= \frac{q_{\ce{Y}}^{\nu_{\ce{Y}}}q_{\ce{Z}}^{\nu_{\ce{Z}}}}{q_{\ce{A}}^{\nu_{\ce{A}}}q_{\ce{B}}^{\nu_{\ce{B}}}}
+        \end{align*}
+        \item Now $N_j/V=\rho_j$ is concentration, so dividing every term in the left expression above by $V^{\nu_j}$ gives $K_c$.
+        \begin{equation*}
+            K_c(T) = \frac{\rho_{\ce{Y}}^{\nu_{\ce{Y}}}\rho_{\ce{Z}}^{\nu_{\ce{Z}}}}{\rho_{\ce{A}}^{\nu_{\ce{A}}}\rho_{\ce{B}}^{\nu_{\ce{B}}}}
+            = \frac{(q_{\ce{Y}}/V)^{\nu_{\ce{Y}}}(q_{\ce{Z}}/V)^{\nu_{\ce{Z}}}}{(q_{\ce{A}}/V)^{\nu_{\ce{A}}}(q_{\ce{B}}/V)^{\nu_{\ce{B}}}}
+        \end{equation*}
+        \begin{itemize}
+            \item Recall that $q_j/V$ is a function of temperature only. Thus, the above of definition does give $K_c(T)$ in terms of the partition functions and as a function of temperature only, as it should.
+        \end{itemize}
+        \item Lastly, recall that we can use the definition of $K_P$ in terms of $K_c$ to calculate $K_P$ in terms of partition functions.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} goes through two examples of using the above result to calculate the equilibrium constant from molecular parameters.
+    \begin{itemize}
+        \item Using the rigid-rotator harmonic oscillator approximation (which we may recall is the basis of all partition functions we've derived thus far) gives results in good (but not great) agreement with experiment.
+    \end{itemize}
 \end{itemize}
 
 
