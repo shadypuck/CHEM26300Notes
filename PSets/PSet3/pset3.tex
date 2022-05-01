@@ -39,11 +39,29 @@
             \ln k+\ln t_{1/2} &= -\ln(n-1)+\ln(2^{n-1}-1)-(n-1)\ln\cnc[0]{A}\\
             \ln t_{1/2} &= -(n-1)\ln\cnc[0]{A}+C
         \end{align*}
-        where $C=\ln(2^{n-1}-1)-\ln(n-1)-\ln k$ is a constant. Thus, we can determine $n$ by performing a linear regression on a plot of $\ln t_{1/2}$ vs. $\ln\cnc[0]{N2O}$. The resultant line of best fit has slope $m=-0.96$, which means that
+        where $C=\ln(2^{n-1}-1)-\ln(n-1)-\ln k$ is a constant. Thus, we can determine $n$ by finding the best fit line on a plot of $\ln t_{1/2}$ vs. $\ln\cnc[0]{N2O}$ as follows.
+        \begin{center}
+            \begin{tikzpicture}[scale=0.5]
+                \small
+                \draw [stealth-stealth] (-7.5,0) -- node[below=5mm]{$\ln\cnc[0]{N2O}$} (0,0) -- node[right=5mm]{$\ln t_{1/2}$} (0,8.5);
+                \footnotesize
+                \foreach \x in {-7,...,-1} {
+                    \draw (\x,0.2) -- ++(0,-0.4) node[below]{$\x$};
+                }
+                \foreach \y in {1,...,8} {
+                    \draw (-0.2,\y) -- ++(0.4,0) node[right]{$\y$};
+                }
+                \node [below right=1mm] {$0$};
+        
+                \draw [grx,thick] plot[domain=-7:0,samples=2] (\x,{-0.958*\x+0.967});
+                \foreach \x/\y in {-6.393/7.090,-5.413/6.153,-4.678/5.438,-4.461/5.247} {
+                    \fill (\x,\y) circle (3pt);
+                }
+            \end{tikzpicture}
+        \end{center}
+        The resultant line of best fit has slope approximately equal to 1, which means that
         \begin{align*}
-            -(n-1) &\approx -0.96\\
-            n-1 &\approx 0.96\\
-            n &\approx 1.96\\
+            -(n-1) &= 1\\
             \Aboxed{n &= 2}
         \end{align*}
         It follows by plugging our four data points back into the equation
