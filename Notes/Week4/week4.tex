@@ -809,6 +809,222 @@
 \end{itemize}
 
 
+\subsection*{Problems}
+\begin{enumerate}[label={\textbf{26-\arabic*.}},ref={26-\arabic*},leftmargin=3.5em]
+    \setcounter{enumi}{13}
+    \item \label{prb:26-14}Show that
+    \begin{equation*}
+        \dv{\ln K_c}{T} = \frac{\Delta_rU^\circ}{RT^2}
+    \end{equation*}
+    for reactions involving ideal gases.
+    \begin{proof}[Answer]
+        Starting from the Van't Hoff equation, we have that
+        \begin{align*}
+            \dv{\ln K_P}{T} &= \frac{\Delta_rH^\circ}{RT^2}\\
+            \dv{T}\ln(K_c\left( \frac{c^\circ RT}{P^\circ} \right)^{\nu_{\ce{Y}}+\nu_{\ce{Z}}-\nu_{\ce{A}}-\nu_{\ce{B}}}) &= \frac{\Delta_rU^\circ+\Delta_r(PV)}{RT^2}\\
+            \dv{\ln K_c}{T}+\dv{T}\{[(\nu_{\ce{Y}}+\nu_{\ce{Z}})-(\nu_{\ce{A}}+\nu_{\ce{B}})]\ln T\}+\dv{T}(\frac{c^\circ R}{P^\circ}) &= \frac{\Delta_rU^\circ+\Delta_r(nRT)}{RT^2}\\
+            \dv{\ln K_c}{T}+\frac{n_f-n_i}{T}+0 &= \frac{\Delta_rU^\circ}{RT^2}+\frac{\Delta_rn}{T}\\
+            \dv{\ln K_c}{T} &= \frac{\Delta_rU^\circ}{RT^2}
+        \end{align*}
+        as desired.
+    \end{proof}
+\end{enumerate}
+
+
+
+\section{Chapter 28: Chemical Kinetics I --- Rate Laws}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \textbf{Transition state}: The transient species in the vicinity of the top of the activation barrier to reaction. \emph{Also known as} \textbf{activated complex}. \emph{Denoted by} $\textbf{AB}^{\bm{\ddagger}}$.
+    \item \textbf{Transition-state theory}: A theory focusing on the transition states that can be used to estimate reaction rate constants. \emph{Also known as} \textbf{activated-complex theory}.
+    \begin{itemize}
+        \item Developed in the 1930s by Henry Eyring.
+    \end{itemize}
+    \item We will now develop the fundamental postulates of transition state theory and use them to express the rate constant, activation energy, and Arrhenius pre-exponential factor of the reaction
+    \begin{equation*}
+        \ce{A + B -> P}
+    \end{equation*}
+    where \ce{P} represents one or more products in terms of thermodynamic quantities including partition functions as well as more fundamental variables and constants.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \small
+            \draw [stealth-stealth] (0,4) -- node[rotate=90,above]{Energy} (0,0) -- node[below]{Reaction coordinate} (6,0);
+            
+            \footnotesize
+            \draw [blx,thick,name path=E] (0.7,1.5)
+                to[out=-70,in=180] (1.3,1) node[below]{\ce{A + B}}
+                to[out=0,in=180,out looseness=0.8,in looseness=0.7] (3,3.5) node[below=2mm]{\ce{AB${}^\ddagger$}}
+                to[out=0,in=180,out looseness=0.7,in looseness=0.8] (4.7,0.6) node[below]{Products}
+                to[out=0,in=-110] (5.3,1.1)
+            ;
+            \foreach \y in {1.1,1.2,1.3,1.4} {
+                \path [name path=p] (0.5,\y) -- ++(2,0);
+                \draw [grx,semithick,name intersections={of=E and p}] (intersection-1) -- (intersection-2);
+            }
+            \foreach \y in {0.7,0.8,0.9,1.0} {
+                \path [name path=p] (3.5,\y) -- ++(2,0);
+                \draw [grx,semithick,name intersections={of=E and p}] (intersection-1) -- (intersection-2);
+            }
+    
+            \draw [very thin,|-|] (2.8,3.8) -- node[above]{$\delta$} ++(0.4,0);
+        \end{tikzpicture}
+        \caption{Transition state theory energy diagram.}
+        \label{fig:TST}
+    \end{figure}
+    \begin{itemize}
+        \item The first assumption of transition state theory is that the activated complex is in equilibrium with the reactants as per
+        \begin{equation*}
+            \ce{A + B <=> AB${}^\ddagger$ -> P}
+        \end{equation*}
+        \item It follows from the definition of the concentration equilibrium constant that the transition-state equilibrium is defined by
+        \begin{equation*}
+            K_c^\ddagger = \frac{\cnc{AB^\ddagger}/c^\circ}{\cnc{A}/c^\circ\cnc{B}/c^\circ}
+            = \frac{\cnc{AB^\ddagger}c^\circ}{\cnc{A}\cnc{B}}
+        \end{equation*}
+        \item We can substitute partition functions into the above expression as follows
+        \begin{equation*}
+            K_c^\ddagger = \frac{(q^\ddagger/V)c^\circ}{(q_{\ce{A}}/V)(q_{\ce{B}}/V)}
+        \end{equation*}
+        where $q_{\ce{A}}$, $q_{\ce{B}}$, and $q^\ddagger$ are the partition functions of \ce{A}, \ce{B}, and $\ce{AB^\ddagger}$, respectively.
+        \item The second assumption of transition state theory is that the activated complex is stable throughout a small region of width $\delta$ centered at the top of the energy barrier (see Figure \ref{fig:TST}).
+        \item It follows from this assumption that we can define the rate of product formation in terms of the concentration of the preceding intermediate (the activated complex), as we have been throughout this chapter. This may be done as follows.
+        \begin{equation*}
+            \dv{\cnc{P}}{t} = \nu_c\cnc{AB^\ddagger}
+        \end{equation*}
+        \begin{itemize}
+            \item $\bm{\nu_c}$ functions as a type of rate constant.
+            \item The form of this expression implies that "the motion of the reacting system over the barrier top is a one-dimensional translational motion" \parencite[1166]{bib:McQuarrieSimon}.
+        \end{itemize}
+        \item We also have from the original chemical equation that
+        \begin{equation*}
+            \dv{\cnc{P}}{t} = k\cnc{A}\cnc{B}
+        \end{equation*}
+        \item Thus, solving the expression defining $K_c^\ddagger$ for $\cnc{AB^\ddagger}$ and substituting into the above, we have that
+        \begin{equation*}
+            \dv{\cnc{P}}{t} = \nu_c\cnc{AB^\ddagger}
+            = \nu_c\frac{\cnc{A}\cnc{B}K_c^\ddagger}{c^\circ}
+            = \underbrace{\frac{\nu_cK_c^\ddagger}{c^\circ}}_k\cnc{A}\cnc{B}
+        \end{equation*}
+        \begin{itemize}
+            \item This expression gives $k$ in units of \si{\per\molar\per\second}.
+        \end{itemize}
+        \item Since the rate law in terms of $\cnc{AB^\ddagger}$ implies 1D translational motion and the 1D translational partition function is
+        \begin{equation*}
+            q_\text{trans} = \frac{\sqrt{2\pi m^\ddagger\kB T}}{h}\delta
+        \end{equation*}
+        we have that $q^\ddagger=q_\text{trans}q_\text{int}^\ddagger$.
+        \item Thus,
+        \begin{align*}
+            k &= \frac{\nu_c}{c^\circ}K_c^\ddagger\\
+            &= \frac{\nu_c}{c^\circ}\frac{(q^\ddagger/V)c^\circ}{(q_{\ce{A}}/V)(q_{\ce{B}}/V)}\\
+            &= \nu_c\frac{\sqrt{2\pi m^\ddagger\kB T}}{hc^\circ}\delta\frac{(q_\text{int}^\ddagger/V)c^\circ}{(q_{\ce{A}}/V)(q_{\ce{B}}/V)}
+        \end{align*}
+        \item This equation is looking pretty good, but it still contains $\nu_c$ and $\delta$, both tricky quantities to define and determine. Their product $\bm{\prb{u_\textbf{ac}}}$, however, has a much nicer interpretation.
+        \item Consequently, we have that
+        \begin{align*}
+            k &= \sqrt{\frac{\kB T}{2\pi m^\ddagger}}\frac{\sqrt{2\pi m^\ddagger\kB T}}{hc^\circ}\frac{(q_\text{int}^\ddagger/V)c^\circ}{(q_{\ce{A}}/V)(q_{\ce{B}}/V)}\\
+            &= \frac{\kB T}{hc^\circ}K^\ddagger
+        \end{align*}
+        \item Since we can relate $\bm{K^\ddagger}$ and the \textbf{standard Gibbs energy of activation} by
+        \begin{equation*}
+            \Delta^\ddagger G^\circ = -RT\ln K^\ddagger
+        \end{equation*}
+        we have that
+        \begin{equation*}
+            k(T) = \frac{\kB T}{hc^\circ}\e[-\Delta^\ddagger G^\circ/RT]
+        \end{equation*}
+        \item Since we can express the standard Gibbs energy of activation in terms of the \textbf{standard enthalpy of activation} and the \textbf{standard entropy of activation} via
+        \begin{equation*}
+            \Delta^\ddagger G^\circ = \Delta^\ddagger H^\circ-T\Delta^\ddagger S^\circ
+        \end{equation*}
+        we have that
+        \begin{equation*}
+            k(T) = \frac{\kB T}{hc^\circ}\e[\Delta^\ddagger S^\circ/R]\e[-\Delta^\ddagger H^\circ/RT]
+        \end{equation*}
+        \item We now look to use the above equation as a launch point to relate the activation energy and Arrhenius pre-exponential factor to molecular quantities.
+        % At first glance, it might seem like this easy task: Surely we could simply take $E_a=\Delta^\ddagger G^\circ$ and $A=\kB T/hc^\circ$. However, under this definition, $A$ would not be a constant but a function of temperature. As such, we must look to combine the two occurrences of temperature in the above equation. To do this, we use the differential form of the Arrhenius equation.
+        \item Recall that the differential Arrhenius equation is
+        \begin{equation*}
+            \dv{\ln k}{T} = \frac{E_a}{RT^2}
+        \end{equation*}
+        \item It follows using a previous form of $k(T)$ that
+        \begin{equation*}
+            \dv{\ln k}{T} = \dv{T}\ln(\frac{\kB}{hc^\circ})+\dv{\ln T}{T}+\dv{\ln K^\ddagger}{T}
+            = \frac{1}{T}+\dv{\ln K^\ddagger}{T}
+        \end{equation*}
+        \item Invoking the result of Problem \ref{prb:26-14} yields
+        \begin{equation*}
+            \dv{\ln k}{T} = \frac{1}{T}+\frac{\Delta^\ddagger U^\circ}{RT^2}
+        \end{equation*}
+        \item Additionally, since
+        \begin{align*}
+            \Delta^\ddagger H^\circ &= \Delta^\ddagger U^\circ+\Delta^\ddagger PV
+                = \Delta^\ddagger U^\circ+RT\Delta^\ddagger n
+                = \Delta^\ddagger U^\circ-RT\\
+            \Delta^\ddagger H^\circ+RT &= \Delta^\ddagger U^\circ
+        \end{align*}
+        we have that
+        \begin{align*}
+            \dv{\ln k}{T} &= \frac{RT}{RT^2}+\frac{\Delta^\ddagger H^\circ+RT}{RT^2}\\
+            &= \frac{\Delta^\ddagger H^\circ+2RT}{RT^2}
+        \end{align*}
+        \item Therefore, we have by direct comparison with the Arrhenius equation that
+        \begin{equation*}
+            E_a = \Delta^\ddagger H^\circ+2RT
+        \end{equation*}
+        \item Substituting this result into the form of $k(T)$ containing $\Delta^\ddagger H^\circ$ yields
+        \begin{align*}
+            k(T) &= \frac{\kB T}{hc^\circ}\e[\Delta^\ddagger S^\circ/R]\e[-\Delta^\ddagger H^\circ/RT]\\
+            &= \frac{\kB T}{hc^\circ}\e[\Delta^\ddagger S^\circ/R]\e[-E_a/RT]\e[2RT/RT]\\
+            &= \frac{\e[2]\kB T}{hc^\circ}\e[\Delta^\ddagger S^\circ/R]\e[-E_a/RT]
+        \end{align*}
+        \item Once again, we have by direct comparison with the Arrhenius equation that
+        \begin{equation*}
+            A = \frac{\e[2]\kB T}{hc^\circ}\e[\Delta^\ddagger S^\circ/R]
+        \end{equation*}
+    \end{itemize}
+    \item $\bm{\nu_c}$: The frequency with which the activated complex crosses over the barrier top.
+    \item $\bm{m^\ddagger}$: The mass of the activated complex.
+    \item $\bm{q_\textbf{int}^\ddagger}$: The partition function accounting for all the remaining degrees of freedom of the activated complex.
+    \item $\bm{\prb{u_\textbf{ac}}}$: The average speed with which the activated complex crosses the barrier. \emph{Given by}
+    \begin{equation*}
+        \prb{u_\text{ac}} = \nu_c\delta
+        = \sqrt{\frac{\kB T}{2\pi m^\ddagger}}
+    \end{equation*}
+    \begin{itemize}
+        \item The latter expression is derived using the one-dimensional Maxwell-Boltzmann distribution (a 1D molecular velocity component Gaussian distribution), which applies since "we have assumed that the reactants and activated complex are in equilibrium" \parencite[1167]{bib:McQuarrieSimon}.
+        \begin{align*}
+            \prb{u_\text{ac}} &= \int_0^\infty uf(u)\dd{u}\\
+            &= \sqrt{\frac{m^\ddagger}{2\pi\kB T}}\int_0^\infty u\e[-m^\ddagger u^2/2\kB T]\dd{u}\\
+            &= \sqrt{\frac{\kB T}{2\pi m^\ddagger}}
+        \end{align*}
+        \begin{itemize}
+            \item We integrate over only the positive values because we are only interested in the particles traveling over the activation barrier in the forward direction.
+        \end{itemize}
+    \end{itemize}
+    \item $\bm{K^\ddagger}$: The "equilibrium constant" for the formation of the transition state from the reactants, but the motion along the reaction coordinate excluded in $q_\text{int}^\ddagger$. \emph{Given by}
+    \begin{equation*}
+        K^\ddagger = \frac{(q_\text{int}^\ddagger/V)c^\circ}{(q_{\ce{A}}/V)(q_{\ce{B}}/V)}
+    \end{equation*}
+    \item \textbf{Standard Gibbs energy of activation}: The change in Gibbs energy in going from the reactants at a concentration $c^\circ$ to the transition state at a concentration $c^\circ$. \emph{Denoted by} $\bm{\Delta^\ddagger G^\circ}$.
+    \item \textbf{Standard enthalpy of activation}: The change in enthalpy in going from the reactants at a concentration $c^\circ$ to the transition state at a concentration $c^\circ$. \emph{Denoted by} $\bm{\Delta^\ddagger H^\circ}$.
+    \item \textbf{Standard entropy of activation}: The change in entropy in going from the reactants at a concentration $c^\circ$ to the transition state at a concentration $c^\circ$. \emph{Denoted by} $\bm{\Delta^\ddagger S^\circ}$.
+    \begin{itemize}
+        \item Values of $\Delta^\ddagger S^\circ$ give information about the relative structures of the activated complex and the reactants.
+        \item For example, if the activated complex is less ordered than the reactants, then $\Delta^\ddagger S^\circ=+$, and vice versa if the activated complex is more ordered than the reactants.
+    \end{itemize}
+    \item $\bm{\Delta^\ddagger n}$: The change in the number of molecules from the reactants to the transition state.
+    \begin{itemize}
+        \item $\Delta^\ddagger n=0$ for a unimolecular reaction (here both the reactants and transition state consist of one molecule).
+        \item $\Delta^\ddagger n=-1$ for a bimolecular reaction (here the reactants consist of two molecules while the transition state consists of one molecule).
+        \item $\Delta^\ddagger n=-2$ for a termolecular reaction (here the reactants consist of three molecules while the transition state consists of one molecule).
+    \end{itemize}
+\end{itemize}
+
+
 
 
 \end{document}
