@@ -261,7 +261,7 @@
     \end{itemize}
     \item Different metrics of M-B speed distribution.
     \begin{itemize}
-        \item We can, from the above formula, calculate the average speed $\prb{u}$, the root mean square speed $\prb{u^2}$, and the most probable speed by taking a derivative and setting it equal to zero.
+        \item We can, from the above formula, calculate the average speed $\prb{u}$, the root mean square speed $\prb{u^2}^{1/2}$, and the most probable speed by taking a derivative and setting it equal to zero.
         \item We get
         \begin{align*}
             \prb{u} &= \sqrt{\frac{8RT}{\pi M}}&
@@ -292,7 +292,7 @@
         as expected.
     \end{itemize}
     \item Aside: Understanding the probability distribution $F(u)\dd{u}$ and the relation between $F(u)\dd{u}$ and $F(\varepsilon)\dd{\varepsilon}$.
-    \begin{figure}[h!]
+    \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.49\linewidth}
             \centering
@@ -396,7 +396,7 @@
         \item This linear relation appears in Figure \ref{fig:speedStretchc}, where $u_\text{rms}$ and $\prb{\varepsilon}$ occur in the same place and differ only by a vertical stretch factor ($m/2$).
     \end{itemize}
     \item Calculating the frequency of collisions.
-    \begin{figure}[H]
+    \begin{figure}[h!]
         \centering
         \begin{tikzpicture}
             \footnotesize
@@ -418,7 +418,7 @@
             \node at (-0.5,0,0.5) {$A$};
             \draw [<->,very thin] (0,0,0) -- node[pos=0.6,fill=white,inner sep=2pt]{$u\dd{t}$} (1.845,2.23,0);
             \draw [very thin,decoration={markings,mark=at position 0.35 with {\node[fill=white,inner sep=2pt]{$\phi$};}},postaction={decorate}] plot[domain=45:90] ({2*cos(\x)},0,{2*sin(\x)});
-            \draw [very thin,decoration={markings,mark=at position 0.5 with {\node[fill=white,inner sep=2pt]{$\theta$};}},postaction={decorate}] plot[domain=0:52] ({2/2^(0.5)*sin(\x)},{2*cos(\x)},{2/2^(0.5)*sin(\x)});
+            \draw [very thin,decoration={markings,mark=at position 0.4 with {\node[fill=white,inner sep=2pt]{$\theta$};}},postaction={decorate}] plot[domain=0:52] ({2/2^(0.5)*sin(\x)},{2*cos(\x)},{2/2^(0.5)*sin(\x)});
         \end{tikzpicture}
         \caption{Collision frequency cylinder.}
         \label{fig:collisionFrequency}
@@ -450,7 +450,7 @@
         \begin{align*}
             \dd{P} &= (2mu\cos\theta)\dd{z_\text{coll}}\\
             &= (2mu\cos\theta)\frac{\rho}{4\pi}uF(u)\dd{u}\cos\theta\sin\theta\dd{\theta}\dd{\phi}\\
-            &= \rho\left( \frac{m}{2\pi\kB T} \right)^{3/2}(2mu\cos\theta)u^3\e[-mu^2/2\kB T]\dd{u}\cos\theta\sin\theta\dd{\phi}
+            &= (2mu\cos\theta)\rho\left( \frac{m}{2\pi\kB T} \right)^{3/2}u^3\e[-mu^2/2\kB T]\dd{u}\cos\theta\sin\theta\dd{\theta}\dd{\phi}
         \end{align*}
         \item Thus, since
         \begin{align*}
@@ -729,7 +729,7 @@
     \item (Re)deriving $P=\rho m\prb{u^2}/3$ from a collision frequency perspective.
     \begin{itemize}
         \item If $\theta$ is the angular deviation in the particle's path from the normal to the wall, then the component of momentum of a particle of mass $m$ moving with speed $u$ that lies perpendicular to the wall is $mu\cos\theta$.
-        \item This particles change in momentum upon colliding elastically with the wall is thus $2mu\cos\theta$.
+        \item This particle's change in momentum upon colliding elastically with the wall is thus $2mu\cos\theta$.
         \item Since pressure is the force per unit area and force is the change in momentum per unit time, the pressure is equal to the product of the change in momentum per collision and the frequency (number per unit time) of collisions per unit area. Mathematically, the infinitesimal pressure applied by just the molecules with speeds between $u$ and $u+\dd{u}$ that lie within the solid angle $\sin\theta\dd{\theta}\dd{\phi}$ is
         \begin{align*}
             \dd{P} &= (2mu\cos\theta)\dd{z_\text{coll}}\\
@@ -757,7 +757,6 @@
         \item The molecules are hard spheres of diameter $d$.
         \item All molecules other than the one in question are stationary; we will account for their motion at the end of the derivation.
     \end{itemize}
-    \item \textbf{Collision cylinder}: A cylinder of diameter $2d$ that the molecule in question sweeps out as it travels along.
     \begin{itemize}
         \item The molecule in question will collide with any molecule whose center lies within this cylinder.
         \item See Figure \ref{fig:collisionCylinder}.
@@ -800,12 +799,12 @@
         \begin{equation*}
             \dd{N_\text{coll}} = \rho\sigma\prb{u}\dd{t}
         \end{equation*}
-        \item We must now undue the one assumption that cannot stay: That all other molecules are stationary.
+        \item We must now undo the one assumption that cannot stay: That all other molecules are stationary.
         \item To do this, we treat the motion of the two bodies by the reduced mass.
     \end{itemize}
-    \item \textbf{Collision frequency}: The expected number of collisions per unit time. \emph{Denoted by} $\bm{Z_A}$. \emph{Given by}
+    \item \textbf{Collision frequency}: The expected number of collisions per unit time. \emph{Denoted by} $\bm{Z_{\textbf{A}}}$. \emph{Given by}
     \begin{align*}
-        z_A = \dv{N_\text{coll}}{t}
+        z_{\ce{A}} = \dv{N_\text{coll}}{t}
         &= \rho\sigma\prb{u_r}
             = \rho\sigma\sqrt{\frac{8\kB T}{\pi\mu}}\\
         &= \sqrt{2}\rho\sigma\prb{u}

@@ -269,7 +269,7 @@
         \end{equation*}
         \item Some textbooks use different notation; we should know this, too.
         \begin{itemize}
-            \item They denote by $\xi$ or $\xi_0$ the difference between $[\ce{A}]$ (the initial equilibrium's concentration) and $[\ce{A}]_{eq}$ (the final equilibrium's concentration).
+            \item They denote by $\xi$ or $\xi_0$ the difference between $[\ce{A}]$ (the initial equilibrium's concentration) and $[\ce{A}]_\text{eq}$ (the final equilibrium's concentration).
             \item They also use $k_A,k_B$ for the initial equilibrium \ce{A <=>[$k_A$][$k_B$] B} and $k_A^+,k_B^+$ for the final equilibrium \ce{A <=>[$k_A^+$][$k_B^+$] B}.
         \end{itemize}
     \end{itemize}
@@ -299,19 +299,19 @@
         \item After the T-jump, the system relaxes to a new equilibrium
         \begin{equation*}
             K_c = \frac{k_f^+}{k_r^+}
-            = \frac{[\ce{H+}]_{eq}[\ce{OH-}]_{eq}}{[\ce{H2O}]_{eq}}
+            = \frac{[\ce{H+}]_\text{eq}[\ce{OH-}]_\text{eq}}{[\ce{H2O}]_\text{eq}}
         \end{equation*}
         \item It follows that
         \begin{align*}
             \dv{\xi}{t} &= -k_f^+[\ce{H2O}]+k_r^+[\ce{H+}][\ce{OH-}]\\
-            &= -k_f^+\xi-k_r^+\xi([\ce{H+}]_{eq}+[\ce{OH-}]_{eq})+\text{O}(\xi^2)
+            &= -k_f^+\xi-k_r^+\xi([\ce{H+}]_\text{eq}+[\ce{OH-}]_\text{eq})+\text{O}(\xi^2)
         \end{align*}
         \begin{itemize}
-            \item Note that we get from the first line to the second by substituting $[\ce{H+}]=[\ce{H+}]_{eq}-\xi$ and $[\ce{OH-}]=[\ce{OH-}]_{eq}-\xi$ and expanding.
+            \item Note that we get from the first line to the second by substituting $[\ce{H+}]=[\ce{H+}]_\text{eq}-\xi$ and $[\ce{OH-}]=[\ce{OH-}]_\text{eq}-\xi$ and expanding.
         \end{itemize}
         \item The associated relaxation time is
         \begin{equation*}
-            \frac{1}{\tau} = k_f^++k_r^+([\ce{H+}]_{eq}+[\ce{OH-}]_{eq})
+            \frac{1}{\tau} = k_f^++k_r^+([\ce{H+}]_\text{eq}+[\ce{OH-}]_\text{eq})
         \end{equation*}
         \begin{itemize}
             \item Note that this implies that this relaxation time can be measured experimentally.

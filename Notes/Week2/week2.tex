@@ -52,7 +52,7 @@
         \label{fig:collisionCylinder}
     \end{figure}
     \begin{itemize}
-        \item Particles whose center of mass lie within the collision cylinder collide with the original particle, and vice versa for particles whose center of mass lie outside the collision cylinder.
+        \item Particles whose center of mass lies within the collision cylinder collide with the original particle, and vice versa for particles whose center of mass lies outside the collision cylinder.
         \item Hard-sphere collision cross section $\pi d^2$ denoted by $\sigma$.
     \end{itemize}
     \item Collision frequency in terms of cylinder parameters.
@@ -62,18 +62,18 @@
             \dd{N_\text{coll}} = \rho\sigma\prb{u}\dd{t}
         \end{equation*}
         where $\rho=N/V$.
-        \item The collision frequency $z_A$ is
+        \item The collision frequency $z_{\ce{A}}$ is
         \begin{equation*}
-            z_A = \dv{N_\text{coll}}{t}
+            z_{\ce{A}} = \dv{N_\text{coll}}{t}
             = \rho\sigma\prb{u}
             = \rho\sigma\sqrt{\frac{8\kB T}{\pi m}}
         \end{equation*}
         \item Treat the motion of two bodies of masses $m_1,m_2$ moving with respect to each other by the motion of one body with a reduced mass $\mu=m_1m_2/(m_1+m_2)$ moving with respect to the other one being fixed.
         \item If the masses of the two colliding molecules are the same, then $\mu=m/2$.
         \item Remember that $\prb{u_r}=\sqrt{2}\prb{u}$.
-        \item Thus, the correct expression for $z_A$ is
+        \item Thus, the correct expression for $z_{\ce{A}}$ is
         \begin{equation*}
-            z_A = \rho\sigma\prb{u_r}
+            z_{\ce{A}} = \rho\sigma\prb{u_r}
             = \sqrt{2}\rho\sigma\prb{u}
         \end{equation*}
     \end{itemize}
@@ -81,7 +81,7 @@
     \begin{itemize}
         \item The average distance traveled between collisions is given by
         \begin{equation*}
-            l = \frac{\prb{u}}{z_A}
+            l = \frac{\prb{u}}{z_{\ce{A}}}
             = \frac{\prb{u}}{\sqrt{2}\rho\sigma\prb{u}}
             = \frac{1}{\sqrt{2}\rho\sigma}
         \end{equation*}
@@ -143,11 +143,11 @@
     \end{itemize}
     \item Collision frequency of one particular molecule per unit volume.
     \begin{itemize}
-        \item $z_A$ is the collision frequency of one particular molecule.
-        \item $Z_{AA}$ is the total collision frequency per unit volume.
+        \item $z_{\ce{A}}$ is the collision frequency of one particular molecule.
+        \item $Z_{\ce{A}\ce{A}}$ is the total collision frequency per unit volume.
         \item We have
         \begin{equation*}
-            Z_{AA} = \frac{1}{2}\rho z_a
+            Z_{\ce{A}\ce{A}} = \frac{1}{2}\rho z_{\ce{A}}
         \end{equation*}
         \begin{itemize}
             \item Multiplying by the number density should make intuitive sense.
@@ -155,45 +155,45 @@
         \end{itemize}
         \item It follows that
         \begin{equation*}
-            Z_{AA} = \frac{1}{2}\sigma\prb{u_r}\rho^2
+            Z_{\ce{A}\ce{A}} = \frac{1}{2}\sigma\prb{u_r}\rho^2
             = \frac{\sigma\prb{u}\rho^2}{\sqrt{2}}
         \end{equation*}
-        \item In a gas consisting of two types of molecules, say $A$ and $B$, then the collision frequency per unit volume is
+        \item In a gas consisting of two types of molecules, say \ce{A} and \ce{B}, then the collision frequency per unit volume is
         \begin{equation*}
-            Z_{AB} = \sigma_{AB}\prb{u_r}\rho_A\rho_B
+            Z_{\ce{A}\ce{B}} = \sigma_{\ce{A}\ce{B}}\prb{u_r}\rho_{\ce{A}}\rho_{\ce{B}}
         \end{equation*}
         where
         \begin{align*}
-            \sigma_{AB} &= \pi\left( \frac{d_A+d_B}{2} \right)^2&
+            \sigma_{\ce{A}\ce{B}} &= \pi\left( \frac{d_{\ce{A}}+d_{\ce{B}}}{2} \right)^2&
             \prb{u_r} &= \sqrt{\frac{8\kB T}{\pi\mu}}&
-            \mu &= \frac{m_Am_B}{m_A+m_B}
+            \mu &= \frac{m_{\ce{A}}m_{\ce{B}}}{m_{\ce{A}}+m_{\ce{B}}}
         \end{align*}
         \begin{itemize}
-            \item There is no $1/2$ coefficient here because there are also $AA$ and $BB$ collisions.
-            \item Indeed, $Z_{AB}$ is not the \emph{total} collision frequency but just the collision frequency of $A$-$B$ collisions.
+            \item There is no $1/2$ coefficient here because there are also \ce{A}\ce{A} and \ce{B}\ce{B} collisions.
+            \item Indeed, $Z_{\ce{A}\ce{B}}$ is not the \emph{total} collision frequency but just the collision frequency of \ce{A}\ce{B} collisions.
         \end{itemize}
     \end{itemize}
     \item The rate of a gas-phase chemical reaction depends on the rate of collisions.
     \begin{itemize}
         \item The rate of collisions is not just the total frequency of collisions.
-        \item The relative energy of the two colliding molecules exceeds a certain critical value. This does not show up directly in the equation for $Z_{AB}$.
+        \item The relative energy of the two colliding molecules exceeds a certain critical value. This does not show up directly in the equation for $Z_{\ce{A}\ce{B}}$.
         \item The number of collisions per unit time per unit are with the wall by molecules whose speeds are in the range $u,u+\dd{u}$ and whose direction lies within the solid angle $\sin\theta\dd{\theta}\dd{\phi}$ is approximately $u^3\e[-mu^2/2\kB T]$.
-        \item We can account for the fact that the molecules collide with each other rather than with a stationary wall by replacing $m$ with the reduced mass $\mu=m_Am_B/(m_A+m_B)$.
-        \item The collision frequency per unit volume between molecules $A$ and $B$ in which they collide with a relative speed between $u,u+\dd{u}$.
+        \item We can account for the fact that the molecules collide with each other rather than with a stationary wall by replacing $m$ with the reduced mass $\mu=m_{\ce{A}}m_{\ce{B}}/(m_{\ce{A}}+m_{\ce{B}})$.
+        \item The collision frequency per unit volume between molecules \ce{A} and \ce{B} in which they collide with a relative speed between $u,u+\dd{u}$.
         \begin{itemize}
-            \item We have that $\dd{Z_{AB}}\propto u_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}$. Thus, if $A$ is a proportionality constant, then
+            \item We have that $\dd{Z_{\ce{A}\ce{B}}}\propto u_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}$. Thus, if \ce{A} is a proportionality constant, then
             \begin{equation*}
-                \dd{Z_{AB}} = Au_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}
+                \dd{Z_{\ce{A}\ce{B}}} = Au_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}
             \end{equation*}
-            \item It follows since $Z_{AB}=\sigma_{AB}\prb{u_r}\rho_A\rho_B$ and $\prb{u_r}=\sqrt{8\kB T/\pi\mu}$ that
+            \item It follows since $Z_{\ce{A}\ce{B}}=\sigma_{\ce{A}\ce{B}}\prb{u_r}\rho_{\ce{A}}\rho_{\ce{B}}$ and $\prb{u_r}=\sqrt{8\kB T/\pi\mu}$ that
             \begin{align*}
-                \sigma_{AB}\rho_A\rho_B\sqrt{\frac{8\kB T}{\pi\mu}} &= A\int_0^\infty u_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}\\
+                \sigma_{\ce{A}\ce{B}}\rho_{\ce{A}}\rho_{\ce{B}}\sqrt{\frac{8\kB T}{\pi\mu}} &= A\int_0^\infty u_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}\\
                 &= 2A\left( \frac{\kB T}{\mu} \right)^2\\
-                A &= \sigma_{AB}\rho_A\rho_B\sqrt{\left( \frac{\mu}{\kB T} \right)^3\cdot\frac{2}{\pi}}
+                A &= \sigma_{\ce{A}\ce{B}}\rho_{\ce{A}}\rho_{\ce{B}}\sqrt{\left( \frac{\mu}{\kB T} \right)^3\cdot\frac{2}{\pi}}
             \end{align*}
             \item Thus, we know that
             \begin{equation*}
-                \dd{Z_{AB}} = \sigma_{AB}\rho_A\rho_B\sqrt{\left( \frac{\mu}{\kB T} \right)^3\cdot\frac{2}{\pi}}\e[-\mu u_r^2/2\kB T]u_r^3\dd{u_r}
+                \dd{Z_{\ce{A}\ce{B}}} = \sigma_{\ce{A}\ce{B}}\rho_{\ce{A}}\rho_{\ce{B}}\sqrt{\left( \frac{\mu}{\kB T} \right)^3\cdot\frac{2}{\pi}}\e[-\mu u_r^2/2\kB T]u_r^3\dd{u_r}
             \end{equation*}
         \end{itemize}
         \item Integrating the above from the certain critical value to infinity yields the desired rate.
@@ -214,37 +214,37 @@
 \begin{itemize}
     \item \marginnote{4/8:}Consider a general chemical equation
     \begin{equation*}
-        \ce{\nu_AA + \nu_BB -> \nu_YY + \nu_ZZ}
+        \ce{\nu_{\ce{A}}A + \nu_{\ce{B}}B -> \nu_{\ce{Y}}Y + \nu_{\ce{Z}}Z}
     \end{equation*}
     \item The extent of the reaction via the progress variable $\xi$ is
     \begin{align*}
-        n_A(t) &= n_A(0)-\nu_A\xi(t)&
-        n_Y(t) &= n_Y(0)+\nu_Y\xi(t)
+        n_{\ce{A}}(t) &= n_{\ce{A}}(0)-\nu_{\ce{A}}\xi(t)&
+        n_{\ce{Y}}(t) &= n_{\ce{Y}}(0)+\nu_{\ce{Y}}\xi(t)
     \end{align*}
     \item The rate of change (moles/second) is
     \begin{align*}
-        \dv{n_A}{t} &= -\nu_A\dv{\xi}{t}&
-        \dv{n_Y}{t} &= \nu_Y\dv{\xi}{t}
+        \dv{n_{\ce{A}}}{t} &= -\nu_{\ce{A}}\dv{\xi}{t}&
+        \dv{n_{\ce{Y}}}{t} &= \nu_{\ce{Y}}\dv{\xi}{t}
     \end{align*}
     \item Deriving the rate of reaction for a gas-based chemical reaction.
     \begin{itemize}
         \item Time-dependent concentration changes
         \begin{align*}
-            \frac{1}{V}\dv{n_A}{t} &= \dv{[A]}{t} = -\frac{\nu_A}{V}\dv{\xi}{t}&
-            \frac{1}{V}\dv{n_Y}{t} &= \dv{[Y]}{t} = -\frac{\nu_Y}{V}\dv{\xi}{t}
+            \frac{1}{V}\dv{n_{\ce{A}}}{t} &= \dv{[\ce{A}]}{t} = -\frac{\nu_{\ce{A}}}{V}\dv{\xi}{t}&
+            \frac{1}{V}\dv{n_{\ce{Y}}}{t} &= \dv{[\ce{Y}]}{t} = -\frac{\nu_{\ce{Y}}}{V}\dv{\xi}{t}
         \end{align*}
         \item The rate (or speed) of reaction, also known as the differential rate law, is
         \begin{equation*}
-            v(t) = -\frac{1}{\nu_A}\dv{[A]}{t}
-            = -\frac{1}{\nu_B}\dv{[B]}{t}
-            = \frac{1}{\nu_Y}\dv{[Y]}{t}
-            = \frac{1}{\nu_Z}\dv{[Z]}{t}
+            v(t) = -\frac{1}{\nu_{\ce{A}}}\dv{[\ce{A}]}{t}
+            = -\frac{1}{\nu_{\ce{B}}}\dv{[\ce{B}]}{t}
+            = \frac{1}{\nu_{\ce{Y}}}\dv{[\ce{Y}]}{t}
+            = \frac{1}{\nu_{\ce{Z}}}\dv{[\ce{Z}]}{t}
             = \frac{1}{V}\dv{\xi}{t}
         \end{equation*}
         \item All terms are positive.
         \item Rate laws with a constant $k$ are of the form
         \begin{equation*}
-            v(t) = k[A]^{m_A}[B]^{m_B}
+            v(t) = k[\ce{A}]^{m_{\ce{A}}}[\ce{B}]^{m_{\ce{B}}}
         \end{equation*}
         \item The exponents are known as \textbf{orders}.
         \item The overall order reaction is $\sum m_i$.
@@ -273,25 +273,25 @@
     \begin{itemize}
         \item Method of isolation.
         \begin{itemize}
-            \item Put in a large initial excess of $A$ so that it's concentration doesn't change that much; essentially incorporates $[A]^{m_A}$ into $k$ for determination of the order of $B$.
+            \item Put in a large initial excess of \ce{A} so that it's concentration doesn't change that much; essentially incorporates $[\ce{A}]^{m_{\ce{A}}}$ into $k$ for determination of the order of \ce{B}.
             \item We can then do the same thing the other way around.
         \end{itemize}
         \item Method of initial rates.
         \begin{itemize}
             \item We approximate
             \begin{equation*}
-                v = -\frac{\dd{[A]}}{\nu_A\dd{t}}
-                \approx -\frac{\Delta[A]}{\nu_A\Delta t}
-                = k[A]^{m_A}[B]^{m_B}
+                v = -\frac{\dd{[\ce{A}]}}{\nu_{\ce{A}}\dd{t}}
+                \approx -\frac{\Delta[\ce{A}]}{\nu_{\ce{A}}\Delta t}
+                = k[\ce{A}]^{m_{\ce{A}}}[\ce{B}]^{m_{\ce{B}}}
             \end{equation*}
-            \item Consider two different initial values of $[B]$, which we'll call $[B_1],[B_2]$. Then
+            \item Consider two different initial values of $[\ce{B}]$, which we'll call $[\ce{B}]_1,[\ce{B}]_2$. Then
             \begin{align*}
-                v_1 &= -\frac{1}{\nu_A}\left( \frac{\Delta[A]}{\Delta t} \right)_1 = k[A]_0^{m_A}[B]_1^{m_B}&
-                v_2 &= -\frac{1}{\nu_A}\left( \frac{\Delta[A]}{\Delta t} \right)_2 = k[A]_0^{m_A}[B]_2^{m_B}
+                v_1 &= -\frac{1}{\nu_{\ce{A}}}\left( \frac{\Delta[\ce{A}]}{\Delta t} \right)_1 = k[\ce{A}]_0^{m_{\ce{A}}}[\ce{B}]_1^{m_{\ce{B}}}&
+                v_2 &= -\frac{1}{\nu_{\ce{A}}}\left( \frac{\Delta[\ce{A}]}{\Delta t} \right)_2 = k[\ce{A}]_0^{m_{\ce{A}}}[\ce{B}]_2^{m_{\ce{B}}}
             \end{align*}
-            \item Take the logarithm and solve for $m_B$.
+            \item Take the logarithm and solve for $m_{\ce{B}}$.
             \begin{equation*}
-                m_B = \frac{\ln(v_1/v_2)}{\ln([B]_1/[B]_2)}
+                m_{\ce{B}} = \frac{\ln(v_1/v_2)}{\ln([\ce{B}]_1/[\ce{B}]_2)}
             \end{equation*}
         \end{itemize}
     \end{itemize}
@@ -308,7 +308,7 @@
         l = \frac{1}{\sqrt{2}\rho\sigma}
     \end{equation*}
     \begin{itemize}
-        \item Naturally, the average distance that a molecule travels between collisions is equal to how far it travels per unit time (the average speed) divided by the number of collisions per unit time (the collision frequency). Thus, $l=\prb{u}/z_A$, which is how the above is derived.
+        \item Naturally, the average distance that a molecule travels between collisions is equal to how far it travels per unit time (the average speed) divided by the number of collisions per unit time (the collision frequency). Thus, $l=\prb{u}/z_{\ce{A}}$, which is how the above is derived.
     \end{itemize}
     \item Substituting $\rho=N/V=n\NA/V=P\NA/RT$ yields
     \begin{equation*}
@@ -351,18 +351,18 @@
         \item The above equation is normalized and has $\prb{x}=l$, as expected.
     \end{itemize}
     \item The distance after which half of the molecules will have been scattered from a beam of initially $n_0$ molecules is $l\cdot\ln 2$, i.e., about 70\% of the mean free path.
-    \item \textbf{Total collision frequency per unit volume} (for like molecules): The following quantity. \emph{Denoted by} $Z_{AA}$. \emph{Given by}
+    \item \textbf{Total collision frequency per unit volume} (for like molecules): The following quantity. \emph{Denoted by} $Z_{\ce{A}\ce{A}}$. \emph{Given by}
     \begin{equation*}
-        Z_{AA} = \frac{1}{2}\rho z_A
+        Z_{\ce{A}\ce{A}} = \frac{1}{2}\rho z_{\ce{A}}
         = \frac{1}{2}\sigma\prb{u_r}\rho^2
         = \frac{\sigma\prb{u}\rho^2}{\sqrt{2}}
     \end{equation*}
     \begin{itemize}
-        \item Derived by multiplying the collision frequency for \emph{one} molecule $z_A$ by the number of molecules per unit volume $\rho$, and dividing by 2 in order to avoid counting a collision between a pair of similar molecules as two distinct collisions.
+        \item Derived by multiplying the collision frequency for \emph{one} molecule $z_{\ce{A}}$ by the number of molecules per unit volume $\rho$, and dividing by 2 in order to avoid counting a collision between a pair of similar molecules as two distinct collisions.
     \end{itemize}
-    \item \textbf{Total collision frequency per unit volume} (for dislike molecules): The following quantity. \emph{Denoted by} $Z_{AB}$. \emph{Given by}
+    \item \textbf{Total collision frequency per unit volume} (for dislike molecules): The following quantity. \emph{Denoted by} $Z_{\ce{A}\ce{B}}$. \emph{Given by}
     \begin{equation*}
-        Z_{AB} = \sigma_{AB}\prb{u_r}\rho_A\rho_B
+        Z_{\ce{A}\ce{B}} = \sigma_{\ce{A}\ce{B}}\prb{u_r}\rho_{\ce{A}}\rho_{\ce{B}}
     \end{equation*}
     \item The discussion of the rate of gas-phase chemical reactions is nearly identical to that given in class.
 \end{itemize}
@@ -407,10 +407,10 @@
     \item \textbf{Rate of reaction}: The following quantity. \emph{Denoted by} $\bm{v(t)}$. \emph{Given by}
     \begin{align*}
         v(t) &= \frac{1}{V}\dv{\xi}{t}\\
-        &= -\frac{1}{\nu_A}\dv{[A]}{t}
-            = -\frac{1}{\nu_B}\dv{[B]}{t}
-            = \frac{1}{\nu_Y}\dv{[Y]}{t}
-            = \frac{1}{\nu_Z}\dv{[Z]}{t}
+        &= -\frac{1}{\nu_{\ce{A}}}\dv{[\ce{A}]}{t}
+            = -\frac{1}{\nu_{\ce{B}}}\dv{[\ce{B}]}{t}
+            = \frac{1}{\nu_{\ce{Y}}}\dv{[\ce{Y}]}{t}
+            = \frac{1}{\nu_{\ce{Z}}}\dv{[\ce{Z}]}{t}
     \end{align*}
     \begin{itemize}
         \item Note that the rate of reaction is always positive (as long as the reaction proceeds only in the forward direction).
