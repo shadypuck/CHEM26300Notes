@@ -1,0 +1,122 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{5}
+
+\begin{document}
+
+
+
+
+\chapter{Enhancing Collision Theory}
+\section{Threshold Energy and Line-Of-Centers Model}
+\begin{itemize}
+    \item \marginnote{5/2:}Picking up from the previous lecture\dots
+    \begin{itemize}
+        \item It follows by plugging in the energy substitutions from last time that
+        \begin{equation*}
+            u_rf(u_r)\dd{u_r} = \left( \frac{2}{\kB T} \right)^{3/2}\left( \frac{1}{\mu\pi} \right)^{1/2}E_r\e[-E_r/\kB T]\dd{E_r}
+        \end{equation*}
+        \item Thus,
+        \begin{align*}
+            k &= \int_0^\infty\dd{u_r}f(u_r)k(u_r)\\
+            &= \left( \frac{2}{\kB T} \right)^{3/2}\left( \frac{1}{\mu\pi} \right)^{1/2}\int_0^\infty\dd{E_r}E_r\e[-E_r/\kB T]\sigma_r(E_r)
+        \end{align*}
+        \item Now assume that only those collisions for which the relative kinetic energy exceeds a threshold energy $E_0$ result in a collision. Thus, define
+        \begin{equation*}
+            \sigma_r(E_r) =
+            \begin{cases}
+                0 & E_r<E_0\\
+                \pi d_{\ce{A}\ce{B}}^2 & E_r\geq E_0
+            \end{cases}
+        \end{equation*}
+        \item Consequently,
+        \begin{align*}
+            k &= \left( \frac{2}{\kB T} \right)^{3/2}\left( \frac{1}{\mu\pi} \right)^{1/2}\int_{E_0}^\infty\dd{E_r}E_r\e[-E_r/\kB T]\pi d_{\ce{A}\ce{B}}^2\\
+            &= \left( \frac{8\kB T}{\mu\pi} \right)^{1/2}\pi d_{\ce{A}\ce{B}}^2\e[-E_0/\kB T]\left( 1+\frac{E_0}{\kB T} \right)\\
+            &= \prb{u_r}\sigma_{\ce{A}\ce{B}}\e[-E_0/\kB T]\left( 1+\frac{E_0}{\kB T} \right)
+        \end{align*}
+        \item We can use
+        \begin{equation*}
+            E_a = \kB T^2\dv{\ln k}{T}
+        \end{equation*}
+        to relate the above to the activation energy.
+    \end{itemize}
+    \item Another simplification we've made is that the reaction cross section is not constant, but actually depends on relative speed.
+    \item Accounting for the collision geometry between the two hard spheres gives rise to the \textbf{line-of-centers model}.
+    \item \textbf{Line-of-centers model}: A model for $\sigma_r(E_r)$ in which the cross section depends on the component of the relative kinetic energy that lies along the line that joins the centers of the colliding molecules.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \draw [dashed]
+                (-5,1.3) -- (4,1.3)
+                (-5,0) -- (4,0)
+            ;
+            \draw [very thin,<->,shorten <=1pt,shorten >=1pt] (-4.8,0) -- node[fill=white,inner sep=1.5pt]{$b$} ++(0,1.3);
+    
+            \filldraw [fill=orx,thick] (-3,1.3) circle (7mm) node[above=7mm]{A};
+            \draw [very thick,-latex] (-2.3,1.3) -- ++(1.02,0) node[right,fill=white]{$\mathbf{u}_{\ce{A}}$};
+    
+            \filldraw [fill=gry,thick] (2,0) circle (1cm) node[below=1cm]{B};
+            \draw [very thick,-latex] (1,0) -- ++(-1,0) node[left,fill=white]{$\mathbf{u}_{\ce{B}}$};
+    
+            \draw (-3,1.3) ++(-135:0.7) -- node[below right=-2pt]{$r_{\ce{A}}$} ++(45:0.7) -- node[pos=0.55,above,sloped]{Line of centers} (2,0) -- node[below right=-2pt]{$r_{\ce{B}}$} ++(45:1);
+        \end{tikzpicture}
+        \caption{Line-of-centers model.}
+        \label{fig:lineOfCenters}
+    \end{figure}
+    \begin{itemize}
+        \item If we denote the relative kinetic energy along the line of centers by $E_{loc}$, then we are assuming that a reaction occurs when $E_{loc}>0$.
+        \item The main thrust of this model is that we are redefining $E_r$ instead of $\sigma_r(E_r)$ overall.
+    \end{itemize}
+    \item The line-of-centers model asserts that two molecules will collide only if the \textbf{impact parameter} is less than the sum of the radii of the colliding molecules.
+    \begin{itemize}
+        \item In particular, we (re)define
+        \begin{equation*}
+            \sigma_r(E_r) =
+            \begin{cases}
+                0 & E_r<E_0\\
+                \pi d_{\ce{A}\ce{B}}^2\left( 1-\frac{E_0}{E_r} \right)
+            \end{cases}
+        \end{equation*}
+        \item It follows from math similar to the above that
+        \begin{align*}
+            k &= \left( \frac{2}{\kB T} \right)^{3/2}\left( \frac{1}{\mu\pi} \right)^{1/2}\int_0^\infty\dd{E_r}E_r\e[-E_r/\kB T]\sigma_r(E_r)\\
+            &= \left( \frac{8\kB T}{\mu\pi} \right)^{1/2}\pi d_{\ce{A}\ce{B}}^2\e[-E_0/\kB T]\\
+            &= \prb{u_r}\sigma_{\ce{A}\ce{B}}\e[-E_0/\kB T]
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Impact parameter}: The perpendicular distance between the two dashed lines in Figure \ref{fig:lineOfCenters}. \emph{Denoted by} $\bm{b}$.
+    \item The cross section exhibits a threshold energy.
+    \begin{itemize}
+        \item The dependence of the reaction cross section on the relative kinetic energy of the collision is consistent with the line-of-centers model.
+    \end{itemize}
+    \item Relating $E_0$ to the Arrhenius equation parameters.
+    \begin{itemize}
+        \item For the activation energy $E_a$, we have
+        \begingroup
+        \allowdisplaybreaks
+        \begin{align*}
+            E_a &= \kB T^2\dv{\ln k}{T}\\
+            &= \kB T^2\dv{T}\left\{ \ln\left[ \left( \frac{8\kB T}{\pi\mu} \right)^{1/2}\pi d_{\ce{A}\ce{B}}^2 \right]-\frac{E_0}{\kB T} \right\}\\
+            &= \kB T^2\dv{T}\left\{ \ln T^{1/2}-\frac{E_0}{\kB T}+\text{terms not involving }T \right\}\\
+            &= E_0+\frac{1}{2}\kB T
+        \end{align*}
+        \endgroup
+        \begin{itemize}
+            \item Tian wants us to memorize the last line above.
+        \end{itemize}
+        \item Considering the line-of-centers collision model and the Arrhenius equation yields
+        \begin{equation*}
+            A = \prb{u_r}\sigma_{\ce{A}\ce{B}}\e[1/2]
+        \end{equation*}
+    \end{itemize}
+    \item Tian goes through a practice problem.
+\end{itemize}
+
+
+
+
+\end{document}
