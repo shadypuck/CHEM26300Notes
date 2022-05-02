@@ -324,7 +324,7 @@
         \begin{equation*}
             \ce{CH3NC(g) ->[$k_\text{obs}$] CH3CN(g)}
         \end{equation*}
-        \item The following rate law is only correct at $[\ce{CH3NC}]$.
+        \item The following rate law is only correct at high $[\ce{CH3NC}]$.
         \begin{equation*}
             \dv{[\ce{CH3NC}]}{t} = -k_\text{obs}[\ce{CH3NC}]
         \end{equation*}
@@ -333,11 +333,13 @@
             \dv{[\ce{CH3NC}]}{t} = -k_\text{obs}[\ce{CH3NC}]^2
         \end{equation*}
         which is not the rate law for a unimolecular reaction.
-        \item The Lindemann mechanism for unimolecular reactions of the form \ce{A(g) -> B(g)} is
-        \begin{align*}
-            \ce{A(g) + M(g)} &\Longleftrightarrows[k_1][k_{-1}] \ce{A(g)^* + M(g)}\\
-            \ce{A(g)^*} &\ce{->[$k_2$]} \ce{B(g)}
-        \end{align*}
+    \end{itemize}
+    \item The Lindemann mechanism for unimolecular reactions of the form \ce{A(g) -> B(g)} is
+    \begin{align*}
+        \ce{A(g) + M(g)} &\Longleftrightarrows[k_1][k_{-1}] \ce{A(g)^* + M(g)}\\
+        \ce{A(g)^*} &\xRightarrow{k_2} \ce{B(g)}
+    \end{align*}
+    \begin{itemize}
         \item The symbol \ce{A(g)^*} represents an energized reactant molecule. \ce{M(g)} is the collision partner.
         \item By the steady-state approximation, we have that
         \begin{align*}
@@ -1021,6 +1023,195 @@
         \item $\Delta^\ddagger n=0$ for a unimolecular reaction (here both the reactants and transition state consist of one molecule).
         \item $\Delta^\ddagger n=-1$ for a bimolecular reaction (here the reactants consist of two molecules while the transition state consists of one molecule).
         \item $\Delta^\ddagger n=-2$ for a termolecular reaction (here the reactants consist of three molecules while the transition state consists of one molecule).
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Chapter 29: Chemical Kinetics II --- Reaction Mechanisms}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item Goals for this chapter.
+    \begin{itemize}
+        \item Consider how reactants are converted to products.
+        \item Discuss commonly encountered \textbf{mechanisms}.
+        \item Derive the rate law for a \textbf{complex reaction} using a mechanism and several approximations.
+        \item Cover the mechanisms of \textbf{unimolecular} reactions and \textbf{chain reactions}.
+        \item Explore chemical and biochemical/enzymatic catalysis.
+    \end{itemize}
+    \item \textbf{Elementary reaction}: A chemical reaction that occurs in a single step and does not involve any intermediates.
+    \begin{itemize}
+        \item The rate law of an elementary reaction can be determined from the reaction stoichiometry.
+    \end{itemize}
+    \item \textbf{Complex reaction}: A reaction that does not occur in a single step.
+    \item \textbf{Mechanism}: The sequence of elementary reactions by which a complex reaction occurs.
+    \item Notation.
+    \begin{itemize}
+        \item "The arrows $\Rightarrow$ and $\Leftarrow$ will be used to indicate reactions currently thought to be elementary" \parencite[1182]{bib:McQuarrieSimon}.
+        \item "The arrows $\rightarrow$ and $\leftarrow$ will be used to indicate complex reactions" \parencite[1182]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item Note that we commonly convey doubt with respect to whether or not a certain reaction is elementary because only a few have been studied in sufficient depth to confirm that they are elementary.
+    \item \textcite{bib:McQuarrieSimon} defines \textbf{molecularity} as well as \textbf{unimolecular}, \textbf{bimolecular}, and \textbf{termolecular} elementary reactions.
+    \item Although we previously learned that rate laws can only be determined experimentally, the rate law of an \emph{elementary} reaction can be deduced from the balanced chemical equation itself.
+    \begin{itemize}
+        \item Indeed, because an elementary reaction does not involve the formation of intermediates, the products must be formed directly from the reactants.
+        \item Thus, the rate law for a unimolecular reaction, for instance, is first order in the reactant.
+        \item For bimolecular reactions, we may recall that the collision frequency between reactants in an ideal gas $Z_{\ce{A}\ce{B}}$ is proportional to their number densities (or concentrations). This combined with the fact that "to have a collision and also not form any reaction intermediates, an elementary reaction must be one in which all the reactants collide simultaneously, with the reaction occurring immediately upon this collision" tells us that a bimolecular reaction is first order in each reactant and second order overall \parencite[1182]{bib:McQuarrieSimon}.
+        \item Termolecular reactions are similar to bimolecular reactions, with $v=k\cnc{A}\cnc{B}\cnc{C}$.
+    \end{itemize}
+    \item If we are asked to deduce the rate law for a reaction denoted by a single arrow, answer that this is not an elementary reaction and thus we need experimental data.
+    \item \textbf{Reversible elementary reaction}: A reaction that occurs in both the forward and reverse directions to a significant extent and that is elementary in each direction. \emph{Denoted by}
+    \begin{equation*}
+        \text{Reactants} \Longleftrightarrows[k_1][k_{-1}] \text{Products}
+    \end{equation*}
+    \begin{itemize}
+        \item Does the principle of microscopic reversibility imply that all reactions that are elementary in one direction are elementary in the other?s
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} derives and defines the \textbf{principle of detailed balance}.
+    \item An example of using the principle of detailed balance in the analysis of a complex reaction.
+    \begin{itemize}
+        \item Suppose the reaction
+        \begin{equation*}
+            \ce{A <=> B}
+        \end{equation*}
+        proceeds via the following mechanism, which consists of two competing steps.
+        \begin{align*}
+            \ce{A + C} &\Longleftrightarrows[k_1][k_{-1}] \ce{B + C}&
+            \ce{A} &\Longleftrightarrows[k_2][k_{-2}] \ce{B}
+        \end{align*}
+        \begin{itemize}
+            \item Note that although the right step above is of an identical form to the overall complex reaction, the overall reaction is not elementary because there are two pathways (the two above) by which the reaction can occur. In general, an overall reaction may not be elementary even though an elementary reaction equivalent to it can be one of the pathways.
+        \end{itemize}
+        \item According to the principle of detailed balance, when the overall reaction is at equilibrium, each step must be, too. Thus, at equilibrium, 
+        \begin{align*}
+            v_1 &= v_{-1}&
+            v_2 &= v_{-2}
+        \end{align*}
+        \item Consequently, since
+        \begin{align*}
+            v_1 &= k_1\cnc[eq]{A}\cnc[eq]{C}&
+                v_2 &= k_2\cnc[eq]{A}\\
+            v_{-1} &= k_{-1}\cnc[eq]{B}\cnc[eq]{C}&
+                v_{-2} &= k_{-2}\cnc[eq]{B}
+        \end{align*}
+        and
+        \begin{equation*}
+            K_c = \frac{(\cnc[eq]{B}/c^\circ)}{(\cnc[eq]{A}/c^\circ)}
+            = \frac{\cnc[eq]{B}}{\cnc[eq]{A}}
+        \end{equation*}
+        we have that
+        \begin{align*}
+            k_1\cnc[eq]{A}\cnc[eq]{C} &= k_{-1}\cnc[eq]{B}\cnc[eq]{C}&
+                k_2\cnc[eq]{A} &= k_{-2}\cnc[eq]{B}\\
+            \frac{k_1}{k_{-1}} &= \frac{\cnc[eq]{B}\cnc[eq]{C}}{\cnc[eq]{A}\cnc[eq]{C}}&
+                \frac{k_2}{k_{-2}} &= \frac{\cnc[eq]{B}}{\cnc[eq]{A}}\\
+            &= \frac{\cnc[eq]{B}}{\cnc[eq]{A}}&
+                &= K_c\\
+            &= K_c
+        \end{align*}
+        \item It follows by transitivity that
+        \begin{equation*}
+            \frac{k_1}{k_{-1}} = \frac{k_2}{k_{-2}}
+        \end{equation*}
+        i.e., that the four rate constants are not independent of one another.
+        \item Note that we can also derive $K_c=k_1/k_{-1}$ via the above relation between the rate constants and the alternate equilibrium condition $v_1+v_2=v_{-1}+v_{-2}$.
+    \end{itemize}
+    \item When a general reaction is the \emph{sum} of two reversible elementary reactions, its equilibrium constant is the \emph{product} of the equilibrium constants of the elementary reactions.
+    \begin{itemize}
+        \item In particular, for a reaction of the form
+        \begin{equation*}
+            \ce{A} \Longleftrightarrows[k_1][k_{-1}] \ce{I} \Longleftrightarrows[k_2][k_{-2}] \ce{B}
+        \end{equation*}
+        where $K_c$ describes the overall equilibrium (i.e., that between \ce{A} and \ce{B}), $K_{c,1}$ describes the equilibrium between \ce{A} and \ce{I}, and $K_{c,2}$ describes the equilibrium between \ce{I} and \ce{B}, we have that
+        \begin{equation*}
+            K_c = K_{c,1}K_{c,2}
+        \end{equation*}
+    \end{itemize}
+    \item The rate laws for the mechanism $\ce{A}\xRightarrow{k_1}\ce{I}\xRightarrow{k_2}\ce{P}$ constitute a system of \textbf{coupled differential equations} that can be solved analytically, as in class and in Problem 29-5 of PSet 3.
+    \item \textcite{bib:McQuarrieSimon} discusses distinguishing the two-step consecutive reaction mechanism unambiguously from the one-step reaction.
+    \begin{itemize}
+        \item Take-away: "The observation of identical rate constants for the decay of the reactant and the growth of the product does not necessarily mean that no chemical intermediates arise along the reaction path," as this could simply be a case of $k_2\gg k_1$ \parencite[1189]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item \textbf{Rate-determining step}: The one step in a reaction mechanism, if it exists, that is much slower than any of the other steps. \emph{Also known as} \textbf{RDS}.
+    \begin{itemize}
+        \item Acting as a bottleneck, the RDS effectively controls the overall reaction rate.
+    \end{itemize}
+    \item Consider the reaction mechanism
+    \begin{equation*}
+        \ce{A} \xRightarrow{k_1} \ce{I}
+        \xRightarrow{k_2} \ce{P}
+    \end{equation*}
+    \item \textbf{Steady-state approximation}: The approximation that $\dv*{\cnc{I}}{t}=0$ in the above mechanism. \emph{Also known as} \textbf{SS approximation}.
+    \begin{itemize}
+        \item The steady-state approximation becomes better as $k_2$ becomes larger relative to $k_1$.
+        \item This is because when $k_1\gg k_2$, \ce{I} builds up really quickly and then decomposes. When $k_2\gg k_1$, however, \ce{I} decomposes as fast as it can be produced, keeping \ce{I} at a relatively steady, low concentration.
+    \end{itemize}
+    \item Qualitatively, the SS approximation corresponds to the case that \ce{I} is so reactive that $\cnc{I}\approx 0$.
+    \item A more rigorous bound on when the steady-state approximation is good to use.
+    \begin{itemize}
+        \item As in class, we can determine that
+        \begin{equation*}
+            \dv{\cnc[ss]{I}}{t} = -\frac{k_1^2}{k_2}\cnc[0]{A}\e[-k_1t]
+        \end{equation*}
+        \item But the SS approximation postulates that $\dv*{\cnc{I}}{t}=0$, not that $\dv*{\cnc{I}}{t}$ is a time-dependent function. Thus, in order to use the steady-state approximation, we must ensure that the above expression is sufficiently close to zero.
+        \item In particular, we want $-k_1^2\cnc[0]{A}/k_2\to 0$, i.e., we want
+        \begin{equation*}
+            k_2 \gg k_1^2\cnc[0]{A}
+        \end{equation*}
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} goes through the decomposition of ozone example from class.
+    \item \textcite{bib:McQuarrieSimon} goes through the \ce{2NO + O2 -> 2NO2} example from class.
+    \begin{itemize}
+        \item \textcite{bib:McQuarrieSimon} also shows that both mechanisms lead to the experimental rate law.
+        \item Two ways to capture or detect the intermediate species are by direct observation (somehow show that it exists in the reaction flask) or by introducing reagents to the reaction mixture that would selectively react with \ce{NO3} (for instance) to form a stable product that can be isolated and characterized.
+        \item Note also that here once again, we have a rate law that would fit if the reaction were elementary overall, but we know that the reaction is \emph{not} elementary overall.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} discusses the \ce{CH3NC -> CH3CN} example as an intro to the \textbf{Lindemann mechanism}.
+    \begin{itemize}
+        \item Note that another troubling observation is that the activation energies of "unimolecular" reactions can be quite large compared with $\kB T$. Thus, we need to identify the external energy source.
+    \end{itemize}
+    \item \textbf{Lindemann mechanism}: A "unimolecular" reaction mechanism that predicts first-order kinetics at high concentration and second-order kinetics at low concentration. \emph{Given by}
+    \begin{align*}
+        \ce{A(g) + M(g)} &\Longleftrightarrows[k_1][k_{-1}] \ce{A(g)^* + M(g)}\\
+        \ce{A(g)^*} &\xRightarrow{k_2} \ce{B(g)}
+    \end{align*}
+    \begin{itemize}
+        \item The key proposition inherent in this mechanism is that the external energy source is another molecule/collision partner.
+        \item Another postulate is that there must be a time lag between the collision (or energizing step) and the ensuing reaction; during this lag, the energized molecule could undergo a deactivating bimolecular collision.
+    \end{itemize}
+    \item \textbf{A(g)${}^{\bm{*}}$}: An energized reactant molecule.
+    \item \textbf{M(g)}: The collision partner.
+    \begin{itemize}
+        \item The collision partner can be a second reactant molecule, a product molecule, or a nonreactive buffer gas such as \ce{N2} or \ce{Ar}.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} does the Lindemann mechanism analysis.
+    \begin{itemize}
+        \item Note that the reason we initially compare $k_1\cnc{M}\cnc{A^*}$ and $k_2\cnc{A^*}$ is because at high concentrations, we expect $v_{-1}\gg v_2$.
+    \end{itemize}
+    \item Relating the observed activation energy and Arrhenius pre-exponential factor to those for the individual elementary steps involved in the Lindemann mechanism.
+    \begin{itemize}
+        \item We have from our Lindemann mechanism analysis that
+        \begin{equation*}
+            k_\text{obs} = \frac{k_1k_2}{k_{-1}}
+        \end{equation*}
+        \item We also have that
+        \begin{align*}
+            k_\text{obs} &= A_\text{obs}\e[-E_{a,\text{obs}}/RT]&
+            k_1 &= A_1\e[-E_{a,1}/RT]&
+            k_{-1} &= A_{-1}\e[-E_{a,-1}/RT]&
+            k_2 &= A_2\e[-E_{a,2}/RT]
+        \end{align*}
+        \item It follows by combining substituting the four equations above into the first equation that
+        \begin{align*}
+            E_{a,\text{obs}} &= E_{a,1}+E_{a,2}-E_{a,-1}&
+            A_\text{obs} &= \frac{A_1A_2}{A_{-1}}
+        \end{align*}
+        \item Thus, the measured values of $E_a$ and $A$ do not correspond to a single step, but rather are influenced by every step.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} does the \ce{H2 + Br2 <=> 2HBr} chain reaction analysis.
+    \begin{itemize}
+        \item Note that by the experimentally determined rate law, the accumulation of \ce{HBr} slows the mechanism down.
+        \item We can ignore the fifth step because it is massively endothermic.
     \end{itemize}
 \end{itemize}
 

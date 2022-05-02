@@ -149,7 +149,7 @@
         \item Do not talk to your classmates.
         \item The midterm will become available Friday at noon.
     \end{itemize}
-    \item Enzymes are protein molecules that catalyze specific biochemical reactions.
+    \item \textbf{Enzyme}: A protein molecule that catalyzes a specific biochemical reaction.
     \begin{itemize}
         \item For example, hexokinase converts glucose and ATP to glucose 6-phosphate, ADP, and \ce{H+}.
     \end{itemize}
@@ -157,7 +157,7 @@
     \item \textbf{Active site}: The region of the enzyme where the substrate reacts.
     \item \textbf{Lock-and-key model}: The active site and substrate have complementary three-dimensional structures and dock without the need for major atomic rearrangements.
     \item \textbf{Induced fit model}: Binding of the substrate induces a conformation change in the active site. The substrate fits well in the active site after the conformational change has taken place.
-    \item The Michaelis-Menten Mechanism is a reaction mechanism for enzyme catalysis.
+    \item The Michaelis-Menten mechanism is a reaction mechanism for enzyme catalysis.
     \item Intuition.
     \begin{itemize}
         \item Imagine we have a solution of enzymes and substrate molecules.
@@ -195,8 +195,8 @@
         \end{equation*}
         \item Plugging that equation into the rate law for the enzyme-substrate complex and applying the steady-state approximation yields
         \begin{align*}
-            -\dv{\cnc{ES}}{t} = 0 &= \cnc{ES}(k_1\cnc{S}+k_{-1}+k_2+k_{-1}\cnc{P})-k_1\cnc{S}\cnc[0]{E}-k_2\cnc{P}\cnc[0]{P}\\
-            \cnc{ES} &= \frac{k_1\cnc{S}+k_{-1}\cnc{P}}{k_1\cnc{S}+k_{-2}\cnc{P}+k_{-1}+k_2}\cnc[0]{E}
+            -\dv{\cnc{ES}}{t} = 0 &= \cnc{ES}(k_1\cnc{S}+k_{-1}+k_2+k_{-2}\cnc{P})-k_1\cnc{S}\cnc[0]{E}-k_{-2}\cnc{P}\cnc[0]{E}\\
+            \cnc{ES} &= \frac{k_1\cnc{S}+k_{-2}\cnc{P}}{k_1\cnc{S}+k_{-2}\cnc{P}+k_{-1}+k_2}\cnc[0]{E}
         \end{align*}
         \item Substituting this and the original expression for $\cnc[0]{E}$ into the rate law for the substrate yields
         \begin{equation*}
@@ -224,7 +224,7 @@
             \item The unit of $K_m$ should be concentration.
             \item When $K_m=\cnc[0]{S}$, $v=v_\text{max}/2$
         \end{itemize}
-        \item An enzyme-catalyzed reaction is first order in the substrate at low substrate concentrations ($K\gg\cnc[0]{S}$) and then becomes zero order in the substrate at high substrate concentrations ($K\ll\cnc[0]{S}$).
+        \item An enzyme-catalyzed reaction is first order in the substrate at low substrate concentrations ($K_m\gg\cnc[0]{S}$) and then becomes zero order in the substrate at high substrate concentrations ($K_m\ll\cnc[0]{S}$).
         \item Thus, at low substrate concentrations, the above equation holds, but at high substrate concentrations,
         \begin{align*}
             -\dv{\cnc{S}}{t} &= k_2\cnc[0]{E}&
@@ -302,7 +302,7 @@
             \item Note that
             \begin{align*}
                 \frac{1}{v_0} &\propto \frac{K_m}{v_\text{max}}\frac{1}{\cnc[0]{S}}\\
-                &= \frac{(k_{-1}+k_2)/k_1}{k_2\cnc[0]{E}}\frac{1}{\cnc[0]{S}}
+                &= \frac{(k_{-1}+k_2)/k_1}{k_2\cnc[0]{E}}\frac{1}{\cnc[0]{S}}\\
                 &= \frac{k_{-1}+k_2}{k_1k_2}\frac{1}{\cnc[0]{E}\cnc[0]{S}}
             \end{align*}
         \end{itemize}
@@ -421,6 +421,90 @@
     \begin{itemize}
         \item Detailed balance only applies to elementary steps?
     \end{itemize}
+\end{itemize}
+
+
+
+\section{Chapter 29: Chemical Kinetics II --- Reaction Mechanisms}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{5/1:}Methods of increasing the rate of reaction.
+    \begin{enumerate}
+        \item Increase the temperature.
+        \begin{itemize}
+            \item Drawback: Reactions in solution are constrained to the temperature range between the melting and boiling point of the solvent.
+        \end{itemize}
+        \item Enable the reaction to proceed by an alternate mechanism having a lower activation energy.
+    \end{enumerate}
+    \item \textbf{Catalyst}: A substance that participates in a chemical reaction but is not consumed in the process.
+    \begin{itemize}
+        \item By participating, a catalyst provides an alternate mechanism.
+        \item The trick is to construct this alternate mechanism such that it has a lower activation barrier.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} defines \textbf{homogeneous} and \textbf{heterogeneous} catalysis.
+    \item Because a catalyst is not consumed or otherwise chemically altered (in a net sense), the thermodynamics of the reaction do not change when one is present.
+    \item The exponential form of the Arrhenius equation implies that even small changes in activation energy can lead to substantial changes in reaction rate.
+    \item Note that since a catalyzed reaction has multiple mechanisms, we say it proceeds along reaction \emph{coordinates}, plural.
+    \item \textcite{bib:McQuarrieSimon} derives the rate law for a unimolecular uncatalyzed, bimolecular catalyzed reaction.
+    \item \textcite{bib:McQuarrieSimon} gives the ionic homogeneous catalysis example.
+    \item An example of heterogeneous catalysis.
+    \begin{itemize}
+        \item Consider the reaction
+        \begin{equation*}
+            \ce{3H2(g) + N2(g) -> 2NH3(g)}
+        \end{equation*}
+        \item The activation barrier is roughly \SI[per-mode=symbol]{940}{\kilo\joule\per\mole}.
+        \item In the presence of an iron surface, however, the activation barrier drops over an order of magnitude to \SI[per-mode=symbol]{80}{\kilo\joule\per\mole}.
+        \item The mechanism will be discussed in depth in Chapter 31, along with other heterogeneous surface-catalyzed gas-phase reactions.
+    \end{itemize}
+    \item An example where both types of catalysis play a role.
+    \begin{itemize}
+        \item Consider the destruction of ozone in the stratosphere.
+        \item Naturally, this reaction occurs via
+        \begin{equation*}
+            \ce{O3(g) + O(g)} \Longrightarrow \ce{2O2(g)}
+        \end{equation*}
+        \item In the presence of chlorine atoms, however, the following mechanism becomes available.
+        \begin{align*}
+            \ce{O3(g) + Cl(g)} &\Longrightarrow \ce{ClO(g) + O2(g)}\\
+            \ce{ClO(g) + O(g)} &\Longrightarrow \ce{O2(g) + Cl(g)}
+        \end{align*}
+        \begin{itemize}
+            \item This is an example of homogeneous catalysis.
+        \end{itemize}
+        \item Over time, however, chlorine atoms get bound up in the reservoir molecules \ce{HCl(g)} and \ce{ClONO2(g)}.
+        \item Nevertheless, the surface of polar stratospheric clouds catalyzes the reaction between these two molecules to liberate a molecule of diatomic chlorine gas (which can then be homolytically dissociated by sunlight to regenerate the gaseous monoatomic chlorine catalyst) and a moleucle of \ce{HNO3(g)}.
+        \begin{itemize}
+            \item Since the surface of the clouds are of a different phase from the gas, this is an example of heterogeneous catalysis.
+        \end{itemize}
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} defines \textbf{enzymes}, \textbf{substrates}, and \textbf{active sites}.
+    \item \textbf{Michaelis-Menten mechanism}: A simple mechanism that accounts for the rate law commonly observed for enzyme-catalyzed reactions. \emph{Given by}
+    \begin{equation*}
+        \ce{E + S} \Longleftrightarrows[k_1][k_{-1}] \ce{ES} \Longleftrightarrows[k_2][k_{-2}] \ce{E + P}
+    \end{equation*}
+    \begin{itemize}
+        \item Proposed by Leonor Michaelis and Maude Menten in 1913.
+        \item This reaction sees an initial buildup period of \ce{ES}, followed by a period during which $\cnc{ES}$ is relatively constant. Thus, we may apply the SS approximation to it.
+    \end{itemize}
+    \item High substrate concentrations in the Michaelis-Menten mechanism.
+    \begin{itemize}
+        \item At high substrate concentrations, essentially all of the enzymes are tied up with substrate, so adding more substrate doesn't do anything and the reaction is zero-order in substrate concentration.
+        \item Assuming that all enzyme is tied up in substrate means that $\cnc{ES}\approx\cnc[0]{E}$ and the rate of SM consumption is essentially equal to the rate of product formation, which is just proportional to the dissociation of the reacted enzyme-substrate complex. Mathematically,
+        \begin{align*}
+            -\dv{\cnc{S}}{t} &= k_2\cnc[0]{E}\\
+            v_\text{max} &= k_2\cnc[0]{E}
+        \end{align*}
+        \begin{itemize}
+            \item Note that we introduce the $v_\text{max}$ terminology because it is under these conditions (excess substrate) that the reaction rate is at its maximum.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Turnover number}: The maximum rate divided by the concentration of enzyme active sites.
+    \begin{itemize}
+        \item By definition, the turnover is the maximum number of substrate molecules that can be converted into product molecules per unit time by an enzyme molecule.
+        \item Note that the concentration of enzyme \emph{active sites} is not necessarily equal to $\cnc{E}$ because some enzymes have more than one active site.
+    \end{itemize}
+    \item For an enzyme having only one active site, the turnover number is given by $v_\text{max}/\cnc[0]{E}=k_2$.
 \end{itemize}
 
 
