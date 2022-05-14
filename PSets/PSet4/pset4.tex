@@ -1,0 +1,149 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{3}
+
+\begin{document}
+
+
+
+
+\section{Mechanisms II / Gas-Phase Reactions}
+\subsection*{Chapter 29}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{enumerate}[label={\textbf{29-\arabic*.}},leftmargin=3.5em]
+    \setcounter{enumi}{10}
+    \item \marginnote{5/9:}Consider the decomposition reaction of \ce{N2O5(g)}
+    \begin{equation*}
+        \ce{2N2O5(g) ->[$k_\text{obs}$] 4NO2(g) + O2(g)}
+    \end{equation*}
+    A proposed mechanism for this reaction is
+    \begin{align*}
+        \ce{N2O5(g)} &\Longleftrightarrows[k_1][k_{-1}] \ce{NO2(g) + NO3(g)}\\
+        \ce{NO2(g) + NO3(g)} &\xRightarrow{k_2} \ce{NO(g) + NO2(g) + O2(g)}\\
+        \ce{NO3(g) + NO(g)} &\xRightarrow{k_3} \ce{2NO2(g)}
+    \end{align*}
+    Assume that the steady-state approximation applies to both the \ce{NO(g)} and \ce{NO3(g)} reaction intermediates to show that this mechanism is consistent with the experimentally observed rate law
+    \begin{equation*}
+        \dv{\cnc{O2}}{t} = k_\text{obs}\cnc{N2O5}
+    \end{equation*}
+    Express $k_\text{obs}$ in terms of the rate constants for the individual steps of the reaction mechanism.
+    \item The rate law for the reaction
+    \begin{equation*}
+        \ce{Cl2(g) + CO(g) ->[$k_\text{obs}$] Cl2CO(g)}
+    \end{equation*}
+    between \ce{CO(g)} and \ce{Cl2(g)} to form phosgene (\ce{Cl2CO}) is
+    \begin{equation*}
+        \dv{\cnc{Cl2CO}}{t} = k_\text{obs}\cnc{Cl2}^{3/2}\cnc{CO}
+    \end{equation*}
+    Show that the following mechanism is consistent with this rate law.
+    \begin{align*}
+        \ce{Cl2(g) + M(g)} &\Longleftrightarrows[k_1][k_{-1}] \ce{2Cl(g) + M(g)}\tag{fast equilibrium}\\
+        \ce{Cl(g) + CO(g) + M(g)} &\Longleftrightarrows[k_2][k_{-2}] \ce{ClCO(g) + M(g)}\tag{fast equilibrium}\\
+        \ce{ClCO(g) + Cl2(g)} &\xRightarrow{k_3} \ce{Cl2CO(g) + Cl(g)}\tag{slow}
+    \end{align*}
+    where \ce{M} is any gas molecule present in the reaction container. Express $k_\text{obs}$ in terms of the rate constants for the individual steps of the reaction mechanism.
+    \setcounter{enumi}{27}
+    \item Consider the mechanism for the thermal decomposition of acetaldehyde
+    \begin{equation*}
+        \ce{CH3CHO(g) ->[$k_\text{obs}$] CH4(g) + CO(g)}
+    \end{equation*}
+    given as follows.
+    \begin{align*}
+        \ce{CH3CHO(g)} &\xRightarrow{k_1} \ce{CH3(g) + CHO(g)}\\
+        \ce{CH3(g) + CH3CHO(g)} &\xRightarrow{k_2} \ce{CH4(g) + CH3CO(g)}\\
+        \ce{CH3CO(g)} &\xRightarrow{k_3} \ce{CH3(g) + CO(g)}\\
+        \ce{2CH3(g)} &\xRightarrow{k_4} \ce{C2H6(g)}
+    \end{align*}
+    Show that $E_\text{obs}$, the measured Arrhenius activation energy for the overall reaction, is given by
+    \begin{equation*}
+        E_\text{obs} = E_2+\frac{1}{2}(E_1-E_4)
+    \end{equation*}
+    where $E_i$ is the activation energy of the $i^\text{th}$ step of the reaction mechanism. How is $A_\text{obs}$, the measured Arrhenius pre-exponential factor for the overall reaction, related to the Arrhenius pre-exponential factors for the individual steps of the reaction mechanism?
+    \setcounter{enumi}{32}
+    \item It is possible to initiate chain reactions using photochemical reactions. For example, in place of the thermal initiation reaction for the \ce{Br2(g) + H2(g)} chain reaction
+    \begin{equation*}
+        \ce{Br2(g) + M} \xRightarrow{k_1} \ce{2Br(g) + M}
+    \end{equation*}
+    we could have the photochemical initiation reaction
+    \begin{equation*}
+        \ce{Br2(g) + $h\nu$} \Longrightarrow \ce{2Br(g)}
+    \end{equation*}
+    If we assume that all the incident light is absorbed by the \ce{Br2} molecules and that the quantum yield for photodissociation is 1.00, then how does the photochemical rate of dissociation of \ce{Br2} depend on $I_\text{abs}$, the number of photons per unit time per unit volume? How does $\dv*{\cnc{Br}}{t}$, the rate of formation of \ce{Br}, depend on $I_\text{abs}$? If you assume that the chain reaction is initiated only by the photochemical generation of \ce{Br}, then how does $\dv*{\cnc{HBr}}{t}$ depend on $I_\text{abs}$?
+    \stepcounter{enumi}
+    \item The ability of enzymes to catalyze reactions can be hindered by \textbf{inhibitor molecules}. One of the mechanisms by which an inhibitor molecule works is by competing with the substrate molecule for binding to the active site of the enzyme. We can include this inhibition reaction in a modified Michaelis-Menton mechanism for enzyme catalysis.
+    \begin{align}
+        \ce{E + S} &\Longleftrightarrows[k_1][k_{-1}] \ce{ES}\\
+        \ce{E + I} &\Longleftrightarrows[k_2][k_{-2}] \ce{EI}\\
+        \ce{ES} &\xRightarrow{k_3} \ce{E + P}
+    \end{align}
+    In Reaction 2, \ce{I} is the inhibitor molecule and \ce{EI} is the enzyme-inhibitor complex. We will consider the case where Reaction 2 is always in equilibrium. Determine the rate laws for $\cnc{S}$, $\cnc{ES}$, $\cnc{EI}$, and $\cnc{P}$. Show that if the steady-state assumption is applied to \ce{ES}, then
+    \begin{equation*}
+        \cnc{ES} = \frac{\cnc{E}\cnc{S}}{K_m}
+    \end{equation*}
+    where $K_m=(k_{-1}+k_3)/k_1$ is the Michaelis constant. Now show that the material balance for the enzyme gives
+    \begin{equation*}
+        \cnc[0]{E} = \cnc{E}+\frac{\cnc{E}\cnc{S}}{K_m}+\cnc{E}\cnc{I}K_{\ce{I}}
+    \end{equation*}
+    where $K_{\ce{I}}=\cnc{EI}/\cnc{E}\cnc{I}$ is the equilibrium constant for Reaction 2. Use this result to show that the initial reaction rate is given by
+    \begin{equation}
+        v = \dv{\cnc{P}}{t}
+        = \frac{k_3\cnc[0]{E}\cnc{S}}{K_m+\cnc{S}+K_mK_{\ce{I}}\cnc{I}}
+        \approx \frac{k_3\cnc[0]{E}\cnc[0]{S}}{K_m'+\cnc[0]{S}}
+    \end{equation}
+    where $K_m'=K_m(1+K_{\ce{I}}\cnc{I})$. Note that the second expression in Equation 4 has the same functional form as the Michaelis-Menton equation. Does Equation 4 reduce to the expected result when $\cnc{I}\to 0$?
+    \setcounter{equation}{0}
+    \setcounter{enumi}{46}
+    \item A mechanism for ozone creation and destruction in the stratosphere is
+    \begin{align*}
+        \ce{O2(g) + $h\nu$} &\xRightarrow{j_1} \ce{2O(g)}\\
+        \ce{O(g) + O2(g) + M(g)} &\xRightarrow{k_2} \ce{O3(g) + M(g)}\\
+        \ce{O3(g) + $h\nu$} &\xRightarrow{j_3} \ce{O2(g) + O(g)}\\
+        \ce{O(g) + O3(g)} &\xRightarrow{k_4} \ce{2O2(g)}
+    \end{align*}
+    where we have used the symbol $j$ to indicate that the rate constant is for a photochemical reaction. Determine the rate expressions for $\dv*{\cnc{O}}{t}$ and $\dv*{\cnc{O3}}{t}$. Assume that both \ce{O(g)} and \ce{O3(g)} can be treated by the steady-state approximation and thereby show that
+    \begin{equation}
+        \cnc{O} = \frac{2j_1\cnc{O2}+j_3\cnc{O3}}{k_2\cnc{O2}\cnc{M}+k_4\cnc{O3}}
+    \end{equation}
+    and
+    \begin{equation}
+        \cnc{O3} = \frac{k_2\cnc{O}\cnc{O2}\cnc{M}}{j_3+k_4\cnc{O}}
+    \end{equation}
+    Now substitute Equation 1 into Equation 2 and solve the resulting quadratic formula for $\cnc{O3}$ to obtain
+    \begin{equation*}
+        \cnc{O3} = \cnc{O2}\frac{j_1}{2j_3}\left\{ \left( 1+\frac{4j_3k_2}{j_1k_4}\cnc{M} \right)^{1/2}-1 \right\}
+    \end{equation*}
+    Typical values for these parameters at an altitude of \SI{30}{\kilo\meter} are $j_1=\SI{2.51e-12}{\per\second}$, $j_3=\SI{3.16e-4}{\per\second}$, $k_2=\SI{1.99e-33}{\centi\meter\tothe{6}\per\square\molecule\per\second}$, $k_4=\SI{1.26e-15}{\cubic\centi\meter\per\molecule\per\second}$, $\cnc{O2}=\SI{3.16e17}{\molecule\per\cubic\centi\meter}$, and $\cnc{M}=\SI{3.98e17}{\molecule\per\cubic\centi\meter}$. Find $\cnc{O3}$ and $\cnc{O}$ at an altitude of \SI{30}{\kilo\meter} using Equations 1 and 2. Was the use of the steady-state assumption justified?
+\end{enumerate}
+
+
+\subsection*{Chapter 30}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{enumerate}[label={\textbf{30-\arabic*.}},leftmargin=3.5em]
+    \item Calculate the hard-sphere collision theory rate constant for the reaction
+    \begin{equation*}
+        \ce{NO(g) + Cl2(g)} \Longrightarrow \ce{NOCl(g) + Cl(g)}
+    \end{equation*}
+    at \SI{300}{\kelvin}. The collision diameters of \ce{NO} and \ce{Cl2} are \SI{370}{\pico\meter} and \SI{540}{\pico\meter}, respectively. The Arrhenius parameters for the reaction are $A=\SI{3.981e9}{\cubic\deci\meter\per\mole\per\second}$ and $E_a=\SI{84.9}{\kilo\joule\per\mole}$. Calculate the ratio of the hard-sphere collision theory rate constant to the experimental rate constant at \SI{300}{\kelvin}.
+    \setcounter{enumi}{4}
+    \item Consider the following bimolecular reaction at \SI{3000}{\kelvin}.
+    \begin{equation*}
+        \ce{CO(g) + O2(g)} \Longrightarrow \ce{CO2(g) + O(g)}
+    \end{equation*}
+    The experimentally determined Arrhenius pre-exponential factor is $A=\SI{3.5e9}{\cubic\deci\meter\per\mole\per\second}$, and the activation energy is $E_a=\SI{213.4}{\kilo\joule\per\mole}$. The hard-sphere collision diameter of \ce{O2} is \SI{360}{\pico\meter} and that for \ce{CO} is \SI{370}{\pico\meter}. Calculate the value of the hard sphere line-of-centers model rate constant at \SI{3000}{\kelvin} and compare it with the experimental rate constant. Also compare the calculated and experimental $A$ values.
+\end{enumerate}
+
+
+\subsection*{Application}
+\begin{enumerate}[label={\arabic*)}]
+    \item Name one HW problem you would like to develop into a thought experiment or relate to a literature article.
+    \item Describe how the idea or conclusion from the HW problem applies to the research idea in 1-2 paragraphs (word limit: 300). Once again, this can either be a thought experiment or an experiment found in the literature.
+    \item You do not need to derive any equations in this short discussion. Use your intuition and focus on the big picture.
+    \item Please cite the literature if you link the HW problem to anyone (author names, titles, journal name, volume numbers, and page numbers).
+\end{enumerate}
+
+
+
+
+\end{document}
