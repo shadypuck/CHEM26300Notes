@@ -133,7 +133,7 @@
     \end{itemize}
     \item Oftentimes, reactions are of the form
     \begin{align*}
-        \ce{E + S <=>[$k_1$][$k_{-1}$] ->[$k_r$] P + E}
+        \ce{E + S <=>[$k_1$][$k_{-1}$] ES ->[$k_r$] P + E}
     \end{align*}
     \begin{itemize}
         \item Note that this form is very much analogous to the form analyzed in TST.
@@ -369,21 +369,21 @@
         \begin{itemize}
             \item Initiation.
             \begin{equation*}
-                \ce{Br2 + M(g) ->[k_1] 2Br(g) + M(g)}
+                \ce{Br2 + M(g)} \xRightarrow{k_1} \ce{2Br(g) + M(g)}
             \end{equation*}
             \item Propagation.
             \begin{align*}
-                \ce{Br(g) + H2(g)} &\ce{->[k_2]} \ce{HBr(g) + H(g)}\\
-                \ce{H(g) + Br2(g)} &\ce{->[k_3]} \ce{HBr(g) + Br(g)}
+                \ce{Br(g) + H2(g)} &\xRightarrow{k_2} \ce{HBr(g) + H(g)}\\
+                \ce{H(g) + Br2(g)} &\xRightarrow{k_3} \ce{HBr(g) + Br(g)}
             \end{align*}
             \item Inhibition.
             \begin{align*}
-                \ce{HBr(g) + H(g)} &\ce{->[k_{-2}]} \ce{Br(g) + H2(g)}\\
-                \ce{HBr(g) + Br(g)} &\ce{->[k_{-3}]} \ce{H(g) + Br2(g)}
+                \ce{HBr(g) + H(g)} &\xRightarrow{k_{-2}} \ce{Br(g) + H2(g)}\\
+                \ce{HBr(g) + Br(g)} &\xRightarrow{k_{-3}} \ce{H(g) + Br2(g)}
             \end{align*}
             \item Termination.
             \begin{equation*}
-                \ce{2Br + M(g) ->[k_{-1}] Br2(g) + M(g)}
+                \ce{2Br + M(g)} \xRightarrow{k_{-1}} \ce{Br2(g) + M(g)}
             \end{equation*}
         \end{itemize}
         \item The fifth step can be ignored.
@@ -436,7 +436,7 @@
                 ={}& k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]\left( 1-\frac{k_{-2}[\ce{HBr}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]}+\frac{k_3[\ce{Br2}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]} \right)\\
                 ={}& k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]\left( \frac{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]}-\frac{k_{-2}[\ce{HBr}]-k_3[\ce{Br2}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]} \right)\\
                 ={}& k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]\cdot\frac{2k_3[\ce{Br2}]}{k_{-2}[\ce{HBr}]+k_3[\ce{Br2}]}\\
-                \frac{1}{2}\dv{[\ce{HBr}]}{t} &= k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]\cdot\frac{1}{(k_{-2}/k_3)[\ce{HBr}][\ce{Br2}]^{-1}+1}\\
+                \frac{1}{2}\dv{[\ce{HBr}]}{t} ={}& k_2(K_{c,1})^{1/2}[\ce{Br2}]^{1/2}[\ce{H2}]\cdot\frac{1}{(k_{-2}/k_3)[\ce{HBr}][\ce{Br2}]^{-1}+1}\\
                 ={}& \frac{k_2(K_{c,1})^{1/2}[\ce{H2}][\ce{Br2}]^{1/2}}{1+(k_{-2}/k_3)[\ce{HBr}][\ce{Br2}]^{-1}}\\
                 ={}& \frac{k[\ce{H2}][\ce{Br2}]^{1/2}}{1+k'[\ce{HBr}][\ce{Br2}]^{-1}}
             \end{align*}
@@ -451,10 +451,10 @@
         \end{equation*}
         proceeds by the mechanism
         \begin{align*}
-            \ce{CH3CHO(g)} &\ce{->[$k_1$]} \ce{CH3(g) + CHO(g)}\\
-            \ce{CH3(g) + CH3CHO(g)} &\ce{->[$k_2$]} \ce{CH4(g) + CH3CO(g)}\\
-            \ce{CH3CO(g)} &\ce{->[$k_3$]} \ce{CH3(g) + CO(g)}\\
-            \ce{2CH3(g)} &\ce{->[$k_4$]} \ce{C2H6(g)}
+            \ce{CH3CHO(g)} &\xRightarrow{k_1} \ce{CH3(g) + CHO(g)}\\
+            \ce{CH3(g) + CH3CHO(g)} &\xRightarrow{k_2} \ce{CH4(g) + CH3CO(g)}\\
+            \ce{CH3CO(g)} &\xRightarrow{k_3} \ce{CH3(g) + CO(g)}\\
+            \ce{2CH3(g)} &\xRightarrow{k_4} \ce{C2H6(g)}
         \end{align*}
         \item The initiation step is the first equation, the propagation steps are the second and third equations, and the termination step is the fourth equation.
         \item We can write the rate laws
@@ -1065,7 +1065,7 @@
         \text{Reactants} \Longleftrightarrows[k_1][k_{-1}] \text{Products}
     \end{equation*}
     \begin{itemize}
-        \item Does the principle of microscopic reversibility imply that all reactions that are elementary in one direction are elementary in the other?s
+        \item Does the principle of microscopic reversibility imply that all reactions that are elementary in one direction are elementary in the others?
     \end{itemize}
     \item \textcite{bib:McQuarrieSimon} derives and defines the \textbf{principle of detailed balance}.
     \item An example of using the principle of detailed balance in the analysis of a complex reaction.

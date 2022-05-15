@@ -29,6 +29,31 @@
         \dv{\cnc{O2}}{t} = k_\text{obs}\cnc{N2O5}
     \end{equation*}
     Express $k_\text{obs}$ in terms of the rate constants for the individual steps of the reaction mechanism.
+    \begin{proof}[Answer]
+        We have that
+        \begin{align*}
+            \dv{\cnc{O2}}{t} &= k_2\cnc{NO2}\cnc{NO3}\\
+            % \dv{\cnc{NO2}}{t} &= k_1\cnc{N2O5}-k_{-1}\cnc{NO2}\cnc{NO3}+2k_3\cnc{NO3}\cnc{NO}\\
+            \dv{\cnc{NO}}{t} &= k_2\cnc{NO2}\cnc{NO3}-k_3\cnc{NO3}\cnc{NO}\\
+            \dv{\cnc{NO3}}{t} &= k_1\cnc{N2O5}-k_{-1}\cnc{NO2}\cnc{NO3}-k_2\cnc{NO2}\cnc{NO3}-k_3\cnc{NO3}\cnc{NO}
+        \end{align*}
+        Applying the steady-state approximation to \ce{NO} yields
+        \begin{align*}
+            0 &= k_2\cnc{NO2}\cnc{NO3}-k_3\cnc{NO3}\cnc{NO}\\
+            \cnc{NO} &= \frac{k_2}{k_3}\cnc{NO2}
+        \end{align*}
+        Hence,
+        \begin{align*}
+            0 &= k_1\cnc{N2O5}-k_{-1}\cnc{NO2}\cnc{NO3}-k_2\cnc{NO2}\cnc{NO3}-k_3\cnc{NO3}\cnc{NO}\\
+            &= k_1\cnc{N2O5}-k_{-1}\cnc{NO2}\cnc{NO3}-k_2\cnc{NO2}\cnc{NO3}-k_2\cnc{NO3}\cnc{NO2}\\
+            &= k_1\cnc{N2O5}-(k_{-1}+2k_2)\cnc{NO2}\cnc{NO3}\\
+            \cnc{NO2}\cnc{NO3} &= \frac{k_1}{k_{-1}+2k_2}\cnc{N2O5}
+        \end{align*}
+        Therefore, we have that
+        \begin{equation*}
+            \boxed{\dv{\cnc{O2}}{t} = \underbrace{\frac{k_1k_2}{k_{-1}+2k_2}}_{k_\text{obs}}\cnc{N2O5}}
+        \end{equation*}
+    \end{proof}
     \item The rate law for the reaction
     \begin{equation*}
         \ce{Cl2(g) + CO(g) ->[$k_\text{obs}$] Cl2CO(g)}
@@ -44,6 +69,43 @@
         \ce{ClCO(g) + Cl2(g)} &\xRightarrow{k_3} \ce{Cl2CO(g) + Cl(g)}\tag{slow}
     \end{align*}
     where \ce{M} is any gas molecule present in the reaction container. Express $k_\text{obs}$ in terms of the rate constants for the individual steps of the reaction mechanism.
+    \begin{proof}[Answer]
+        % We have that
+        % \begin{align*}
+        %     \dv{\cnc{Cl2CO}}{t} &= k_3\cnc{ClCO}\cnc{Cl2}\\
+        %     \dv{\cnc{ClCO}}{t} &= k_2\cnc{Cl}\cnc{CO}\cnc{M}-k_{-2}\cnc{ClCO}\cnc{M}-k_3\cnc{ClCO}\cnc{Cl2}\\
+        %     \dv{\cnc{Cl}}{t} &= 2k_1\cnc{Cl2}\cnc{M}-2k_{-1}\cnc{Cl}^2\cnc{M}-k_2\cnc{Cl}\cnc{CO}\cnc{M}+k_{-2}\cnc{ClCO}\cnc{M}+k_3\cnc{ClCO}\cnc{Cl2}
+        % \end{align*}
+        % We are also given that the first two (equilibrium) steps are fast, and the last step is slow. This provides important information on the steady-state approximation. In particular, since the quantity of \ce{ClCO} will build up quickly and decay slowly, we cannot use the steady-state approximation here.
+
+
+        We have that
+        \begin{equation*}
+            \dv{\cnc{Cl2CO}}{t} = k_3\cnc{ClCO}\cnc{Cl2}
+        \end{equation*}
+        Suppose we attempt to find an expression for $\cnc{ClCO}$ in terms of $\cnc{Cl2}$ and $\cnc{CO}$ via differential equations and the steady-state approximation. Unfortunately, this approach will fail because we have an analogous situation to $k_1\gg k_2$, i.e., the concentration of \ce{ClCO} will build up quickly and decay slowly. Critically, the concentration of \ce{ClCO} will not be steady, so we may not apply the steady-state approximation to our differential equations, and solving them analytically will be a huge hassle, if it is even possible.\par
+        As such, we look for another approach. One observation we may make is that the first two elementary reactions in the mechanism will equilibrate quickly, so we may take their equilibrium constants to be constant for the duration of the reaction and later relate them to rate constants via the principle of detailed balance. Attempting this, we find that
+        \begin{align*}
+            K_{c,1} &= \frac{\cnc{Cl}^2\cnc{M}}{\cnc{Cl2}\cnc{M}}&
+                K_{c,2} &= \frac{\cnc{ClCO}\cnc{M}}{\cnc{Cl}\cnc{CO}\cnc{M}}\\
+            &= \frac{\cnc{Cl}^2}{\cnc{Cl2}}&
+                &= \frac{\cnc{ClCO}}{\cnc{Cl}\cnc{CO}}\\
+            \cnc{Cl} &= K_{c,1}^{1/2}\cnc{Cl2}^{1/2}&
+                \cnc{ClCO} &= K_{c,2}\cnc{Cl}\cnc{CO}
+        \end{align*}
+        It follows since
+        \begin{align*}
+            K_{c,1} &= \frac{k_1}{k_{-1}}&
+            K_{c,2} &= \frac{k_2}{k_{-2}}
+        \end{align*}
+        that
+        \begin{align*}
+            \dv{\cnc{Cl2CO}}{t} &= k_3\cnc{ClCO}\cnc{Cl2}\\
+            &= k_3K_{c,2}\cnc{Cl}\cnc{CO}\cnc{Cl2}\\
+            &= k_3K_{c,2}K_{c,1}^{1/2}\cnc{Cl2}^{1/2}\cnc{CO}\cnc{Cl2}\\
+            \Aboxed{\dv{\cnc{Cl2CO}}{t} &= \underbrace{k_3\left( \frac{k_2}{k_{-2}} \right)\left( \frac{k_1}{k_{-1}} \right)^{1/2}}_{k_\text{obs}}\cnc{Cl2}^{3/2}\cnc{CO}}
+        \end{align*}
+    \end{proof}
     \setcounter{enumi}{27}
     \item Consider the mechanism for the thermal decomposition of acetaldehyde
     \begin{equation*}
@@ -61,6 +123,44 @@
         E_\text{obs} = E_2+\frac{1}{2}(E_1-E_4)
     \end{equation*}
     where $E_i$ is the activation energy of the $i^\text{th}$ step of the reaction mechanism. How is $A_\text{obs}$, the measured Arrhenius pre-exponential factor for the overall reaction, related to the Arrhenius pre-exponential factors for the individual steps of the reaction mechanism?
+    \begin{proof}[Answer]
+        We have from Problem 29-24 that
+        \begin{equation*}
+            k_\text{obs} = k_2\left( \frac{k_1}{2k_4} \right)^{1/2}
+        \end{equation*}
+        As in Example 29-7, we may write
+        \begin{align*}
+            k_\text{obs} &= A_\text{obs}\e[-E_\text{obs}/RT]&
+            k_1 &= A_1\e[-E_1/RT]&
+            k_2 &= A_2\e[-E_2/RT]&
+            k_4 &= A_4\e[-E_4/RT]
+        \end{align*}
+        Note that we could also write such an equation for $k_3$, but we do not need to because as per the first equation above, there would be no place to substitute it. Regardless, moving on we also naturally have the differential forms of the above equations
+        \begin{align*}
+            \dv{\ln k_\text{obs}}{T} &= \frac{E_\text{obs}}{RT^2}&
+            \dv{\ln k_1}{T} &= \frac{E_1}{RT^2}&
+            \dv{\ln k_2}{T} &= \frac{E_2}{RT^2}&
+            \dv{\ln k_4}{T} &= \frac{E_4}{RT^2}
+        \end{align*}
+        Thus,
+        \begin{align*}
+            \frac{E_\text{obs}}{RT^2} &= \dv{\ln k_\text{obs}}{T}\\
+            &= \dv{T}(\ln k_2\left( \frac{k_1}{2k_4} \right)^{1/2})\\
+            &= \dv{T}(\ln k_2+\frac{1}{2}(\ln k_1-\ln 2-\ln k_4))\\
+            &= \dv{\ln k_2}{T}+\frac{1}{2}\left( \dv{\ln k_1}{T}-\dv{\ln 2}{T}-\dv{\ln k_4}{T} \right)\\
+            &= \frac{E_2}{RT^2}+\frac{1}{2}\left( \frac{E_1}{RT^2}-0-\frac{E_4}{RT^2} \right)\\
+            \Aboxed{E_\text{obs} &= E_2+\frac{1}{2}(E_1-E_4)}
+        \end{align*}
+        It follows that
+        \begin{align*}
+            A_\text{obs}\e[-E_\text{obs}/RT] &= A_2\e[-E_2/RT]\left( \frac{A_1\e[-E_1/RT]}{2A_4\e[-E_4/RT]} \right)^{1/2}\\
+            &= A_2\left( \frac{A_1}{2A_4} \right)^{1/2}\e[-E_2/RT]\left( \e[-(E_1-E_4)/RT] \right)^{1/2}\\
+            &= A_2\left( \frac{A_1}{2A_4} \right)^{1/2}\e[-E_2/RT]\e[-\frac{1}{2}(E_1-E_4)/RT]\\
+            &= A_2\left( \frac{A_1}{2A_4} \right)^{1/2}\e[-{[E_2+\frac{1}{2}(E_1-E_4)]}/RT]\\
+            &= A_2\left( \frac{A_1}{2A_4} \right)^{1/2}\e[-E_\text{obs}/RT]\\
+            \Aboxed{A_\text{obs} &= A_2\left( \frac{A_1}{2A_4} \right)^{1/2}}
+        \end{align*}
+    \end{proof}
     \setcounter{enumi}{32}
     \item It is possible to initiate chain reactions using photochemical reactions. For example, in place of the thermal initiation reaction for the \ce{Br2(g) + H2(g)} chain reaction
     \begin{equation*}
@@ -71,6 +171,54 @@
         \ce{Br2(g) + $h\nu$} \Longrightarrow \ce{2Br(g)}
     \end{equation*}
     If we assume that all the incident light is absorbed by the \ce{Br2} molecules and that the quantum yield for photodissociation is 1.00, then how does the photochemical rate of dissociation of \ce{Br2} depend on $I_\text{abs}$, the number of photons per unit time per unit volume? How does $\dv*{\cnc{Br}}{t}$, the rate of formation of \ce{Br}, depend on $I_\text{abs}$? If you assume that the chain reaction is initiated only by the photochemical generation of \ce{Br}, then how does $\dv*{\cnc{HBr}}{t}$ depend on $I_\text{abs}$?
+    \begin{proof}[Answer]
+        Take the standard volume to be one liter and the standard unit of time to be one second. We are given that $I_\text{abs}$ photons are supplied to every liter of reaction volume every second. Since every one of these photons is absorbed by a \ce{Br2} molecule by hypothesis and every one of these excited \ce{Br2} molecules dissociates by the definition of quantum yield 1.00, it follows that $I_\text{abs}$ molecules of \ce{Br2} dissociate in every liter of reaction volume every second. Consequently, we may divide by Avogadro's number to learn that $I_\text{abs}/\NA$ moles of \ce{Br2} dissociate in every liter of reaction volume every second. Another way of putting this is that the change in molar concentration of bromine due to photodissociation every second $-\dv*{\cnc{Br2}}{t}$ is given by $I_\text{abs}/\NA$. In an equation, the photochemical rate of dissociation of \ce{Br2} depends on $I_\text{abs}$ via
+        \begin{equation*}
+            \boxed{-\dv{\cnc{Br2}}{t} = \frac{I_\text{abs}}{\NA}}
+        \end{equation*}
+        We have from the definition of the rate of reaction that
+        \begin{equation*}
+            v = -\frac{1}{1}\dv{\cnc{Br2}}{t}
+            = \frac{1}{2}\dv{\cnc{Br}}{t}
+        \end{equation*}
+        Thus, the rate of formation of \ce{Br} solely due to photodissociation is
+        \begin{align*}
+            \frac{1}{2}\dv{\cnc{Br}}{t} &= \frac{I_\text{abs}}{\NA}\\
+            \Aboxed{\dv{\cnc{Br}}{t} &= \frac{2I_\text{abs}}{\NA}}
+        \end{align*}
+        We now have a slightly different mechanism to the first time we analyzed the \ce{Br2(g) + H2(g)} chain reaction. In particular, the thermal initiation step has been replaced by our photochemical initiation step, and we take the termination step to be the reverse reaction to the initiation step. As such, we may write the modified rate equations
+        \begin{align*}
+            \dv{\cnc{HBr}}{t} &= k_2\cnc{Br}\cnc{H2}-k_{-2}\cnc{HBr}\cnc{H}+k_3\cnc{H}\cnc{Br2}\\
+            \dv{\cnc{H}}{t} &= k_2\cnc{Br}\cnc{H2}-k_{-2}\cnc{HBr}\cnc{H}-k_3\cnc{H}\cnc{Br2}\\
+            \dv{\cnc{Br}}{t} &= \frac{2I_\text{abs}}{\NA}-k_{-1}\cnc{Br}^2-k_2\cnc{Br}\cnc{H2}+k_{-2}\cnc{HBr}\cnc{H}+k_3\cnc{H}\cnc{Br2}
+        \end{align*}
+        Applying the steady-state approximation to the two intermediate species, we find that
+        \begin{align*}
+            0 &= k_2\cnc{Br}\cnc{H2}-k_{-2}\cnc{HBr}\cnc{H}-k_3\cnc{H}\cnc{Br2}\\
+            0 &= \frac{2I_\text{abs}}{\NA}-k_{-1}\cnc{Br}^2-k_2\cnc{Br}\cnc{H2}+k_{-2}\cnc{HBr}\cnc{H}+k_3\cnc{H}\cnc{Br2}
+        \end{align*}
+        Substituting the opposite of the former equation into the latter yields
+        \begin{align*}
+            0 &= \frac{2I_\text{abs}}{\NA}-k_{-1}\cnc{Br}^2-0\\
+            \cnc{Br} &= \left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}
+        \end{align*}
+        Resubstituting this expression into the SS approximation for $\cnc{H}$ yields
+        \begin{align*}
+            0 &= k_2\cnc{Br}\cnc{H2}-k_{-2}\cnc{HBr}\cnc{H}-k_3\cnc{H}\cnc{Br2}\\
+            &= k_2\left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}-(k_{-2}\cnc{HBr}+k_3\cnc{Br2})\cnc{H}\\
+            \cnc{H} &= \left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\frac{k_2\cnc{H2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}}
+        \end{align*}
+        Substituting these two expressions back into the original differential equation for $\cnc{HBr}$ yields
+        \begin{align*}
+            \dv{\cnc{HBr}}{t} &= k_2\cnc{Br}\cnc{H2}-k_{-2}\cnc{HBr}\cnc{H}+k_3\cnc{H}\cnc{Br2}\\
+            &= k_2\left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}-(k_{-2}\cnc{HBr}-k_3\cnc{Br2})\left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\frac{k_2\cnc{H2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}}\\
+            &= k_2\left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}\left\{ 1-\frac{k_{-2}\cnc{HBr}-k_3\cnc{Br2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}} \right\}\\
+            &= k_2\left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}\left\{ \frac{k_{-2}\cnc{HBr}+k_3\cnc{Br2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}}-\frac{k_{-2}\cnc{HBr}-k_3\cnc{Br2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}} \right\}\\
+            &= k_2\left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}\left\{ \frac{2k_3\cnc{Br2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}} \right\}\\
+            \Aboxed{\dv{\cnc{HBr}}{t} &= \left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\frac{2k_2\cnc{H2}}{(k_{-2}/k_3)\cnc{HBr}/\cnc{Br2}+1}}
+        \end{align*}
+        where we have arranged the last expression so that every molar concentration and rate constant appears at most once, increasing the clarity with which the reader can see what's proportional to what.
+    \end{proof}
     \stepcounter{enumi}
     \item The ability of enzymes to catalyze reactions can be hindered by \textbf{inhibitor molecules}. One of the mechanisms by which an inhibitor molecule works is by competing with the substrate molecule for binding to the active site of the enzyme. We can include this inhibition reaction in a modified Michaelis-Menton mechanism for enzyme catalysis.
     \begin{align}
@@ -93,6 +241,52 @@
         \approx \frac{k_3\cnc[0]{E}\cnc[0]{S}}{K_m'+\cnc[0]{S}}
     \end{equation}
     where $K_m'=K_m(1+K_{\ce{I}}\cnc{I})$. Note that the second expression in Equation 4 has the same functional form as the Michaelis-Menton equation. Does Equation 4 reduce to the expected result when $\cnc{I}\to 0$?
+    \begin{proof}[Answer]
+        The four desired rate laws are
+        \begin{empheq}[box=\fbox]{align*}
+            \dv{\cnc{S}}{t} &= -k_1\cnc{E}\cnc{S}+k_{-1}\cnc{ES}\\
+            \dv{\cnc{ES}}{t} &= k_1\cnc{E}\cnc{S}-(k_{-1}+k_3)\cnc{ES}\\
+            \dv{\cnc{EI}}{t} &= k_2\cnc{E}\cnc{I}-k_{-2}\cnc{EI}\\
+            \dv{\cnc{P}}{t} &= k_3\cnc{ES}
+        \end{empheq}
+        Applying the steady-state approximation to the rate law describing $\cnc{ES}$ yields
+        \begin{align*}
+            0 &= k_1\cnc{E}\cnc{S}-(k_{-1}+k_3)\cnc{ES}\\
+            \cnc{ES} &= \frac{k_1}{k_{-1}+k_3}\cnc{E}\cnc{S}\\
+            \Aboxed{\cnc{ES} &= \frac{\cnc{E}\cnc{S}}{K_m}}
+        \end{align*}
+        where we have defined $K_m$ as in the statement of the problem.\par
+        According to the proposed mechanism, an enzyme molecule can exist in three forms: As an unbound enzyme \ce{E}, as an enzyme-substrate complex \ce{ES}, and as an enzyme-inhibitor complex \ce{EI}. Thus, since no enzyme is created or destroyed (as an idealized catalyst), we know that at any given time,
+        \begin{align*}
+            \cnc[0]{E} &= \cnc{E}+\cnc{ES}+\cnc{EI}\\
+            &= \cnc{E}+\frac{\cnc{E}\cnc{S}}{K_m}+\cnc{E}\cnc{I}\frac{\cnc{EI}}{\cnc{E}\cnc{I}}\\
+            \Aboxed{\cnc[0]{E} &= \cnc{E}+\frac{\cnc{E}\cnc{S}}{K_m}+\cnc{E}\cnc{I}K_{\ce{I}}}
+        \end{align*}
+        where we have invoked the final result of applying the SS approximation to \ce{ES} to make the middle substitution in the second equality, and we have defined $K_{\ce{I}}$ as in the statement of the problem.\par
+        It follows that
+        \begin{align*}
+            \cnc[0]{E} &= \cnc{E}+\frac{\cnc{E}\cnc{S}}{K_m}+\cnc{E}\cnc{I}K_{\ce{I}}\\
+            &= \frac{K_m+\cnc{S}+K_mK_{\ce{I}}\cnc{I}}{K_m}\cnc{E}\\
+            \frac{\cnc{E}}{K_m} &= \frac{\cnc[0]{E}}{K_m+\cnc{S}+K_mK_{\ce{I}}\cnc{I}}
+        \end{align*}
+        so that
+        \begin{align*}
+            \dv{\cnc{P}}{t} &= k_3\cnc{ES}\\
+            &= k_3\frac{\cnc{E}\cnc{S}}{K_m}\\
+            \Aboxed{\dv{\cnc{P}}{t} &= \frac{k_3\cnc[0]{E}\cnc{S}}{K_m+\cnc{S}+K_mK_{\ce{I}}\cnc{I}}}
+        \end{align*}
+        Moreover, if we approximate $\cnc{S}\approx\cnc[0]{S}$ (a good approximation if there is an excess of substrate) and define $K_m'$ as in the statement of the problem, the above equation reduces to
+        \begin{equation*}
+            \dv{\cnc{P}}{t} \approx \frac{k_3\cnc[0]{E}\cnc[0]{S}}{K_m'+\cnc[0]{S}}
+        \end{equation*}
+        Lastly, if $\cnc{I}\to 0$, then $\cnc{EI}\to 0$ so that
+        \begin{equation*}
+            K_m' = K_m(1+K_{\ce{I}}\cnc{I})
+            = K_m\left( 1+\frac{\cnc{EI}}{\cnc{E}} \right)
+            = K_m
+        \end{equation*}
+        thereby confirming that Equation 4 reduces as desired.
+    \end{proof}
     \setcounter{equation}{0}
     \setcounter{enumi}{46}
     \item A mechanism for ozone creation and destruction in the stratosphere is
@@ -115,7 +309,65 @@
         \cnc{O3} = \cnc{O2}\frac{j_1}{2j_3}\left\{ \left( 1+\frac{4j_3k_2}{j_1k_4}\cnc{M} \right)^{1/2}-1 \right\}
     \end{equation*}
     Typical values for these parameters at an altitude of \SI{30}{\kilo\meter} are $j_1=\SI{2.51e-12}{\per\second}$, $j_3=\SI{3.16e-4}{\per\second}$, $k_2=\SI{1.99e-33}{\centi\meter\tothe{6}\per\square\molecule\per\second}$, $k_4=\SI{1.26e-15}{\cubic\centi\meter\per\molecule\per\second}$, $\cnc{O2}=\SI{3.16e17}{\molecule\per\cubic\centi\meter}$, and $\cnc{M}=\SI{3.98e17}{\molecule\per\cubic\centi\meter}$. Find $\cnc{O3}$ and $\cnc{O}$ at an altitude of \SI{30}{\kilo\meter} using Equations 1 and 2. Was the use of the steady-state assumption justified?
+    \begin{proof}[Answer]
+        The two desired rate laws are
+        \begin{empheq}[box=\fbox]{align*}
+            \dv{\cnc{O}}{t} &= 2j_1\cnc{O2}-k_2\cnc{O}\cnc{O2}\cnc{M}+j_3\cnc{O3}-k_4\cnc{O}\cnc{O3}\\
+            \dv{\cnc{O3}}{t} &= k_2\cnc{O}\cnc{O2}\cnc{M}-j_3\cnc{O3}-k_4\cnc{O}\cnc{O3}
+        \end{empheq}
+        Applying the steady-state approximation to the rate laws yields
+        \begin{align*}
+            0 &= 2j_1\cnc{O2}-k_2\cnc{O}\cnc{O2}\cnc{M}+j_3\cnc{O3}-k_4\cnc{O}\cnc{O3}\\
+            &= 2j_1\cnc{O2}+j_3\cnc{O3}-(k_2\cnc{O2}\cnc{M}+k_4\cnc{O3})\cnc{O}\\
+            \Aboxed{\cnc{O} &= \frac{2j_1\cnc{O2}+j_3\cnc{O3}}{k_2\cnc{O2}\cnc{M}+k_4\cnc{O3}}}
+        \end{align*}
+        and
+        \begin{align*}
+            0 &= k_2\cnc{O}\cnc{O2}\cnc{M}-j_3\cnc{O3}-k_4\cnc{O}\cnc{O3}\\
+            &= k_2\cnc{O}\cnc{O2}\cnc{M}-(j_3+k_4\cnc{O})\cnc{O3}\\
+            \Aboxed{\cnc{O3} &= \frac{k_2\cnc{O}\cnc{O2}\cnc{M}}{j_3+k_4\cnc{O}}}
+        \end{align*}
+        Performing the desired substitution yields
+        \begingroup
+        \allowdisplaybreaks
+        \begin{align*}
+            \cnc{O3} &= \frac{k_2\cnc{O}\cnc{O2}\cnc{M}}{j_3+k_4\cnc{O}}\\
+            j_3\cnc{O3}+k_4\cnc{O3}\cnc{O} &= k_2\cnc{O}\cnc{O2}\cnc{M}\\
+            j_3\cnc{O3} &= (k_2\cnc{O2}\cnc{M}-k_4\cnc{O3})\cnc{O}\\
+            j_3\cnc{O3} &= (k_2\cnc{O2}\cnc{M}-k_4\cnc{O3})\frac{2j_1\cnc{O2}+j_3\cnc{O3}}{k_2\cnc{O2}\cnc{M}+k_4\cnc{O3}}\\
+            k_2j_3\cnc{O2}\cnc{M}\cnc{O3}+j_3k_4\cnc{O3}^2 &= 2j_1k_2\cnc{O2}^2\cnc{M}+k_2j_3\cnc{O2}\cnc{M}\cnc{O3}-2j_1k_4\cnc{O2}\cnc{O3}-j_3k_4\cnc{O3}^2\\
+            0 &= -2j_3k_4\cnc{O3}^2-2j_1k_4\cnc{O2}\cnc{O3}+2j_1k_2\cnc{O2}^2\cnc{M}\\
+            \cnc{O3} &= \frac{2j_1k_4\cnc{O2}\pm\sqrt{4j_1^2k_4^2\cnc{O2}^2+16j_1k_2j_3k_4\cnc{O2}^2\cnc{M}}}{-4j_3k_4}\\
+            &= -\frac{j_1\cnc{O2}}{2j_3}\pm\sqrt{\frac{\cnc{O2}^2(4j_1^2k_4^2+16j_1k_2j_3k_4\cnc{M})}{16j_3^2k_4^2}}\\
+            &= -\frac{j_1\cnc{O2}}{2j_3}\pm\cnc{O2}\sqrt{\frac{j_1^2}{4j_3^2}+\frac{j_1k_2\cnc{M}}{j_3k_4}}\\
+            &= -\frac{j_1\cnc{O2}}{2j_3}\pm\cnc{O2}\sqrt{\frac{j_1^2}{4j_3^2}\left( 1+\frac{4k_2j_3\cnc{M}}{j_1k_4} \right)}\\
+            &= -\frac{j_1\cnc{O2}}{2j_3}\pm\frac{j_1\cnc{O2}}{2j_3}\sqrt{1+\frac{4k_2j_3\cnc{M}}{j_1k_4}}\\
+            &= \cnc{O2}\frac{j_1}{2j_3}\left\{ \pm\left( 1+\frac{4j_3k_2}{j_1k_4}\cnc{M} \right)^{1/2}-1 \right\}\\
+            \Aboxed{\cnc{O3} &= \cnc{O2}\frac{j_1}{2j_3}\left\{ \left( 1+\frac{4j_3k_2}{j_1k_4}\cnc{M} \right)^{1/2}-1 \right\}}
+        \end{align*}
+        \endgroup
+        where we choose the plus sign in the last step because otherwise we would have a negative concentration of \ce{O3}.\par
+        Using the above equation and the parameters given in the problem, we can determine by direct substitution that the concentration of ozone at an altitude of \SI{30}{\kilo\meter} is
+        \begin{align*}
+            \cnc{O3} &= (\num{3.16e17})\frac{\num{2.51e-12}}{2(\num{3.16e-4})}\left\{ \left( 1+\frac{4(\num{3.16e-4})(\num{1.99e-33})}{(\num{2.51e-12})(\num{1.26e-15})}(\num{3.98e17}) \right)^{1/2}-1 \right\}\\
+            &= (\num{3.16e17})\frac{\num{2.51e-12}}{2(\num{3.16e-4})}\left\{ \left( 1+\num{3.17e8} \right)^{1/2}-1 \right\}\\
+            &= (\num{3.16e17})\frac{\num{2.51e-12}}{2(\num{3.16e-4})}\left\{ \left( \num{3.17e8} \right)^{1/2}-1 \right\}\\
+            &= (\num{3.16e17})\frac{\num{2.51e-12}}{2(\num{3.16e-4})}\left\{ \num{1.780e4}-1 \right\}\\
+            &= (\num{3.16e17})\frac{\num{2.51e-12}}{2(\num{3.16e-4})}(\num{1.780e4})\\
+            \Aboxed{\cnc{O3} &= \SI[per-mode=fraction,fraction-function=\tfrac]{2.23e13}{\molecule\per\cubic\centi\meter}}
+        \end{align*}
+        It follows by Equation 1 that at \SI{30}{\kilo\meter},
+        \begin{align*}
+            \cnc{O} &= \frac{2(\num{2.51e-12})(\num{3.16e17})+(\num{3.16e-4})(\num{2.23e13})}{(\num{1.99e-33})(\num{3.16e17})(\num{3.98e17})+(\num{1.26e-15})(\num{2.23e13})}\\
+            &= \frac{\num{1.59e6}+\num{7.05e9}}{\num{2.50e2}+\num{2.81e-2}}\\
+            &= \frac{\num{7.05e9}}{\num{2.50e2}}\\
+            \Aboxed{\cnc{O} &= \SI[per-mode=fraction,fraction-function=\tfrac]{2.82e7}{\molecule\per\cubic\centi\meter}}
+        \end{align*}
+        Since both $\cnc{O3}$ and $\cnc{O}$ are small relative to the total number of molecules present, it is safe to say that the species are typically destroyed as quickly as they are formed. As such, the use of the steady-state approximation was \fbox{justified}.
+    \end{proof}
+    \setcounter{equation}{0}
 \end{enumerate}
+\pagebreak
 
 
 \subsection*{Chapter 30}
@@ -126,12 +378,123 @@
         \ce{NO(g) + Cl2(g)} \Longrightarrow \ce{NOCl(g) + Cl(g)}
     \end{equation*}
     at \SI{300}{\kelvin}. The collision diameters of \ce{NO} and \ce{Cl2} are \SI{370}{\pico\meter} and \SI{540}{\pico\meter}, respectively. The Arrhenius parameters for the reaction are $A=\SI{3.981e9}{\cubic\deci\meter\per\mole\per\second}$ and $E_a=\SI{84.9}{\kilo\joule\per\mole}$. Calculate the ratio of the hard-sphere collision theory rate constant to the experimental rate constant at \SI{300}{\kelvin}.
+    \begin{proof}[Answer]
+        According to hard-sphere collision theory, the rate constant for the above reaction is given by
+        \begin{align*}
+            k &= \sigma_{(\ce{NO}\ \ce{Cl2})}\prb{u_r}\\
+            &= \pi d_{(\ce{NO}\ \ce{Cl2})}^2\left( \frac{8\kB T}{\pi\mu} \right)^{1/2}\\
+            &= \pi\left( \frac{d_{\ce{NO}}+d_{\ce{Cl2}}}{2} \right)^2\left( \frac{8\kB T(m_{\ce{NO}}+m_{\ce{Cl2}})}{\pi m_{\ce{NO}}m_{\ce{Cl2}}} \right)^{1/2}
+        \end{align*}
+        Plugging in
+        \begin{align*}
+            d_{\ce{NO}} &= \SI{3.70e-10}{\meter}\\
+            d_{\ce{Cl2}} &= \SI{5.40e-10}{\meter}\\
+            T &= \SI{300}{\kelvin}\\
+            m_{\ce{NO}} &= \SI{4.983e-26}{\kilo\gram}\\
+            m_{\ce{Cl2}} &= \SI{1.177e-25}{\kilo\gram}
+        \end{align*}
+        yields
+        \begin{align*}
+            k &= \pi\left( \frac{\num{3.70e-10}+\num{5.40e-10}}{2} \right)^2\left( \frac{8(\num{1.381e-23})(\num{300})(\num{4.983e-26}+\num{1.177e-25})}{\pi(\num{4.983e-26})(\num{1.177e-25})} \right)^{1/2}\\
+            &= \pi\left( \frac{\num{9.10e-10}}{2} \right)^2\left( \frac{8(\num{1.381e-23})(\num{300})(\num{1.675e-25})}{\pi(\num{4.983e-26})(\num{1.177e-25})} \right)^{1/2}\\
+            &= \SI[per-mode=fraction,fraction-function=\tfrac]{3.57e-16}{\cubic\meter\per\second}\\
+            \Aboxed{k &= \SI{2.15e11}{\per\molar\per\second}}
+        \end{align*}
+        The experimental rate constant is given by the Arrhenius equation as follows.
+        \begin{align*}
+            k' &= A\e[-E_a/RT]\\
+            &= (\num{3.981e9})\e[-(\num{84900})/(\num{8.3145})(\num{300})]\\
+            &= (\num{3.981e9})\e[-34.0]\\
+            &= (\num{3.981e9})(\num{2e-15})\\
+            &= \SI{8e-6}{\per\molar\per\second}
+        \end{align*}
+        Thus, the ratio of $k$ to $k'$ is
+        \begin{equation*}
+            \boxed{\frac{k}{k'} = \num{3e16}}
+        \end{equation*}
+    \end{proof}
     \setcounter{enumi}{4}
     \item Consider the following bimolecular reaction at \SI{3000}{\kelvin}.
     \begin{equation*}
         \ce{CO(g) + O2(g)} \Longrightarrow \ce{CO2(g) + O(g)}
     \end{equation*}
     The experimentally determined Arrhenius pre-exponential factor is $A=\SI{3.5e9}{\cubic\deci\meter\per\mole\per\second}$, and the activation energy is $E_a=\SI{213.4}{\kilo\joule\per\mole}$. The hard-sphere collision diameter of \ce{O2} is \SI{360}{\pico\meter} and that for \ce{CO} is \SI{370}{\pico\meter}. Calculate the value of the hard sphere line-of-centers model rate constant at \SI{3000}{\kelvin} and compare it with the experimental rate constant. Also compare the calculated and experimental $A$ values.
+    \begin{proof}[Answer]
+        According to the hard sphere line-of-centers model, the rate constant for the above reaction is given by
+        \begin{equation*}
+            k = \prb{u_r}\sigma_{(\ce{CO}\ \ce{O2})}\e[-E_0/\kB T]
+        \end{equation*}
+        where
+        \begin{align*}
+            \prb{u_r} &= \left( \frac{8\kB T}{\pi\mu} \right)^{1/2}&
+                \sigma_{(\ce{CO}\ \ce{O2})} &= \pi d_{(\ce{CO}\ \ce{O2})}^2&
+                    \e[-E_0/\kB T] &= \e[-(E_a-\kB T/2)/\kB T]\\
+            &= \left( \frac{8\kB T(m_{\ce{CO}}+m_{\ce{O2}})}{\pi m_{\ce{CO}}m_{\ce{O2}}} \right)^{1/2}&
+                &= \pi\left( \frac{d_{\ce{CO}}+d_{\ce{O2}}}{2} \right)^2&
+                    &= \e[-E_a/\kB T+1/2]
+        \end{align*}
+        Plugging in
+        \begin{align*}
+            T &= \SI{3000}{\kelvin}\\
+            m_{\ce{CO}} &= \SI{4.651e-26}{\kilo\gram}\\
+            m_{\ce{O2}} &= \SI{5.314e-26}{\kilo\gram}\\
+            d_{\ce{CO}} &= \SI{3.70e-10}{\meter}\\
+            d_{\ce{O2}} &= \SI{3.60e-10}{\meter}\\
+            E_a &= \SI{3.544e-19}{\joule}
+        \end{align*}
+        yields
+        \begin{align*}
+            \prb{u_r} &= \left( \frac{8(\num{1.381e-23})(\num{3000})(\num{4.651e-26}+\num{5.314e-26})}{\pi(\num{4.651e-26})(\num{5.314e-26})} \right)^{1/2}\\
+            &= \left( \frac{8(\num{1.381e-23})(\num{3000})(\num{9.965e-26})}{\pi(\num{4.651e-26})(\num{5.314e-26})} \right)^{1/2}\\
+            &= \left( \num{4.254e6} \right)^{1/2}\\
+            &= \SI[per-mode=fraction,fraction-function=\tfrac]{2062.5}{\meter\per\second}
+        \end{align*}
+        for the average relative speed,
+        \begin{align*}
+            \sigma_{(\ce{CO}\ \ce{O2})} &= \pi\left( \frac{\num{3.70e-10}+\num{3.60e-10}}{2} \right)^2\\
+            &= \pi\left( \frac{\num{7.30e-10}}{2} \right)^2\\
+            &= \SI{4.19e-19}{\square\meter}
+        \end{align*}
+        for the collision cross section, and
+        \begin{align*}
+            \e[-E_0/\kB T] &= \e[-(\num{3.544e-19})/(\num{1.381e-23})(\num{3000})+1/2]\\
+            &= \e[-\num{8.554}+1/2]\\
+            &= \e[-\num{8.054}]\\
+            &= \num{3.18e-4}
+        \end{align*}
+        for the exponential term.\par
+        \pagebreak
+        It follows that
+        \begin{align*}
+            k &= (\num{2062.5})(\num{4.19e-19})(\num{3.18e-4})\\
+            &= \SI[per-mode=fraction,fraction-function=\tfrac]{2.75e-19}{\cubic\meter\per\second}\\
+            \Aboxed{k &= \SI{1.66e8}{\per\molar\per\second}}
+        \end{align*}
+        The experimental rate constant is given by the Arrhenius equation as follows.
+        \begin{align*}
+            k' &= A\e[-E_a/RT]\\
+            &= (\num{3.5e9})\e[-(\num{213400})/(\num{8.3145})(\num{3000})]\\
+            &= (\num{3.5e9})\e[\num{-8.555}]\\
+            &= (\num{3.5e9})(\num{1.93e-4})\\
+            &= \SI{6.8e5}{\per\molar\per\second}
+        \end{align*}
+        Thus, the theoretical rate constant is between two and three orders of magnitude greater than the experimental rate constant, as shown by their ratio.
+        \begin{equation*}
+            \boxed{\frac{k}{k'} = 250}
+        \end{equation*}
+        Additionally, we can determine the theoretical Arrhenius pre-exponential factor to be
+        \begin{align*}
+            A' &= \prb{u_r}\sigma_{(\ce{CO}\ \ce{O2})}\e[1/2]\\
+            &= (\num{2062.5})(\num{4.19e-19})\e[1/2]\\
+            &= \SI[per-mode=fraction,fraction-function=\tfrac]{1.42e-15}{\cubic\meter\per\second}\\
+            &= \SI{8.55e11}{\per\molar\per\second}
+        \end{align*}
+        Thus, the theoretical Arrhenius pre-exponential factor is also between two and three orders of magnitude greater than the experimental Arrhenius pre-exponential factor, as shown by their ratio.
+        \begin{equation*}
+            \boxed{\frac{A'}{A} = 250}
+        \end{equation*}
+        In fact, the ratios $k:k'$ and $A':A$ are identical to two significant figures.
+    \end{proof}
 \end{enumerate}
 
 
@@ -142,6 +505,17 @@
     \item You do not need to derive any equations in this short discussion. Use your intuition and focus on the big picture.
     \item Please cite the literature if you link the HW problem to anyone (author names, titles, journal name, volume numbers, and page numbers).
 \end{enumerate}
+\begin{proof}[Answer]
+    % \textcite{bib:McQuarrieSimon} have mentioned numerous times throughout their discussions of kinetics that this is a developing field without a unified set of principles (as we have, for example, in classical mechanics and thermodynamics, both mature disciplines with the three primary governing laws).
+
+
+    I would like to further explore the chemical knowledge underlying Problem 29-28, the thermal decomposition of acetaldehyde. \textcite{bib:McQuarrieSimon} have mentioned numerous times that few reactions have been studied in sufficient depth that scientists feel truly confident in the proposed mechanism and rate law. As such, it is interesting to note that even though the thermal decomposition of acetaldehyde is discussed in their textbook and forms the basis for a series of problems, the manner in which \textcite{bib:McQuarrieSimon} characterize it is inaccurate according to the latest theory, which was published over three decades before their textbook.\par
+    Indeed, due to the obvious similarities, it appears likely that \textcite{bib:McQuarrieSimon} distilled and simplified their proposed mechanism for the thermal decomposition of acetaldehyde from the \textbf{Rice-Herzfeld mechanism} \parencite[288]{bib:RiceHerzfeld}. The Rice-Herzfeld mechanism was the first proposed mechanism to account for the three-halves-order kinetics of the thermal decomposition of \emph{pure} acetaldehyde. However, in a reexamination thirty years later, \textcite{bib:EusufLaidler} determined that the Rice-Herzfeld mechanism fails to account for significant increases in reaction order in the presence of foreign inert gases (e.g., \ce{N2}). As such, they proposed a mechanism with a greater emphasis on collision partners and showed it to be consistent with all experimental data collected on the reaction since 1934. For me, this is a fascinating glimpse into the scientific method and how the concepts I'm learning about are still under development today.
+\end{proof}
+% \newpage
+
+
+% \printbibliography
 
 
 

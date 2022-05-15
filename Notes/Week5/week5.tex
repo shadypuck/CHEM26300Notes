@@ -387,10 +387,23 @@
     \end{itemize}
     \item Ask about the Problem 29-24 derivation from class final steps as well as molecularity.
     \begin{itemize}
-        \item You have a 2 and a squared. The exponent comes from the fact that it's bimolecular. The coefficient comes from the fact that we're talking about the rate of change of that substance. In particular, if \ce{2C ->[$k_1$] D}, then
+        \item You have a 2 and a squared. The exponent comes from the fact that it's bimolecular. The coefficient comes from the fact that we're talking about the rate of change of that substance.
+        \item In particular, if \ce{2C ->[$k_1$] D}, then
         \begin{equation*}
-            -\dv{\cnc{C}}{t} = 2\dv{\cnc{D}}{t} = 2k_1\cnc{C}^2
+            v = k_1\cnc{C}^2
         \end{equation*}
+        \item But recall that $v$ is the \emph{rate of reaction}, a specifically defined quantity. Indeed, we know that
+        \begin{align*}
+            v &= -\frac{1}{\nu_{\ce{C}}}\dv{\cnc{C}}{t}
+                = \frac{1}{\nu_{\ce{D}}}\dv{\cnc{D}}{t}\\
+            &= -\frac{1}{2}\dv{\cnc{C}}{t}
+            = \frac{1}{1}\dv{\cnc{D}}{t}
+        \end{align*}
+        so that this step's contribution to $\dv*{\cnc{C}}{t}$ is
+        \begin{align*}
+            -\frac{1}{2}\dv{\cnc{C}}{t} &= k_1\cnc{C}^2\\
+            \dv{\cnc{C}}{t} &= -2k_1\cnc{C}^2
+        \end{align*}
     \end{itemize}
     \item Eyring equation and thermodynamics questions: So what we need to know and be able to work with are the Eyring equation and you said "the dimensional analysis?" I'm still unclear on what $\prb{u_\text{ac}}$ and $\nu_c$ are.
     \begin{itemize}
