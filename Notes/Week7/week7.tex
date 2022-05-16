@@ -1,0 +1,70 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{6}
+
+\begin{document}
+
+
+
+
+\chapter{Gas-Phase Product Molecule Analysis and Intro to Lattices}
+\section{Directional Scattering of the Product Molecule}
+\begin{itemize}
+    \item \marginnote{5/9:}The velocity and angular distribution of the products of a reactive collision.
+    \begin{itemize}
+        \item We have that
+        \begin{align*}
+            E_\text{trans}'+E_\text{vib}' &= E_\text{trans}+E_\text{vib}-[D_e(\ce{D2})-D_e(\ce{DF})]\\
+            &= \SI{7.62}{\kilo\joule\per\mole}+\SI{17.9}{\kilo\joule\per\mole}+\SI{140}{\kilo\joule\per\mole}\\
+            &= \SI{166}{\kilo\joule\per\mole}
+        \end{align*}
+        \item Additionally, we know that
+        \begin{equation*}
+            E_\text{trans}'+E_\text{vib}' = \frac{1}{2}\mu'u_r'^2+(\SI{34.8}{\kilo\joule\per\mole})\left( v+\frac{1}{2} \right)
+            = \SI{166}{\kilo\joule\per\mole}
+        \end{equation*}
+        \item The relationship between the vibrational quantum number, the relative speed of the products, and the speed of \ce{DF} relative to the center of mass has been tabulated.
+    \end{itemize}
+    \item A contour map of the angular and speed distributions for the product molecule.
+    \begin{itemize}
+        \item The contour plot.
+        \begin{itemize}
+            \item The center of mass is fixed at the origin.
+            \item The dashed circles correspond to the maximum relative speeds a \ce{DF} molecule can have for the indicated vibrational state.
+            \item The product molecules preferentially scatter back in the direction of the incident fluorine atom, a scattering angle of $\theta=\ang{180}$.
+            \item The arrows at the bottom of the figure show the direction with which each reactant molecule approaches the other.
+        \end{itemize}
+        \item Another picture is provided, illustrating the atom-molecule reaction \ce{F + D2} in which $\theta=\ang{0}$ and $\theta=\ang{180}$.
+        \item The influence of rotation.
+        \begin{itemize}
+            \item Large numbers of product molecules have speeds between the dashed circles.
+            \item The dash circles correspond to the case where there is internal energy only in the vibrational states of the molecule, in which case the rotational energy corresponding to these circles is $E_\text{rot}=0$ with $J=0$.
+            \item If \ce{DF} is produced in an excited rotational state, we would expect to observe a speed that has a value intermediate between two fo the dashed circles.
+        \end{itemize}
+    \end{itemize}
+    \item Not all gas-phase chemical reactions are rebound reactions.
+    \begin{itemize}
+        \item Consider the reaction
+        \begin{equation*}
+            \ce{K(g) + I2(g) -> KI(g) + I(g)}
+        \end{equation*}
+        \begin{itemize}
+            \item The product diatomic molecule in this case (\ce{KI}) is preferentially scattered in the forward direction along the direction of the incident \ce{K} atom.
+        \end{itemize}
+        \item Consider the reaction
+        \begin{equation*}
+            \ce{O(g) + Br2(g)} \Longrightarrow \ce{BrO(g) + Br(g)}
+        \end{equation*}
+        \begin{itemize}
+            \item The product molecule \ce{BrO} is forward and back scattered with equal intensity.
+        \end{itemize}
+        \item Both of these observations can be read off of the contour maps of the two reactions.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
