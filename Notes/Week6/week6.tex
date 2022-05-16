@@ -294,7 +294,7 @@
         \begin{equation*}
             \text{KE}_\text{react} = \frac{1}{2}m_{\ce{A}}u_{\ce{A}}^2+\frac{1}{2}m_{\ce{B}}u_{\ce{B}}^2
         \end{equation*}
-        \item Combining the fact that the relative speed of the two molecules is given by $\mathbf{u}_\text{r}=\mathbf{u}_{\ce{A}}-\mathbf{u}_{\ce{B}}$ with the definition of $\mathbf{u}_\text{cm}$ yields
+        \item Combining the fact that the relative speed of the two molecules\footnote{In particular, the speed of molecule \ce{A} relative to molecule \ce{B}, as it is defined.} is given by $\mathbf{u}_\text{r}=\mathbf{u}_{\ce{A}}-\mathbf{u}_{\ce{B}}$ with the definition of $\mathbf{u}_\text{cm}$ yields
         \begin{align*}
             \mathbf{u}_{\ce{A}} &= \mathbf{u}_\text{cm}+\frac{m_{\ce{B}}}{M}\mathbf{u}_\text{r}&
             \mathbf{u}_{\ce{B}} &= \mathbf{u}_\text{cm}-\frac{m_{\ce{A}}}{M}\mathbf{u}_\text{r}
@@ -324,6 +324,167 @@
         \begin{itemize}
             \item $E_\text{react,int}$ and $E_\text{prod,int}$ are the total internal energies of the reactants and products, respectively.
             \item This internal energy takes into account all the degrees of freedom other than translation.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Experimental Techniques and the Simplest Reaction}
+\begin{itemize}
+    \item \marginnote{5/6:}Reactive collisions can be studied using crossed molecular beam machines.
+    \begin{figure}[h!]
+        \centering
+        \footnotesize
+        \begin{subfigure}[b]{0.45\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \fill [rex,opacity=0.5] (-2.5,-0.05) -- ++(0,0.1) -- ++(5,0.15) -- ++(0,-0.4);
+                \fill [blx,opacity=0.5] (-0.05,2.5) -- ++(0.1,0) -- ++(0.15,-5) -- ++(-0.4,0);
+    
+                \draw [semithick]
+                    (-3.5,-0.5) rectangle ++(1,1) node[above,align=center,xshift=-5mm]{Molecular\\beam}
+                    (-0.5,2.5) node[left,align=center,yshift=5mm]{Molecular\\beam} rectangle ++(1,1)
+                ;
+                \draw [very thick]
+                    (-0.7,2) -- ++(0.5,0)
+                    (0.2,2) -- ++(0.5,0)
+                    (-2,-0.7) -- ++(0,0.5)
+                    (-2,0.2) -- ++(0,0.5)
+                ;
+    
+                \draw [dashed] (40:0.2) -- (40:2.5);
+                \draw [latex-latex] (10:2.5) arc[start angle=10,end angle=70,radius=2.5cm];
+                \filldraw [semithick,fill=white,rotate around={40:(0,0)}] (2.4,-0.2) rectangle ++(0.2,0.4) node[above right]{Detector};
+    
+                \node [below right=1cm,align=center] {Collision\\region}
+                    edge [->] (0.2,-0.2)
+                ;
+            \end{tikzpicture}
+            \caption{Overall machine.}
+            \label{fig:crossedMolBeama}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \draw [ultra thick] (0,-1) -- ++(1,0) -- ++(0,0.8) ++(0,0.4) -- ++(0,0.8) -- ++(-1,0);
+                \node [align=center] {Reactant/\\inert gas\\mixture};
+    
+                \draw [rex]
+                    (0.9,0.06)   -- ($(0.9,0.06)!0.54!(4.0,0.42)$)
+                    (0.9,0.05)   -- ($(0.9,0.05)!0.52!(4.0,0.35)$)
+                    (0.9,0.04)   -- ++(3.1,0.24)
+                    (0.9,0.03)   -- ++(3.1,0.18)
+                    (0.9,0.02)   -- ++(3.1,0.12)  -- ++(0.7,0)
+                    (0.9,0.01)   -- ++(3.1,0.06)  -- ++(0.7,0)
+                    (0.9,0.00)   -- ++(3.1,0.00)  -- ++(0.7,0)
+                    (0.9,-0.01)  -- ++(3.1,-0.06) -- ++(0.7,0)
+                    (0.9,-0.02)  -- ++(3.1,-0.12) -- ++(0.7,0)
+                    (0.9,-0.03)  -- ++(3.1,-0.18)
+                    (0.9,-0.04)  -- ++(3.1,-0.24)
+                    (0.9,-0.05)  -- ($(0.9,-0.05)!0.52!(4.0,-0.35)$)
+                    (0.9,-0.06)  -- ($(0.9,-0.06)!0.54!(4.0,-0.42)$)
+                ;
+    
+                \filldraw [semithick,fill=white]
+                    (2.5,0.2) -- ++(0.4,0.1) -- ++(0,0.2) -- cycle
+                    (2.5,-0.2) -- ++(0.4,-0.1) -- ++(0,-0.2) node[below]{Skimmer} -- cycle
+                    (4,0.2) -- ++(0,0.5) -- ++(0.1,0) node[above]{Collimator} -- ++(0,-0.4) -- cycle
+                    (4,-0.2) -- ++(0,-0.5) -- ++(0.1,0) -- ++(0,0.4) -- cycle
+                ;
+            \end{tikzpicture}
+            \caption{Supersonic molecular beam source.}
+            \label{fig:crossedMolBeamb}
+        \end{subfigure}
+        \caption{Crossed molecular beam machines.}
+        \label{fig:crossedMolBeam}
+    \end{figure}
+    \begin{itemize}
+        \item Figure \ref{fig:crossedMolBeama} depicts the overall setup in a crossed molecular beam machine. Each reactant is introduced into the vacuum chamber by a molecular beam source. The two molecular beams collide at the collision region.
+        \item Figure \ref{fig:crossedMolBeamb} depicts a supersonic molecular beam source. The reactant is expanded along with an inert gas through a small orifice into the vacuum chamber. A skimmer is used so that a collimated beam of molecules is directed toward the collision region.
+        \item The product molecules are detected using a mass spectrometer.
+    \end{itemize}
+    \item A supersonic molecular beam has several important advantages that make it ideal for crossed-beam studies.
+    \begin{itemize}
+        \item The supersonic expansion generates a collection of molecules with a high translational energy but a very small spread in molecular speeds.
+        \item In addition, molecules can be prepared with low rotational and vibrational energies.
+        \item If we measure the number of molecules of a particular reaction product that arrive at the detector as a function of time after the collision, we can resolve the velocity distribution of the product molecules.
+        \item If we measure the total number of product molecules as a function of scattering angle, we can determine the angular distribution of the product molecules.
+    \end{itemize}
+    \item The reaction
+    \begin{equation*}
+        \ce{F(g) + D2(g)} \Longrightarrow \ce{DF(g) + D(g)}
+    \end{equation*}
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \small
+            \draw [stealth-] (0,1) -- node[rotate=90,above=8mm]{Energy (\si{\kilo\joule\per\mole})} (0,-5.5);
+            \node at (3,-6) {Reaction coordinate};
+    
+            \footnotesize
+            \draw
+                (0,0)    -- ++(-0.1,0) node[left]{0}
+                (0,-1.7) -- ++(-0.1,0) node[left]{-50}
+                (0,-3.4) -- ++(-0.1,0) node[left]{-100}
+                (0,-5.1) -- ++(-0.1,0) node[left]{-150}
+            ;
+    
+            \draw [blx,thick]
+                (0.2,0) -- node[below]{\ce{F + D2}} ++(1.8,0)
+                (4,-4.7) -- node[below]{\ce{DF + D}} ++(1.8,0)
+            ;
+            \draw [blx,semithick] (2,0)
+                to[out=0,in=180,out looseness=1.3] ++(0.4,0.1)
+                to[out=0,in=180,out looseness=0.5,in looseness=0.8] ++(1.6,-4.8)
+            ;
+            \draw [grx,thick]
+                (0.8,0.5)  -- ++(0.6,0) node[right]{$v=0$}
+                %
+                (4.6,0.8)  -- ++(0.6,0) node[right]{$v=5$}
+                (4.6,-0.2) -- ++(0.6,0) node[right]{$v=4$}
+                (4.6,-1.2) -- ++(0.6,0) node[right]{$v=3$}
+                (4.6,-2.2) -- ++(0.6,0) node[right]{$v=2$}
+                (4.6,-3.2) -- ++(0.6,0) node[right]{$v=1$}
+                (4.6,-4.2) -- ++(0.6,0) node[right]{$v=0$}
+            ;
+    
+            \draw [dashed] (0.2,-4.7) -- ++(3.8,0);
+            \draw [<->,shorten <=1pt,shorten >=1pt] (1.9,0) -- node[fill=white]{\SI{-140}{\kilo\joule\per\mole}} ++(0,-4.7);
+            \draw [<->,shorten <=1pt,shorten >=1pt] (1.1,0) -- node[left]{$\frac{1}{2}h\nu_{\ce{D2}}$} ++(0,0.5);
+            %
+            \draw [<->,shorten <=1pt,shorten >=1pt] (4.9,-4.2) -- node[left]{$h\nu_{\ce{D2}}$} ++(0,1);
+            \draw [<->,shorten <=1pt,shorten >=1pt] (4.9,-4.7) -- node[left]{$\frac{1}{2}h\nu_{\ce{D2}}$} ++(0,0.5);
+        \end{tikzpicture}
+        \caption{Energy diagram for the \ce{F + D2} reaction.}
+        \label{fig:FD2}
+    \end{figure}
+    \begin{itemize}
+        \item Figure \ref{fig:FD2} depicts the energy of the lowest vibrational state of \ce{D2} and the energies of the first six vibrational states of \ce{DF}.
+        \begin{itemize}
+            \item In drawing these energy states, we have tacitly assumed that the vibrational motion of both \ce{D2} and \ce{DF} is harmonic.
+        \end{itemize}
+        \item The difference between the ground electronic state energies of \ce{D2} and \ce{DF} is
+        \begin{equation*}
+            D_e(\ce{D2})-D_e(\ce{DF}) = -\SI{140}{\kilo\joule\per\mole}
+        \end{equation*}
+        \item The reaction has an activation energy barrier of about \SI{7}{\kilo\joule\per\mole}.
+        \item Moreover, we have that
+        \begin{equation*}
+            E_\text{tot} = E_\text{trans}+E_\text{int}
+            = E_\text{trans}'+E_\text{int}'
+        \end{equation*}
+        where $E_\text{int}$ is the internal energy of the reactants, $E_\text{trans}$ is the relative translational energy of the reactants, $E_\text{int}'$ is the internal energy of the products, and $E_\text{trans}'$ is the relative translational energy of the products.
+        \begin{itemize}
+            \item Additionally, note that
+            \begin{align*}
+                E_\text{int} &= E_\text{rot}+E_\text{vib}+E_\text{elec}&
+                E_\text{int}' &= E_\text{rot}'+E_\text{vib}'+E_\text{elec}'
+            \end{align*}
+            i.e., that $E_\text{int},E_\text{int}'$ are the sum of the rotational, vibrational, and electronic energies of the reactants and products, respectively.
+            \item Lastly, note that $E_\text{elec}=-D_e(\ce{D2})$ and $E_\text{elec}'=-D_e(\ce{DF})$.
         \end{itemize}
     \end{itemize}
 \end{itemize}
