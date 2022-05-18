@@ -66,5 +66,119 @@
 
 
 
+\section{Potential Energy Surfaces}
+\begin{itemize}
+    \item \marginnote{5/11:}The velocity and angular distribution of the products of a reactive collision.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \draw [dashed] (-5.5,0) -- (-0.18,0) (5.5,0) -- (0.18,0);
+    
+            \draw
+                (-4,0) ellipse (7mm and 1.5cm) node[above=2cm,align=center]{Approaching\\reactant}
+                (4,0) ellipse (1.05cm and 2.25cm) node[above=2.75cm,align=center]{Leaving\\product}
+            ;
+            \draw
+                (-4,0) ++(145:1.5) ++(0.65,0) coordinate(A) -- (-4,0)
+                (-4,0) ++(20:1.5) ++(-0.75,0) coordinate (A') -- (-4,0)
+                ($(-4,0)!0.3!(A)$) arc[start angle=150,end angle=18,x radius=2.1mm,y radius=4.5mm]
+                ($(-4,0)!0.25!(A')$) -- ++(0.25,0) -- (-3.75,0)
+            ;
+            \node at (-4,0.65) {$\phi$};
+            \draw
+                (4,0) ++(145:2.25) ++(0.98,0) coordinate(C) -- (4,0)
+                (4,0) ++(20:2.25) ++(-1.13,0) coordinate (C') -- (4,0)
+                ($(4,0)!0.2!(C)$) arc[start angle=150,end angle=18,x radius=2.1mm,y radius=4.5mm]
+                ($(4,0)!0.17!(C')$) -- ++(0.25,0) -- (4.25,0)
+            ;
+            \node at (4,0.65) {$\phi$};
+    
+            \draw [semithick,-latex] (A) -- node[above]{$\mathbf{u}_r$} (A -| 0,0) -- node[above]{$\mathbf{u}_r'$} ($(A -| 0,0)!0.84!(C)$);
+            \draw (A -| -0.45,0) arc[start angle=180,end angle=8,radius=4.5mm];
+            \node [fill=white,inner sep=1.5pt] at ([yshift=4.5mm]A -| 0,0) {$\theta$};
+    
+            \draw [<->,shorten <=1pt,shorten >=1pt] (-2,0 |- A) -- node[right]{$b$} (-2,0);
+    
+            \begin{scope}[on background layer]
+                \fill [ball color=rex] (0,0) circle (1cm) node{\ce{B}};
+                \fill [ball color=blx] (A) circle (5mm) node[left]{\ce{A}};
+                \fill [ball color=blx] (C) circle (5mm);
+            \end{scope}
+        \end{tikzpicture}
+        \caption{Velocity and angular distributions of the products.}
+        \label{fig:velocityAngleDist}
+    \end{figure}
+    \begin{itemize}
+        \item For a fixed value of the impact parameter $b$, the reactants and products take on all possible angles $\phi$ with equal probability, thereby forming a cone around the relative velocity vector $\mathbf{u}_r$.
+        \item The angle $\theta$, however, depends on the dynamics of the reaction and must be determined experimentally.
+    \end{itemize}
+    \item The potential energy of a polyatomic molecule depends on more than one variable.
+    \begin{itemize}
+        \item \ce{D2}.
+        \begin{itemize}
+            \item Consider the potential energy curve of \ce{D2}. The zero of energy is defined to be that of the two separated atoms. The minimum of the potential energy curve corresponds to the equilibrium bond length of the \ce{D2} molecule.
+        \end{itemize}
+        \item \ce{H2O}.
+        \begin{itemize}
+            \item The potential energy of a water molecule is a function of the three parameters $r_{\ce{O-H_A}}$, $r_{\ce{O-H_B}}$, and $\alpha$ (two bond lengths and the interbond angle). In an equation,
+            \begin{equation*}
+                V = V(r_{\ce{O-H_A}},r_{\ce{O-H_B}},\alpha)
+            \end{equation*}
+            \item A plot of the complete potential energy surface of a water molecule therefore requires four axes.
+        \end{itemize}
+    \end{itemize}
+    \item The potential energy of a chemical reaction depends on more than one variable.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \begin{scope}[xshift=-5cm]
+                \node (DA) at (0,0)   {\ce{D_A}};
+                \node (DB) at (1.3,0) {\ce{D_B}};
+                \node (F)  at (180:2) {\ce{F}};
+    
+                \draw [semithick,dashed] (F)  -- node[above]{$\beta=\ang{180}$} (DA);
+                \draw [semithick] (DA) -- (DB);
+            \end{scope}
+            \begin{scope}[xshift=0cm]
+                \node (DA) at (0,0)   {\ce{D_A}};
+                \node (DB) at (1.3,0) {\ce{D_B}};
+                \node (F)  at (135:2) {\ce{F}};
+    
+                \draw [semithick,dashed] (F)  -- node[above right]{$\beta=\ang{180}$} (DA);
+                \draw [semithick] (DA) -- (DB);
+            \end{scope}
+            \begin{scope}[xshift=5cm]
+                \node (DA) at (0,0)   {\ce{D_A}};
+                \node (DB) at (1.3,0) {\ce{D_B}};
+                \node (F)  at (90:2) {\ce{F}};
+    
+                \draw [semithick,dashed] (F)  -- node[right]{$\beta=\ang{180}$} (DA);
+                \draw [semithick] (DA) -- (DB);
+            \end{scope}
+        \end{tikzpicture}
+        \caption{Angle of attack in \ce{F + D2}.}
+        \label{fig:FD2attackAngle}
+    \end{figure}
+    \begin{itemize}
+        \item Consider, once again, the reaction
+        \begin{equation*}
+            \ce{F(g) + D_AD_B(g)} \Longrightarrow \ce{D_AF(g) + D_B(g)}
+        \end{equation*}
+        \item When the reactants are at infinite separation, there are no attractive or repulsive forces between the fluorine atom and the \ce{D2} molecule, so the potential energy surface for the reaction is the same as that for an isolated \ce{D2} molecule.
+        \item Likewise, when the products are at infinite separation, the potential-energy surface for the reaction is the same as the for the isolated \ce{DF} molecule.
+        \item As the reaction occurs, however, the distance between the fluroine atom and \ce{D_A} decreases and the distance between \ce{D_A} and \ce{D_B} increases, and the potential energy depends on both distances.
+        \item The potential energy also depends on the angle at which the fluorine atom approaches the \ce{D2} molecule.
+    \end{itemize}
+    \item As with the angular and speed distributions, we can draw an energy contour map for the reaction.
+    \begin{itemize}
+        \item The zero of energy is defined as the infinitely separated reactants. Point B is the location of the transition state of the reaction.
+    \end{itemize}
+    \item Tian does a brief summary of Chapter 30.
+\end{itemize}
+
+
+
 
 \end{document}
