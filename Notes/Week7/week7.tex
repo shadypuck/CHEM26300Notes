@@ -131,33 +131,46 @@
     \item The potential energy of a chemical reaction depends on more than one variable.
     \begin{figure}[H]
         \centering
-        \begin{tikzpicture}
-            \footnotesize
-            \begin{scope}[xshift=-5cm]
+        \footnotesize
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \begin{tikzpicture}
                 \node (DA) at (0,0)   {\ce{D_A}};
                 \node (DB) at (1.3,0) {\ce{D_B}};
                 \node (F)  at (180:2) {\ce{F}};
     
                 \draw [semithick,dashed] (F)  -- node[above]{$\beta=\ang{180}$} (DA);
                 \draw [semithick] (DA) -- (DB);
-            \end{scope}
-            \begin{scope}[xshift=0cm]
+            \end{tikzpicture}
+            \caption{Linear.}
+            \label{fig:FD2attackAnglea}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \begin{tikzpicture}
                 \node (DA) at (0,0)   {\ce{D_A}};
                 \node (DB) at (1.3,0) {\ce{D_B}};
                 \node (F)  at (135:2) {\ce{F}};
     
                 \draw [semithick,dashed] (F)  -- node[above right]{$\beta=\ang{180}$} (DA);
                 \draw [semithick] (DA) -- (DB);
-            \end{scope}
-            \begin{scope}[xshift=5cm]
+            \end{tikzpicture}
+            \caption{Bent.}
+            \label{fig:FD2attackAngleb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \begin{tikzpicture}
                 \node (DA) at (0,0)   {\ce{D_A}};
                 \node (DB) at (1.3,0) {\ce{D_B}};
                 \node (F)  at (90:2) {\ce{F}};
     
                 \draw [semithick,dashed] (F)  -- node[right]{$\beta=\ang{180}$} (DA);
                 \draw [semithick] (DA) -- (DB);
-            \end{scope}
-        \end{tikzpicture}
+            \end{tikzpicture}
+            \caption{Perpendicular.}
+            \label{fig:FD2attackAnglec}
+        \end{subfigure}
         \caption{Angle of attack in \ce{F + D2}.}
         \label{fig:FD2attackAngle}
     \end{figure}
@@ -169,13 +182,327 @@
         \item When the reactants are at infinite separation, there are no attractive or repulsive forces between the fluorine atom and the \ce{D2} molecule, so the potential energy surface for the reaction is the same as that for an isolated \ce{D2} molecule.
         \item Likewise, when the products are at infinite separation, the potential-energy surface for the reaction is the same as the for the isolated \ce{DF} molecule.
         \item As the reaction occurs, however, the distance between the fluroine atom and \ce{D_A} decreases and the distance between \ce{D_A} and \ce{D_B} increases, and the potential energy depends on both distances.
-        \item The potential energy also depends on the angle at which the fluorine atom approaches the \ce{D2} molecule.
+        \item The potential energy also depends on the angle at which the \ce{F} atom approaches the \ce{D2} molecule.
     \end{itemize}
     \item As with the angular and speed distributions, we can draw an energy contour map for the reaction.
     \begin{itemize}
         \item The zero of energy is defined as the infinitely separated reactants. Point B is the location of the transition state of the reaction.
     \end{itemize}
     \item Tian does a brief summary of Chapter 30.
+\end{itemize}
+
+
+
+\section{Lattice Structure}
+\begin{itemize}
+    \item \marginnote{5/13:}The unit cell is the fundamental building block of a crystal.
+    \begin{itemize}
+        \item We can think of a crystal as a two- or three-dimensional lattice.
+        \item Either way, we can identify blocks in the lattice that form a regularly repeating structure.
+    \end{itemize}
+    \item \textbf{Face-centered cubic} (unit cell): The following unit cell. \emph{Also known as} \textbf{FCC}, \textbf{cubic close-packing}. \emph{Structure}
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \includegraphics[width=0.6\linewidth]{../ExtFiles/FCCunitCella.png}
+            \caption{Atomic picture.}
+            \label{fig:FCCunitCella}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \includegraphics[width=0.7\linewidth]{../ExtFiles/FCCunitCellb.png}
+            \caption{Lattice picture.}
+            \label{fig:FCCunitCellb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \includegraphics[width=1.0\linewidth]{../ExtFiles/FCCunitCellc.png}
+            \caption{Unit cell.}
+            \label{fig:FCCunitCellc}
+        \end{subfigure}
+        \caption{Face-centered cubic unit cell.}
+        \label{fig:FCCunitCell}
+    \end{figure}
+    \begin{itemize}
+        \item Figure \ref{fig:FCCunitCella} shows the set of atoms that contribute to a unit cell of the crystal. The unit cell, itself, is a cube however (see Figure \ref{fig:FCCunitCellc}).
+        \item Figure \ref{fig:FCCunitCellb} shows the unit cell for a three-dimensional lattice model of copper, where each point of the crystal is associated with a lattice point.
+        \item Figure \ref{fig:FCCunitCellc} shows the fractions of each copper atom shown in Figure \ref{fig:FCCunitCella} that contribute to the unit cell of the crystal.
+        \item There are four atoms per unit cell (six half-atoms and eight eighth-atoms).
+        \item Example: The packing of copper atoms in a copper crystal gives a face-centered cubic unit cell.
+    \end{itemize}
+    \item \textbf{Body-centered cubic} (unit cell): The following unit cell. \emph{Also known as} \textbf{BCC}. \emph{Structure}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \includegraphics[width=0.6\linewidth]{../ExtFiles/BCCunitCella.png}
+            \caption{Atomic picture.}
+            \label{fig:BCCunitCella}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \includegraphics[width=0.65\linewidth]{../ExtFiles/BCCunitCellb.png}
+            \caption{Lattice picture.}
+            \label{fig:BCCunitCellb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \includegraphics[width=0.85\linewidth]{../ExtFiles/BCCunitCellc.png}
+            \caption{Unit cell.}
+            \label{fig:BCCunitCellc}
+        \end{subfigure}
+        \caption{Body-centered cubic unit cell.}
+        \label{fig:BCCunitCell}
+    \end{figure}
+    \begin{itemize}
+        \item There are two atoms per unit cell.
+        \item Example: The packing of potassium atoms in a crystal.
+    \end{itemize}
+    \item \textbf{Primitive cubic} (unit cell): The following unit cell. \emph{Also known as} \textbf{simple cubic}. \emph{Structure}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \includegraphics[width=0.6\linewidth]{../ExtFiles/PCunitCella.png}
+            \caption{Atomic picture.}
+            \label{fig:PCunitCella}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \includegraphics[width=0.65\linewidth]{../ExtFiles/PCunitCellb.png}
+            \caption{Lattice picture.}
+            \label{fig:PCunitCellb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \includegraphics[width=0.85\linewidth]{../ExtFiles/PCunitCellc.png}
+            \caption{Unit cell.}
+            \label{fig:PCunitCellc}
+        \end{subfigure}
+        \caption{Body-centered cubic unit cell.}
+        \label{fig:PCunitCell}
+    \end{figure}
+    \begin{itemize}
+        \item There is one atom per unit cell.
+        \item Example: The packing of polonium atoms in a crystal.
+    \end{itemize}
+    \item \textbf{Unit cell}: The simplest repeating unit in the crystal. \emph{Structure}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=2,z={(4.85mm,3.85mm)}]
+            \footnotesize
+            \draw
+                (0,0,0) coordinate (O) -- node[below]{$a$} (1,0,0) coordinate (a) -- node[below right=-1pt]{$b$} (1,0,1) -- (0,0,1) coordinate (b) -- cycle
+                (0.4,1.2,0) coordinate (c) -- ++(1,0,0) -- ++(0,0,1) -- ++(-1,0,0) -- cycle
+                (O) -- (c)
+                (a) -- ($(a)+(c)$)
+                (b) -- ($(b)+(c)$)
+                ($(a)+(b)$) -- node[right]{$c$} ($(a)+(b)+(c)$)
+            ;
+    
+            \pic [draw,angle eccentricity=1.3,pic text={$\alpha$}] {angle=b--O--c};
+            \pic [draw,angle radius=1cm] {angle=a--O--c};
+            \node [fill=white,inner sep=1pt] at (20:0.5) {$\beta$};
+            \pic [draw,angle radius=4mm,angle eccentricity=1.3,pic text={$\gamma$}] {angle=a--O--b};
+    
+            \draw [-stealth] ([xshift=-1cm]O) -- ([xshift=-1cm]$(O)!0.5!(a)$)  node[right]{\textbf{a}};
+            \draw [-stealth] ([xshift=-1cm]O) -- ([xshift=-1cm]$(O)!0.65!(b)$) node[above right=-1pt]{\textbf{b}};
+            \draw [-stealth] ([xshift=-1cm]O) -- ([xshift=-1cm]$(O)!0.5!(c)$)  node[right]{\textbf{c}};
+        \end{tikzpicture}
+        \caption{Unit cell.}
+        \label{fig:unitCell}
+    \end{figure}
+    \begin{itemize}
+        \item Opposite faces of a unit cell are parallel.
+        \item The edge of the unit cell connects equivalent points.
+        \item Unit cells all have the same general shape.
+        \begin{itemize}
+            \item We take the bottom left corner of the unit cell to be the origin of the \textbf{a}, \textbf{b}, \textbf{c} coordinate system.
+            \item The unit cell is defined by the distances $a$, $b$, and $c$ (which give its length along the \textbf{a}, \textbf{b}, and \textbf{c} axes, respectively) and the angles $\alpha$, $\beta$, and $\gamma$ (which lie between the three pairs of axes).
+        \end{itemize}
+        \item Note that henceforth unless stated otherwise, the \textbf{a} axis points to the right, the \textbf{b} axis points back, and the \textbf{c} axis points up, as in Figure \ref{fig:unitCell}.
+    \end{itemize}
+    \item Tian gives examples of unit cells for crystals containing more than one atom as well as what kinds of crystals take these structures.
+    \item \textbf{Bravais lattices}: The fourteen distinct unit cells necessary to generate all possible crystal lattices.
+    \begin{itemize}
+        \item The French physicist August Bravais proved that only the Bravais lattices are needed to generate all possible structures.
+    \end{itemize}
+    \item We can interpret the points in the unit cell as atoms or molecules. For example, crystalline \ce{C_{60}} forms a face-centered cubic unit cell.
+    \item \textbf{Miller indices}: The three indices that we use to specify parallel planes through a crystal lattice. \emph{Denoted by} $\bm{h}$, $\bm{k}$, $\bm{l}$. \emph{Given by}
+    \begin{align*}
+        h &= \frac{a}{a'}&
+        k &= \frac{b}{b'}&
+        l &= \frac{c}{c'}
+    \end{align*}
+    where the plane in question intersects the \textbf{a}, \textbf{b}, and \textbf{c} axes of the unit cell at points $a'$, $b'$, and $c'$, respectively.
+    \item Three basic types of planes.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \begin{tikzpicture}[z={(4.85mm,7mm)},line join=round]
+                \draw [semithick] (0,0,0) -- (2,0,0) -- (2,0,1) -- (0,0,1) -- cycle;
+                \filldraw [semithick,fill=rey]
+                    (0,1,0) -- (0,0,0) -- (0,0,1) -- (0,1,1)
+                    (1,1,0) -- (1,0,0) -- (1,0,1) -- (1,1,1)
+                    (2,1,0) -- (2,0,0) -- (2,0,1) -- (2,1,1)
+                ;
+                \draw [semithick]
+                    (0,1,0) -- (2,1,0) -- (2,1,1) -- (0,1,1) -- cycle
+                    (1,1,0) -- (1,1,1)
+                ;
+            \end{tikzpicture}
+            \caption{$100$ planes.}
+            \label{fig:basicPlanesa}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \begin{tikzpicture}[z={(4.85mm,7mm)},line join=round]
+                \draw [semithick] (0,0,0) -- (2,0,0) -- (2,0,1) -- (0,0,1) -- cycle;
+                \draw [semithick]
+                    (0,1,0) -- (0,0,0) -- (0,0,1) -- (0,1,1)
+                    (1,1,0) -- (1,0,0) -- (1,0,1) -- (1,1,1)
+                    (2,1,0) -- (2,0,0) -- (2,0,1) -- (2,1,1)
+                ;
+                \filldraw [semithick,fill=rey]
+                    (1,0,0) -- (0,0,1) -- (0,1,1) -- (1,1,0) -- cycle
+                    (2,0,0) -- (1,0,1) -- (1,1,1) -- (2,1,0) -- cycle
+                ;
+                \draw [semithick]
+                    (0,1,0) -- (2,1,0) -- (2,1,1) -- (0,1,1) -- cycle
+                    (1,1,0) -- (1,1,1)
+                ;
+            \end{tikzpicture}
+            \caption{$110$ planes.}
+            \label{fig:basicPlanesb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \begin{tikzpicture}[z={(4.85mm,7mm)},line join=round]
+                \draw [semithick] (0,0,0) -- (2,0,0) -- (2,0,1) -- (0,0,1) -- cycle;
+                \draw [semithick]
+                    (0,1,0) -- (0,0,0) -- (0,0,1) -- (0,1,1)
+                    (1,1,0) -- (1,0,0) -- (1,0,1) -- (1,1,1)
+                    (2,1,0) -- (2,0,0) -- (2,0,1) -- (2,1,1)
+                ;
+                \filldraw [semithick,fill=rey]
+                    (1,0,0) -- (0,0,1) -- (0,1,0) -- cycle
+                    (2,0,0) -- (1,0,1) -- (0,1,1) -- (1,1,0) -- cycle
+                    (2,0,1) -- (2,1,0) -- (1,1,1) -- cycle
+                ;
+                \draw [semithick]
+                    (0,1,0) -- (2,1,0) -- (2,1,1) -- (0,1,1) -- cycle
+                    (1,1,0) -- (1,1,1)
+                ;
+            \end{tikzpicture}
+            \caption{$111$ planes.}
+            \label{fig:basicPlanesc}
+        \end{subfigure}
+        \caption{Basic lattice planes.}
+        \label{fig:basicPlanes}
+    \end{figure}
+    \begin{itemize}
+        \item Why are they called as such? Esp. where are the zeros coming from?
+    \end{itemize}
+    \item Denoting more complicated types of planes.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \begin{tikzpicture}[z={(3.85mm,6mm)},line join=round,yscale=1.2]
+                \path (0,0,0) -- (0,-1,0);
+                \draw [semithick] (0,0,0) -- (1,0,0) -- (1,0,1) -- (0,0,1) -- cycle;
+                \draw [semithick]
+                    (0,1,0) -- (0,0,0) -- (0,0,1) -- (0,1,1)
+                    (1,1,0) -- (1,0,0) -- (1,0,1) -- (1,1,1)
+                ;
+                \filldraw [semithick,fill=rey] (1,0,0.5) -- (0.5,0,1) -- (0.5,1,1) -- (1,1,0.5) -- cycle;
+                \filldraw [semithick,fill=rey] (1,0,0) -- (0,0,1) -- (0,1,1) -- (1,1,0) -- cycle;
+                \filldraw [semithick,fill=rex] (0.5,0,0) -- (0,0,0.5) -- (0,1,0.5) -- (0.5,1,0) -- cycle;
+                \draw [semithick] (0,1,0) -- (1,1,0) -- (1,1,1) -- (0,1,1) -- cycle;
+            \end{tikzpicture}
+            \caption{$220$ planes.}
+            \label{fig:complicatedPlanesa}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.2\linewidth}
+            \centering
+            \begin{tikzpicture}[z={(3.85mm,6mm)},line join=round,yscale=1.2]
+                \footnotesize
+                \draw [semithick,dashed]
+                    (0,0,1) -- (0,-1,1) -- (1,-1,1) -- (1,0,1)
+                    (0,-1,1) -- (0,-1,0)
+                    (1,-1,1) -- (1,-1,0)
+                ;
+                \filldraw [semithick,fill=rey] (1,-1,0) -- (1,0,1) -- (0,-1,1) -- cycle;
+                \draw [semithick]
+                    (0,1,1) -- (0,0,1) -- (1,0,1) -- (1,1,1)
+                    (0,0,1) -- (0,0,0)
+                    (1,0,1) -- (1,0,0)
+                ;
+                \filldraw [semithick,fill=rex] (0,-1,0) -- (1,0,0) -- (1,1,1) -- (0,0,1) -- cycle;
+                \draw [semithick] (0,1,0) -- (0,1,1) -- (1,1,1) -- (1,1,0);
+                \draw [semithick,dashed] (0,0,0) -- (0,-1,0) -- (1,-1,0) -- (1,0,0);
+                \filldraw [semithick,fill=rey] (1,1,0) -- (0,1,1) -- (0,0,0) -- cycle;
+                \draw [semithick] (0,1,0) -- (0,0,0) -- (1,0,0) -- (1,1,0) -- cycle;
+    
+                \node [left] at (0,1,0)  {$c$};
+                \node [left] at (0,0,0)  {$0$};
+                \node [left] at (0,-1,0) {$-c$};
+            \end{tikzpicture}
+            \caption{$11\bar{1}$ planes.}
+            \label{fig:complicatedPlanesb}
+        \end{subfigure}
+        \caption{More complicated lattice planes.}
+        \label{fig:complicatedPlanes}
+    \end{figure}
+    \begin{itemize}
+        \item In Figure \ref{fig:complicatedPlanesa}, we denote by $220$ the darkened plane and implicitly identify planes that are stacked twice as close together as in Figure \ref{fig:basicPlanesb}.
+        \begin{itemize}
+            \item Note that $h=a/a'=a/(a/2)=2$ and $k=b/b'=b/(b/2)$ is where the twos are coming from.
+        \end{itemize}
+        \item In Figure \ref{fig:complicatedPlanesb}, we denote by $11\bar{1}$ the darkened plane. The $\bar{1}$ denotes a Miller index of \emph{negative} one, corresponding to $c'=-c$ (notice how the darkened plane does not intersect the \textbf{c} axis within the unit cell, but rather extends down to the axis' negative region).
+    \end{itemize}
+    \item The lattice plane spacing can be determined.
+    \begin{itemize}
+        \item The perpendicular distance between adjacent $hkl$ planes for an orthorhombic unit cell.
+        \begin{equation*}
+            \frac{1}{d^2} = \frac{h^2}{a^2}+\frac{k^2}{b^2}+\frac{l^2}{c^2}
+        \end{equation*}
+        \item For a cubic unit cell,
+        \begin{equation*}
+            \frac{1}{d^2} = \frac{h^2+k^2+l^2}{a^2}
+        \end{equation*}
+        \item For a tetragonal unit cell,
+        \begin{equation*}
+            \frac{1}{d^2} = \frac{h^2+k^2}{a^2}+\frac{l^2}{c^2}
+        \end{equation*}
+        \item For a hexagonal unit cell,
+        \begin{equation*}
+            \frac{1}{d^2} = \frac{4}{3}\left( \frac{h^2+hk+k^2}{a^2} \right)+\frac{l^2}{c^2}
+        \end{equation*}
+        \item For a rhombohedral unit cell,
+        \begin{equation*}
+            \frac{1}{d^2} = \frac{(h^2+k^2+l^2)\sin^2\alpha+2(hk+kl+hl)(\cos^2\alpha-\cos\alpha)}{a^2(1-3\cos^2\alpha+2\cos^3\alpha)}
+        \end{equation*}
+        \item For a monoclinic unit cell,
+        \begin{equation*}
+            \frac{1}{d^2} = \frac{1}{\sin^2\beta}\left( \frac{h^2}{a^2}+\frac{k^2\sin^2\beta}{b^2}+\frac{l^2}{c^2}-\frac{2hl\cos\beta}{ac} \right)
+        \end{equation*}
+        \item For a triclinic unit cell,
+        \begin{equation*}
+            \frac{1}{d^2} = \frac{1}{V^2}(S_{11}h^2+S_{22}k^2+S_{33}l^2+2S_{12}hk+2S_{23}kl+2S_{13}hl)
+        \end{equation*}
+        where
+        \begin{align*}
+            S_{11} &= b^2c^2\sin^2\alpha&
+                S_{12} &= abc^2(\cos\alpha\cos\beta-\cos\gamma)\\
+            S_{22} &= a^2c^2\sin^2\beta&
+                S_{23} &= a^2bc(\cos\beta\cos\gamma-\cos\alpha)\\
+            S_{33} &= a^2b^2\sin^2\gamma&
+                S_{13} &= ab^2c(\cos\gamma\cos\alpha-\cos\beta)\\
+        \end{align*}
+    \end{itemize}
 \end{itemize}
 
 
