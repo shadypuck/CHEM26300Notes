@@ -130,5 +130,84 @@
 
 
 
+\section{The Scattering Factor and Intensity}
+\begin{itemize}
+    \item \marginnote{5/18:}Reviews the Bragg diffraction.
+    \begin{itemize}
+        \item There is no such thing as a 222 or a 333 lattice plane; rather, there are 111 lattice planes with higher order diffractions.
+        \item Tian says something about higher order reflections?
+    \end{itemize}
+    \item \textbf{Scattering factor} (of an atom): The following quantity, where $\rho(r)$ is the spherically symmetric electron density (number of electrons per unit volume) of the atom and $k=4\pi\sin(\theta)/\lambda$. In turn, $\theta$ is the scattering angle and $\lambda$ is the wavelength of the X-radiation. \emph{Denoted by} $\bm{f}$. \emph{Given by}
+    \begin{equation*}
+        f = 4\pi\int_0^\infty\rho(r)\frac{\sin kr}{kr}r^2\dd{r}
+    \end{equation*}
+    \begin{itemize}
+        \item The integral $4\pi\int_0^\infty\rho(r)r^2\dd{r}$ gives the total number of electrons in the atom.
+    \end{itemize}
+    \item The total scattering intensity is related to the periodic structure of the electron density in the crystal.
+    \begin{itemize}
+        \item If the crystal is oriented such that the von Laue equation governing scattering from atoms along the $a$ axis is satisfied, then
+        \begin{align*}
+            \Delta_{11} &= \Delta_{22}
+                = \frac{a}{h}(\cos\alpha-\cos\alpha_0)
+                = \lambda&
+            \Delta_{12} &= x(\cos\alpha-\cos\alpha_0)
+        \end{align*}
+        \item Combining these two equations, we learn that
+        \begin{equation*}
+            \Delta_{12} = \frac{\lambda hx}{a}
+        \end{equation*}
+        \item The difference in path length corresponds to a phase difference between the diffracted beams from successive 1 and 2 atoms of
+        \begin{equation*}
+            \phi = 2\pi\frac{\Delta_{12}}{\lambda}
+            = 2\pi\frac{\lambda hx/a}{\lambda}
+            = \frac{2\pi hx}{a}
+        \end{equation*}
+        \item The amplitude of the light scattered from successive 1 and 2 atoms is then
+        \begin{align*}
+            A &= f_1\cos\omega t+f_2\cos(\omega t+\phi)\\
+            &= f_1\e[i\omega t]+f_2\e[i(\omega t+\phi)]
+        \end{align*}
+        \item The detected intensity is proportional to the square of the magnitude of the amplitude.
+        \begin{align*}
+            I \propto |A|^2 &= [f_1\e[i\omega t]+f_2\e[i(\omega t+\phi)]][f_1\e[-i\omega t]+f_2\e[-i(\omega t+\phi)]]\\
+            &= f_1^2+f_1f_2\e[i\phi]+f_1f_2\e[-i\phi]+f_2^2\\
+            &= f_1^2+f_2^2+2f_1f_2\cos\phi
+        \end{align*}
+        \begin{itemize}
+            \item The first two terms reflect the constructive interference of the X-rays scattered from the set of parallel planes through the 1 atoms and 2 atoms, respectively.
+            \item The third term takes into account the interference of the scattering from these two sets of parallel planes.
+        \end{itemize}
+        \item We can therefore ignore the $\e[i\omega t]$ term and define
+        \begin{equation*}
+            F(h) = f_1+f_2\e[i\phi]
+            = f_1+f_2\e[2\pi ihx/a]
+        \end{equation*}
+        \item The intensity is then proportional to $|F(h)|^2$.
+        \item Generalizing to three dimensions for a unit cell that contains atoms of type $j$ located at points $x_j,y_j,z_j$ gives
+        \begin{equation*}
+            F(hkl) = \sum_jf_j\e[2\pi i(hx_j/a+ky_j/b+lz_j/c)]
+            = \sum_jf_j\e[2\pi i(hx_j'+ky_j'+lz_j')]
+        \end{equation*}
+        where $x_j'=x_j/a$, $y_j'=y_j/b$, and $z_j'=z_j/c$.
+    \end{itemize}
+    \item An analysis of the \ce{CsCl} body-centered cubic lattice, where we take the unit cell to have eighth chloride atoms at every corner and one cesium ion in the center.
+    \begin{itemize}
+        \item Taking $f_+$ to be the scattering factor of the \ce{Cs+} cations and $f_-$ to be the scattering factor of the \ce{Cl-} anions, we get
+        \begin{align*}
+            F(hkl) &= 1\times f_-\e[\pi i(h+k+l)]+\frac{1}{8}\times f_+\left[ \e[0]+\e[2\pi ih]+\e[2\pi ik]+\e[2\pi il]+\e[2\pi i(h+k)]+\e[2\pi i(k+l)]+\e[2\pi i(h+l)]+\e[2\pi i(h+k+l)] \right]\\
+            &= f_-(-1)^{h+k+l}+\frac{1}{8}f_+[8]\\
+            &=
+            \begin{cases}
+                f_++f_- & h+k+l\text{ is even}\\
+                f_+-f_- & h+k+l\text{ is odd}
+            \end{cases}
+        \end{align*}
+        where we substitute $\e[\pi i]=-1$ and $\e[2\pi i]=1$ to get from the first line to the second.
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
