@@ -209,5 +209,144 @@
 
 
 
+\section{Continuous Structure Factors and Adsorption}
+\begin{itemize}
+    \item \marginnote{5/20:}More on the \ce{CsCl} example today.
+    \begin{itemize}
+        \item We simplify $\e[i\pi(h+k+l)]$ to $(-1)^{h+k+l}$ by expanding to $\cis[\pi(h+k+l)]$, ignoring the imaginary part to get $\cos[\pi(h+k+l)]$, the sign of which does depend on whether the natural number $h+k+l$ is even or odd exactly like $(-1)^{h+k+l}$.
+    \end{itemize}
+    \item \ce{CsI} example.
+    \begin{itemize}
+        \item \ce{Cs+} and \ce{I-} are \textbf{isoelectronic}.
+        \item We have that
+        \begin{equation*}
+            f_+(\ce{Cs+}) = f_-(\ce{I-})
+        \end{equation*}
+    \end{itemize}
+    \item The structure factor and the electron density are related by a Fourier transform.
+    \begin{itemize}
+        \item In both atomic and molecular crystals, the electron density is not localized at individual points within the unit cell.
+        \item We should consider the unit cell of the crystal to have a continuous electron density distribution $\rho(x,y,z)$.
+        \item The structure factor is no longer simply a sum over discrete atoms but now becomes an integral over the continuous electron density distribution in the unit cell, as follows.
+        \begin{equation*}
+            F(hkl) = \int_0^a\int_0^b\int_0^c\rho(x,y,z)\e[2\pi i(hx/a+ky/b+lz/c)]\dd{x}\dd{y}\dd{z}
+        \end{equation*}
+        \item For the entire crystal, we have the following.
+        \begin{equation*}
+            F(hkl) \propto \int_{-\infty}^\infty\int_{-\infty}^\infty\int_{-\infty}^\infty\rho(x,y,z)\e[2\pi i(hx/a+ky/b+lz/c)]\dd{x}\dd{y}\dd{z}
+        \end{equation*}
+        \item $F(hkl)$ is related to $\rho(x,y,z)$ by a \textbf{Fourier transform}.
+        \begin{equation*}
+            \rho(x,y,z) = \sum_{h=-\infty}^\infty\sum_{k=-\infty}^\infty\sum_{l=-\infty}^\infty F(hkl)\e[-2\pi i(hx/a+ky/b+lz/c)]
+        \end{equation*}
+        \item If we let $F(hkl)=A(hkl)+iB(hkl)$, then it follows that the intensity is
+        \begin{equation*}
+            I(hkl) \propto |F(hkl)|^2 = [A(hkl)]^2+[B(hkl)]^2
+        \end{equation*}
+    \end{itemize}
+    \item An electron-density map of a benzoic acid molecule.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.4\linewidth]{../ExtFiles/benzoicAcidEdensity.png}
+        \caption{The electron density of benzoic acid.}
+        \label{fig:benzoicAcidEdensity}
+    \end{figure}
+    \begin{itemize}
+        \item An electron-density map of a benzoic acid molecule determined from the X-ray diffraction pattern of a benzoic acid crystal.
+        \item Each contour line corresponds to a constant value of the electron density.
+        \item The location of the nuclei are readily deduced from this electron-density map and are represented by the vertices of the solid lines.
+    \end{itemize}
+    \item A gas molecule can physisorb or chemisorb to a solid surface.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.36\linewidth]{../ExtFiles/PhysiChemiSorption.png}
+        \caption{Comparing physisorption and chemisorption.}
+        \label{fig:PhysiChemiSorption}
+    \end{figure}
+    \begin{itemize}
+        \item Figure \ref{fig:PhysiChemiSorption} shows one-dimensional potential-energy curves for the physisorption of molecule \ce{AB} (solid line) and the dissociative chemisorption of \ce{AB} (dashed line).
+        \item The quantity $z$ is the distance from the surface.
+        \item In the physisorbed state, the molecule \ce{AB} is bound to the surface by van der Waals forces.
+        \item In the chemisorbed state, the \ce{A-B} bond is broken, and the individual atoms are bound covalently or ionically on the surface.
+        \begin{itemize}
+            \item As such, chemisorbed molecules are bound more strongly, are held closer to the surface.
+            \item As $z\to\infty$, $V$ approaches a value greater than zero because \ce{AB} is dissociated here. The asymptote is the bond dissociation energy (BDE).
+            \item Additionally, while \ce{A + B} may be at zero, what we have here is \ce{A+ + B-}. As such, we have the Coulomb potential, and the charged ions are unstable to be apart.
+        \end{itemize}
+        \item The points $z_\text{ch}$ and $z_\text{ph}$ are the surface-molecule bond lengths for a chemisorbed and physisorbed molecule, respectively. The length of the substrate-adsorbate bond is shorter for a chemisorbed molecule than for a physisorbed molecule.
+        \item The two potential curves cross at $z_c$. The activation energy for the conversion from physisorption to chemisorption is measured from the bottom of the physisorbed potential and is $E_a$.
+    \end{itemize}
+    \item \textbf{Adsorption isotherm}: A plot of surface coverage as a function of gas pressure at constant temperature.
+    \item Langmuir's assumptions.
+    \begin{itemize}
+        \item The adsorbed molecules do not interact with one another.
+        \item The enthalpy of adsorption was independent of surface coverage.
+        \item There are a finite number of surface sites where a molecule can adsorb.
+        \item The process of adsorption and desorption is depicted by the reversible elementary process
+        \begin{equation*}
+            \ce{A(g) + S(s)} \Longleftrightarrows[k_a][k_d] \ce{A-S(s)}
+        \end{equation*}
+        with equilibrium constant
+        \begin{equation*}
+            K_c = \frac{k_a}{k_d}
+            = \frac{\cnc{A-S}}{\cnc{A}\cnc{S}}
+        \end{equation*}
+        where $k_a$ and $k_d$ are the rate constants for \underline{a}dsorption and \underline{d}esorption, respectively.
+    \end{itemize}
+    \item The fact that $k_a$ and $k_d$ are constants independent of the extent of surface coverage implies that adsorbed molecules do not interact with one another.
+    \item An analysis of surface coverage.
+    \begin{itemize}
+        \item Let $\sigma_0$ be the concentration of surface sites in units of \si{\per\meter\squared}.
+        \item If the fraction of surface sites occupied by an adsorbate is $\theta$, then $\sigma$ (the adsorbate concentration on the surface) is $\theta\sigma_0$ and the concentration of empty surface sites is give by $\sigma_0-\theta\sigma_0=(1-\theta)\sigma_0$.
+        \item We have that
+        \begin{align*}
+            v_d &= k_d\theta\sigma_0&
+            v_a &= k_a(1-\theta)\sigma_0\cnc{A}
+        \end{align*}
+        where $v_d$ is the rate of desorption, $v_a$ is the rate of absorption, and $\cnc{A}$ is the number density or the concentration of \ce{A(g)}.
+        \item It follows that at equilibrium,
+        \begin{align*}
+            k_d\theta &= k_a(1-\theta)\cnc{A}\\
+            \frac{1}{\theta} &= 1+\frac{1}{K_c\cnc{A}}
+        \end{align*}
+        \item Additionally, since
+        \begin{align*}
+            \cnc{A} = \frac{P_{\ce{A}}}{\kB T}
+        \end{align*}
+        the Langmuir adsorption isotherm is
+        \begin{equation*}
+            \frac{1}{\theta} = 1+\frac{1}{bP_{\ce{A}}}
+        \end{equation*}
+        where we have defined $b=K_c/\kB T$.
+    \end{itemize}
+    \item For different materials, the same mass may correspond to orders of magnitude different surface areas (consider MOFs for instance).
+    \item Langmuir adsorption isotherm for the case in which a diatomic molecule dissociates upon adsorption to the surface.
+    \begin{itemize}
+        \item This reaction can be written as
+        \begin{align*}
+            \ce{A2(g) + 2S(s)} &\Longleftrightarrows[k_a][k_d] \ce{2A-S(s)}&
+            K_c &= \frac{k_a}{k_d}
+                = \frac{\cnc{A-S}^2}{\cnc{A2}\cnc{S}^2}
+        \end{align*}
+        \item Two surface sites are involved in the adsorption and desorption process.
+        \begin{align*}
+            v_a &= k_a\cnc{A2}(1-\theta)^2\sigma_0^2&
+            v_d &= k_d\theta^2\sigma_0^2
+        \end{align*}
+        \item At equilibrium, these rates are equal, i.e.,
+        \begin{align*}
+            k_a\cnc{A2}(1-\theta)^2 &= k_d\theta^2\\
+            \theta &= \frac{K_c^{1/2}\cnc{A2}^{1/2}}{1+K_c^{1/2}\cnc{A2}^{1/2}}
+        \end{align*}
+        \item Having defined $\cnc{A}=P_{\ce{A}}/\kB T$ and $b=K_c/\kB T$, we have
+        \begin{align*}
+            \theta &= \frac{b_{\ce{A2}}^{1/2}P_{\ce{A2}}^{1/2}}{1+b_{\ce{A2}}^{1/2}P_{\ce{A2}}^{1/2}}\\
+            \frac{1}{\theta} &= 1+\frac{1}{b_{\ce{A2}}^{1/2}P_{\ce{A2}}^{1/2}}
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
