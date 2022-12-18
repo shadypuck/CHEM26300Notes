@@ -1,0 +1,49 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{5}
+
+\begin{document}
+
+
+
+
+\section{Crystal Structure Methods}
+\subsection*{Chapter 31}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{enumerate}[label={\textbf{31-\arabic*.}},leftmargin=3.5em]
+    \setcounter{enumi}{25}
+    \item \marginnote{5/23:}Silver crystallizes as a face-centered cubic structure with a unit cell length of \SI{408.6}{\pico\meter}. The single crystal of silver is oriented such that the incident X-rays are perpendicular to the \textbf{c} axis of the crystal. The detector is located \SI{29.5}{\milli\meter} from the crystal. What is the distance between the diffraction spots from the 001 and 002 planes on the face of the detector for\dots
+    \begin{enumerate}
+        \item The $\lambda=\SI{154.433}{\pico\meter}$ line of copper;
+        \item The $\lambda=\SI{70.926}{\pico\meter}$ line of a molybdenum X-ray source?
+        \item Which X-ray source gives you the better spacial resolution between the diffraction spots?
+    \end{enumerate}
+    \setcounter{enumi}{40}
+    \item In this problem, we will derive the structure factor for a sodium chloride-type unit cell. First, show that the coordinates of the cations at the eight corners are $(0,0,0)$, $(1,0,0)$, $(0,1,0)$, $(0,0,1)$, $(1,1,0)$, $(1,0,1)$, $(0,1,1)$, and $(1,1,1)$ and those at the six faces are $(\frac{1}{2},\frac{1}{2},0)$, $(\frac{1}{2},0,\frac{1}{2})$, $(0,\frac{1}{2},\frac{1}{2})$, $(\frac{1}{2},\frac{1}{2},1)$, $(\frac{1}{2},1,\frac{1}{2})$, and $(1,\frac{1}{2},\frac{1}{2})$. Similarly, show that the coordinates of the anions along the 12 edges are $(\frac{1}{2},0,0)$, $(0,\frac{1}{2},0)$, $(0,0,\frac{1}{2})$, $(\frac{1}{2},1,0)$, $(1,\frac{1}{2},0)$, $(0,\frac{1}{2},1)$, $(\frac{1}{2},0,1)$, $(1,0,\frac{1}{2})$, $(0,1,\frac{1}{2})$, $(\frac{1}{2},1,1)$, $(1,\frac{1}{2},1)$, and $(1,1,\frac{1}{2})$ and those of the anion at the center of the unit cell are $(\frac{1}{2},\frac{1}{2},\frac{1}{2})$. Now show that
+    \begin{align*}
+        \begin{split}
+            F(hkl) ={}& \frac{f_+}{8}\left[ 1+\e[2\pi ih]+\e[2\pi ik]+\e[2\pi il]+\e[2\pi i(h+k)]+\e[2\pi i(h+l)]+\e[2\pi i(k+l)]+\e[2\pi i(h+k+l)] \right]\\
+            &+ \frac{f_+}{2}\left[ \e[\pi i(h+k)]+\e[\pi i(h+l)]+\e[\pi i(k+l)]+\e[\pi i(h+k+2l)]+\e[\pi i(h+2k+l)]+\e[\pi i(2h+k+l)] \right]\\
+            &+ \frac{f_-}{4}\left[ \e[\pi ih]+\e[\pi ik]+\e[\pi il]+\e[\pi i(h+2k)]+\e[\pi i(2h+k)]+\e[\pi i(k+2l)] \right.\\
+            &\quad \left. +\e[\pi i(h+2l)]+\e[\pi i(2h+l)]+\e[\pi i(2k+l)]+\e[\pi i(h+2k+2l)]+\e[\pi i(2h+k+2l)]+\e[\pi i(2h+2k+l)] \right]\\
+            &+ f_-\e[\pi i(h+k+l)]
+        \end{split}\\
+        \begin{split}
+            ={}& f_+\left[ 1+(-1)^{h+k}+(-1)^{h+l}+(-1)^{k+l} \right]\\
+            &+ f_-\left[ (-1)^h+(-1)^k+(-1)^l+(-1)^{h+k+l} \right]
+        \end{split}
+    \end{align*}
+    Finally, show that if $h,k,l$ are all even, we have the left case below; if $h,k,l$ are all odd, we have the right case below; and otherwise, we have the center case below.
+    \begin{align*}
+        F(hkl) &= 4(f_++f_-)&
+        F(hkl) &= 0&
+        F(hkl) &= 4(f_+-f_-)
+    \end{align*}
+\end{enumerate}
+
+
+
+
+\end{document}
