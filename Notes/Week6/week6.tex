@@ -493,5 +493,152 @@
 
 
 
+\section{Chapter 30: Gas-Phase Reaction Dynamics}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{5/18:}An underlying assumption of the step model for $\sigma_r(E_r)$.
+    \begin{itemize}
+        \item All molecular collisions with relative energy $E_r$ yield the same reaction cross section.
+        \begin{itemize}
+            \item Reality: Not all molecular collisions are head-on; some are more grazing. In a head-on collision, the molecules come to a stop and, in principle, all the relative kinetic energy becomes available for reaction. In contrast, a grazing collision provides almost no energy for reaction.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Line-of-centers model} (for $\sigma_r(E_r)$): A model in which the reaction cross section depends on the component of the relative kinetic energy that lies along the line that joins the centers of the colliding molecules. \emph{Given by}
+    \begin{equation*}
+        \sigma_r(E_r) =
+        \begin{cases}
+            0 & E_r<E_0\\
+            \sigma_{\ce{A}\ce{B}}\left( 1-\frac{E_0}{E_r} \right) & E_r\geq E_0
+        \end{cases}
+    \end{equation*}
+    \item Derivation of the line-of-centers model.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \draw [dashed]
+                (-5,1.3) -- (4,1.3)
+                (-5,0) -- (4,0)
+            ;
+            \draw [very thin,<->,shorten <=1pt,shorten >=1pt] (-4.8,0) -- node[fill=white,inner sep=1.5pt]{$b$} ++(0,1.3);
+    
+            \begin{scope}[on background layer]
+                \filldraw [fill=orx,thick] (-1.1,1.3) coordinate (A) circle (7mm) node[above=7mm]{A};
+                \filldraw [fill=gry,thick] (0,0) coordinate (B)      circle (1cm) node[below=1cm]{B};
+            \end{scope}
+    
+            \fill
+                (A) circle (2pt)
+                (B) circle (2pt)
+            ;
+            \path (B) -- node[below left=-2pt]{$r_{\ce{B}}$} (130.1:1) -- node[below left=-2pt]{$r_{\ce{A}}$} (130.1:1.7);
+            \draw [very thick,-latex] (A) -- ++(2.64,0) coordinate (ur) node[right,fill=white]{$\mathbf{u}_r$};
+            \draw [very thick,-latex] (A) -- ($(A)!0.95!(B)$) node[above right,xshift=-1mm]{$\mathbf{u}_\text{loc}$};
+    
+            \pic [pic text={$\theta$},angle eccentricity=0.83] {angle=B--A--ur};
+        \end{tikzpicture}
+        \caption{Line-of-centers model derivation.}
+        \label{fig:lineOfCentersDeriv}
+    \end{figure}
+    \begin{itemize}
+        \item Qualitative observations and definitions.
+        \begin{itemize}
+            \item From the reference frame of molecule \ce{B}, molecule \ce{A} approaches with relative speed $\mathbf{u}_r=\mathbf{u}_{\ce{A}}-\mathbf{u}_{\ce{B}}$ and relative kinetic energy $E_r=\mu u_r^2/2$.
+            \item Applying the line-of-centers coordinate system, molecule \ce{A} approaches molecule \ce{B} along the loc (line of centers) axis with speed $\mathbf{u}_\text{loc}$.
+            \item They will collide if the \textbf{impact parameter} $b$ is less than the sum of the two radii $r_{\ce{A}}+r_{\ce{B}}=d_{\ce{A}\ce{B}}$.
+            \item The impact parameter determines the energy of the collision on a scale of zero to $E_r$. In particular, if $b=0$, then $E_\text{loc}=E_r$, and if $b\geq d_{\ce{A}\ce{B}}$, $E_\text{loc}=0$, where $E_\text{loc}$ denotes the relative kinetic energy along the line of centers.
+            \item Naturally, a reaction will occur iff $E_\text{loc}\geq E_0$.
+        \end{itemize}
+        \item Mathematical derivation \parencite{bib:LineOfCenters}.
+        \begin{itemize}
+            \item We have from basic trigonometry that
+            \begin{align*}
+                \cos\theta &= \frac{u_\text{loc}}{u_r}&
+                \sin\theta &= \frac{b}{d_{\ce{A}\ce{B}}}
+            \end{align*}
+            \item Thus, we know that
+            \begin{equation*}
+                u_\text{loc}^2 = u_r^2\cos^2\theta
+                = u_r^2(1-\sin^2\theta)
+                = u_r^2\left[ 1-\left( \frac{b}{d_{\ce{A}\ce{B}}} \right)^2 \right]
+            \end{equation*}
+            and hence
+            \begin{equation*}
+                E_\text{loc} = \frac{1}{2}\mu u_\text{loc}^2
+                = \frac{1}{2}\mu u_r^2\left[ 1-\left( \frac{b}{d_{\ce{A}\ce{B}}} \right)^2 \right]
+                = E_r\left[ 1-\left( \frac{b}{d_{\ce{A}\ce{B}}} \right)^2 \right]
+            \end{equation*}
+            \item Now recall that a chemical reaction only takes place if $E_\text{loc}\geq E_0$. By the above, an equivalent requirement for a chemical reaction to take place is that
+            \begin{align*}
+                E_r\left[ 1-\left( \frac{b}{d_{\ce{A}\ce{B}}} \right)^2 \right] &\geq E_0\\
+                \left( \frac{b}{d_{\ce{A}\ce{B}}} \right)^2 &\leq 1-\frac{E_0}{E_r}\\
+                \left| \frac{b}{d_{\ce{A}\ce{B}}} \right| &\leq \sqrt{1-\frac{E_0}{E_r}}\\
+                \left| b \right| &\leq d_{\ce{A}\ce{B}}\sqrt{1-\frac{E_0}{E_r}}
+            \end{align*}
+            i.e., that the impact parameter lie within some range, specifically one whose width is determined by the total energy of the reactants $E_r$ and is at most $d_{\ce{A}\ce{B}}$ (in the case of infinite reactant energy).
+            \item It is this observation that motivates our definition of the \textbf{reaction diameter}. The physical meaning of this quantity is analogous to that of the collision diameter: Whereas the collision diameter defined a cylinder in which other molecules had to lie to \emph{collide} with one molecule in particular (see Figure \ref{fig:collisionCylinder}), the reaction diameter defines a cylinder (the \textbf{reaction cylinder}) in which other molecules must lie to \emph{react} with one molecule in particular.
+            \item One consequence of this physical interpretation is that $\sigma_r(E_r)=\pi b_\text{crit}^2$, i.e., that the reaction cross section is a perpendicular cross section of the reaction cylinder in much the same way that the collision cross section is a perpendicular cross section of the collision cylinder.
+            \item Another consequence is that two molecules with impact parameter equal to $b_\text{crit}$ will have \emph{just enough} energy to react, and no more. In other words, they will possess exactly $E_0$ units of energy. Mathematically,
+            \begin{equation*}
+                E_0 = E_r\left[ 1-\left( \frac{b_\text{crit}}{d_{\ce{A}\ce{B}}} \right)^2 \right]
+            \end{equation*}
+            \item Solving the above for $b_\text{crit}^2$ and substituting into the definition of $\sigma_r(E_r)$ in terms of $b_\text{crit}$ yields
+            \begin{equation*}
+                \sigma_r(E_r) = \pi d_{\ce{A}\ce{B}}^2\left( 1-\frac{E_0}{E_r} \right)
+                = \sigma_{\ce{A}\ce{B}}\left( 1-\frac{E_0}{E_r} \right)
+            \end{equation*}
+            for the case where $E_r\geq E_0$, as desired. We will naturally still take $\sigma_r(E_r)=0$ when $E_r<E_0$.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Impact parameter}: The perpendicular distance between the paths along which the two molecules travel. \emph{Denoted by} $\bm{b}$.
+    \item \textbf{Reaction diameter}: The largest value of the impact parameter at which two molecules of combined energy $E_r$ will still react. \emph{Denoted by} $\bm{b_\textbf{crit}}$. \emph{Also known as} \textbf{critical impact parameter}.
+    \item \textcite{bib:McQuarrieSimon} gives an example of a bimolecular gas phase reaction for which the relationship between the reaction cross section and the the collision energy is as described by the line-of-centers model.
+    \item Substituting the reaction cross section as defined by the line-of-centers model into the integral defining $k$ yields
+    \begin{equation*}
+        k = \prb{u_r}\sigma_{\ce{A}\ce{B}}\e[-E_0/\kB T]
+    \end{equation*}
+    \item \textcite{bib:McQuarrieSimon} relates $E_0$ to the Arrhenius equation parameters as in class.
+    \item Upon reviewing experimentally determined collision cross section functions for a number of reactions, we can conclude that even the line-of-centers model is insufficient, and we need to move beyond simple hard-sphere collision theories.
+    \item An underlying assumption of all hard-sphere models.
+    \begin{itemize}
+        \item Every collision with sufficient energy is reactive, regardless of orientation.
+        \begin{itemize}
+            \item Reality: A specific orientation of components is typically required for molecules that are not spherically symmetric.
+        \end{itemize}
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} discusses the \ce{Rb(g) + CH3I(g)} reaction from class and Figure \ref{fig:noIsotropy}.
+    \item An underlying assumption of all hard-sphere models.
+    \begin{itemize}
+        \item Only the translational energy of reacting molecules affects the reaction cross section.
+        \begin{itemize}
+            \item Reality: The presence or lack thereof of internal energy, as well as how it's distributed between the rotational, vibrational, and electronic states, plays an integral role in determining the reaction cross section. Additionally, internal energy changes can occur during the course of a reaction. 
+        \end{itemize}
+    \end{itemize}
+    \item An analysis of the following reaction with the hydrogen molecular ion in different vibrational states.
+    \begin{equation*}
+        \ce{H2+(g) + He(g)} \Longrightarrow \ce{HeH+(g) + H(g)}
+    \end{equation*}
+    \begin{itemize}
+        \item For the vibrational states $v=0,\dots,3$, there is a threshold energy of about \SI{70}{\kilo\joule\per\mole}.
+        \item For vibrational states $v=4,5$, there is no threshold energy.
+        \item This is because these higher vibrational states can lend more than the threshold energy worth of energy to the reaction, so no supplementary translational motion is needed.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} discusses the center-of-mass coordinate system.
+    \begin{itemize}
+        \item The energy and momentum conservation laws allow us to define the velocity of the products.
+        \item They do not, however, allow us to define the angle at which the products scatter.
+        \item We will soon see that the scattering angles are often highly \textbf{anisotropic}.
+    \end{itemize}
+    \item \textbf{Anisotropic} (entity): An object or substance the properties of which vary by the direction in which they're measured.
+    \item \textbf{Crossed molecular beam method}: An experimental setup designed to cross a beam of \ce{A} molecules with a beam of \ce{B} molecules at a specific location inside a large vacuum chamber before detecting the product molecules with a mass spectrometer.
+    \begin{itemize}
+        \item "In some crossed molecular beam machines, the detector can be rotated in the plane defined by the two molecular beams, thereby allowing the measurement of the angular distribution of the scattered products" \parencite[1244]{bib:McQuarrieSimon}.
+        \item "A supersonic molecular beam can be generated by taking a high-pressure, dilute mixture of the reactant molecule of interest in an inert carrier gas (\ce{He} and \ce{Ne} are commonly used) and pulsing the mixture through a small nozzle into the vacuum chamber" \parencite[1244]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item Crossed molecular beam experiments can be used to measure reaction cross sections: We alter the relative velocities (and hence collision energies) of the reactants and record the product yield.
+\end{itemize}
+
+
+
 
 \end{document}

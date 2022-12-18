@@ -522,5 +522,109 @@
 
 
 
+\section{Chapter 30: Gas-Phase Reaction Dynamics}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{5/18:}Goals of the chapter.
+    \begin{itemize}
+        \item Describe bimolecular gas-phase reactions, some of the simplest naturally occurring elementary kinetic processes.
+        \item Analyze the reaction $\ce{F(g) + D2(g)}\Rightarrow\ce{DF(g) + D(g)}$, an exothermic cousin of the hydrogen exchange reaction $\ce{H_A + H_B-H_C}\Rightarrow\ce{H_A-H_B + H_C}$.
+    \end{itemize}
+    \item Na\"{i}ve hard-sphere collision theory.
+    \begin{itemize}
+        \item Consider the following general bimolecular elementary gas-phase reaction.
+        \begin{equation*}
+            \ce{A(g) + B(g)} \xRightarrow{k} \text{products}
+        \end{equation*}
+        \item The rate of reaction is given by
+        \begin{equation*}
+            v = -\dv{\cnc{A}}{t}
+            = k\cnc{A}\cnc{B}
+        \end{equation*}
+        \item Recall that when we derived this equation in Chapter 29, we assumed that every collision between molecules of \ce{A} and \ce{B} is chemically active and thus related the rate of reaction to the collision frequency per unit volume $Z_{\ce{A}\ce{B}}$ via
+        \begin{equation*}
+            v = Z_{\ce{A}\ce{B}}
+            = \sigma_{\ce{A}\ce{B}}\prb{u_r}\rho_{\ce{A}}\rho_{\ce{B}}
+        \end{equation*}
+        where $\sigma_{\ce{A}\ce{B}}$ is the hard-sphere collision cross section of \ce{A} and \ce{B} molecules (see Figure \ref{fig:collisionCylinder}), $\prb{u_r}$ is the average relative speed of a colliding pair of \ce{A} and \ce{B} molecules, and $\rho_{\ce{A}},\rho_{\ce{B}}$ are the respective number densities.
+        \begin{itemize}
+            \item Note that $\sigma_{\ce{A}\ce{B}}=\pi d_{\ce{A}\ce{B}}^2$ where $d_{\ce{A}\ce{B}}$ is the sum of the radii of the two colliding spheres.
+            \item Since we are assuming that every collision is successful, we have that every one of the $Z_{\ce{A}\ce{B}}$ collisions happening every second in every cubic meter of volume consumes a reactant molecule. In other words, $Z_{\ce{A}\ce{B}}$ gives the change in molecular concentration of \ce{A} per unit time, so the statement $v=-\dv*{\cnc{A}}{t}=Z_{\ce{A}\ce{B}}$ is justified.
+        \end{itemize}
+        \item Identifying $\cnc{A}\sim\rho_{\ce{A}}$ and $\cnc{B}\sim\rho_{\ce{B}}$ gives the rate constant as
+        \begin{equation*}
+            k = \sigma_{\ce{A}\ce{B}}\prb{u_r}
+        \end{equation*}
+    \end{itemize}
+    \item To convert $k$ from the standard SI units of \si{\cubic\meter\per\molecule\per\second} to the more conventional units of \si{\cubic\deci\meter\per\mole\per\second}, we can multiply the above expression by $(\SI{1000}{\cubic\deci\meter\per\cubic\meter})(\NA\ \si{\per\mole})$.
+    \item Problems with na\"{i}ve hard-sphere collision theory.
+    \begin{itemize}
+        \item The calculated rate constants are often significantly larger than experimental rate constants.
+        \item Since $\prb{u_r}\propto T^{1/2}$, it predicts $k\propto T^{1/2}$ instead of the experimental Arrhenius dependence of $k\propto\e[1/T]$.
+    \end{itemize}
+    \item Two underlying assumptions of na\"{i}ve hard-sphere collision theory.
+    \begin{itemize}
+        \item Each pair of reactants approaches one another with a relative speed of $\prb{u_r}$.
+        \begin{itemize}
+            \item Reality: Pairs of reactant molecules approach each other with a (M-B) distribution of speeds.
+        \end{itemize}
+        \item Every collision is chemically reactive, regardless of speed or energy.
+        \begin{itemize}
+            \item Reality: Since the valence electrons of the two molecules repel one another, a reaction will not occur unless the relative speed is sufficient to overcome this repulsive force.
+        \end{itemize}
+    \end{itemize}
+    \item Developing a model of collision theory that accounts for differing speeds.
+    \begin{itemize}
+        \item We consider each speed $u_r$ with which molecules can collide to give rise to a different rate constant $k(u_r)$ and corresponding \textbf{reaction cross section} $\sigma_r(u_r)$. These quantities are related via
+        \begin{equation*}
+            k(u_r) = u_r\sigma_r(u_r)
+        \end{equation*}
+        \begin{itemize}
+            \item It makes sense to continue using this relationship since $k=\sigma_{\ce{A}\ce{B}}\prb{u_r}$ relies on the assumption that all molecules travel at the same speed $\prb{u_r}$, and $k(u_r)=u_r\sigma_r(u_r)$ relies on the assumption that all molecules travel at the same speed $u_r$.
+        \end{itemize}
+        \item To calculate the observed rate constant, we must average all $k(u_r)$'s over the speed distribution. We can do this with
+        \begin{equation*}
+            k = \int_0^\infty\dd{u_r}f(u_r)k(u_r)
+            = \int_0^\infty\dd{u_r}u_rf(u_r)\sigma_r(u_r)
+        \end{equation*}
+        \item As per Chapter 27,
+        \begin{align*}
+            u_rf(u_r)\dd{u_r} &= 4\pi\left( \frac{\mu}{2\pi\kB T} \right)^{3/2}u_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}\\
+            &= \left( \frac{\mu}{\kB T} \right)^{3/2}\left( \frac{2}{\pi} \right)^{1/2}u_r^3\e[-\mu u_r^2/2\kB T]\dd{u_r}
+        \end{align*}
+        \item We now encounter the question of what our threshold relative molecular collision speed is. In fact, we have never discussed such a quantity. However, we have spent plenty of time developing a theory of the threshold energy $E_a$, the Arrhenius activation energy. As such, a change of variables from speed to energy is in order. In particular, since
+        \begin{equation*}
+            E_r = \frac{1}{2}\mu u_r^2
+        \end{equation*}
+        we have that
+        \begin{align*}
+            u_r &= \left( \frac{2E_r}{\mu} \right)^{1/2}&
+            \dd{u_r} &= \left( \frac{1}{2\mu E_r} \right)^{1/2}\dd{E_r}
+        \end{align*}
+        \item Making these substitutions yields
+        \begin{equation*}
+            u_rf(u_r)\dd{u_r} = \left( \frac{2}{\kB T} \right)^{3/2}\left( \frac{1}{\mu\pi} \right)^{1/2}E_r\e[-E_r/\kB T]\dd{E_r}
+        \end{equation*}
+        \item We may now easily define the reaction cross section $\sigma_r(E_r)$ by the following simple model, where $E_0$ is the threshold energy.
+        \begin{equation*}
+            \sigma_r(E_r) =
+            \begin{cases}
+                0 & E_r<E_0\\
+                \sigma_{\ce{A}\ce{B}} & E_r\geq E_0
+            \end{cases}
+        \end{equation*}
+        \item Resubstituting into the original expression for $k$ gives
+        \begin{align*}
+            k &= \left( \frac{2}{\kB T} \right)^{3/2}\left( \frac{1}{\mu\pi} \right)^{1/2}\int_0^\infty\dd{E_r}E_r\e[-E_r/\kB T]\sigma_r(E_r)\\
+            &= \left( \frac{2}{\kB T} \right)^{3/2}\left( \frac{1}{\mu\pi} \right)^{1/2}\int_{E_0}^\infty\dd{E_r}E_r\e[-E_r/\kB T]\sigma_{\ce{A}\ce{B}}\\
+            &= \left( \frac{8\kB T}{\mu\pi} \right)^{1/2}\sigma_{\ce{A}\ce{B}}\e[-E_0/\kB T]\left( 1+\frac{E_0}{\kB T} \right)\\
+            &= \prb{u_r}\sigma_{\ce{A}\ce{B}}\e[-E_0/\kB T]\left( 1+\frac{E_0}{\kB T} \right)
+        \end{align*}
+    \end{itemize}
+    \item Using this model, if we reverse engineer $E_0$ from experimental data on the other parameters, we can often get an answer on the same order of magnitude as $E_a$!
+\end{itemize}
+
+
+
 
 \end{document}
