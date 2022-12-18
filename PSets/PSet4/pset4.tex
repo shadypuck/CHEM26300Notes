@@ -190,32 +190,32 @@
         \begin{align*}
             \dv{\cnc{HBr}}{t} &= k_2\cnc{Br}\cnc{H2}-k_{-2}\cnc{HBr}\cnc{H}+k_3\cnc{H}\cnc{Br2}\\
             \dv{\cnc{H}}{t} &= k_2\cnc{Br}\cnc{H2}-k_{-2}\cnc{HBr}\cnc{H}-k_3\cnc{H}\cnc{Br2}\\
-            \dv{\cnc{Br}}{t} &= \frac{2I_\text{abs}}{\NA}-k_{-1}\cnc{Br}^2-k_2\cnc{Br}\cnc{H2}+k_{-2}\cnc{HBr}\cnc{H}+k_3\cnc{H}\cnc{Br2}
+            \dv{\cnc{Br}}{t} &= \frac{2I_\text{abs}}{\NA}-2k_{-1}\cnc{Br}^2-k_2\cnc{Br}\cnc{H2}+k_{-2}\cnc{HBr}\cnc{H}+k_3\cnc{H}\cnc{Br2}
         \end{align*}
         Applying the steady-state approximation to the two intermediate species, we find that
         \begin{align*}
             0 &= k_2\cnc{Br}\cnc{H2}-k_{-2}\cnc{HBr}\cnc{H}-k_3\cnc{H}\cnc{Br2}\\
-            0 &= \frac{2I_\text{abs}}{\NA}-k_{-1}\cnc{Br}^2-k_2\cnc{Br}\cnc{H2}+k_{-2}\cnc{HBr}\cnc{H}+k_3\cnc{H}\cnc{Br2}
+            0 &= \frac{2I_\text{abs}}{\NA}-2k_{-1}\cnc{Br}^2-k_2\cnc{Br}\cnc{H2}+k_{-2}\cnc{HBr}\cnc{H}+k_3\cnc{H}\cnc{Br2}
         \end{align*}
         Substituting the opposite of the former equation into the latter yields
         \begin{align*}
-            0 &= \frac{2I_\text{abs}}{\NA}-k_{-1}\cnc{Br}^2-0\\
-            \cnc{Br} &= \left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}
+            0 &= \frac{2I_\text{abs}}{\NA}-2k_{-1}\cnc{Br}^2-0\\
+            \cnc{Br} &= \left( \frac{I_\text{abs}}{k_{-1}\NA} \right)^{1/2}
         \end{align*}
         Resubstituting this expression into the SS approximation for $\cnc{H}$ yields
         \begin{align*}
             0 &= k_2\cnc{Br}\cnc{H2}-k_{-2}\cnc{HBr}\cnc{H}-k_3\cnc{H}\cnc{Br2}\\
-            &= k_2\left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}-(k_{-2}\cnc{HBr}+k_3\cnc{Br2})\cnc{H}\\
-            \cnc{H} &= \left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\frac{k_2\cnc{H2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}}
+            &= k_2\left( \frac{I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}-(k_{-2}\cnc{HBr}+k_3\cnc{Br2})\cnc{H}\\
+            \cnc{H} &= \left( \frac{I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\frac{k_2\cnc{H2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}}
         \end{align*}
         Substituting these two expressions back into the original differential equation for $\cnc{HBr}$ yields
         \begin{align*}
             \dv{\cnc{HBr}}{t} &= k_2\cnc{Br}\cnc{H2}-k_{-2}\cnc{HBr}\cnc{H}+k_3\cnc{H}\cnc{Br2}\\
-            &= k_2\left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}-(k_{-2}\cnc{HBr}-k_3\cnc{Br2})\left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\frac{k_2\cnc{H2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}}\\
-            &= k_2\left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}\left\{ 1-\frac{k_{-2}\cnc{HBr}-k_3\cnc{Br2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}} \right\}\\
-            &= k_2\left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}\left\{ \frac{k_{-2}\cnc{HBr}+k_3\cnc{Br2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}}-\frac{k_{-2}\cnc{HBr}-k_3\cnc{Br2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}} \right\}\\
-            &= k_2\left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}\left\{ \frac{2k_3\cnc{Br2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}} \right\}\\
-            \Aboxed{\dv{\cnc{HBr}}{t} &= \left( \frac{2I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\frac{2k_2\cnc{H2}}{(k_{-2}/k_3)\cnc{HBr}/\cnc{Br2}+1}}
+            &= k_2\left( \frac{I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}-(k_{-2}\cnc{HBr}-k_3\cnc{Br2})\left( \frac{I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\frac{k_2\cnc{H2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}}\\
+            &= k_2\left( \frac{I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}\left\{ 1-\frac{k_{-2}\cnc{HBr}-k_3\cnc{Br2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}} \right\}\\
+            &= k_2\left( \frac{I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}\left\{ \frac{k_{-2}\cnc{HBr}+k_3\cnc{Br2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}}-\frac{k_{-2}\cnc{HBr}-k_3\cnc{Br2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}} \right\}\\
+            &= k_2\left( \frac{I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\cnc{H2}\left\{ \frac{2k_3\cnc{Br2}}{k_{-2}\cnc{HBr}+k_3\cnc{Br2}} \right\}\\
+            \Aboxed{\dv{\cnc{HBr}}{t} &= \left( \frac{I_\text{abs}}{k_{-1}\NA} \right)^{1/2}\frac{2k_2\cnc{H2}}{(k_{-2}/k_3)\cnc{HBr}/\cnc{Br2}+1}}
         \end{align*}
         where we have arranged the last expression so that every molar concentration and rate constant appears at most once, increasing the clarity with which the reader can see what's proportional to what.
     \end{proof}
