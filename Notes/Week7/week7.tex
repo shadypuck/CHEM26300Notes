@@ -519,6 +519,44 @@
         \begin{itemize}
             \item In this picture, we take as our reference frame the perspective of spherically symmetric molecule \ce{B} and let \ce{A} approach.
             \item For $b$ fixed, the distribution in $\phi$ will be cylindrically symmetric.
+            \item \marginnote{5/22:}However, the angle $\theta$ will vary.
+        \end{itemize}
+    \end{itemize}
+    \item The \emph{speed} at which the molecules hit the detector.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[xscale=0.9]
+            \small
+            \draw (-1,3) -- node[rotate=90,above,align=center]{Number of\\molecules detected} (-1,0) -- node[below]{$t$} (5,0);
+            \footnotesize
+            \node at (0,2.5) {$v=0$};
+            \node at (1,2.5) {$1$};
+            \node at (2,2.5) {$2$};
+            \node at (3,2.5) {$3$};
+            \node at (4,2.5) {$4$};
+    
+            \draw [blx,thick] (-1,0.3)
+                -- (0.5,0.3)
+                to[out=0,in=180] (1,0.4)
+                to[out=0,in=180] (1.5,0.3)
+                to[out=0,in=180,out looseness=0.7,in looseness=0.4] (2,1.2)
+                to[out=0,in=180,out looseness=0.4,in looseness=0.7] (2.5,0.3)
+                to[out=0,in=180,out looseness=0.5,in looseness=0.2] (3,2.2)
+                to[out=0,in=180,out looseness=0.2,in looseness=0.5] (3.5,0.3)
+                to[out=0,in=180,out looseness=0.7,in looseness=0.4] (4,1.3)
+                to[out=0,in=180,out looseness=0.4,in looseness=0.7] (4.5,0.3)
+                to (5,0.3)
+            ;
+        \end{tikzpicture}
+        \caption{\ce{DF} speed distribution.}
+        \label{fig:DFspeeds}
+    \end{figure}
+    \begin{itemize}
+        \item Additionally, as per the previous example, \ce{DF} can be produced in vibrational states zero through four.
+        \item \textcite{bib:McQuarrieSimon} does a worked example, showing quantitatively how the speed of the \ce{DF} molecule depends on its vibrational state.
+        \item Experimentally, these results show up as separate peaks, each corresponding to a vibrational energy level, in Figure \ref{fig:DFspeeds}, which gives the collision frequency of \ce{DF} molecules with the detector over time.
+        \begin{itemize}
+            \item Notice that the molecules with the least vibrational energy have the most translational energy, and hence move the fastest and appear first.
         \end{itemize}
     \end{itemize}
 \end{itemize}
